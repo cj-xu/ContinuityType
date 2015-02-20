@@ -1,0 +1,2508 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >AddingProbeAxiom.Space.YonedaLemma</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Comment"
+      >Chuangjie Xu 2013 (updated in February 2015)</a
+      ><a name="45"
+      >
+
+\begin{code}
+
+</a
+      ><a name="61" class="Symbol"
+      >{-#</a
+      ><a name="64"
+      > </a
+      ><a name="65" class="Keyword"
+      >OPTIONS</a
+      ><a name="72"
+      > --without-K </a
+      ><a name="85" class="Symbol"
+      >#-}</a
+      ><a name="88"
+      >
+
+</a
+      ><a name="90" class="Keyword"
+      >module</a
+      ><a name="96"
+      > </a
+      ><a name="97" href="AddingProbeAxiom.Space.YonedaLemma.html#1" class="Module"
+      >AddingProbeAxiom.Space.YonedaLemma</a
+      ><a name="131"
+      > </a
+      ><a name="132" class="Keyword"
+      >where</a
+      ><a name="137"
+      >
+
+</a
+      ><a name="139" class="Keyword"
+      >open</a
+      ><a name="143"
+      > </a
+      ><a name="144" class="Keyword"
+      >import</a
+      ><a name="150"
+      > </a
+      ><a name="151" href="Preliminaries.SetsAndFunctions.html#1" class="Module"
+      >Preliminaries.SetsAndFunctions</a
+      ><a name="181"
+      > </a
+      ><a name="182" class="Keyword"
+      >hiding</a
+      ><a name="188"
+      > </a
+      ><a name="189" class="Symbol"
+      >(</a
+      ><a name="190"
+      >_+_</a
+      ><a name="193" class="Symbol"
+      >)</a
+      ><a name="194"
+      >
+</a
+      ><a name="195" class="Keyword"
+      >open</a
+      ><a name="199"
+      > </a
+      ><a name="200" class="Keyword"
+      >import</a
+      ><a name="206"
+      > </a
+      ><a name="207" href="Preliminaries.NaturalNumber.html#1" class="Module"
+      >Preliminaries.NaturalNumber</a
+      ><a name="234"
+      >
+</a
+      ><a name="235" class="Keyword"
+      >open</a
+      ><a name="239"
+      > </a
+      ><a name="240" class="Keyword"
+      >import</a
+      ><a name="246"
+      > </a
+      ><a name="247" href="Preliminaries.Boolean.html#1" class="Module"
+      >Preliminaries.Boolean</a
+      ><a name="268"
+      >
+</a
+      ><a name="269" class="Keyword"
+      >open</a
+      ><a name="273"
+      > </a
+      ><a name="274" class="Keyword"
+      >import</a
+      ><a name="280"
+      > </a
+      ><a name="281" href="Preliminaries.Sequence.html#1" class="Module"
+      >Preliminaries.Sequence</a
+      ><a name="303"
+      >
+</a
+      ><a name="304" class="Keyword"
+      >open</a
+      ><a name="308"
+      > </a
+      ><a name="309" class="Keyword"
+      >import</a
+      ><a name="315"
+      > </a
+      ><a name="316" href="Continuity.UniformContinuity.html#1" class="Module"
+      >Continuity.UniformContinuity</a
+      ><a name="344"
+      >
+</a
+      ><a name="345" class="Keyword"
+      >open</a
+      ><a name="349"
+      > </a
+      ><a name="350" class="Keyword"
+      >import</a
+      ><a name="356"
+      > </a
+      ><a name="357" href="UsingNotNotFunext.NotNot.html#1" class="Module"
+      >UsingNotNotFunext.NotNot</a
+      ><a name="381"
+      >
+</a
+      ><a name="382" class="Keyword"
+      >open</a
+      ><a name="386"
+      > </a
+      ><a name="387" class="Keyword"
+      >import</a
+      ><a name="393"
+      > </a
+      ><a name="394" href="AddingProbeAxiom.Space.Coverage.html#1" class="Module"
+      >AddingProbeAxiom.Space.Coverage</a
+      ><a name="425"
+      >
+</a
+      ><a name="426" class="Keyword"
+      >open</a
+      ><a name="430"
+      > </a
+      ><a name="431" class="Keyword"
+      >import</a
+      ><a name="437"
+      > </a
+      ><a name="438" href="AddingProbeAxiom.Space.Space.html#1" class="Module"
+      >AddingProbeAxiom.Space.Space</a
+      ><a name="466"
+      >
+</a
+      ><a name="467" class="Keyword"
+      >open</a
+      ><a name="471"
+      > </a
+      ><a name="472" class="Keyword"
+      >import</a
+      ><a name="478"
+      > </a
+      ><a name="479" href="AddingProbeAxiom.Space.CartesianClosedness.html#1" class="Module"
+      >AddingProbeAxiom.Space.CartesianClosedness</a
+      ><a name="521"
+      >
+</a
+      ><a name="522" class="Keyword"
+      >open</a
+      ><a name="526"
+      > </a
+      ><a name="527" class="Keyword"
+      >import</a
+      ><a name="533"
+      > </a
+      ><a name="534" href="AddingProbeAxiom.Space.DiscreteSpace.html#1" class="Module"
+      >AddingProbeAxiom.Space.DiscreteSpace</a
+      ><a name="570"
+      >
+
+\end{code}
+
+</a
+      ><a name="584" class="Comment"
+      >Because our site is a one-object category, there is only one representable</a
+      ><a name="658"
+      >
+</a
+      ><a name="659" class="Comment"
+      >sheaf, which is concrete and hence can be regarded as a C-space.  This concrete</a
+      ><a name="738"
+      >
+</a
+      ><a name="739" class="Comment"
+      >sheaf, seen as a C-space, is the set &#8322;&#8469; equipped with all uniformly continuous</a
+      ><a name="817"
+      >
+</a
+      ><a name="818" class="Comment"
+      >maps &#8322;&#8469; &#8594; &#8322;&#8469; as probes.  Moreover, it is (isomorphic to) the exponential of the</a
+      ><a name="897"
+      >
+</a
+      ><a name="898" class="Comment"
+      >discrete spaces &#8322;Space and &#8469;Space in the category of C-spaces.  The following</a
+      ><a name="975"
+      >
+</a
+      ><a name="976" class="Comment"
+      >lemma is one direction of this fact, which assigns each probe on &#8322;&#8469;, i.e. a</a
+      ><a name="1051"
+      >
+</a
+      ><a name="1052" class="Comment"
+      >uniformly continuous map, to a probe on the exponential &#8469;Space &#8658; &#8322;Space.</a
+      ><a name="1124"
+      >
+
+\begin{code}
+
+</a
+      ><a name="1140" href="AddingProbeAxiom.Space.YonedaLemma.html#1140" class="Function"
+      >Lemma[&#8322;&#8469;&#8594;&#8322;&#8469;-to-&#8322;&#8469;&#8594;&#8469;&#8658;&#8322;]</a
+      ><a name="1162"
+      > </a
+      ><a name="1163" class="Symbol"
+      >:</a
+      ><a name="1164"
+      > </a
+      ><a name="1165" class="Symbol"
+      >(</a
+      ><a name="1166" href="AddingProbeAxiom.Space.YonedaLemma.html#1166" class="Bound"
+      >r</a
+      ><a name="1167"
+      > </a
+      ><a name="1168" class="Symbol"
+      >:</a
+      ><a name="1169"
+      > </a
+      ><a name="1170" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1172"
+      > </a
+      ><a name="1173" class="Symbol"
+      >&#8594;</a
+      ><a name="1174"
+      > </a
+      ><a name="1175" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1177" class="Symbol"
+      >)</a
+      ><a name="1178"
+      > </a
+      ><a name="1179" class="Symbol"
+      >&#8594;</a
+      ><a name="1180"
+      > </a
+      ><a name="1181" href="AddingProbeAxiom.Space.YonedaLemma.html#1166" class="Bound"
+      >r</a
+      ><a name="1182"
+      > </a
+      ><a name="1183" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1184"
+      > </a
+      ><a name="1185" href="AddingProbeAxiom.Space.Coverage.html#411" class="Function"
+      >C</a
+      ><a name="1186"
+      > </a
+      ><a name="1187" class="Symbol"
+      >&#8594;</a
+      ><a name="1188"
+      >
+     </a
+      ><a name="1194" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="1195"
+      > </a
+      ><a name="1196" class="Symbol"
+      >\(</a
+      ><a name="1198" href="AddingProbeAxiom.Space.YonedaLemma.html#1198" class="Bound"
+      >&#966;</a
+      ><a name="1199"
+      > </a
+      ><a name="1200" class="Symbol"
+      >:</a
+      ><a name="1201"
+      > </a
+      ><a name="1202" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1204"
+      > </a
+      ><a name="1205" class="Symbol"
+      >&#8594;</a
+      ><a name="1206"
+      > </a
+      ><a name="1207" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="1208"
+      > </a
+      ><a name="1209" class="Symbol"
+      >(</a
+      ><a name="1210" href="AddingProbeAxiom.Space.DiscreteSpace.html#5799" class="Function"
+      >&#8469;Space</a
+      ><a name="1216"
+      > </a
+      ><a name="1217" href="AddingProbeAxiom.Space.CartesianClosedness.html#2126" class="Function Operator"
+      >&#8658;</a
+      ><a name="1218"
+      > </a
+      ><a name="1219" href="AddingProbeAxiom.Space.DiscreteSpace.html#4786" class="Function"
+      >&#8322;Space</a
+      ><a name="1225" class="Symbol"
+      >))</a
+      ><a name="1227"
+      > </a
+      ><a name="1228" class="Symbol"
+      >&#8594;</a
+      ><a name="1229"
+      > </a
+      ><a name="1230" href="AddingProbeAxiom.Space.YonedaLemma.html#1198" class="Bound"
+      >&#966;</a
+      ><a name="1231"
+      > </a
+      ><a name="1232" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1233"
+      > </a
+      ><a name="1234" href="AddingProbeAxiom.Space.Space.html#850" class="Function"
+      >Probe</a
+      ><a name="1239"
+      > </a
+      ><a name="1240" class="Symbol"
+      >(</a
+      ><a name="1241" href="AddingProbeAxiom.Space.DiscreteSpace.html#5799" class="Function"
+      >&#8469;Space</a
+      ><a name="1247"
+      > </a
+      ><a name="1248" href="AddingProbeAxiom.Space.CartesianClosedness.html#2126" class="Function Operator"
+      >&#8658;</a
+      ><a name="1249"
+      > </a
+      ><a name="1250" href="AddingProbeAxiom.Space.DiscreteSpace.html#4786" class="Function"
+      >&#8322;Space</a
+      ><a name="1256" class="Symbol"
+      >)</a
+      ><a name="1257"
+      >
+</a
+      ><a name="1258" href="AddingProbeAxiom.Space.YonedaLemma.html#1140" class="Function"
+      >Lemma[&#8322;&#8469;&#8594;&#8322;&#8469;-to-&#8322;&#8469;&#8594;&#8469;&#8658;&#8322;]</a
+      ><a name="1280"
+      > </a
+      ><a name="1281" href="AddingProbeAxiom.Space.YonedaLemma.html#1281" class="Bound"
+      >r</a
+      ><a name="1282"
+      > </a
+      ><a name="1283" href="AddingProbeAxiom.Space.YonedaLemma.html#1283" class="Bound"
+      >ucr</a
+      ><a name="1286"
+      > </a
+      ><a name="1287" class="Symbol"
+      >=</a
+      ><a name="1288"
+      > </a
+      ><a name="1289" href="AddingProbeAxiom.Space.YonedaLemma.html#1306" class="Function"
+      >&#966;</a
+      ><a name="1290"
+      > </a
+      ><a name="1291" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1292"
+      > </a
+      ><a name="1293" href="AddingProbeAxiom.Space.YonedaLemma.html#1387" class="Function"
+      >prf</a
+      ><a name="1296"
+      >
+ </a
+      ><a name="1298" class="Keyword"
+      >where</a
+      ><a name="1303"
+      >
+  </a
+      ><a name="1306" href="AddingProbeAxiom.Space.YonedaLemma.html#1306" class="Function"
+      >&#966;</a
+      ><a name="1307"
+      > </a
+      ><a name="1308" class="Symbol"
+      >:</a
+      ><a name="1309"
+      > </a
+      ><a name="1310" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1312"
+      > </a
+      ><a name="1313" class="Symbol"
+      >&#8594;</a
+      ><a name="1314"
+      > </a
+      ><a name="1315" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="1316"
+      > </a
+      ><a name="1317" class="Symbol"
+      >(</a
+      ><a name="1318" href="AddingProbeAxiom.Space.DiscreteSpace.html#5799" class="Function"
+      >&#8469;Space</a
+      ><a name="1324"
+      > </a
+      ><a name="1325" href="AddingProbeAxiom.Space.CartesianClosedness.html#2126" class="Function Operator"
+      >&#8658;</a
+      ><a name="1326"
+      > </a
+      ><a name="1327" href="AddingProbeAxiom.Space.DiscreteSpace.html#4786" class="Function"
+      >&#8322;Space</a
+      ><a name="1333" class="Symbol"
+      >)</a
+      ><a name="1334"
+      >
+  </a
+      ><a name="1337" href="AddingProbeAxiom.Space.YonedaLemma.html#1306" class="Function"
+      >&#966;</a
+      ><a name="1338"
+      > </a
+      ><a name="1339" href="AddingProbeAxiom.Space.YonedaLemma.html#1339" class="Bound"
+      >&#945;</a
+      ><a name="1340"
+      > </a
+      ><a name="1341" class="Symbol"
+      >=</a
+      ><a name="1342"
+      > </a
+      ><a name="1343" href="AddingProbeAxiom.Space.YonedaLemma.html#1281" class="Bound"
+      >r</a
+      ><a name="1344"
+      > </a
+      ><a name="1345" href="AddingProbeAxiom.Space.YonedaLemma.html#1339" class="Bound"
+      >&#945;</a
+      ><a name="1346"
+      > </a
+      ><a name="1347" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1348"
+      > </a
+      ><a name="1349" href="AddingProbeAxiom.Space.DiscreteSpace.html#5851" class="Function"
+      >Lemma[discrete-&#8469;Space]</a
+      ><a name="1371"
+      > </a
+      ><a name="1372" href="AddingProbeAxiom.Space.DiscreteSpace.html#4786" class="Function"
+      >&#8322;Space</a
+      ><a name="1378"
+      > </a
+      ><a name="1379" class="Symbol"
+      >(</a
+      ><a name="1380" href="AddingProbeAxiom.Space.YonedaLemma.html#1281" class="Bound"
+      >r</a
+      ><a name="1381"
+      > </a
+      ><a name="1382" href="AddingProbeAxiom.Space.YonedaLemma.html#1339" class="Bound"
+      >&#945;</a
+      ><a name="1383" class="Symbol"
+      >)</a
+      ><a name="1384"
+      >
+  </a
+      ><a name="1387" href="AddingProbeAxiom.Space.YonedaLemma.html#1387" class="Function"
+      >prf</a
+      ><a name="1390"
+      > </a
+      ><a name="1391" class="Symbol"
+      >:</a
+      ><a name="1392"
+      > </a
+      ><a name="1393" class="Symbol"
+      >&#8704;(</a
+      ><a name="1395" href="AddingProbeAxiom.Space.YonedaLemma.html#1395" class="Bound"
+      >p</a
+      ><a name="1396"
+      > </a
+      ><a name="1397" class="Symbol"
+      >:</a
+      ><a name="1398"
+      > </a
+      ><a name="1399" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1401"
+      > </a
+      ><a name="1402" class="Symbol"
+      >&#8594;</a
+      ><a name="1403"
+      > </a
+      ><a name="1404" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1405" class="Symbol"
+      >)</a
+      ><a name="1406"
+      > </a
+      ><a name="1407" class="Symbol"
+      >&#8594;</a
+      ><a name="1408"
+      > </a
+      ><a name="1409" href="AddingProbeAxiom.Space.YonedaLemma.html#1395" class="Bound"
+      >p</a
+      ><a name="1410"
+      > </a
+      ><a name="1411" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1412"
+      > </a
+      ><a name="1413" href="AddingProbeAxiom.Space.DiscreteSpace.html#772" class="Function"
+      >LC</a
+      ><a name="1415"
+      > </a
+      ><a name="1416" class="Symbol"
+      >&#8594;</a
+      ><a name="1417"
+      > </a
+      ><a name="1418" class="Symbol"
+      >&#8704;(</a
+      ><a name="1420" href="AddingProbeAxiom.Space.YonedaLemma.html#1420" class="Bound"
+      >t</a
+      ><a name="1421"
+      > </a
+      ><a name="1422" class="Symbol"
+      >:</a
+      ><a name="1423"
+      > </a
+      ><a name="1424" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1426"
+      > </a
+      ><a name="1427" class="Symbol"
+      >&#8594;</a
+      ><a name="1428"
+      > </a
+      ><a name="1429" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1431" class="Symbol"
+      >)</a
+      ><a name="1432"
+      > </a
+      ><a name="1433" class="Symbol"
+      >&#8594;</a
+      ><a name="1434"
+      > </a
+      ><a name="1435" href="AddingProbeAxiom.Space.YonedaLemma.html#1420" class="Bound"
+      >t</a
+      ><a name="1436"
+      > </a
+      ><a name="1437" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1438"
+      > </a
+      ><a name="1439" href="AddingProbeAxiom.Space.Coverage.html#411" class="Function"
+      >C</a
+      ><a name="1440"
+      > </a
+      ><a name="1441" class="Symbol"
+      >&#8594;</a
+      ><a name="1442"
+      >
+         </a
+      ><a name="1452" class="Symbol"
+      >(&#955;</a
+      ><a name="1454"
+      > </a
+      ><a name="1455" href="AddingProbeAxiom.Space.YonedaLemma.html#1455" class="Bound"
+      >&#945;</a
+      ><a name="1456"
+      > </a
+      ><a name="1457" class="Symbol"
+      >&#8594;</a
+      ><a name="1458"
+      > </a
+      ><a name="1459" class="Symbol"
+      >(</a
+      ><a name="1460" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1463"
+      > </a
+      ><a name="1464" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1465"
+      > </a
+      ><a name="1466" href="AddingProbeAxiom.Space.YonedaLemma.html#1306" class="Function"
+      >&#966;</a
+      ><a name="1467" class="Symbol"
+      >)(</a
+      ><a name="1469" href="AddingProbeAxiom.Space.YonedaLemma.html#1420" class="Bound"
+      >t</a
+      ><a name="1470"
+      > </a
+      ><a name="1471" href="AddingProbeAxiom.Space.YonedaLemma.html#1455" class="Bound"
+      >&#945;</a
+      ><a name="1472" class="Symbol"
+      >)(</a
+      ><a name="1474" href="AddingProbeAxiom.Space.YonedaLemma.html#1395" class="Bound"
+      >p</a
+      ><a name="1475"
+      > </a
+      ><a name="1476" href="AddingProbeAxiom.Space.YonedaLemma.html#1455" class="Bound"
+      >&#945;</a
+      ><a name="1477" class="Symbol"
+      >))</a
+      ><a name="1479"
+      > </a
+      ><a name="1480" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1481"
+      > </a
+      ><a name="1482" href="AddingProbeAxiom.Space.DiscreteSpace.html#772" class="Function"
+      >LC</a
+      ><a name="1484"
+      >
+  </a
+      ><a name="1487" href="AddingProbeAxiom.Space.YonedaLemma.html#1387" class="Function"
+      >prf</a
+      ><a name="1490"
+      > </a
+      ><a name="1491" href="AddingProbeAxiom.Space.YonedaLemma.html#1491" class="Bound"
+      >p</a
+      ><a name="1492"
+      > </a
+      ><a name="1493" href="AddingProbeAxiom.Space.YonedaLemma.html#1493" class="Bound"
+      >ucp</a
+      ><a name="1496"
+      > </a
+      ><a name="1497" href="AddingProbeAxiom.Space.YonedaLemma.html#1497" class="Bound"
+      >t</a
+      ><a name="1498"
+      > </a
+      ><a name="1499" href="AddingProbeAxiom.Space.YonedaLemma.html#1499" class="Bound"
+      >uct</a
+      ><a name="1502"
+      > </a
+      ><a name="1503" class="Symbol"
+      >=</a
+      ><a name="1504"
+      > </a
+      ><a name="1505" href="Continuity.UniformContinuity.html#9243" class="Function"
+      >Lemma[LM-&#8322;-least-modulus]</a
+      ><a name="1530"
+      > </a
+      ><a name="1531" href="AddingProbeAxiom.Space.YonedaLemma.html#1551" class="Function"
+      >q</a
+      ><a name="1532"
+      > </a
+      ><a name="1533" href="AddingProbeAxiom.Space.YonedaLemma.html#2133" class="Function"
+      >l</a
+      ><a name="1534"
+      > </a
+      ><a name="1535" href="AddingProbeAxiom.Space.YonedaLemma.html#2239" class="Function"
+      >pr</a
+      ><a name="1537"
+      >
+   </a
+      ><a name="1541" class="Keyword"
+      >where</a
+      ><a name="1546"
+      >
+    </a
+      ><a name="1551" href="AddingProbeAxiom.Space.YonedaLemma.html#1551" class="Function"
+      >q</a
+      ><a name="1552"
+      > </a
+      ><a name="1553" class="Symbol"
+      >:</a
+      ><a name="1554"
+      > </a
+      ><a name="1555" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1557"
+      > </a
+      ><a name="1558" class="Symbol"
+      >&#8594;</a
+      ><a name="1559"
+      > </a
+      ><a name="1560" href="Preliminaries.Boolean.html#249" class="Datatype"
+      >&#8322;</a
+      ><a name="1561"
+      >
+    </a
+      ><a name="1566" href="AddingProbeAxiom.Space.YonedaLemma.html#1551" class="Function"
+      >q</a
+      ><a name="1567"
+      > </a
+      ><a name="1568" href="AddingProbeAxiom.Space.YonedaLemma.html#1568" class="Bound"
+      >&#945;</a
+      ><a name="1569"
+      > </a
+      ><a name="1570" class="Symbol"
+      >=</a
+      ><a name="1571"
+      > </a
+      ><a name="1572" class="Symbol"
+      >(</a
+      ><a name="1573" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1576"
+      > </a
+      ><a name="1577" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1578"
+      > </a
+      ><a name="1579" href="AddingProbeAxiom.Space.YonedaLemma.html#1306" class="Function"
+      >&#966;</a
+      ><a name="1580" class="Symbol"
+      >)(</a
+      ><a name="1582" href="AddingProbeAxiom.Space.YonedaLemma.html#1497" class="Bound"
+      >t</a
+      ><a name="1583"
+      > </a
+      ><a name="1584" href="AddingProbeAxiom.Space.YonedaLemma.html#1568" class="Bound"
+      >&#945;</a
+      ><a name="1585" class="Symbol"
+      >)(</a
+      ><a name="1587" href="AddingProbeAxiom.Space.YonedaLemma.html#1491" class="Bound"
+      >p</a
+      ><a name="1588"
+      > </a
+      ><a name="1589" href="AddingProbeAxiom.Space.YonedaLemma.html#1568" class="Bound"
+      >&#945;</a
+      ><a name="1590" class="Symbol"
+      >)</a
+      ><a name="1591"
+      >
+    </a
+      ><a name="1596" href="AddingProbeAxiom.Space.YonedaLemma.html#1596" class="Function"
+      >m</a
+      ><a name="1597"
+      > </a
+      ><a name="1598" class="Symbol"
+      >:</a
+      ><a name="1599"
+      > </a
+      ><a name="1600" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1601"
+      >
+    </a
+      ><a name="1606" href="AddingProbeAxiom.Space.YonedaLemma.html#1596" class="Function"
+      >m</a
+      ><a name="1607"
+      > </a
+      ><a name="1608" class="Symbol"
+      >=</a
+      ><a name="1609"
+      > </a
+      ><a name="1610" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1613"
+      > </a
+      ><a name="1614" href="AddingProbeAxiom.Space.YonedaLemma.html#1493" class="Bound"
+      >ucp</a
+      ><a name="1617"
+      >
+    </a
+      ><a name="1622" href="AddingProbeAxiom.Space.YonedaLemma.html#1622" class="Function"
+      >f</a
+      ><a name="1623"
+      > </a
+      ><a name="1624" class="Symbol"
+      >:</a
+      ><a name="1625"
+      > </a
+      ><a name="1626" href="Preliminaries.Sequence.html#507" class="Datatype"
+      >&#8322;Fin</a
+      ><a name="1630"
+      > </a
+      ><a name="1631" href="AddingProbeAxiom.Space.YonedaLemma.html#1596" class="Function"
+      >m</a
+      ><a name="1632"
+      > </a
+      ><a name="1633" class="Symbol"
+      >&#8594;</a
+      ><a name="1634"
+      > </a
+      ><a name="1635" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1636"
+      >
+    </a
+      ><a name="1641" href="AddingProbeAxiom.Space.YonedaLemma.html#1622" class="Function"
+      >f</a
+      ><a name="1642"
+      > </a
+      ><a name="1643" href="AddingProbeAxiom.Space.YonedaLemma.html#1643" class="Bound"
+      >s</a
+      ><a name="1644"
+      > </a
+      ><a name="1645" class="Symbol"
+      >=</a
+      ><a name="1646"
+      > </a
+      ><a name="1647" href="AddingProbeAxiom.Space.YonedaLemma.html#1491" class="Bound"
+      >p</a
+      ><a name="1648"
+      > </a
+      ><a name="1649" class="Symbol"
+      >(</a
+      ><a name="1650" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1654"
+      > </a
+      ><a name="1655" href="AddingProbeAxiom.Space.YonedaLemma.html#1643" class="Bound"
+      >s</a
+      ><a name="1656"
+      > </a
+      ><a name="1657" href="Preliminaries.Sequence.html#384" class="Function"
+      >0&#772;</a
+      ><a name="1659" class="Symbol"
+      >)</a
+      ><a name="1660"
+      >
+    </a
+      ><a name="1665" href="AddingProbeAxiom.Space.YonedaLemma.html#1665" class="Function"
+      >eq</a
+      ><a name="1667"
+      > </a
+      ><a name="1668" class="Symbol"
+      >:</a
+      ><a name="1669"
+      > </a
+      ><a name="1670" class="Symbol"
+      >&#8704;(</a
+      ><a name="1672" href="AddingProbeAxiom.Space.YonedaLemma.html#1672" class="Bound"
+      >&#945;</a
+      ><a name="1673"
+      > </a
+      ><a name="1674" class="Symbol"
+      >:</a
+      ><a name="1675"
+      > </a
+      ><a name="1676" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1678" class="Symbol"
+      >)</a
+      ><a name="1679"
+      > </a
+      ><a name="1680" class="Symbol"
+      >&#8594;</a
+      ><a name="1681"
+      > </a
+      ><a name="1682" href="AddingProbeAxiom.Space.YonedaLemma.html#1491" class="Bound"
+      >p</a
+      ><a name="1683"
+      > </a
+      ><a name="1684" href="AddingProbeAxiom.Space.YonedaLemma.html#1672" class="Bound"
+      >&#945;</a
+      ><a name="1685"
+      > </a
+      ><a name="1686" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1687"
+      > </a
+      ><a name="1688" href="AddingProbeAxiom.Space.YonedaLemma.html#1622" class="Function"
+      >f</a
+      ><a name="1689"
+      > </a
+      ><a name="1690" class="Symbol"
+      >(</a
+      ><a name="1691" href="Preliminaries.Sequence.html#1121" class="Function"
+      >take</a
+      ><a name="1695"
+      > </a
+      ><a name="1696" href="AddingProbeAxiom.Space.YonedaLemma.html#1596" class="Function"
+      >m</a
+      ><a name="1697"
+      > </a
+      ><a name="1698" href="AddingProbeAxiom.Space.YonedaLemma.html#1672" class="Bound"
+      >&#945;</a
+      ><a name="1699" class="Symbol"
+      >)</a
+      ><a name="1700"
+      >
+    </a
+      ><a name="1705" href="AddingProbeAxiom.Space.YonedaLemma.html#1665" class="Function"
+      >eq</a
+      ><a name="1707"
+      > </a
+      ><a name="1708" href="AddingProbeAxiom.Space.YonedaLemma.html#1708" class="Bound"
+      >&#945;</a
+      ><a name="1709"
+      > </a
+      ><a name="1710" class="Symbol"
+      >=</a
+      ><a name="1711"
+      > </a
+      ><a name="1712" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1715"
+      > </a
+      ><a name="1716" class="Symbol"
+      >(</a
+      ><a name="1717" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="1720"
+      > </a
+      ><a name="1721" href="AddingProbeAxiom.Space.YonedaLemma.html#1493" class="Bound"
+      >ucp</a
+      ><a name="1724" class="Symbol"
+      >)</a
+      ><a name="1725"
+      > </a
+      ><a name="1726" href="AddingProbeAxiom.Space.YonedaLemma.html#1708" class="Bound"
+      >&#945;</a
+      ><a name="1727"
+      > </a
+      ><a name="1728" class="Symbol"
+      >(</a
+      ><a name="1729" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1733"
+      > </a
+      ><a name="1734" class="Symbol"
+      >(</a
+      ><a name="1735" href="Preliminaries.Sequence.html#1121" class="Function"
+      >take</a
+      ><a name="1739"
+      > </a
+      ><a name="1740" href="AddingProbeAxiom.Space.YonedaLemma.html#1596" class="Function"
+      >m</a
+      ><a name="1741"
+      > </a
+      ><a name="1742" href="AddingProbeAxiom.Space.YonedaLemma.html#1708" class="Bound"
+      >&#945;</a
+      ><a name="1743" class="Symbol"
+      >)</a
+      ><a name="1744"
+      > </a
+      ><a name="1745" href="Preliminaries.Sequence.html#384" class="Function"
+      >0&#772;</a
+      ><a name="1747" class="Symbol"
+      >)</a
+      ><a name="1748"
+      > </a
+      ><a name="1749" class="Symbol"
+      >(</a
+      ><a name="1750" href="Preliminaries.Sequence.html#8142" class="Function"
+      >Lemma[cons-take-&#8801;[]]</a
+      ><a name="1770"
+      > </a
+      ><a name="1771" href="AddingProbeAxiom.Space.YonedaLemma.html#1596" class="Function"
+      >m</a
+      ><a name="1772"
+      > </a
+      ><a name="1773" href="AddingProbeAxiom.Space.YonedaLemma.html#1708" class="Bound"
+      >&#945;</a
+      ><a name="1774"
+      > </a
+      ><a name="1775" href="Preliminaries.Sequence.html#384" class="Function"
+      >0&#772;</a
+      ><a name="1777" class="Symbol"
+      >)</a
+      ><a name="1778"
+      >
+    </a
+      ><a name="1783" href="AddingProbeAxiom.Space.YonedaLemma.html#1783" class="Function"
+      >k'</a
+      ><a name="1785"
+      > </a
+      ><a name="1786" class="Symbol"
+      >:</a
+      ><a name="1787"
+      > </a
+      ><a name="1788" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1789"
+      >
+    </a
+      ><a name="1794" href="AddingProbeAxiom.Space.YonedaLemma.html#1783" class="Function"
+      >k'</a
+      ><a name="1796"
+      > </a
+      ><a name="1797" class="Symbol"
+      >=</a
+      ><a name="1798"
+      > </a
+      ><a name="1799" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1802"
+      > </a
+      ><a name="1803" class="Symbol"
+      >(</a
+      ><a name="1804" href="Preliminaries.Sequence.html#1783" class="Function"
+      >max-fin</a
+      ><a name="1811"
+      > </a
+      ><a name="1812" href="AddingProbeAxiom.Space.YonedaLemma.html#1622" class="Function"
+      >f</a
+      ><a name="1813" class="Symbol"
+      >)</a
+      ><a name="1814"
+      >
+    </a
+      ><a name="1819" href="AddingProbeAxiom.Space.YonedaLemma.html#1819" class="Function"
+      >k'-max</a
+      ><a name="1825"
+      > </a
+      ><a name="1826" class="Symbol"
+      >:</a
+      ><a name="1827"
+      > </a
+      ><a name="1828" class="Symbol"
+      >&#8704;(</a
+      ><a name="1830" href="AddingProbeAxiom.Space.YonedaLemma.html#1830" class="Bound"
+      >&#945;</a
+      ><a name="1831"
+      > </a
+      ><a name="1832" class="Symbol"
+      >:</a
+      ><a name="1833"
+      > </a
+      ><a name="1834" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1836" class="Symbol"
+      >)</a
+      ><a name="1837"
+      > </a
+      ><a name="1838" class="Symbol"
+      >&#8594;</a
+      ><a name="1839"
+      > </a
+      ><a name="1840" href="AddingProbeAxiom.Space.YonedaLemma.html#1491" class="Bound"
+      >p</a
+      ><a name="1841"
+      > </a
+      ><a name="1842" href="AddingProbeAxiom.Space.YonedaLemma.html#1830" class="Bound"
+      >&#945;</a
+      ><a name="1843"
+      > </a
+      ><a name="1844" href="Preliminaries.NaturalNumber.html#1766" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="1845"
+      > </a
+      ><a name="1846" href="AddingProbeAxiom.Space.YonedaLemma.html#1783" class="Function"
+      >k'</a
+      ><a name="1848"
+      >
+    </a
+      ><a name="1853" href="AddingProbeAxiom.Space.YonedaLemma.html#1819" class="Function"
+      >k'-max</a
+      ><a name="1859"
+      > </a
+      ><a name="1860" href="AddingProbeAxiom.Space.YonedaLemma.html#1860" class="Bound"
+      >&#945;</a
+      ><a name="1861"
+      > </a
+      ><a name="1862" class="Symbol"
+      >=</a
+      ><a name="1863"
+      > </a
+      ><a name="1864" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="1873"
+      > </a
+      ><a name="1874" class="Symbol"
+      >(&#955;</a
+      ><a name="1876"
+      > </a
+      ><a name="1877" href="AddingProbeAxiom.Space.YonedaLemma.html#1877" class="Bound"
+      >i</a
+      ><a name="1878"
+      > </a
+      ><a name="1879" class="Symbol"
+      >&#8594;</a
+      ><a name="1880"
+      > </a
+      ><a name="1881" href="AddingProbeAxiom.Space.YonedaLemma.html#1877" class="Bound"
+      >i</a
+      ><a name="1882"
+      > </a
+      ><a name="1883" href="Preliminaries.NaturalNumber.html#1766" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="1884"
+      > </a
+      ><a name="1885" href="AddingProbeAxiom.Space.YonedaLemma.html#1783" class="Function"
+      >k'</a
+      ><a name="1887" class="Symbol"
+      >)</a
+      ><a name="1888"
+      > </a
+      ><a name="1889" class="Symbol"
+      >((</a
+      ><a name="1891" href="AddingProbeAxiom.Space.YonedaLemma.html#1665" class="Function"
+      >eq</a
+      ><a name="1893"
+      > </a
+      ><a name="1894" href="AddingProbeAxiom.Space.YonedaLemma.html#1860" class="Bound"
+      >&#945;</a
+      ><a name="1895" class="Symbol"
+      >)</a
+      ><a name="1896"
+      > </a
+      ><a name="1897" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="1899" class="Symbol"
+      >)</a
+      ><a name="1900"
+      > </a
+      ><a name="1901" class="Symbol"
+      >(</a
+      ><a name="1902" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="1905"
+      > </a
+      ><a name="1906" class="Symbol"
+      >(</a
+      ><a name="1907" href="Preliminaries.Sequence.html#1783" class="Function"
+      >max-fin</a
+      ><a name="1914"
+      > </a
+      ><a name="1915" href="AddingProbeAxiom.Space.YonedaLemma.html#1622" class="Function"
+      >f</a
+      ><a name="1916" class="Symbol"
+      >)</a
+      ><a name="1917"
+      > </a
+      ><a name="1918" class="Symbol"
+      >(</a
+      ><a name="1919" href="Preliminaries.Sequence.html#1121" class="Function"
+      >take</a
+      ><a name="1923"
+      > </a
+      ><a name="1924" href="AddingProbeAxiom.Space.YonedaLemma.html#1596" class="Function"
+      >m</a
+      ><a name="1925"
+      > </a
+      ><a name="1926" href="AddingProbeAxiom.Space.YonedaLemma.html#1860" class="Bound"
+      >&#945;</a
+      ><a name="1927" class="Symbol"
+      >))</a
+      ><a name="1929"
+      >
+    </a
+      ><a name="1934" href="AddingProbeAxiom.Space.YonedaLemma.html#1934" class="Function"
+      >k</a
+      ><a name="1935"
+      > </a
+      ><a name="1936" class="Symbol"
+      >:</a
+      ><a name="1937"
+      > </a
+      ><a name="1938" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1939"
+      >
+    </a
+      ><a name="1944" href="AddingProbeAxiom.Space.YonedaLemma.html#1934" class="Function"
+      >k</a
+      ><a name="1945"
+      > </a
+      ><a name="1946" class="Symbol"
+      >=</a
+      ><a name="1947"
+      > </a
+      ><a name="1948" href="Preliminaries.NaturalNumber.html#311" class="InductiveConstructor"
+      >succ</a
+      ><a name="1952"
+      > </a
+      ><a name="1953" href="AddingProbeAxiom.Space.YonedaLemma.html#1783" class="Function"
+      >k'</a
+      ><a name="1955"
+      >
+    </a
+      ><a name="1960" href="AddingProbeAxiom.Space.YonedaLemma.html#1960" class="Function"
+      >k-max</a
+      ><a name="1965"
+      > </a
+      ><a name="1966" class="Symbol"
+      >:</a
+      ><a name="1967"
+      > </a
+      ><a name="1968" class="Symbol"
+      >&#8704;(</a
+      ><a name="1970" href="AddingProbeAxiom.Space.YonedaLemma.html#1970" class="Bound"
+      >&#945;</a
+      ><a name="1971"
+      > </a
+      ><a name="1972" class="Symbol"
+      >:</a
+      ><a name="1973"
+      > </a
+      ><a name="1974" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1976" class="Symbol"
+      >)</a
+      ><a name="1977"
+      > </a
+      ><a name="1978" class="Symbol"
+      >&#8594;</a
+      ><a name="1979"
+      > </a
+      ><a name="1980" href="AddingProbeAxiom.Space.YonedaLemma.html#1491" class="Bound"
+      >p</a
+      ><a name="1981"
+      > </a
+      ><a name="1982" href="AddingProbeAxiom.Space.YonedaLemma.html#1970" class="Bound"
+      >&#945;</a
+      ><a name="1983"
+      > </a
+      ><a name="1984" href="Preliminaries.NaturalNumber.html#1865" class="Function Operator"
+      >&lt;</a
+      ><a name="1985"
+      > </a
+      ><a name="1986" href="AddingProbeAxiom.Space.YonedaLemma.html#1934" class="Function"
+      >k</a
+      ><a name="1987"
+      >
+    </a
+      ><a name="1992" href="AddingProbeAxiom.Space.YonedaLemma.html#1960" class="Function"
+      >k-max</a
+      ><a name="1997"
+      > </a
+      ><a name="1998" href="AddingProbeAxiom.Space.YonedaLemma.html#1998" class="Bound"
+      >&#945;</a
+      ><a name="1999"
+      > </a
+      ><a name="2000" class="Symbol"
+      >=</a
+      ><a name="2001"
+      > </a
+      ><a name="2002" href="Preliminaries.NaturalNumber.html#1818" class="InductiveConstructor"
+      >&#8804;-succ</a
+      ><a name="2008"
+      > </a
+      ><a name="2009" class="Symbol"
+      >(</a
+      ><a name="2010" href="AddingProbeAxiom.Space.YonedaLemma.html#1819" class="Function"
+      >k'-max</a
+      ><a name="2016"
+      > </a
+      ><a name="2017" href="AddingProbeAxiom.Space.YonedaLemma.html#1998" class="Bound"
+      >&#945;</a
+      ><a name="2018" class="Symbol"
+      >)</a
+      ><a name="2019"
+      >
+    </a
+      ><a name="2024" href="AddingProbeAxiom.Space.YonedaLemma.html#2024" class="Function"
+      >ucrt</a
+      ><a name="2028"
+      > </a
+      ><a name="2029" class="Symbol"
+      >:</a
+      ><a name="2030"
+      > </a
+      ><a name="2031" href="Continuity.UniformContinuity.html#592" class="Function"
+      >uniformly-continuous-&#8322;&#8469;</a
+      ><a name="2054"
+      > </a
+      ><a name="2055" class="Symbol"
+      >(</a
+      ><a name="2056" href="AddingProbeAxiom.Space.YonedaLemma.html#1281" class="Bound"
+      >r</a
+      ><a name="2057"
+      > </a
+      ><a name="2058" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="2059"
+      > </a
+      ><a name="2060" href="AddingProbeAxiom.Space.YonedaLemma.html#1497" class="Bound"
+      >t</a
+      ><a name="2061" class="Symbol"
+      >)</a
+      ><a name="2062"
+      >
+    </a
+      ><a name="2067" href="AddingProbeAxiom.Space.YonedaLemma.html#2024" class="Function"
+      >ucrt</a
+      ><a name="2071"
+      > </a
+      ><a name="2072" class="Symbol"
+      >=</a
+      ><a name="2073"
+      > </a
+      ><a name="2074" href="Continuity.UniformContinuity.html#10300" class="Function"
+      >Lemma[&#8728;-UC]</a
+      ><a name="2085"
+      > </a
+      ><a name="2086" href="AddingProbeAxiom.Space.YonedaLemma.html#1281" class="Bound"
+      >r</a
+      ><a name="2087"
+      > </a
+      ><a name="2088" href="AddingProbeAxiom.Space.YonedaLemma.html#1283" class="Bound"
+      >ucr</a
+      ><a name="2091"
+      > </a
+      ><a name="2092" href="AddingProbeAxiom.Space.YonedaLemma.html#1497" class="Bound"
+      >t</a
+      ><a name="2093"
+      > </a
+      ><a name="2094" href="AddingProbeAxiom.Space.YonedaLemma.html#1499" class="Bound"
+      >uct</a
+      ><a name="2097"
+      >
+    </a
+      ><a name="2102" href="AddingProbeAxiom.Space.YonedaLemma.html#2102" class="Function"
+      >n</a
+      ><a name="2103"
+      > </a
+      ><a name="2104" class="Symbol"
+      >:</a
+      ><a name="2105"
+      > </a
+      ><a name="2106" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="2107"
+      >
+    </a
+      ><a name="2112" href="AddingProbeAxiom.Space.YonedaLemma.html#2102" class="Function"
+      >n</a
+      ><a name="2113"
+      > </a
+      ><a name="2114" class="Symbol"
+      >=</a
+      ><a name="2115"
+      > </a
+      ><a name="2116" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="2119"
+      > </a
+      ><a name="2120" class="Symbol"
+      >(</a
+      ><a name="2121" href="AddingProbeAxiom.Space.YonedaLemma.html#2024" class="Function"
+      >ucrt</a
+      ><a name="2125"
+      > </a
+      ><a name="2126" href="AddingProbeAxiom.Space.YonedaLemma.html#1934" class="Function"
+      >k</a
+      ><a name="2127" class="Symbol"
+      >)</a
+      ><a name="2128"
+      >
+    </a
+      ><a name="2133" href="AddingProbeAxiom.Space.YonedaLemma.html#2133" class="Function"
+      >l</a
+      ><a name="2134"
+      > </a
+      ><a name="2135" class="Symbol"
+      >:</a
+      ><a name="2136"
+      > </a
+      ><a name="2137" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="2138"
+      >
+    </a
+      ><a name="2143" href="AddingProbeAxiom.Space.YonedaLemma.html#2133" class="Function"
+      >l</a
+      ><a name="2144"
+      > </a
+      ><a name="2145" class="Symbol"
+      >=</a
+      ><a name="2146"
+      > </a
+      ><a name="2147" href="Preliminaries.NaturalNumber.html#5761" class="Function"
+      >max</a
+      ><a name="2150"
+      > </a
+      ><a name="2151" href="AddingProbeAxiom.Space.YonedaLemma.html#1596" class="Function"
+      >m</a
+      ><a name="2152"
+      > </a
+      ><a name="2153" href="AddingProbeAxiom.Space.YonedaLemma.html#2102" class="Function"
+      >n</a
+      ><a name="2154"
+      >
+    </a
+      ><a name="2159" href="AddingProbeAxiom.Space.YonedaLemma.html#2159" class="Function"
+      >m&#8804;l</a
+      ><a name="2162"
+      > </a
+      ><a name="2163" class="Symbol"
+      >:</a
+      ><a name="2164"
+      > </a
+      ><a name="2165" href="AddingProbeAxiom.Space.YonedaLemma.html#1596" class="Function"
+      >m</a
+      ><a name="2166"
+      > </a
+      ><a name="2167" href="Preliminaries.NaturalNumber.html#1766" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="2168"
+      > </a
+      ><a name="2169" href="AddingProbeAxiom.Space.YonedaLemma.html#2133" class="Function"
+      >l</a
+      ><a name="2170"
+      >
+    </a
+      ><a name="2175" href="AddingProbeAxiom.Space.YonedaLemma.html#2159" class="Function"
+      >m&#8804;l</a
+      ><a name="2178"
+      > </a
+      ><a name="2179" class="Symbol"
+      >=</a
+      ><a name="2180"
+      > </a
+      ><a name="2181" href="Preliminaries.NaturalNumber.html#5841" class="Function"
+      >max-spec&#8320;</a
+      ><a name="2190"
+      > </a
+      ><a name="2191" href="AddingProbeAxiom.Space.YonedaLemma.html#1596" class="Function"
+      >m</a
+      ><a name="2192"
+      > </a
+      ><a name="2193" href="AddingProbeAxiom.Space.YonedaLemma.html#2102" class="Function"
+      >n</a
+      ><a name="2194"
+      >
+    </a
+      ><a name="2199" href="AddingProbeAxiom.Space.YonedaLemma.html#2199" class="Function"
+      >n&#8804;l</a
+      ><a name="2202"
+      > </a
+      ><a name="2203" class="Symbol"
+      >:</a
+      ><a name="2204"
+      > </a
+      ><a name="2205" href="AddingProbeAxiom.Space.YonedaLemma.html#2102" class="Function"
+      >n</a
+      ><a name="2206"
+      > </a
+      ><a name="2207" href="Preliminaries.NaturalNumber.html#1766" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="2208"
+      > </a
+      ><a name="2209" href="AddingProbeAxiom.Space.YonedaLemma.html#2133" class="Function"
+      >l</a
+      ><a name="2210"
+      >
+    </a
+      ><a name="2215" href="AddingProbeAxiom.Space.YonedaLemma.html#2199" class="Function"
+      >n&#8804;l</a
+      ><a name="2218"
+      > </a
+      ><a name="2219" class="Symbol"
+      >=</a
+      ><a name="2220"
+      > </a
+      ><a name="2221" href="Preliminaries.NaturalNumber.html#6005" class="Function"
+      >max-spec&#8321;</a
+      ><a name="2230"
+      > </a
+      ><a name="2231" href="AddingProbeAxiom.Space.YonedaLemma.html#1596" class="Function"
+      >m</a
+      ><a name="2232"
+      > </a
+      ><a name="2233" href="AddingProbeAxiom.Space.YonedaLemma.html#2102" class="Function"
+      >n</a
+      ><a name="2234"
+      >
+    </a
+      ><a name="2239" href="AddingProbeAxiom.Space.YonedaLemma.html#2239" class="Function"
+      >pr</a
+      ><a name="2241"
+      > </a
+      ><a name="2242" class="Symbol"
+      >:</a
+      ><a name="2243"
+      > </a
+      ><a name="2244" class="Symbol"
+      >&#8704;(</a
+      ><a name="2246" href="AddingProbeAxiom.Space.YonedaLemma.html#2246" class="Bound"
+      >&#945;</a
+      ><a name="2247"
+      > </a
+      ><a name="2248" href="AddingProbeAxiom.Space.YonedaLemma.html#2248" class="Bound"
+      >&#946;</a
+      ><a name="2249"
+      > </a
+      ><a name="2250" class="Symbol"
+      >:</a
+      ><a name="2251"
+      > </a
+      ><a name="2252" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="2254" class="Symbol"
+      >)</a
+      ><a name="2255"
+      > </a
+      ><a name="2256" class="Symbol"
+      >&#8594;</a
+      ><a name="2257"
+      > </a
+      ><a name="2258" href="AddingProbeAxiom.Space.YonedaLemma.html#2246" class="Bound"
+      >&#945;</a
+      ><a name="2259"
+      > </a
+      ><a name="2260" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="2262"
+      > </a
+      ><a name="2263" href="AddingProbeAxiom.Space.YonedaLemma.html#2133" class="Function"
+      >l</a
+      ><a name="2264"
+      > </a
+      ><a name="2265" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="2266"
+      > </a
+      ><a name="2267" href="AddingProbeAxiom.Space.YonedaLemma.html#2248" class="Bound"
+      >&#946;</a
+      ><a name="2268"
+      > </a
+      ><a name="2269" class="Symbol"
+      >&#8594;</a
+      ><a name="2270"
+      > </a
+      ><a name="2271" href="AddingProbeAxiom.Space.YonedaLemma.html#1281" class="Bound"
+      >r</a
+      ><a name="2272" class="Symbol"
+      >(</a
+      ><a name="2273" href="AddingProbeAxiom.Space.YonedaLemma.html#1497" class="Bound"
+      >t</a
+      ><a name="2274"
+      > </a
+      ><a name="2275" href="AddingProbeAxiom.Space.YonedaLemma.html#2246" class="Bound"
+      >&#945;</a
+      ><a name="2276" class="Symbol"
+      >)(</a
+      ><a name="2278" href="AddingProbeAxiom.Space.YonedaLemma.html#1491" class="Bound"
+      >p</a
+      ><a name="2279"
+      > </a
+      ><a name="2280" href="AddingProbeAxiom.Space.YonedaLemma.html#2246" class="Bound"
+      >&#945;</a
+      ><a name="2281" class="Symbol"
+      >)</a
+      ><a name="2282"
+      > </a
+      ><a name="2283" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2284"
+      > </a
+      ><a name="2285" href="AddingProbeAxiom.Space.YonedaLemma.html#1281" class="Bound"
+      >r</a
+      ><a name="2286" class="Symbol"
+      >(</a
+      ><a name="2287" href="AddingProbeAxiom.Space.YonedaLemma.html#1497" class="Bound"
+      >t</a
+      ><a name="2288"
+      > </a
+      ><a name="2289" href="AddingProbeAxiom.Space.YonedaLemma.html#2248" class="Bound"
+      >&#946;</a
+      ><a name="2290" class="Symbol"
+      >)(</a
+      ><a name="2292" href="AddingProbeAxiom.Space.YonedaLemma.html#1491" class="Bound"
+      >p</a
+      ><a name="2293"
+      > </a
+      ><a name="2294" href="AddingProbeAxiom.Space.YonedaLemma.html#2248" class="Bound"
+      >&#946;</a
+      ><a name="2295" class="Symbol"
+      >)</a
+      ><a name="2296"
+      >
+    </a
+      ><a name="2301" href="AddingProbeAxiom.Space.YonedaLemma.html#2239" class="Function"
+      >pr</a
+      ><a name="2303"
+      > </a
+      ><a name="2304" href="AddingProbeAxiom.Space.YonedaLemma.html#2304" class="Bound"
+      >&#945;</a
+      ><a name="2305"
+      > </a
+      ><a name="2306" href="AddingProbeAxiom.Space.YonedaLemma.html#2306" class="Bound"
+      >&#946;</a
+      ><a name="2307"
+      > </a
+      ><a name="2308" href="AddingProbeAxiom.Space.YonedaLemma.html#2308" class="Bound"
+      >awl</a
+      ><a name="2311"
+      > </a
+      ><a name="2312" class="Symbol"
+      >=</a
+      ><a name="2313"
+      > </a
+      ><a name="2314" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="2323"
+      > </a
+      ><a name="2324" class="Symbol"
+      >(&#955;</a
+      ><a name="2326"
+      > </a
+      ><a name="2327" href="AddingProbeAxiom.Space.YonedaLemma.html#2327" class="Bound"
+      >i</a
+      ><a name="2328"
+      > </a
+      ><a name="2329" class="Symbol"
+      >&#8594;</a
+      ><a name="2330"
+      > </a
+      ><a name="2331" href="AddingProbeAxiom.Space.YonedaLemma.html#1281" class="Bound"
+      >r</a
+      ><a name="2332" class="Symbol"
+      >(</a
+      ><a name="2333" href="AddingProbeAxiom.Space.YonedaLemma.html#1497" class="Bound"
+      >t</a
+      ><a name="2334"
+      > </a
+      ><a name="2335" href="AddingProbeAxiom.Space.YonedaLemma.html#2304" class="Bound"
+      >&#945;</a
+      ><a name="2336" class="Symbol"
+      >)(</a
+      ><a name="2338" href="AddingProbeAxiom.Space.YonedaLemma.html#1491" class="Bound"
+      >p</a
+      ><a name="2339"
+      > </a
+      ><a name="2340" href="AddingProbeAxiom.Space.YonedaLemma.html#2304" class="Bound"
+      >&#945;</a
+      ><a name="2341" class="Symbol"
+      >)</a
+      ><a name="2342"
+      > </a
+      ><a name="2343" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2344"
+      > </a
+      ><a name="2345" href="AddingProbeAxiom.Space.YonedaLemma.html#1281" class="Bound"
+      >r</a
+      ><a name="2346" class="Symbol"
+      >(</a
+      ><a name="2347" href="AddingProbeAxiom.Space.YonedaLemma.html#1497" class="Bound"
+      >t</a
+      ><a name="2348"
+      > </a
+      ><a name="2349" href="AddingProbeAxiom.Space.YonedaLemma.html#2306" class="Bound"
+      >&#946;</a
+      ><a name="2350" class="Symbol"
+      >)</a
+      ><a name="2351"
+      > </a
+      ><a name="2352" href="AddingProbeAxiom.Space.YonedaLemma.html#2327" class="Bound"
+      >i</a
+      ><a name="2353" class="Symbol"
+      >)</a
+      ><a name="2354"
+      > </a
+      ><a name="2355" href="AddingProbeAxiom.Space.YonedaLemma.html#2440" class="Function"
+      >eqp</a
+      ><a name="2358"
+      > </a
+      ><a name="2359" href="AddingProbeAxiom.Space.YonedaLemma.html#2626" class="Function"
+      >subgoal</a
+      ><a name="2366"
+      >
+     </a
+      ><a name="2372" class="Keyword"
+      >where</a
+      ><a name="2377"
+      >
+      </a
+      ><a name="2384" href="AddingProbeAxiom.Space.YonedaLemma.html#2384" class="Function"
+      >awm</a
+      ><a name="2387"
+      > </a
+      ><a name="2388" class="Symbol"
+      >:</a
+      ><a name="2389"
+      > </a
+      ><a name="2390" href="AddingProbeAxiom.Space.YonedaLemma.html#2304" class="Bound"
+      >&#945;</a
+      ><a name="2391"
+      > </a
+      ><a name="2392" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="2394"
+      > </a
+      ><a name="2395" href="AddingProbeAxiom.Space.YonedaLemma.html#1596" class="Function"
+      >m</a
+      ><a name="2396"
+      > </a
+      ><a name="2397" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="2398"
+      > </a
+      ><a name="2399" href="AddingProbeAxiom.Space.YonedaLemma.html#2306" class="Bound"
+      >&#946;</a
+      ><a name="2400"
+      >
+      </a
+      ><a name="2407" href="AddingProbeAxiom.Space.YonedaLemma.html#2384" class="Function"
+      >awm</a
+      ><a name="2410"
+      > </a
+      ><a name="2411" class="Symbol"
+      >=</a
+      ><a name="2412"
+      > </a
+      ><a name="2413" href="Preliminaries.Sequence.html#5781" class="Function"
+      >Lemma[&#8801;[]-&#8804;]</a
+      ><a name="2425"
+      > </a
+      ><a name="2426" href="AddingProbeAxiom.Space.YonedaLemma.html#2308" class="Bound"
+      >awl</a
+      ><a name="2429"
+      > </a
+      ><a name="2430" href="AddingProbeAxiom.Space.YonedaLemma.html#2159" class="Function"
+      >m&#8804;l</a
+      ><a name="2433"
+      >
+      </a
+      ><a name="2440" href="AddingProbeAxiom.Space.YonedaLemma.html#2440" class="Function"
+      >eqp</a
+      ><a name="2443"
+      > </a
+      ><a name="2444" class="Symbol"
+      >:</a
+      ><a name="2445"
+      > </a
+      ><a name="2446" href="AddingProbeAxiom.Space.YonedaLemma.html#1491" class="Bound"
+      >p</a
+      ><a name="2447"
+      > </a
+      ><a name="2448" href="AddingProbeAxiom.Space.YonedaLemma.html#2304" class="Bound"
+      >&#945;</a
+      ><a name="2449"
+      > </a
+      ><a name="2450" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2451"
+      > </a
+      ><a name="2452" href="AddingProbeAxiom.Space.YonedaLemma.html#1491" class="Bound"
+      >p</a
+      ><a name="2453"
+      > </a
+      ><a name="2454" href="AddingProbeAxiom.Space.YonedaLemma.html#2306" class="Bound"
+      >&#946;</a
+      ><a name="2455"
+      >
+      </a
+      ><a name="2462" href="AddingProbeAxiom.Space.YonedaLemma.html#2440" class="Function"
+      >eqp</a
+      ><a name="2465"
+      > </a
+      ><a name="2466" class="Symbol"
+      >=</a
+      ><a name="2467"
+      > </a
+      ><a name="2468" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="2471"
+      > </a
+      ><a name="2472" class="Symbol"
+      >(</a
+      ><a name="2473" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="2476"
+      > </a
+      ><a name="2477" href="AddingProbeAxiom.Space.YonedaLemma.html#1493" class="Bound"
+      >ucp</a
+      ><a name="2480" class="Symbol"
+      >)</a
+      ><a name="2481"
+      > </a
+      ><a name="2482" href="AddingProbeAxiom.Space.YonedaLemma.html#2304" class="Bound"
+      >&#945;</a
+      ><a name="2483"
+      > </a
+      ><a name="2484" href="AddingProbeAxiom.Space.YonedaLemma.html#2306" class="Bound"
+      >&#946;</a
+      ><a name="2485"
+      > </a
+      ><a name="2486" href="AddingProbeAxiom.Space.YonedaLemma.html#2384" class="Function"
+      >awm</a
+      ><a name="2489"
+      >
+      </a
+      ><a name="2496" href="AddingProbeAxiom.Space.YonedaLemma.html#2496" class="Function"
+      >awn</a
+      ><a name="2499"
+      > </a
+      ><a name="2500" class="Symbol"
+      >:</a
+      ><a name="2501"
+      > </a
+      ><a name="2502" href="AddingProbeAxiom.Space.YonedaLemma.html#2304" class="Bound"
+      >&#945;</a
+      ><a name="2503"
+      > </a
+      ><a name="2504" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="2506"
+      > </a
+      ><a name="2507" href="AddingProbeAxiom.Space.YonedaLemma.html#2102" class="Function"
+      >n</a
+      ><a name="2508"
+      > </a
+      ><a name="2509" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="2510"
+      > </a
+      ><a name="2511" href="AddingProbeAxiom.Space.YonedaLemma.html#2306" class="Bound"
+      >&#946;</a
+      ><a name="2512"
+      >
+      </a
+      ><a name="2519" href="AddingProbeAxiom.Space.YonedaLemma.html#2496" class="Function"
+      >awn</a
+      ><a name="2522"
+      > </a
+      ><a name="2523" class="Symbol"
+      >=</a
+      ><a name="2524"
+      > </a
+      ><a name="2525" href="Preliminaries.Sequence.html#5781" class="Function"
+      >Lemma[&#8801;[]-&#8804;]</a
+      ><a name="2537"
+      > </a
+      ><a name="2538" href="AddingProbeAxiom.Space.YonedaLemma.html#2308" class="Bound"
+      >awl</a
+      ><a name="2541"
+      > </a
+      ><a name="2542" href="AddingProbeAxiom.Space.YonedaLemma.html#2199" class="Function"
+      >n&#8804;l</a
+      ><a name="2545"
+      >
+      </a
+      ><a name="2552" href="AddingProbeAxiom.Space.YonedaLemma.html#2552" class="Function"
+      >awk</a
+      ><a name="2555"
+      > </a
+      ><a name="2556" class="Symbol"
+      >:</a
+      ><a name="2557"
+      > </a
+      ><a name="2558" href="AddingProbeAxiom.Space.YonedaLemma.html#1281" class="Bound"
+      >r</a
+      ><a name="2559"
+      > </a
+      ><a name="2560" class="Symbol"
+      >(</a
+      ><a name="2561" href="AddingProbeAxiom.Space.YonedaLemma.html#1497" class="Bound"
+      >t</a
+      ><a name="2562"
+      > </a
+      ><a name="2563" href="AddingProbeAxiom.Space.YonedaLemma.html#2304" class="Bound"
+      >&#945;</a
+      ><a name="2564" class="Symbol"
+      >)</a
+      ><a name="2565"
+      > </a
+      ><a name="2566" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="2568"
+      > </a
+      ><a name="2569" href="AddingProbeAxiom.Space.YonedaLemma.html#1934" class="Function"
+      >k</a
+      ><a name="2570"
+      > </a
+      ><a name="2571" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="2572"
+      > </a
+      ><a name="2573" href="AddingProbeAxiom.Space.YonedaLemma.html#1281" class="Bound"
+      >r</a
+      ><a name="2574"
+      > </a
+      ><a name="2575" class="Symbol"
+      >(</a
+      ><a name="2576" href="AddingProbeAxiom.Space.YonedaLemma.html#1497" class="Bound"
+      >t</a
+      ><a name="2577"
+      > </a
+      ><a name="2578" href="AddingProbeAxiom.Space.YonedaLemma.html#2306" class="Bound"
+      >&#946;</a
+      ><a name="2579" class="Symbol"
+      >)</a
+      ><a name="2580"
+      >
+      </a
+      ><a name="2587" href="AddingProbeAxiom.Space.YonedaLemma.html#2552" class="Function"
+      >awk</a
+      ><a name="2590"
+      > </a
+      ><a name="2591" class="Symbol"
+      >=</a
+      ><a name="2592"
+      > </a
+      ><a name="2593" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="2596"
+      > </a
+      ><a name="2597" class="Symbol"
+      >(</a
+      ><a name="2598" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="2601"
+      > </a
+      ><a name="2602" class="Symbol"
+      >(</a
+      ><a name="2603" href="AddingProbeAxiom.Space.YonedaLemma.html#2024" class="Function"
+      >ucrt</a
+      ><a name="2607"
+      > </a
+      ><a name="2608" href="AddingProbeAxiom.Space.YonedaLemma.html#1934" class="Function"
+      >k</a
+      ><a name="2609" class="Symbol"
+      >))</a
+      ><a name="2611"
+      > </a
+      ><a name="2612" href="AddingProbeAxiom.Space.YonedaLemma.html#2304" class="Bound"
+      >&#945;</a
+      ><a name="2613"
+      > </a
+      ><a name="2614" href="AddingProbeAxiom.Space.YonedaLemma.html#2306" class="Bound"
+      >&#946;</a
+      ><a name="2615"
+      > </a
+      ><a name="2616" href="AddingProbeAxiom.Space.YonedaLemma.html#2496" class="Function"
+      >awn</a
+      ><a name="2619"
+      >
+      </a
+      ><a name="2626" href="AddingProbeAxiom.Space.YonedaLemma.html#2626" class="Function"
+      >subgoal</a
+      ><a name="2633"
+      > </a
+      ><a name="2634" class="Symbol"
+      >:</a
+      ><a name="2635"
+      > </a
+      ><a name="2636" href="AddingProbeAxiom.Space.YonedaLemma.html#1281" class="Bound"
+      >r</a
+      ><a name="2637" class="Symbol"
+      >(</a
+      ><a name="2638" href="AddingProbeAxiom.Space.YonedaLemma.html#1497" class="Bound"
+      >t</a
+      ><a name="2639"
+      > </a
+      ><a name="2640" href="AddingProbeAxiom.Space.YonedaLemma.html#2304" class="Bound"
+      >&#945;</a
+      ><a name="2641" class="Symbol"
+      >)(</a
+      ><a name="2643" href="AddingProbeAxiom.Space.YonedaLemma.html#1491" class="Bound"
+      >p</a
+      ><a name="2644"
+      > </a
+      ><a name="2645" href="AddingProbeAxiom.Space.YonedaLemma.html#2304" class="Bound"
+      >&#945;</a
+      ><a name="2646" class="Symbol"
+      >)</a
+      ><a name="2647"
+      > </a
+      ><a name="2648" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2649"
+      > </a
+      ><a name="2650" href="AddingProbeAxiom.Space.YonedaLemma.html#1281" class="Bound"
+      >r</a
+      ><a name="2651" class="Symbol"
+      >(</a
+      ><a name="2652" href="AddingProbeAxiom.Space.YonedaLemma.html#1497" class="Bound"
+      >t</a
+      ><a name="2653"
+      > </a
+      ><a name="2654" href="AddingProbeAxiom.Space.YonedaLemma.html#2306" class="Bound"
+      >&#946;</a
+      ><a name="2655" class="Symbol"
+      >)(</a
+      ><a name="2657" href="AddingProbeAxiom.Space.YonedaLemma.html#1491" class="Bound"
+      >p</a
+      ><a name="2658"
+      > </a
+      ><a name="2659" href="AddingProbeAxiom.Space.YonedaLemma.html#2304" class="Bound"
+      >&#945;</a
+      ><a name="2660" class="Symbol"
+      >)</a
+      ><a name="2661"
+      >
+      </a
+      ><a name="2668" href="AddingProbeAxiom.Space.YonedaLemma.html#2626" class="Function"
+      >subgoal</a
+      ><a name="2675"
+      > </a
+      ><a name="2676" class="Symbol"
+      >=</a
+      ><a name="2677"
+      > </a
+      ><a name="2678" href="Preliminaries.Sequence.html#5459" class="Function"
+      >Lemma[&#8801;[]-&lt;]</a
+      ><a name="2690"
+      > </a
+      ><a name="2691" href="AddingProbeAxiom.Space.YonedaLemma.html#2552" class="Function"
+      >awk</a
+      ><a name="2694"
+      > </a
+      ><a name="2695" class="Symbol"
+      >(</a
+      ><a name="2696" href="AddingProbeAxiom.Space.YonedaLemma.html#1491" class="Bound"
+      >p</a
+      ><a name="2697"
+      > </a
+      ><a name="2698" href="AddingProbeAxiom.Space.YonedaLemma.html#2304" class="Bound"
+      >&#945;</a
+      ><a name="2699" class="Symbol"
+      >)</a
+      ><a name="2700"
+      > </a
+      ><a name="2701" class="Symbol"
+      >(</a
+      ><a name="2702" href="AddingProbeAxiom.Space.YonedaLemma.html#1960" class="Function"
+      >k-max</a
+      ><a name="2707"
+      > </a
+      ><a name="2708" href="AddingProbeAxiom.Space.YonedaLemma.html#2304" class="Bound"
+      >&#945;</a
+      ><a name="2709" class="Symbol"
+      >)</a
+      ><a name="2710"
+      >
+
+\end{code}
+
+</a
+      ><a name="2724" class="Comment"
+      >In particular, the &quot;identity&quot; map &#8322;&#8469; &#8594; U(&#8469;Space &#8658; &#8322;Space) is a probe on the</a
+      ><a name="2799"
+      >
+</a
+      ><a name="2800" class="Comment"
+      >exponential &#8469;Space &#8658; &#8322;Space.</a
+      ><a name="2828"
+      >
+
+\begin{code}
+
+</a
+      ><a name="2844" href="AddingProbeAxiom.Space.YonedaLemma.html#2844" class="Function"
+      >ID</a
+      ><a name="2846"
+      > </a
+      ><a name="2847" class="Symbol"
+      >:</a
+      ><a name="2848"
+      > </a
+      ><a name="2849" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="2851"
+      > </a
+      ><a name="2852" class="Symbol"
+      >&#8594;</a
+      ><a name="2853"
+      > </a
+      ><a name="2854" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="2855" class="Symbol"
+      >(</a
+      ><a name="2856" href="AddingProbeAxiom.Space.DiscreteSpace.html#5799" class="Function"
+      >&#8469;Space</a
+      ><a name="2862"
+      > </a
+      ><a name="2863" href="AddingProbeAxiom.Space.CartesianClosedness.html#2126" class="Function Operator"
+      >&#8658;</a
+      ><a name="2864"
+      > </a
+      ><a name="2865" href="AddingProbeAxiom.Space.DiscreteSpace.html#4786" class="Function"
+      >&#8322;Space</a
+      ><a name="2871" class="Symbol"
+      >)</a
+      ><a name="2872"
+      >
+</a
+      ><a name="2873" href="AddingProbeAxiom.Space.YonedaLemma.html#2844" class="Function"
+      >ID</a
+      ><a name="2875"
+      > </a
+      ><a name="2876" class="Symbol"
+      >=</a
+      ><a name="2877"
+      > </a
+      ><a name="2878" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="2881"
+      > </a
+      ><a name="2882" class="Symbol"
+      >(</a
+      ><a name="2883" href="AddingProbeAxiom.Space.YonedaLemma.html#1140" class="Function"
+      >Lemma[&#8322;&#8469;&#8594;&#8322;&#8469;-to-&#8322;&#8469;&#8594;&#8469;&#8658;&#8322;]</a
+      ><a name="2905"
+      > </a
+      ><a name="2906" href="Preliminaries.SetsAndFunctions.html#241" class="Function"
+      >id</a
+      ><a name="2908"
+      > </a
+      ><a name="2909" href="Continuity.UniformContinuity.html#9641" class="Function"
+      >Lemma[id-UC]</a
+      ><a name="2921" class="Symbol"
+      >)</a
+      ><a name="2922"
+      >
+
+</a
+      ><a name="2924" href="AddingProbeAxiom.Space.YonedaLemma.html#2924" class="Function"
+      >Lemma[ID-[&#8801;]]</a
+      ><a name="2937"
+      > </a
+      ><a name="2938" class="Symbol"
+      >:</a
+      ><a name="2939"
+      > </a
+      ><a name="2940" class="Symbol"
+      >&#8704;(</a
+      ><a name="2942" href="AddingProbeAxiom.Space.YonedaLemma.html#2942" class="Bound"
+      >&#945;</a
+      ><a name="2943"
+      > </a
+      ><a name="2944" class="Symbol"
+      >:</a
+      ><a name="2945"
+      > </a
+      ><a name="2946" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="2947"
+      > </a
+      ><a name="2948" class="Symbol"
+      >(</a
+      ><a name="2949" href="AddingProbeAxiom.Space.DiscreteSpace.html#5799" class="Function"
+      >&#8469;Space</a
+      ><a name="2955"
+      > </a
+      ><a name="2956" href="AddingProbeAxiom.Space.CartesianClosedness.html#2126" class="Function Operator"
+      >&#8658;</a
+      ><a name="2957"
+      > </a
+      ><a name="2958" href="AddingProbeAxiom.Space.DiscreteSpace.html#4786" class="Function"
+      >&#8322;Space</a
+      ><a name="2964" class="Symbol"
+      >))</a
+      ><a name="2966"
+      > </a
+      ><a name="2967" class="Symbol"
+      >&#8594;</a
+      ><a name="2968"
+      > </a
+      ><a name="2969" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="2971"
+      > </a
+      ><a name="2972" href="AddingProbeAxiom.Space.YonedaLemma.html#2942" class="Bound"
+      >&#945;</a
+      ><a name="2973"
+      > </a
+      ><a name="2974" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2975"
+      > </a
+      ><a name="2976" href="AddingProbeAxiom.Space.YonedaLemma.html#2844" class="Function"
+      >ID</a
+      ><a name="2978"
+      > </a
+      ><a name="2979" class="Symbol"
+      >(</a
+      ><a name="2980" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="2983"
+      > </a
+      ><a name="2984" href="AddingProbeAxiom.Space.YonedaLemma.html#2942" class="Bound"
+      >&#945;</a
+      ><a name="2985" class="Symbol"
+      >)</a
+      ><a name="2986"
+      >
+</a
+      ><a name="2987" href="AddingProbeAxiom.Space.YonedaLemma.html#2924" class="Function"
+      >Lemma[ID-[&#8801;]]</a
+      ><a name="3000"
+      > </a
+      ><a name="3001" href="AddingProbeAxiom.Space.YonedaLemma.html#3001" class="Bound"
+      >&#945;</a
+      ><a name="3002"
+      > </a
+      ><a name="3003" class="Symbol"
+      >=</a
+      ><a name="3004"
+      > </a
+      ><a name="3005" href="AddingProbeAxiom.Space.DiscreteSpace.html#13205" class="Function"
+      >Lemma[Map-&#8322;-[&#8801;]]</a
+      ><a name="3021"
+      > </a
+      ><a name="3022" href="AddingProbeAxiom.Space.DiscreteSpace.html#5799" class="Function"
+      >&#8469;Space</a
+      ><a name="3028"
+      > </a
+      ><a name="3029" href="AddingProbeAxiom.Space.YonedaLemma.html#3001" class="Bound"
+      >&#945;</a
+      ><a name="3030"
+      > </a
+      ><a name="3031" class="Symbol"
+      >(</a
+      ><a name="3032" href="AddingProbeAxiom.Space.YonedaLemma.html#2844" class="Function"
+      >ID</a
+      ><a name="3034"
+      > </a
+      ><a name="3035" class="Symbol"
+      >(</a
+      ><a name="3036" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="3039"
+      > </a
+      ><a name="3040" href="AddingProbeAxiom.Space.YonedaLemma.html#3001" class="Bound"
+      >&#945;</a
+      ><a name="3041" class="Symbol"
+      >))</a
+      ><a name="3043"
+      > </a
+      ><a name="3044" class="Symbol"
+      >(&#955;</a
+      ><a name="3046"
+      > </a
+      ><a name="3047" href="AddingProbeAxiom.Space.YonedaLemma.html#3047" class="Bound"
+      >_</a
+      ><a name="3048"
+      > </a
+      ><a name="3049" class="Symbol"
+      >&#8594;</a
+      ><a name="3050"
+      > </a
+      ><a name="3051" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="3055" class="Symbol"
+      >)</a
+      ><a name="3056"
+      >
+
+</a
+      ><a name="3058" href="AddingProbeAxiom.Space.YonedaLemma.html#3058" class="Function"
+      >ID-is-a-probe</a
+      ><a name="3071"
+      > </a
+      ><a name="3072" class="Symbol"
+      >:</a
+      ><a name="3073"
+      > </a
+      ><a name="3074" href="AddingProbeAxiom.Space.YonedaLemma.html#2844" class="Function"
+      >ID</a
+      ><a name="3076"
+      > </a
+      ><a name="3077" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="3078"
+      > </a
+      ><a name="3079" href="AddingProbeAxiom.Space.Space.html#850" class="Function"
+      >Probe</a
+      ><a name="3084" class="Symbol"
+      >(</a
+      ><a name="3085" href="AddingProbeAxiom.Space.DiscreteSpace.html#5799" class="Function"
+      >&#8469;Space</a
+      ><a name="3091"
+      > </a
+      ><a name="3092" href="AddingProbeAxiom.Space.CartesianClosedness.html#2126" class="Function Operator"
+      >&#8658;</a
+      ><a name="3093"
+      > </a
+      ><a name="3094" href="AddingProbeAxiom.Space.DiscreteSpace.html#4786" class="Function"
+      >&#8322;Space</a
+      ><a name="3100" class="Symbol"
+      >)</a
+      ><a name="3101"
+      >
+</a
+      ><a name="3102" href="AddingProbeAxiom.Space.YonedaLemma.html#3058" class="Function"
+      >ID-is-a-probe</a
+      ><a name="3115"
+      > </a
+      ><a name="3116" class="Symbol"
+      >=</a
+      ><a name="3117"
+      > </a
+      ><a name="3118" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="3121"
+      > </a
+      ><a name="3122" class="Symbol"
+      >(</a
+      ><a name="3123" href="AddingProbeAxiom.Space.YonedaLemma.html#1140" class="Function"
+      >Lemma[&#8322;&#8469;&#8594;&#8322;&#8469;-to-&#8322;&#8469;&#8594;&#8469;&#8658;&#8322;]</a
+      ><a name="3145"
+      > </a
+      ><a name="3146" href="Preliminaries.SetsAndFunctions.html#241" class="Function"
+      >id</a
+      ><a name="3148"
+      > </a
+      ><a name="3149" href="Continuity.UniformContinuity.html#9641" class="Function"
+      >Lemma[id-UC]</a
+      ><a name="3161" class="Symbol"
+      >)</a
+      ><a name="3162"
+      >
+
+\end{code}
+
+</a
+      ><a name="3176" class="Comment"
+      >Using the above facts, we conclude that the Yoneda Lemma amounts to saying that</a
+      ><a name="3255"
+      >
+</a
+      ><a name="3256" class="Comment"
+      >the set of continuous maps from the exponential &#8469;Space &#8658; &#8322;Space to any C-space X</a
+      ><a name="3336"
+      >
+</a
+      ><a name="3337" class="Comment"
+      >is isomorphic to the C-topology of X.  The following gives one direction of the</a
+      ><a name="3416"
+      >
+</a
+      ><a name="3417" class="Comment"
+      >Yoneda Lemma, which is sufficient to construct a fan functional.</a
+      ><a name="3481"
+      >
+
+\begin{code}
+
+</a
+      ><a name="3497" href="AddingProbeAxiom.Space.YonedaLemma.html#3497" class="Function"
+      >Lemma[Yoneda]</a
+      ><a name="3510"
+      > </a
+      ><a name="3511" class="Symbol"
+      >:</a
+      ><a name="3512"
+      > </a
+      ><a name="3513" class="Symbol"
+      >&#8704;(</a
+      ><a name="3515" href="AddingProbeAxiom.Space.YonedaLemma.html#3515" class="Bound"
+      >X</a
+      ><a name="3516"
+      > </a
+      ><a name="3517" class="Symbol"
+      >:</a
+      ><a name="3518"
+      > </a
+      ><a name="3519" href="AddingProbeAxiom.Space.Space.html#775" class="Function"
+      >Space</a
+      ><a name="3524" class="Symbol"
+      >)</a
+      ><a name="3525"
+      > </a
+      ><a name="3526" class="Symbol"
+      >&#8594;</a
+      ><a name="3527"
+      > </a
+      ><a name="3528" href="AddingProbeAxiom.Space.Space.html#1597" class="Function"
+      >Map</a
+      ><a name="3531"
+      > </a
+      ><a name="3532" class="Symbol"
+      >(</a
+      ><a name="3533" href="AddingProbeAxiom.Space.DiscreteSpace.html#5799" class="Function"
+      >&#8469;Space</a
+      ><a name="3539"
+      > </a
+      ><a name="3540" href="AddingProbeAxiom.Space.CartesianClosedness.html#2126" class="Function Operator"
+      >&#8658;</a
+      ><a name="3541"
+      > </a
+      ><a name="3542" href="AddingProbeAxiom.Space.DiscreteSpace.html#4786" class="Function"
+      >&#8322;Space</a
+      ><a name="3548" class="Symbol"
+      >)</a
+      ><a name="3549"
+      > </a
+      ><a name="3550" href="AddingProbeAxiom.Space.YonedaLemma.html#3515" class="Bound"
+      >X</a
+      ><a name="3551"
+      > </a
+      ><a name="3552" class="Symbol"
+      >&#8594;</a
+      ><a name="3553"
+      >
+                 </a
+      ><a name="3571" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="3572"
+      > </a
+      ><a name="3573" class="Symbol"
+      >\(</a
+      ><a name="3575" href="AddingProbeAxiom.Space.YonedaLemma.html#3575" class="Bound"
+      >p</a
+      ><a name="3576"
+      > </a
+      ><a name="3577" class="Symbol"
+      >:</a
+      ><a name="3578"
+      > </a
+      ><a name="3579" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="3581"
+      > </a
+      ><a name="3582" class="Symbol"
+      >&#8594;</a
+      ><a name="3583"
+      > </a
+      ><a name="3584" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="3585"
+      > </a
+      ><a name="3586" href="AddingProbeAxiom.Space.YonedaLemma.html#3515" class="Bound"
+      >X</a
+      ><a name="3587" class="Symbol"
+      >)</a
+      ><a name="3588"
+      > </a
+      ><a name="3589" class="Symbol"
+      >&#8594;</a
+      ><a name="3590"
+      > </a
+      ><a name="3591" href="AddingProbeAxiom.Space.YonedaLemma.html#3575" class="Bound"
+      >p</a
+      ><a name="3592"
+      > </a
+      ><a name="3593" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="3594"
+      > </a
+      ><a name="3595" href="AddingProbeAxiom.Space.Space.html#850" class="Function"
+      >Probe</a
+      ><a name="3600"
+      > </a
+      ><a name="3601" href="AddingProbeAxiom.Space.YonedaLemma.html#3515" class="Bound"
+      >X</a
+      ><a name="3602"
+      >
+</a
+      ><a name="3603" href="AddingProbeAxiom.Space.YonedaLemma.html#3497" class="Function"
+      >Lemma[Yoneda]</a
+      ><a name="3616"
+      > </a
+      ><a name="3617" href="AddingProbeAxiom.Space.YonedaLemma.html#3617" class="Bound"
+      >X</a
+      ><a name="3618"
+      > </a
+      ><a name="3619" class="Symbol"
+      >(</a
+      ><a name="3620" href="AddingProbeAxiom.Space.YonedaLemma.html#3620" class="Bound"
+      >f</a
+      ><a name="3621"
+      > </a
+      ><a name="3622" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3623"
+      > </a
+      ><a name="3624" href="AddingProbeAxiom.Space.YonedaLemma.html#3624" class="Bound"
+      >cts</a
+      ><a name="3627" class="Symbol"
+      >)</a
+      ><a name="3628"
+      > </a
+      ><a name="3629" class="Symbol"
+      >=</a
+      ><a name="3630"
+      > </a
+      ><a name="3631" class="Symbol"
+      >(</a
+      ><a name="3632" href="AddingProbeAxiom.Space.YonedaLemma.html#3620" class="Bound"
+      >f</a
+      ><a name="3633"
+      > </a
+      ><a name="3634" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="3635"
+      > </a
+      ><a name="3636" href="AddingProbeAxiom.Space.YonedaLemma.html#2844" class="Function"
+      >ID</a
+      ><a name="3638" class="Symbol"
+      >)</a
+      ><a name="3639"
+      > </a
+      ><a name="3640" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3641"
+      > </a
+      ><a name="3642" class="Symbol"
+      >(</a
+      ><a name="3643" href="AddingProbeAxiom.Space.YonedaLemma.html#3624" class="Bound"
+      >cts</a
+      ><a name="3646"
+      > </a
+      ><a name="3647" href="AddingProbeAxiom.Space.YonedaLemma.html#2844" class="Function"
+      >ID</a
+      ><a name="3649"
+      > </a
+      ><a name="3650" href="AddingProbeAxiom.Space.YonedaLemma.html#3058" class="Function"
+      >ID-is-a-probe</a
+      ><a name="3663" class="Symbol"
+      >)</a
+      ><a name="3664"
+      >
+
+\end{code}
+</a
+      ></pre
+    ></body
+  ></html
+>

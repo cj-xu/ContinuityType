@@ -1,0 +1,4889 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >UsingFunext.ModellingUC.ValidatingUCviaLCCC</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Comment"
+      >Chuangjie Xu 2013</a
+      ><a name="18"
+      >
+
+\begin{code}
+
+</a
+      ><a name="34" class="Symbol"
+      >{-#</a
+      ><a name="37"
+      > </a
+      ><a name="38" class="Keyword"
+      >OPTIONS</a
+      ><a name="45"
+      > --without-K </a
+      ><a name="58" class="Symbol"
+      >#-}</a
+      ><a name="61"
+      >
+
+</a
+      ><a name="63" class="Keyword"
+      >module</a
+      ><a name="69"
+      > </a
+      ><a name="70" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1" class="Module"
+      >UsingFunext.ModellingUC.ValidatingUCviaLCCC</a
+      ><a name="113"
+      > </a
+      ><a name="114" class="Keyword"
+      >where</a
+      ><a name="119"
+      >
+
+</a
+      ><a name="121" class="Keyword"
+      >open</a
+      ><a name="125"
+      > </a
+      ><a name="126" class="Keyword"
+      >import</a
+      ><a name="132"
+      > </a
+      ><a name="133" href="Preliminaries.SetsAndFunctions.html#1" class="Module"
+      >Preliminaries.SetsAndFunctions</a
+      ><a name="163"
+      > </a
+      ><a name="164" class="Keyword"
+      >hiding</a
+      ><a name="170"
+      > </a
+      ><a name="171" class="Symbol"
+      >(</a
+      ><a name="172"
+      >_+_</a
+      ><a name="175" class="Symbol"
+      >)</a
+      ><a name="176"
+      >
+</a
+      ><a name="177" class="Keyword"
+      >open</a
+      ><a name="181"
+      > </a
+      ><a name="182" class="Keyword"
+      >import</a
+      ><a name="188"
+      > </a
+      ><a name="189" href="Preliminaries.NaturalNumber.html#1" class="Module"
+      >Preliminaries.NaturalNumber</a
+      ><a name="216"
+      >
+</a
+      ><a name="217" class="Keyword"
+      >open</a
+      ><a name="221"
+      > </a
+      ><a name="222" class="Keyword"
+      >import</a
+      ><a name="228"
+      > </a
+      ><a name="229" href="Preliminaries.Boolean.html#1" class="Module"
+      >Preliminaries.Boolean</a
+      ><a name="250"
+      >
+</a
+      ><a name="251" class="Keyword"
+      >open</a
+      ><a name="255"
+      > </a
+      ><a name="256" class="Keyword"
+      >import</a
+      ><a name="262"
+      > </a
+      ><a name="263" href="Preliminaries.Sequence.html#1" class="Module"
+      >Preliminaries.Sequence</a
+      ><a name="285"
+      >
+</a
+      ><a name="286" class="Keyword"
+      >open</a
+      ><a name="290"
+      > </a
+      ><a name="291" class="Keyword"
+      >import</a
+      ><a name="297"
+      > </a
+      ><a name="298" href="Continuity.UniformContinuity.html#1" class="Module"
+      >Continuity.UniformContinuity</a
+      ><a name="326"
+      >
+</a
+      ><a name="327" class="Keyword"
+      >open</a
+      ><a name="331"
+      > </a
+      ><a name="332" class="Keyword"
+      >import</a
+      ><a name="338"
+      > </a
+      ><a name="339" href="UsingFunext.Space.Coverage.html#1" class="Module"
+      >UsingFunext.Space.Coverage</a
+      ><a name="365"
+      >
+</a
+      ><a name="366" class="Keyword"
+      >open</a
+      ><a name="370"
+      > </a
+      ><a name="371" class="Keyword"
+      >import</a
+      ><a name="377"
+      > </a
+      ><a name="378" href="UsingFunext.Space.Space.html#1" class="Module"
+      >UsingFunext.Space.Space</a
+      ><a name="401"
+      >
+</a
+      ><a name="402" class="Keyword"
+      >open</a
+      ><a name="406"
+      > </a
+      ><a name="407" class="Keyword"
+      >import</a
+      ><a name="413"
+      > </a
+      ><a name="414" href="UsingFunext.Space.DiscreteSpace.html#1" class="Module"
+      >UsingFunext.Space.DiscreteSpace</a
+      ><a name="445"
+      >
+</a
+      ><a name="446" class="Keyword"
+      >open</a
+      ><a name="450"
+      > </a
+      ><a name="451" class="Keyword"
+      >import</a
+      ><a name="457"
+      > </a
+      ><a name="458" href="UsingFunext.Space.CartesianClosedness.html#1" class="Module"
+      >UsingFunext.Space.CartesianClosedness</a
+      ><a name="495"
+      >
+</a
+      ><a name="496" class="Keyword"
+      >open</a
+      ><a name="500"
+      > </a
+      ><a name="501" class="Keyword"
+      >import</a
+      ><a name="507"
+      > </a
+      ><a name="508" href="UsingFunext.Space.LocalCartesianClosedness.html#1" class="Module"
+      >UsingFunext.Space.LocalCartesianClosedness</a
+      ><a name="550"
+      >
+</a
+      ><a name="551" class="Keyword"
+      >open</a
+      ><a name="555"
+      > </a
+      ><a name="556" class="Keyword"
+      >import</a
+      ><a name="562"
+      > </a
+      ><a name="563" href="UsingFunext.Space.Fan.html#1" class="Module"
+      >UsingFunext.Space.Fan</a
+      ><a name="584"
+      >
+
+\end{code}
+
+</a
+      ><a name="598" class="Comment"
+      >The Curry-Howard interpretation of UC is the following</a
+      ><a name="652"
+      >
+
+</a
+      ><a name="654" class="Comment"
+      > &#8866; &#928; (f : &#8322;&#8469; &#8594; &#8469;)  &#931; (n : &#8469;)  &#928; (&#945; &#946; : &#8322;&#8469;) (&#945; &#8801;[n] &#946; &#8594; f &#945; &#8801; f &#946;).</a
+      ><a name="720"
+      >
+
+</a
+      ><a name="722" class="Comment"
+      >we show that it is validated in C-spaces step by step:</a
+      ><a name="776"
+      >
+
+</a
+      ><a name="778" class="Comment"
+      >(1) u&#8321;  ::=  f : &#8322;&#8469; &#8594; &#8469;, n : &#8469;, &#945; : &#8322;&#8469;, &#946; : &#8322;&#8469; &#8866; &#945; &#8801;[n] &#946;</a
+      ><a name="835"
+      >
+
+\begin{code}
+
+</a
+      ><a name="851" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#851" class="Function"
+      >&#915;&#8308;</a
+      ><a name="853"
+      > </a
+      ><a name="854" class="Symbol"
+      >:</a
+      ><a name="855"
+      > </a
+      ><a name="856" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="861"
+      >
+</a
+      ><a name="862" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#851" class="Function"
+      >&#915;&#8308;</a
+      ><a name="864"
+      > </a
+      ><a name="865" class="Symbol"
+      >=</a
+      ><a name="866"
+      > </a
+      ><a name="867" class="Symbol"
+      >((</a
+      ><a name="869" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="875"
+      > </a
+      ><a name="876" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="877"
+      > </a
+      ><a name="878" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="884" class="Symbol"
+      >)</a
+      ><a name="885"
+      > </a
+      ><a name="886" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="887"
+      > </a
+      ><a name="888" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="894" class="Symbol"
+      >)</a
+      ><a name="895"
+      > </a
+      ><a name="896" href="UsingFunext.Space.CartesianClosedness.html#932" class="Function Operator"
+      >&#8855;</a
+      ><a name="897"
+      > </a
+      ><a name="898" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="904"
+      > </a
+      ><a name="905" href="UsingFunext.Space.CartesianClosedness.html#932" class="Function Operator"
+      >&#8855;</a
+      ><a name="906"
+      > </a
+      ><a name="907" class="Symbol"
+      >(</a
+      ><a name="908" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="914"
+      > </a
+      ><a name="915" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="916"
+      > </a
+      ><a name="917" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="923" class="Symbol"
+      >)</a
+      ><a name="924"
+      > </a
+      ><a name="925" href="UsingFunext.Space.CartesianClosedness.html#932" class="Function Operator"
+      >&#8855;</a
+      ><a name="926"
+      > </a
+      ><a name="927" class="Symbol"
+      >(</a
+      ><a name="928" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="934"
+      > </a
+      ><a name="935" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="936"
+      > </a
+      ><a name="937" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="943" class="Symbol"
+      >)</a
+      ><a name="944"
+      >
+</a
+      ><a name="945" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#945" class="Function"
+      >&#960;f&#8308;</a
+      ><a name="948"
+      > </a
+      ><a name="949" class="Symbol"
+      >:</a
+      ><a name="950"
+      > </a
+      ><a name="951" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="952"
+      > </a
+      ><a name="953" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#851" class="Function"
+      >&#915;&#8308;</a
+      ><a name="955"
+      > </a
+      ><a name="956" class="Symbol"
+      >&#8594;</a
+      ><a name="957"
+      > </a
+      ><a name="958" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="959"
+      > </a
+      ><a name="960" class="Symbol"
+      >((</a
+      ><a name="962" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="968"
+      > </a
+      ><a name="969" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="970"
+      > </a
+      ><a name="971" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="977" class="Symbol"
+      >)</a
+      ><a name="978"
+      > </a
+      ><a name="979" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="980"
+      > </a
+      ><a name="981" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="987" class="Symbol"
+      >)</a
+      ><a name="988"
+      >
+</a
+      ><a name="989" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#945" class="Function"
+      >&#960;f&#8308;</a
+      ><a name="992"
+      > </a
+      ><a name="993" class="Symbol"
+      >(((</a
+      ><a name="996" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#996" class="Bound"
+      >f</a
+      ><a name="997"
+      > </a
+      ><a name="998" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="999"
+      > </a
+      ><a name="1000" class="Symbol"
+      >_)</a
+      ><a name="1002"
+      > </a
+      ><a name="1003" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1004"
+      > </a
+      ><a name="1005" class="Symbol"
+      >_)</a
+      ><a name="1007"
+      > </a
+      ><a name="1008" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1009"
+      > </a
+      ><a name="1010" class="Symbol"
+      >_)</a
+      ><a name="1012"
+      > </a
+      ><a name="1013" class="Symbol"
+      >=</a
+      ><a name="1014"
+      > </a
+      ><a name="1015" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#996" class="Bound"
+      >f</a
+      ><a name="1016"
+      >
+</a
+      ><a name="1017" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1017" class="Function"
+      >&#960;n&#8308;</a
+      ><a name="1020"
+      > </a
+      ><a name="1021" class="Symbol"
+      >:</a
+      ><a name="1022"
+      > </a
+      ><a name="1023" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="1024"
+      > </a
+      ><a name="1025" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#851" class="Function"
+      >&#915;&#8308;</a
+      ><a name="1027"
+      > </a
+      ><a name="1028" class="Symbol"
+      >&#8594;</a
+      ><a name="1029"
+      > </a
+      ><a name="1030" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1031"
+      >
+</a
+      ><a name="1032" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1017" class="Function"
+      >&#960;n&#8308;</a
+      ><a name="1035"
+      > </a
+      ><a name="1036" class="Symbol"
+      >(((_</a
+      ><a name="1040"
+      > </a
+      ><a name="1041" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1042"
+      > </a
+      ><a name="1043" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1043" class="Bound"
+      >n</a
+      ><a name="1044" class="Symbol"
+      >)</a
+      ><a name="1045"
+      > </a
+      ><a name="1046" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1047"
+      > </a
+      ><a name="1048" class="Symbol"
+      >_)</a
+      ><a name="1050"
+      > </a
+      ><a name="1051" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1052"
+      > </a
+      ><a name="1053" class="Symbol"
+      >_)</a
+      ><a name="1055"
+      > </a
+      ><a name="1056" class="Symbol"
+      >=</a
+      ><a name="1057"
+      > </a
+      ><a name="1058" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1043" class="Bound"
+      >n</a
+      ><a name="1059"
+      >
+</a
+      ><a name="1060" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1060" class="Function"
+      >&#960;&#945;&#8308;</a
+      ><a name="1063"
+      > </a
+      ><a name="1064" class="Symbol"
+      >:</a
+      ><a name="1065"
+      > </a
+      ><a name="1066" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="1067"
+      > </a
+      ><a name="1068" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#851" class="Function"
+      >&#915;&#8308;</a
+      ><a name="1070"
+      > </a
+      ><a name="1071" class="Symbol"
+      >&#8594;</a
+      ><a name="1072"
+      > </a
+      ><a name="1073" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="1074"
+      > </a
+      ><a name="1075" class="Symbol"
+      >(</a
+      ><a name="1076" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="1082"
+      > </a
+      ><a name="1083" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="1084"
+      > </a
+      ><a name="1085" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="1091" class="Symbol"
+      >)</a
+      ><a name="1092"
+      >
+</a
+      ><a name="1093" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1060" class="Function"
+      >&#960;&#945;&#8308;</a
+      ><a name="1096"
+      > </a
+      ><a name="1097" class="Symbol"
+      >(((_</a
+      ><a name="1101"
+      > </a
+      ><a name="1102" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1103"
+      > </a
+      ><a name="1104" class="Symbol"
+      >_)</a
+      ><a name="1106"
+      > </a
+      ><a name="1107" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1108"
+      > </a
+      ><a name="1109" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1109" class="Bound"
+      >&#945;</a
+      ><a name="1110" class="Symbol"
+      >)</a
+      ><a name="1111"
+      > </a
+      ><a name="1112" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1113"
+      > </a
+      ><a name="1114" class="Symbol"
+      >_)</a
+      ><a name="1116"
+      > </a
+      ><a name="1117" class="Symbol"
+      >=</a
+      ><a name="1118"
+      > </a
+      ><a name="1119" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1109" class="Bound"
+      >&#945;</a
+      ><a name="1120"
+      >
+</a
+      ><a name="1121" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1121" class="Function"
+      >&#960;&#946;&#8308;</a
+      ><a name="1124"
+      > </a
+      ><a name="1125" class="Symbol"
+      >:</a
+      ><a name="1126"
+      > </a
+      ><a name="1127" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="1128"
+      > </a
+      ><a name="1129" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#851" class="Function"
+      >&#915;&#8308;</a
+      ><a name="1131"
+      > </a
+      ><a name="1132" class="Symbol"
+      >&#8594;</a
+      ><a name="1133"
+      > </a
+      ><a name="1134" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="1135"
+      > </a
+      ><a name="1136" class="Symbol"
+      >(</a
+      ><a name="1137" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="1143"
+      > </a
+      ><a name="1144" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="1145"
+      > </a
+      ><a name="1146" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="1152" class="Symbol"
+      >)</a
+      ><a name="1153"
+      >
+</a
+      ><a name="1154" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1121" class="Function"
+      >&#960;&#946;&#8308;</a
+      ><a name="1157"
+      > </a
+      ><a name="1158" class="Symbol"
+      >(((_</a
+      ><a name="1162"
+      > </a
+      ><a name="1163" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1164"
+      > </a
+      ><a name="1165" class="Symbol"
+      >_)</a
+      ><a name="1167"
+      > </a
+      ><a name="1168" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1169"
+      > </a
+      ><a name="1170" class="Symbol"
+      >_)</a
+      ><a name="1172"
+      > </a
+      ><a name="1173" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1174"
+      > </a
+      ><a name="1175" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1175" class="Bound"
+      >&#946;</a
+      ><a name="1176" class="Symbol"
+      >)</a
+      ><a name="1177"
+      > </a
+      ><a name="1178" class="Symbol"
+      >=</a
+      ><a name="1179"
+      > </a
+      ><a name="1180" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1175" class="Bound"
+      >&#946;</a
+      ><a name="1181"
+      >
+
+</a
+      ><a name="1183" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1183" class="Function"
+      >&#915;&#8308;Prp</a
+      ><a name="1188"
+      > </a
+      ><a name="1189" class="Symbol"
+      >:</a
+      ><a name="1190"
+      > </a
+      ><a name="1191" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="1192"
+      > </a
+      ><a name="1193" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#851" class="Function"
+      >&#915;&#8308;</a
+      ><a name="1195"
+      > </a
+      ><a name="1196" class="Symbol"
+      >&#8594;</a
+      ><a name="1197"
+      > </a
+      ><a name="1198" class="PrimitiveType"
+      >Set</a
+      ><a name="1201"
+      >
+</a
+      ><a name="1202" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1183" class="Function"
+      >&#915;&#8308;Prp</a
+      ><a name="1207"
+      > </a
+      ><a name="1208" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1208" class="Bound"
+      >w</a
+      ><a name="1209"
+      > </a
+      ><a name="1210" class="Symbol"
+      >=</a
+      ><a name="1211"
+      > </a
+      ><a name="1212" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1215" class="Symbol"
+      >(</a
+      ><a name="1216" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1060" class="Function"
+      >&#960;&#945;&#8308;</a
+      ><a name="1219"
+      > </a
+      ><a name="1220" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1208" class="Bound"
+      >w</a
+      ><a name="1221" class="Symbol"
+      >)</a
+      ><a name="1222"
+      > </a
+      ><a name="1223" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="1225"
+      > </a
+      ><a name="1226" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1017" class="Function"
+      >&#960;n&#8308;</a
+      ><a name="1229"
+      > </a
+      ><a name="1230" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1208" class="Bound"
+      >w</a
+      ><a name="1231"
+      > </a
+      ><a name="1232" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="1233"
+      > </a
+      ><a name="1234" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1237" class="Symbol"
+      >(</a
+      ><a name="1238" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1121" class="Function"
+      >&#960;&#946;&#8308;</a
+      ><a name="1241"
+      > </a
+      ><a name="1242" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1208" class="Bound"
+      >w</a
+      ><a name="1243" class="Symbol"
+      >)</a
+      ><a name="1244"
+      >
+
+</a
+      ><a name="1246" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1246" class="Function"
+      >dom&#10214;u&#8321;&#10215;</a
+      ><a name="1253"
+      > </a
+      ><a name="1254" class="Symbol"
+      >:</a
+      ><a name="1255"
+      > </a
+      ><a name="1256" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="1261"
+      >
+</a
+      ><a name="1262" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1246" class="Function"
+      >dom&#10214;u&#8321;&#10215;</a
+      ><a name="1269"
+      > </a
+      ><a name="1270" class="Symbol"
+      >=</a
+      ><a name="1271"
+      > </a
+      ><a name="1272" href="UsingFunext.Space.LocalCartesianClosedness.html#485" class="Function"
+      >Subspace</a
+      ><a name="1280"
+      > </a
+      ><a name="1281" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#851" class="Function"
+      >&#915;&#8308;</a
+      ><a name="1283"
+      > </a
+      ><a name="1284" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1183" class="Function"
+      >&#915;&#8308;Prp</a
+      ><a name="1289"
+      >
+
+</a
+      ><a name="1291" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1291" class="Function"
+      >&#10214;u&#8321;&#10215;</a
+      ><a name="1295"
+      > </a
+      ><a name="1296" class="Symbol"
+      >:</a
+      ><a name="1297"
+      > </a
+      ><a name="1298" href="UsingFunext.Space.Space.html#1826" class="Function"
+      >Map</a
+      ><a name="1301"
+      > </a
+      ><a name="1302" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1246" class="Function"
+      >dom&#10214;u&#8321;&#10215;</a
+      ><a name="1309"
+      > </a
+      ><a name="1310" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#851" class="Function"
+      >&#915;&#8308;</a
+      ><a name="1312"
+      >
+</a
+      ><a name="1313" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1291" class="Function"
+      >&#10214;u&#8321;&#10215;</a
+      ><a name="1317"
+      > </a
+      ><a name="1318" class="Symbol"
+      >=</a
+      ><a name="1319"
+      > </a
+      ><a name="1320" href="UsingFunext.Space.LocalCartesianClosedness.html#950" class="Function"
+      >cts-incl</a
+      ><a name="1328"
+      > </a
+      ><a name="1329" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#851" class="Function"
+      >&#915;&#8308;</a
+      ><a name="1331"
+      > </a
+      ><a name="1332" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1183" class="Function"
+      >&#915;&#8308;Prp</a
+      ><a name="1337"
+      >
+
+\end{code}
+
+</a
+      ><a name="1351" class="Comment"
+      >(2) u&#8322;  ::=  f : &#8322;&#8469; &#8594; &#8469;, n : &#8469;, &#945; : &#8322;&#8469;, &#946; : &#8322;&#8469;, e : &#945; &#8801;[n] &#946; &#8866; f &#945; &#8801; f &#946;</a
+      ><a name="1423"
+      >
+
+\begin{code}
+
+</a
+      ><a name="1439" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1439" class="Function"
+      >&#915;&#8309;</a
+      ><a name="1441"
+      > </a
+      ><a name="1442" class="Symbol"
+      >:</a
+      ><a name="1443"
+      > </a
+      ><a name="1444" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="1449"
+      >
+</a
+      ><a name="1450" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1439" class="Function"
+      >&#915;&#8309;</a
+      ><a name="1452"
+      > </a
+      ><a name="1453" class="Symbol"
+      >=</a
+      ><a name="1454"
+      > </a
+      ><a name="1455" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1246" class="Function"
+      >dom&#10214;u&#8321;&#10215;</a
+      ><a name="1462"
+      >
+</a
+      ><a name="1463" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1463" class="Function"
+      >&#960;f&#8309;</a
+      ><a name="1466"
+      > </a
+      ><a name="1467" class="Symbol"
+      >:</a
+      ><a name="1468"
+      > </a
+      ><a name="1469" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="1470"
+      > </a
+      ><a name="1471" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1439" class="Function"
+      >&#915;&#8309;</a
+      ><a name="1473"
+      > </a
+      ><a name="1474" class="Symbol"
+      >&#8594;</a
+      ><a name="1475"
+      > </a
+      ><a name="1476" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="1477"
+      > </a
+      ><a name="1478" class="Symbol"
+      >((</a
+      ><a name="1480" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="1486"
+      > </a
+      ><a name="1487" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="1488"
+      > </a
+      ><a name="1489" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="1495" class="Symbol"
+      >)</a
+      ><a name="1496"
+      > </a
+      ><a name="1497" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="1498"
+      > </a
+      ><a name="1499" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="1505" class="Symbol"
+      >)</a
+      ><a name="1506"
+      >
+</a
+      ><a name="1507" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1463" class="Function"
+      >&#960;f&#8309;</a
+      ><a name="1510"
+      > </a
+      ><a name="1511" class="Symbol"
+      >=</a
+      ><a name="1512"
+      > </a
+      ><a name="1513" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#945" class="Function"
+      >&#960;f&#8308;</a
+      ><a name="1516"
+      > </a
+      ><a name="1517" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1518"
+      > </a
+      ><a name="1519" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1522"
+      >
+</a
+      ><a name="1523" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1523" class="Function"
+      >&#960;&#945;&#8309;</a
+      ><a name="1526"
+      > </a
+      ><a name="1527" class="Symbol"
+      >:</a
+      ><a name="1528"
+      > </a
+      ><a name="1529" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="1530"
+      > </a
+      ><a name="1531" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1439" class="Function"
+      >&#915;&#8309;</a
+      ><a name="1533"
+      > </a
+      ><a name="1534" class="Symbol"
+      >&#8594;</a
+      ><a name="1535"
+      > </a
+      ><a name="1536" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="1537"
+      > </a
+      ><a name="1538" class="Symbol"
+      >(</a
+      ><a name="1539" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="1545"
+      > </a
+      ><a name="1546" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="1547"
+      > </a
+      ><a name="1548" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="1554" class="Symbol"
+      >)</a
+      ><a name="1555"
+      >
+</a
+      ><a name="1556" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1523" class="Function"
+      >&#960;&#945;&#8309;</a
+      ><a name="1559"
+      > </a
+      ><a name="1560" class="Symbol"
+      >=</a
+      ><a name="1561"
+      > </a
+      ><a name="1562" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1060" class="Function"
+      >&#960;&#945;&#8308;</a
+      ><a name="1565"
+      > </a
+      ><a name="1566" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1567"
+      > </a
+      ><a name="1568" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1571"
+      >
+</a
+      ><a name="1572" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1572" class="Function"
+      >&#960;&#946;&#8309;</a
+      ><a name="1575"
+      > </a
+      ><a name="1576" class="Symbol"
+      >:</a
+      ><a name="1577"
+      > </a
+      ><a name="1578" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="1579"
+      > </a
+      ><a name="1580" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1439" class="Function"
+      >&#915;&#8309;</a
+      ><a name="1582"
+      > </a
+      ><a name="1583" class="Symbol"
+      >&#8594;</a
+      ><a name="1584"
+      > </a
+      ><a name="1585" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="1586"
+      > </a
+      ><a name="1587" class="Symbol"
+      >(</a
+      ><a name="1588" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="1594"
+      > </a
+      ><a name="1595" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="1596"
+      > </a
+      ><a name="1597" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="1603" class="Symbol"
+      >)</a
+      ><a name="1604"
+      >
+</a
+      ><a name="1605" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1572" class="Function"
+      >&#960;&#946;&#8309;</a
+      ><a name="1608"
+      > </a
+      ><a name="1609" class="Symbol"
+      >=</a
+      ><a name="1610"
+      > </a
+      ><a name="1611" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1121" class="Function"
+      >&#960;&#946;&#8308;</a
+      ><a name="1614"
+      > </a
+      ><a name="1615" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1616"
+      > </a
+      ><a name="1617" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1620"
+      >
+
+</a
+      ><a name="1622" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1622" class="Function"
+      >&#915;&#8309;Prp</a
+      ><a name="1627"
+      > </a
+      ><a name="1628" class="Symbol"
+      >:</a
+      ><a name="1629"
+      > </a
+      ><a name="1630" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="1631"
+      > </a
+      ><a name="1632" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1439" class="Function"
+      >&#915;&#8309;</a
+      ><a name="1634"
+      > </a
+      ><a name="1635" class="Symbol"
+      >&#8594;</a
+      ><a name="1636"
+      > </a
+      ><a name="1637" class="PrimitiveType"
+      >Set</a
+      ><a name="1640"
+      >
+</a
+      ><a name="1641" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1622" class="Function"
+      >&#915;&#8309;Prp</a
+      ><a name="1646"
+      > </a
+      ><a name="1647" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1647" class="Bound"
+      >w</a
+      ><a name="1648"
+      > </a
+      ><a name="1649" class="Symbol"
+      >=</a
+      ><a name="1650"
+      > </a
+      ><a name="1651" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1654"
+      > </a
+      ><a name="1655" class="Symbol"
+      >(</a
+      ><a name="1656" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1463" class="Function"
+      >&#960;f&#8309;</a
+      ><a name="1659"
+      > </a
+      ><a name="1660" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1647" class="Bound"
+      >w</a
+      ><a name="1661" class="Symbol"
+      >)</a
+      ><a name="1662"
+      > </a
+      ><a name="1663" class="Symbol"
+      >(</a
+      ><a name="1664" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1523" class="Function"
+      >&#960;&#945;&#8309;</a
+      ><a name="1667"
+      > </a
+      ><a name="1668" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1647" class="Bound"
+      >w</a
+      ><a name="1669" class="Symbol"
+      >)</a
+      ><a name="1670"
+      > </a
+      ><a name="1671" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1672"
+      > </a
+      ><a name="1673" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1676"
+      > </a
+      ><a name="1677" class="Symbol"
+      >(</a
+      ><a name="1678" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1463" class="Function"
+      >&#960;f&#8309;</a
+      ><a name="1681"
+      > </a
+      ><a name="1682" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1647" class="Bound"
+      >w</a
+      ><a name="1683" class="Symbol"
+      >)</a
+      ><a name="1684"
+      > </a
+      ><a name="1685" class="Symbol"
+      >(</a
+      ><a name="1686" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1572" class="Function"
+      >&#960;&#946;&#8309;</a
+      ><a name="1689"
+      > </a
+      ><a name="1690" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1647" class="Bound"
+      >w</a
+      ><a name="1691" class="Symbol"
+      >)</a
+      ><a name="1692"
+      >
+
+</a
+      ><a name="1694" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1694" class="Function"
+      >dom&#10214;u&#8322;&#10215;</a
+      ><a name="1701"
+      > </a
+      ><a name="1702" class="Symbol"
+      >:</a
+      ><a name="1703"
+      > </a
+      ><a name="1704" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="1709"
+      >
+</a
+      ><a name="1710" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1694" class="Function"
+      >dom&#10214;u&#8322;&#10215;</a
+      ><a name="1717"
+      > </a
+      ><a name="1718" class="Symbol"
+      >=</a
+      ><a name="1719"
+      > </a
+      ><a name="1720" href="UsingFunext.Space.LocalCartesianClosedness.html#485" class="Function"
+      >Subspace</a
+      ><a name="1728"
+      > </a
+      ><a name="1729" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1439" class="Function"
+      >&#915;&#8309;</a
+      ><a name="1731"
+      > </a
+      ><a name="1732" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1622" class="Function"
+      >&#915;&#8309;Prp</a
+      ><a name="1737"
+      >
+
+</a
+      ><a name="1739" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1739" class="Function"
+      >&#10214;u&#8322;&#10215;</a
+      ><a name="1743"
+      > </a
+      ><a name="1744" class="Symbol"
+      >:</a
+      ><a name="1745"
+      > </a
+      ><a name="1746" href="UsingFunext.Space.Space.html#1826" class="Function"
+      >Map</a
+      ><a name="1749"
+      > </a
+      ><a name="1750" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1694" class="Function"
+      >dom&#10214;u&#8322;&#10215;</a
+      ><a name="1757"
+      > </a
+      ><a name="1758" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1439" class="Function"
+      >&#915;&#8309;</a
+      ><a name="1760"
+      >
+</a
+      ><a name="1761" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1739" class="Function"
+      >&#10214;u&#8322;&#10215;</a
+      ><a name="1765"
+      > </a
+      ><a name="1766" class="Symbol"
+      >=</a
+      ><a name="1767"
+      > </a
+      ><a name="1768" href="UsingFunext.Space.LocalCartesianClosedness.html#950" class="Function"
+      >cts-incl</a
+      ><a name="1776"
+      > </a
+      ><a name="1777" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1439" class="Function"
+      >&#915;&#8309;</a
+      ><a name="1779"
+      > </a
+      ><a name="1780" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1622" class="Function"
+      >&#915;&#8309;Prp</a
+      ><a name="1785"
+      >
+
+\end{code}
+
+</a
+      ><a name="1799" class="Comment"
+      >(3) u&#8323;  ::=  f : &#8322;&#8469; &#8594; &#8469;, n : &#8469;, &#945; : &#8322;&#8469;, &#946; : &#8322;&#8469; &#8866; &#945; &#8801;[n] &#946; &#8594; f &#945; &#8801; f &#946;</a
+      ><a name="1868"
+      >
+
+\begin{code}
+
+</a
+      ><a name="1884" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1884" class="Function"
+      >dom&#10214;u&#8323;&#10215;</a
+      ><a name="1891"
+      > </a
+      ><a name="1892" class="Symbol"
+      >:</a
+      ><a name="1893"
+      > </a
+      ><a name="1894" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="1899"
+      >
+</a
+      ><a name="1900" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1884" class="Function"
+      >dom&#10214;u&#8323;&#10215;</a
+      ><a name="1907"
+      > </a
+      ><a name="1908" class="Symbol"
+      >=</a
+      ><a name="1909"
+      > </a
+      ><a name="1910" href="UsingFunext.Space.LocalCartesianClosedness.html#6985" class="Function Operator"
+      >dom&#10218;</a
+      ><a name="1914"
+      > </a
+      ><a name="1915" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1246" class="Function"
+      >dom&#10214;u&#8321;&#10215;</a
+      ><a name="1922"
+      > </a
+      ><a name="1923" href="UsingFunext.Space.LocalCartesianClosedness.html#6985" class="Function Operator"
+      >,</a
+      ><a name="1924"
+      > </a
+      ><a name="1925" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#851" class="Function"
+      >&#915;&#8308;</a
+      ><a name="1927"
+      > </a
+      ><a name="1928" href="UsingFunext.Space.LocalCartesianClosedness.html#6985" class="Function Operator"
+      >&#10219;&#928;[</a
+      ><a name="1931"
+      > </a
+      ><a name="1932" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1291" class="Function"
+      >&#10214;u&#8321;&#10215;</a
+      ><a name="1936"
+      > </a
+      ><a name="1937" href="UsingFunext.Space.LocalCartesianClosedness.html#6985" class="Function Operator"
+      >]</a
+      ><a name="1938"
+      > </a
+      ><a name="1939" class="Symbol"
+      >(</a
+      ><a name="1940" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1694" class="Function"
+      >dom&#10214;u&#8322;&#10215;</a
+      ><a name="1947"
+      > </a
+      ><a name="1948" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1949"
+      > </a
+      ><a name="1950" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1739" class="Function"
+      >&#10214;u&#8322;&#10215;</a
+      ><a name="1954" class="Symbol"
+      >)</a
+      ><a name="1955"
+      >
+
+</a
+      ><a name="1957" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1957" class="Function"
+      >&#10214;u&#8323;&#10215;</a
+      ><a name="1961"
+      > </a
+      ><a name="1962" class="Symbol"
+      >:</a
+      ><a name="1963"
+      > </a
+      ><a name="1964" href="UsingFunext.Space.Space.html#1826" class="Function"
+      >Map</a
+      ><a name="1967"
+      > </a
+      ><a name="1968" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1884" class="Function"
+      >dom&#10214;u&#8323;&#10215;</a
+      ><a name="1975"
+      > </a
+      ><a name="1976" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#851" class="Function"
+      >&#915;&#8308;</a
+      ><a name="1978"
+      >
+</a
+      ><a name="1979" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1957" class="Function"
+      >&#10214;u&#8323;&#10215;</a
+      ><a name="1983"
+      > </a
+      ><a name="1984" class="Symbol"
+      >=</a
+      ><a name="1985"
+      > </a
+      ><a name="1986" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="1989"
+      > </a
+      ><a name="1990" class="Symbol"
+      >(</a
+      ><a name="1991" href="UsingFunext.Space.LocalCartesianClosedness.html#7315" class="Function Operator"
+      >&#10218;</a
+      ><a name="1992"
+      > </a
+      ><a name="1993" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1246" class="Function"
+      >dom&#10214;u&#8321;&#10215;</a
+      ><a name="2000"
+      > </a
+      ><a name="2001" href="UsingFunext.Space.LocalCartesianClosedness.html#7315" class="Function Operator"
+      >,</a
+      ><a name="2002"
+      > </a
+      ><a name="2003" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#851" class="Function"
+      >&#915;&#8308;</a
+      ><a name="2005"
+      > </a
+      ><a name="2006" href="UsingFunext.Space.LocalCartesianClosedness.html#7315" class="Function Operator"
+      >&#10219;&#928;[</a
+      ><a name="2009"
+      > </a
+      ><a name="2010" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1291" class="Function"
+      >&#10214;u&#8321;&#10215;</a
+      ><a name="2014"
+      > </a
+      ><a name="2015" href="UsingFunext.Space.LocalCartesianClosedness.html#7315" class="Function Operator"
+      >]</a
+      ><a name="2016"
+      > </a
+      ><a name="2017" class="Symbol"
+      >(</a
+      ><a name="2018" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1694" class="Function"
+      >dom&#10214;u&#8322;&#10215;</a
+      ><a name="2025"
+      > </a
+      ><a name="2026" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2027"
+      > </a
+      ><a name="2028" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1739" class="Function"
+      >&#10214;u&#8322;&#10215;</a
+      ><a name="2032" class="Symbol"
+      >))</a
+      ><a name="2034"
+      >
+
+\end{code}
+
+</a
+      ><a name="2048" class="Comment"
+      >(4) u&#8324;' ::=  f : &#8322;&#8469; &#8594; &#8469;, n : &#8469;, &#945; : &#8322;&#8469; &#8866; &#8322;&#8469;</a
+      ><a name="2091"
+      >
+
+</a
+      ><a name="2093" class="Comment"
+      >    u&#8324;  ::=  f : &#8322;&#8469; &#8594; &#8469;, n : &#8469;, &#945; : &#8322;&#8469; &#8866; &#928; (&#946; : &#8322;&#8469;) (&#945; &#8801;[n] &#946; &#8594; f &#945; &#8801; f &#946;)</a
+      ><a name="2167"
+      >
+
+\begin{code}
+
+</a
+      ><a name="2183" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2183" class="Function"
+      >&#915;&#179;</a
+      ><a name="2185"
+      > </a
+      ><a name="2186" class="Symbol"
+      >:</a
+      ><a name="2187"
+      > </a
+      ><a name="2188" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="2193"
+      >
+</a
+      ><a name="2194" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2183" class="Function"
+      >&#915;&#179;</a
+      ><a name="2196"
+      > </a
+      ><a name="2197" class="Symbol"
+      >=</a
+      ><a name="2198"
+      > </a
+      ><a name="2199" class="Symbol"
+      >((</a
+      ><a name="2201" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="2207"
+      > </a
+      ><a name="2208" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="2209"
+      > </a
+      ><a name="2210" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="2216" class="Symbol"
+      >)</a
+      ><a name="2217"
+      > </a
+      ><a name="2218" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="2219"
+      > </a
+      ><a name="2220" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="2226" class="Symbol"
+      >)</a
+      ><a name="2227"
+      > </a
+      ><a name="2228" href="UsingFunext.Space.CartesianClosedness.html#932" class="Function Operator"
+      >&#8855;</a
+      ><a name="2229"
+      > </a
+      ><a name="2230" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="2236"
+      > </a
+      ><a name="2237" href="UsingFunext.Space.CartesianClosedness.html#932" class="Function Operator"
+      >&#8855;</a
+      ><a name="2238"
+      > </a
+      ><a name="2239" class="Symbol"
+      >(</a
+      ><a name="2240" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="2246"
+      > </a
+      ><a name="2247" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="2248"
+      > </a
+      ><a name="2249" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="2255" class="Symbol"
+      >)</a
+      ><a name="2256"
+      >
+
+</a
+      ><a name="2258" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2258" class="Function"
+      >&#10214;u&#8324;'&#10215;</a
+      ><a name="2263"
+      > </a
+      ><a name="2264" class="Symbol"
+      >:</a
+      ><a name="2265"
+      > </a
+      ><a name="2266" href="UsingFunext.Space.Space.html#1826" class="Function"
+      >Map</a
+      ><a name="2269"
+      > </a
+      ><a name="2270" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#851" class="Function"
+      >&#915;&#8308;</a
+      ><a name="2272"
+      > </a
+      ><a name="2273" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2183" class="Function"
+      >&#915;&#179;</a
+      ><a name="2275"
+      >
+</a
+      ><a name="2276" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2258" class="Function"
+      >&#10214;u&#8324;'&#10215;</a
+      ><a name="2281"
+      > </a
+      ><a name="2282" class="Symbol"
+      >=</a
+      ><a name="2283"
+      > </a
+      ><a name="2284" href="UsingFunext.Space.CartesianClosedness.html#3579" class="Function"
+      >cpr&#8321;</a
+      ><a name="2288"
+      > </a
+      ><a name="2289" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2183" class="Function"
+      >&#915;&#179;</a
+      ><a name="2291"
+      > </a
+      ><a name="2292" class="Symbol"
+      >(</a
+      ><a name="2293" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="2299"
+      > </a
+      ><a name="2300" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="2301"
+      > </a
+      ><a name="2302" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="2308" class="Symbol"
+      >)</a
+      ><a name="2309"
+      >
+
+</a
+      ><a name="2311" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2311" class="Function"
+      >dom&#10214;u&#8324;&#10215;</a
+      ><a name="2318"
+      > </a
+      ><a name="2319" class="Symbol"
+      >:</a
+      ><a name="2320"
+      > </a
+      ><a name="2321" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="2326"
+      >
+</a
+      ><a name="2327" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2311" class="Function"
+      >dom&#10214;u&#8324;&#10215;</a
+      ><a name="2334"
+      > </a
+      ><a name="2335" class="Symbol"
+      >=</a
+      ><a name="2336"
+      > </a
+      ><a name="2337" href="UsingFunext.Space.LocalCartesianClosedness.html#6985" class="Function Operator"
+      >dom&#10218;</a
+      ><a name="2341"
+      > </a
+      ><a name="2342" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#851" class="Function"
+      >&#915;&#8308;</a
+      ><a name="2344"
+      > </a
+      ><a name="2345" href="UsingFunext.Space.LocalCartesianClosedness.html#6985" class="Function Operator"
+      >,</a
+      ><a name="2346"
+      > </a
+      ><a name="2347" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2183" class="Function"
+      >&#915;&#179;</a
+      ><a name="2349"
+      > </a
+      ><a name="2350" href="UsingFunext.Space.LocalCartesianClosedness.html#6985" class="Function Operator"
+      >&#10219;&#928;[</a
+      ><a name="2353"
+      > </a
+      ><a name="2354" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2258" class="Function"
+      >&#10214;u&#8324;'&#10215;</a
+      ><a name="2359"
+      > </a
+      ><a name="2360" href="UsingFunext.Space.LocalCartesianClosedness.html#6985" class="Function Operator"
+      >]</a
+      ><a name="2361"
+      > </a
+      ><a name="2362" class="Symbol"
+      >(</a
+      ><a name="2363" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1884" class="Function"
+      >dom&#10214;u&#8323;&#10215;</a
+      ><a name="2370"
+      > </a
+      ><a name="2371" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2372"
+      > </a
+      ><a name="2373" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1957" class="Function"
+      >&#10214;u&#8323;&#10215;</a
+      ><a name="2377" class="Symbol"
+      >)</a
+      ><a name="2378"
+      >
+
+</a
+      ><a name="2380" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2380" class="Function"
+      >&#10214;u&#8324;&#10215;</a
+      ><a name="2384"
+      > </a
+      ><a name="2385" class="Symbol"
+      >:</a
+      ><a name="2386"
+      > </a
+      ><a name="2387" href="UsingFunext.Space.Space.html#1826" class="Function"
+      >Map</a
+      ><a name="2390"
+      > </a
+      ><a name="2391" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2311" class="Function"
+      >dom&#10214;u&#8324;&#10215;</a
+      ><a name="2398"
+      > </a
+      ><a name="2399" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2183" class="Function"
+      >&#915;&#179;</a
+      ><a name="2401"
+      >
+</a
+      ><a name="2402" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2380" class="Function"
+      >&#10214;u&#8324;&#10215;</a
+      ><a name="2406"
+      > </a
+      ><a name="2407" class="Symbol"
+      >=</a
+      ><a name="2408"
+      > </a
+      ><a name="2409" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="2412"
+      > </a
+      ><a name="2413" class="Symbol"
+      >(</a
+      ><a name="2414" href="UsingFunext.Space.LocalCartesianClosedness.html#7315" class="Function Operator"
+      >&#10218;</a
+      ><a name="2415"
+      > </a
+      ><a name="2416" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#851" class="Function"
+      >&#915;&#8308;</a
+      ><a name="2418"
+      > </a
+      ><a name="2419" href="UsingFunext.Space.LocalCartesianClosedness.html#7315" class="Function Operator"
+      >,</a
+      ><a name="2420"
+      > </a
+      ><a name="2421" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2183" class="Function"
+      >&#915;&#179;</a
+      ><a name="2423"
+      > </a
+      ><a name="2424" href="UsingFunext.Space.LocalCartesianClosedness.html#7315" class="Function Operator"
+      >&#10219;&#928;[</a
+      ><a name="2427"
+      > </a
+      ><a name="2428" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2258" class="Function"
+      >&#10214;u&#8324;'&#10215;</a
+      ><a name="2433"
+      > </a
+      ><a name="2434" href="UsingFunext.Space.LocalCartesianClosedness.html#7315" class="Function Operator"
+      >]</a
+      ><a name="2435"
+      > </a
+      ><a name="2436" class="Symbol"
+      >(</a
+      ><a name="2437" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1884" class="Function"
+      >dom&#10214;u&#8323;&#10215;</a
+      ><a name="2444"
+      > </a
+      ><a name="2445" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2446"
+      > </a
+      ><a name="2447" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1957" class="Function"
+      >&#10214;u&#8323;&#10215;</a
+      ><a name="2451" class="Symbol"
+      >))</a
+      ><a name="2453"
+      >
+
+\end{code}
+
+</a
+      ><a name="2467" class="Comment"
+      >(5) u&#8325;' ::=  f : &#8322;&#8469; &#8594; &#8469;, n : &#8469; &#8866; &#8322;&#8469;</a
+      ><a name="2502"
+      >
+
+</a
+      ><a name="2504" class="Comment"
+      >    u&#8325;  ::=  f : &#8322;&#8469; &#8594; &#8469;, n : &#8469; &#8866; &#928;(&#945; : &#8322;&#8469;)  &#928;(&#946; : &#8322;&#8469;) (&#945; &#8801;[n] &#946; &#8594; f &#945; &#8801; f &#946;)</a
+      ><a name="2580"
+      >
+
+\begin{code}
+
+</a
+      ><a name="2596" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2596" class="Function"
+      >&#915;&#178;</a
+      ><a name="2598"
+      > </a
+      ><a name="2599" class="Symbol"
+      >:</a
+      ><a name="2600"
+      > </a
+      ><a name="2601" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="2606"
+      >
+</a
+      ><a name="2607" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2596" class="Function"
+      >&#915;&#178;</a
+      ><a name="2609"
+      > </a
+      ><a name="2610" class="Symbol"
+      >=</a
+      ><a name="2611"
+      > </a
+      ><a name="2612" class="Symbol"
+      >((</a
+      ><a name="2614" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="2620"
+      > </a
+      ><a name="2621" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="2622"
+      > </a
+      ><a name="2623" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="2629" class="Symbol"
+      >)</a
+      ><a name="2630"
+      > </a
+      ><a name="2631" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="2632"
+      > </a
+      ><a name="2633" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="2639" class="Symbol"
+      >)</a
+      ><a name="2640"
+      > </a
+      ><a name="2641" href="UsingFunext.Space.CartesianClosedness.html#932" class="Function Operator"
+      >&#8855;</a
+      ><a name="2642"
+      > </a
+      ><a name="2643" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="2649"
+      >
+
+</a
+      ><a name="2651" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2651" class="Function"
+      >&#10214;u&#8325;'&#10215;</a
+      ><a name="2656"
+      > </a
+      ><a name="2657" class="Symbol"
+      >:</a
+      ><a name="2658"
+      > </a
+      ><a name="2659" href="UsingFunext.Space.Space.html#1826" class="Function"
+      >Map</a
+      ><a name="2662"
+      > </a
+      ><a name="2663" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2183" class="Function"
+      >&#915;&#179;</a
+      ><a name="2665"
+      > </a
+      ><a name="2666" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2596" class="Function"
+      >&#915;&#178;</a
+      ><a name="2668"
+      >
+</a
+      ><a name="2669" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2651" class="Function"
+      >&#10214;u&#8325;'&#10215;</a
+      ><a name="2674"
+      > </a
+      ><a name="2675" class="Symbol"
+      >=</a
+      ><a name="2676"
+      > </a
+      ><a name="2677" href="UsingFunext.Space.CartesianClosedness.html#3579" class="Function"
+      >cpr&#8321;</a
+      ><a name="2681"
+      > </a
+      ><a name="2682" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2596" class="Function"
+      >&#915;&#178;</a
+      ><a name="2684"
+      > </a
+      ><a name="2685" class="Symbol"
+      >(</a
+      ><a name="2686" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="2692"
+      > </a
+      ><a name="2693" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="2694"
+      > </a
+      ><a name="2695" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="2701" class="Symbol"
+      >)</a
+      ><a name="2702"
+      >
+
+</a
+      ><a name="2704" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2704" class="Function"
+      >dom&#10214;u&#8325;&#10215;</a
+      ><a name="2711"
+      > </a
+      ><a name="2712" class="Symbol"
+      >:</a
+      ><a name="2713"
+      > </a
+      ><a name="2714" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="2719"
+      >
+</a
+      ><a name="2720" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2704" class="Function"
+      >dom&#10214;u&#8325;&#10215;</a
+      ><a name="2727"
+      > </a
+      ><a name="2728" class="Symbol"
+      >=</a
+      ><a name="2729"
+      > </a
+      ><a name="2730" href="UsingFunext.Space.LocalCartesianClosedness.html#6985" class="Function Operator"
+      >dom&#10218;</a
+      ><a name="2734"
+      > </a
+      ><a name="2735" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2183" class="Function"
+      >&#915;&#179;</a
+      ><a name="2737"
+      > </a
+      ><a name="2738" href="UsingFunext.Space.LocalCartesianClosedness.html#6985" class="Function Operator"
+      >,</a
+      ><a name="2739"
+      > </a
+      ><a name="2740" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2596" class="Function"
+      >&#915;&#178;</a
+      ><a name="2742"
+      > </a
+      ><a name="2743" href="UsingFunext.Space.LocalCartesianClosedness.html#6985" class="Function Operator"
+      >&#10219;&#928;[</a
+      ><a name="2746"
+      > </a
+      ><a name="2747" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2651" class="Function"
+      >&#10214;u&#8325;'&#10215;</a
+      ><a name="2752"
+      > </a
+      ><a name="2753" href="UsingFunext.Space.LocalCartesianClosedness.html#6985" class="Function Operator"
+      >]</a
+      ><a name="2754"
+      > </a
+      ><a name="2755" class="Symbol"
+      >(</a
+      ><a name="2756" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2311" class="Function"
+      >dom&#10214;u&#8324;&#10215;</a
+      ><a name="2763"
+      > </a
+      ><a name="2764" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2765"
+      > </a
+      ><a name="2766" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2380" class="Function"
+      >&#10214;u&#8324;&#10215;</a
+      ><a name="2770" class="Symbol"
+      >)</a
+      ><a name="2771"
+      >
+
+</a
+      ><a name="2773" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2773" class="Function"
+      >&#10214;u&#8325;&#10215;</a
+      ><a name="2777"
+      > </a
+      ><a name="2778" class="Symbol"
+      >:</a
+      ><a name="2779"
+      > </a
+      ><a name="2780" href="UsingFunext.Space.Space.html#1826" class="Function"
+      >Map</a
+      ><a name="2783"
+      > </a
+      ><a name="2784" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2704" class="Function"
+      >dom&#10214;u&#8325;&#10215;</a
+      ><a name="2791"
+      > </a
+      ><a name="2792" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2596" class="Function"
+      >&#915;&#178;</a
+      ><a name="2794"
+      >
+</a
+      ><a name="2795" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2773" class="Function"
+      >&#10214;u&#8325;&#10215;</a
+      ><a name="2799"
+      > </a
+      ><a name="2800" class="Symbol"
+      >=</a
+      ><a name="2801"
+      > </a
+      ><a name="2802" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="2805"
+      > </a
+      ><a name="2806" class="Symbol"
+      >(</a
+      ><a name="2807" href="UsingFunext.Space.LocalCartesianClosedness.html#7315" class="Function Operator"
+      >&#10218;</a
+      ><a name="2808"
+      > </a
+      ><a name="2809" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2183" class="Function"
+      >&#915;&#179;</a
+      ><a name="2811"
+      > </a
+      ><a name="2812" href="UsingFunext.Space.LocalCartesianClosedness.html#7315" class="Function Operator"
+      >,</a
+      ><a name="2813"
+      > </a
+      ><a name="2814" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2596" class="Function"
+      >&#915;&#178;</a
+      ><a name="2816"
+      > </a
+      ><a name="2817" href="UsingFunext.Space.LocalCartesianClosedness.html#7315" class="Function Operator"
+      >&#10219;&#928;[</a
+      ><a name="2820"
+      > </a
+      ><a name="2821" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2651" class="Function"
+      >&#10214;u&#8325;'&#10215;</a
+      ><a name="2826"
+      > </a
+      ><a name="2827" href="UsingFunext.Space.LocalCartesianClosedness.html#7315" class="Function Operator"
+      >]</a
+      ><a name="2828"
+      > </a
+      ><a name="2829" class="Symbol"
+      >(</a
+      ><a name="2830" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2311" class="Function"
+      >dom&#10214;u&#8324;&#10215;</a
+      ><a name="2837"
+      > </a
+      ><a name="2838" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2839"
+      > </a
+      ><a name="2840" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2380" class="Function"
+      >&#10214;u&#8324;&#10215;</a
+      ><a name="2844" class="Symbol"
+      >))</a
+      ><a name="2846"
+      >
+
+\end{code}
+
+</a
+      ><a name="2860" class="Comment"
+      >(6) u&#8326;' ::=  f : &#8322;&#8469; &#8594; &#8469; &#8866; &#8469;</a
+      ><a name="2887"
+      >
+
+</a
+      ><a name="2889" class="Comment"
+      >    u&#8326;  ::=  f : &#8322;&#8469; &#8594; &#8469; &#8866; &#931; (n : &#8469;)  &#928;(&#945; : &#8322;&#8469;)  &#928;(&#946; : &#8322;&#8469;) (&#945; &#8801;[n] &#946; &#8594; f &#945; &#8801; f &#946;)</a
+      ><a name="2969"
+      >
+
+\begin{code}
+
+</a
+      ><a name="2985" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2985" class="Function"
+      >&#915;&#185;</a
+      ><a name="2987"
+      > </a
+      ><a name="2988" class="Symbol"
+      >:</a
+      ><a name="2989"
+      > </a
+      ><a name="2990" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="2995"
+      >
+</a
+      ><a name="2996" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2985" class="Function"
+      >&#915;&#185;</a
+      ><a name="2998"
+      > </a
+      ><a name="2999" class="Symbol"
+      >=</a
+      ><a name="3000"
+      > </a
+      ><a name="3001" class="Symbol"
+      >(</a
+      ><a name="3002" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="3008"
+      > </a
+      ><a name="3009" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="3010"
+      > </a
+      ><a name="3011" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="3017" class="Symbol"
+      >)</a
+      ><a name="3018"
+      > </a
+      ><a name="3019" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="3020"
+      > </a
+      ><a name="3021" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="3027"
+      >
+
+</a
+      ><a name="3029" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3029" class="Function"
+      >&#10214;u&#8326;'&#10215;</a
+      ><a name="3034"
+      > </a
+      ><a name="3035" class="Symbol"
+      >:</a
+      ><a name="3036"
+      > </a
+      ><a name="3037" href="UsingFunext.Space.Space.html#1826" class="Function"
+      >Map</a
+      ><a name="3040"
+      > </a
+      ><a name="3041" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2596" class="Function"
+      >&#915;&#178;</a
+      ><a name="3043"
+      > </a
+      ><a name="3044" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2985" class="Function"
+      >&#915;&#185;</a
+      ><a name="3046"
+      >
+</a
+      ><a name="3047" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3029" class="Function"
+      >&#10214;u&#8326;'&#10215;</a
+      ><a name="3052"
+      > </a
+      ><a name="3053" class="Symbol"
+      >=</a
+      ><a name="3054"
+      > </a
+      ><a name="3055" href="UsingFunext.Space.CartesianClosedness.html#3579" class="Function"
+      >cpr&#8321;</a
+      ><a name="3059"
+      > </a
+      ><a name="3060" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2985" class="Function"
+      >&#915;&#185;</a
+      ><a name="3062"
+      > </a
+      ><a name="3063" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="3069"
+      >
+
+</a
+      ><a name="3071" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3071" class="Function"
+      >dom&#10214;u&#8326;&#10215;</a
+      ><a name="3078"
+      > </a
+      ><a name="3079" class="Symbol"
+      >:</a
+      ><a name="3080"
+      > </a
+      ><a name="3081" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="3086"
+      >
+</a
+      ><a name="3087" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3071" class="Function"
+      >dom&#10214;u&#8326;&#10215;</a
+      ><a name="3094"
+      > </a
+      ><a name="3095" class="Symbol"
+      >=</a
+      ><a name="3096"
+      > </a
+      ><a name="3097" href="UsingFunext.Space.LocalCartesianClosedness.html#6656" class="Function Operator"
+      >dom&#10218;</a
+      ><a name="3101"
+      > </a
+      ><a name="3102" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2596" class="Function"
+      >&#915;&#178;</a
+      ><a name="3104"
+      > </a
+      ><a name="3105" href="UsingFunext.Space.LocalCartesianClosedness.html#6656" class="Function Operator"
+      >,</a
+      ><a name="3106"
+      > </a
+      ><a name="3107" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2985" class="Function"
+      >&#915;&#185;</a
+      ><a name="3109"
+      > </a
+      ><a name="3110" href="UsingFunext.Space.LocalCartesianClosedness.html#6656" class="Function Operator"
+      >&#10219;&#931;[</a
+      ><a name="3113"
+      > </a
+      ><a name="3114" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3029" class="Function"
+      >&#10214;u&#8326;'&#10215;</a
+      ><a name="3119"
+      > </a
+      ><a name="3120" href="UsingFunext.Space.LocalCartesianClosedness.html#6656" class="Function Operator"
+      >]</a
+      ><a name="3121"
+      > </a
+      ><a name="3122" class="Symbol"
+      >(</a
+      ><a name="3123" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2704" class="Function"
+      >dom&#10214;u&#8325;&#10215;</a
+      ><a name="3130"
+      > </a
+      ><a name="3131" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3132"
+      > </a
+      ><a name="3133" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2773" class="Function"
+      >&#10214;u&#8325;&#10215;</a
+      ><a name="3137" class="Symbol"
+      >)</a
+      ><a name="3138"
+      >
+
+</a
+      ><a name="3140" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3140" class="Function"
+      >&#10214;u&#8326;&#10215;</a
+      ><a name="3144"
+      > </a
+      ><a name="3145" class="Symbol"
+      >:</a
+      ><a name="3146"
+      > </a
+      ><a name="3147" href="UsingFunext.Space.Space.html#1826" class="Function"
+      >Map</a
+      ><a name="3150"
+      > </a
+      ><a name="3151" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3071" class="Function"
+      >dom&#10214;u&#8326;&#10215;</a
+      ><a name="3158"
+      > </a
+      ><a name="3159" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2985" class="Function"
+      >&#915;&#185;</a
+      ><a name="3161"
+      >
+</a
+      ><a name="3162" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3140" class="Function"
+      >&#10214;u&#8326;&#10215;</a
+      ><a name="3166"
+      > </a
+      ><a name="3167" class="Symbol"
+      >=</a
+      ><a name="3168"
+      > </a
+      ><a name="3169" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="3172"
+      > </a
+      ><a name="3173" class="Symbol"
+      >(</a
+      ><a name="3174" href="UsingFunext.Space.LocalCartesianClosedness.html#6549" class="Function Operator"
+      >&#10218;</a
+      ><a name="3175"
+      > </a
+      ><a name="3176" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2596" class="Function"
+      >&#915;&#178;</a
+      ><a name="3178"
+      > </a
+      ><a name="3179" href="UsingFunext.Space.LocalCartesianClosedness.html#6549" class="Function Operator"
+      >,</a
+      ><a name="3180"
+      > </a
+      ><a name="3181" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2985" class="Function"
+      >&#915;&#185;</a
+      ><a name="3183"
+      > </a
+      ><a name="3184" href="UsingFunext.Space.LocalCartesianClosedness.html#6549" class="Function Operator"
+      >&#10219;&#931;[</a
+      ><a name="3187"
+      > </a
+      ><a name="3188" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3029" class="Function"
+      >&#10214;u&#8326;'&#10215;</a
+      ><a name="3193"
+      > </a
+      ><a name="3194" href="UsingFunext.Space.LocalCartesianClosedness.html#6549" class="Function Operator"
+      >]</a
+      ><a name="3195"
+      > </a
+      ><a name="3196" class="Symbol"
+      >(</a
+      ><a name="3197" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2704" class="Function"
+      >dom&#10214;u&#8325;&#10215;</a
+      ><a name="3204"
+      > </a
+      ><a name="3205" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3206"
+      > </a
+      ><a name="3207" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2773" class="Function"
+      >&#10214;u&#8325;&#10215;</a
+      ><a name="3211" class="Symbol"
+      >))</a
+      ><a name="3213"
+      >
+
+\end{code}
+
+</a
+      ><a name="3227" class="Comment"
+      >(7) uc  ::=  &#8866; &#928; (f : &#8322;&#8469; &#8594; &#8469;)  &#931; (n : &#8469;)  &#928; (&#945; &#946; : &#8322;&#8469;) (&#945; &#8801;[n] &#946; &#8594; f &#945; &#8801; f &#946;).</a
+      ><a name="3305"
+      >
+
+\begin{code}
+
+</a
+      ><a name="3321" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3321" class="Function"
+      >&#915;&#8304;</a
+      ><a name="3323"
+      > </a
+      ><a name="3324" class="Symbol"
+      >:</a
+      ><a name="3325"
+      > </a
+      ><a name="3326" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="3331"
+      >
+</a
+      ><a name="3332" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3321" class="Function"
+      >&#915;&#8304;</a
+      ><a name="3334"
+      > </a
+      ><a name="3335" class="Symbol"
+      >=</a
+      ><a name="3336"
+      > </a
+      ><a name="3337" href="UsingFunext.Space.CartesianClosedness.html#473" class="Function"
+      >&#9352;Space</a
+      ><a name="3343"
+      >
+
+</a
+      ><a name="3345" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3345" class="Function"
+      >dom&#10214;uc&#10215;</a
+      ><a name="3352"
+      > </a
+      ><a name="3353" class="Symbol"
+      >:</a
+      ><a name="3354"
+      > </a
+      ><a name="3355" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="3360"
+      >
+</a
+      ><a name="3361" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3345" class="Function"
+      >dom&#10214;uc&#10215;</a
+      ><a name="3368"
+      > </a
+      ><a name="3369" class="Symbol"
+      >=</a
+      ><a name="3370"
+      > </a
+      ><a name="3371" href="UsingFunext.Space.LocalCartesianClosedness.html#6985" class="Function Operator"
+      >dom&#10218;</a
+      ><a name="3375"
+      > </a
+      ><a name="3376" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2985" class="Function"
+      >&#915;&#185;</a
+      ><a name="3378"
+      > </a
+      ><a name="3379" href="UsingFunext.Space.LocalCartesianClosedness.html#6985" class="Function Operator"
+      >,</a
+      ><a name="3380"
+      > </a
+      ><a name="3381" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3321" class="Function"
+      >&#915;&#8304;</a
+      ><a name="3383"
+      > </a
+      ><a name="3384" href="UsingFunext.Space.LocalCartesianClosedness.html#6985" class="Function Operator"
+      >&#10219;&#928;[</a
+      ><a name="3387"
+      > </a
+      ><a name="3388" href="UsingFunext.Space.CartesianClosedness.html#778" class="Function"
+      >continuous-unit</a
+      ><a name="3403"
+      > </a
+      ><a name="3404" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2985" class="Function"
+      >&#915;&#185;</a
+      ><a name="3406"
+      > </a
+      ><a name="3407" href="UsingFunext.Space.LocalCartesianClosedness.html#6985" class="Function Operator"
+      >]</a
+      ><a name="3408"
+      > </a
+      ><a name="3409" class="Symbol"
+      >(</a
+      ><a name="3410" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3071" class="Function"
+      >dom&#10214;u&#8326;&#10215;</a
+      ><a name="3417"
+      > </a
+      ><a name="3418" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3419"
+      > </a
+      ><a name="3420" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3140" class="Function"
+      >&#10214;u&#8326;&#10215;</a
+      ><a name="3424" class="Symbol"
+      >)</a
+      ><a name="3425"
+      >
+
+\end{code}
+
+</a
+      ><a name="3439" class="Comment"
+      >The Space dom&#10214;uc&#10215; is inhabited. One inhabitant is the following, which</a
+      ><a name="3509"
+      >
+</a
+      ><a name="3510" class="Comment"
+      >is defined using the fan functional.</a
+      ><a name="3546"
+      >
+
+\begin{code}
+
+</a
+      ><a name="3562" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3562" class="Function"
+      >uc</a
+      ><a name="3564"
+      > </a
+      ><a name="3565" class="Symbol"
+      >:</a
+      ><a name="3566"
+      > </a
+      ><a name="3567" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="3568"
+      > </a
+      ><a name="3569" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3345" class="Function"
+      >dom&#10214;uc&#10215;</a
+      ><a name="3576"
+      >
+</a
+      ><a name="3577" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3562" class="Function"
+      >uc</a
+      ><a name="3579"
+      > </a
+      ><a name="3580" class="Symbol"
+      >=</a
+      ><a name="3581"
+      > </a
+      ><a name="3582" class="Symbol"
+      >(</a
+      ><a name="3583" href="Preliminaries.SetsAndFunctions.html#3847" class="InductiveConstructor"
+      >&#8902;</a
+      ><a name="3584"
+      > </a
+      ><a name="3585" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3586"
+      > </a
+      ><a name="3587" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3897" class="Function"
+      >h</a
+      ><a name="3588"
+      > </a
+      ><a name="3589" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3590"
+      > </a
+      ><a name="3591" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6773" class="Function"
+      >cts</a
+      ><a name="3594" class="Symbol"
+      >)</a
+      ><a name="3595"
+      > </a
+      ><a name="3596" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3597"
+      > </a
+      ><a name="3598" class="Symbol"
+      >(&#955;</a
+      ><a name="3600"
+      > </a
+      ><a name="3601" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3601" class="Bound"
+      >_</a
+      ><a name="3602"
+      > </a
+      ><a name="3603" class="Symbol"
+      >&#8594;</a
+      ><a name="3604"
+      > </a
+      ><a name="3605" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="3609" class="Symbol"
+      >)</a
+      ><a name="3610"
+      >
+ </a
+      ><a name="3612" class="Keyword"
+      >where</a
+      ><a name="3617"
+      >
+  </a
+      ><a name="3620" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3620" class="Function"
+      >dom-h</a
+      ><a name="3625"
+      > </a
+      ><a name="3626" class="Symbol"
+      >:</a
+      ><a name="3627"
+      > </a
+      ><a name="3628" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="3633"
+      >
+  </a
+      ><a name="3636" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3620" class="Function"
+      >dom-h</a
+      ><a name="3641"
+      > </a
+      ><a name="3642" class="Symbol"
+      >=</a
+      ><a name="3643"
+      > </a
+      ><a name="3644" href="UsingFunext.Space.LocalCartesianClosedness.html#485" class="Function"
+      >Subspace</a
+      ><a name="3652"
+      > </a
+      ><a name="3653" class="Symbol"
+      >((</a
+      ><a name="3655" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="3661"
+      > </a
+      ><a name="3662" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="3663"
+      > </a
+      ><a name="3664" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="3670" class="Symbol"
+      >)</a
+      ><a name="3671"
+      > </a
+      ><a name="3672" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="3673"
+      > </a
+      ><a name="3674" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="3680" class="Symbol"
+      >)</a
+      ><a name="3681"
+      > </a
+      ><a name="3682" class="Symbol"
+      >(&#955;</a
+      ><a name="3684"
+      > </a
+      ><a name="3685" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3685" class="Bound"
+      >_</a
+      ><a name="3686"
+      > </a
+      ><a name="3687" class="Symbol"
+      >&#8594;</a
+      ><a name="3688"
+      > </a
+      ><a name="3689" href="Preliminaries.SetsAndFunctions.html#3847" class="InductiveConstructor"
+      >&#8902;</a
+      ><a name="3690"
+      > </a
+      ><a name="3691" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3692"
+      > </a
+      ><a name="3693" href="Preliminaries.SetsAndFunctions.html#3847" class="InductiveConstructor"
+      >&#8902;</a
+      ><a name="3694" class="Symbol"
+      >)</a
+      ><a name="3695"
+      >
+       </a
+      ><a name="3703" class="Comment"
+      >-- &#10218; &#915;&#185; , &#915;&#8304; &#10219; (continuous-unit {&#915;&#185;}) &#8315;&#185;&#8333; &#8902; &#8334;</a
+      ><a name="3748"
+      >
+  </a
+      ><a name="3751" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3751" class="Function"
+      >cod-h</a
+      ><a name="3756"
+      > </a
+      ><a name="3757" class="Symbol"
+      >:</a
+      ><a name="3758"
+      > </a
+      ><a name="3759" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="3764"
+      >
+  </a
+      ><a name="3767" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3751" class="Function"
+      >cod-h</a
+      ><a name="3772"
+      > </a
+      ><a name="3773" class="Symbol"
+      >=</a
+      ><a name="3774"
+      > </a
+      ><a name="3775" href="UsingFunext.Space.LocalCartesianClosedness.html#485" class="Function"
+      >Subspace</a
+      ><a name="3783"
+      > </a
+      ><a name="3784" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2704" class="Function"
+      >dom&#10214;u&#8325;&#10215;</a
+      ><a name="3791"
+      > </a
+      ><a name="3792" class="Symbol"
+      >(&#955;</a
+      ><a name="3794"
+      > </a
+      ><a name="3795" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3795" class="Bound"
+      >_</a
+      ><a name="3796"
+      > </a
+      ><a name="3797" class="Symbol"
+      >&#8594;</a
+      ><a name="3798"
+      > </a
+      ><a name="3799" href="Preliminaries.SetsAndFunctions.html#3847" class="InductiveConstructor"
+      >&#8902;</a
+      ><a name="3800"
+      > </a
+      ><a name="3801" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3802"
+      > </a
+      ><a name="3803" href="Preliminaries.SetsAndFunctions.html#3847" class="InductiveConstructor"
+      >&#8902;</a
+      ><a name="3804" class="Symbol"
+      >)</a
+      ><a name="3805"
+      >
+       </a
+      ><a name="3813" class="Comment"
+      >-- &#10218; dom&#10214;u&#8326;&#10215; , &#915;&#8304; &#10219; (&#10218; dom&#10214;u&#8326;&#10215; , &#915;&#185; , &#915;&#8304; &#10219; (continuous-unit {&#915;&#185;}) &#9675; &#10214;u&#8326;&#10215;) &#8315;&#185;&#8333; &#8902; &#8334;</a
+      ><a name="3894"
+      >
+  </a
+      ><a name="3897" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3897" class="Function"
+      >h</a
+      ><a name="3898"
+      > </a
+      ><a name="3899" class="Symbol"
+      >:</a
+      ><a name="3900"
+      > </a
+      ><a name="3901" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="3902"
+      > </a
+      ><a name="3903" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3620" class="Function"
+      >dom-h</a
+      ><a name="3908"
+      > </a
+      ><a name="3909" class="Symbol"
+      >&#8594;</a
+      ><a name="3910"
+      > </a
+      ><a name="3911" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="3912"
+      > </a
+      ><a name="3913" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3751" class="Function"
+      >cod-h</a
+      ><a name="3918"
+      >
+  </a
+      ><a name="3921" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3897" class="Function"
+      >h</a
+      ><a name="3922"
+      > </a
+      ><a name="3923" class="Symbol"
+      >(</a
+      ><a name="3924" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3924" class="Bound"
+      >f</a
+      ><a name="3925"
+      > </a
+      ><a name="3926" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3927"
+      > </a
+      ><a name="3928" class="Symbol"
+      >_)</a
+      ><a name="3930"
+      > </a
+      ><a name="3931" class="Symbol"
+      >=</a
+      ><a name="3932"
+      > </a
+      ><a name="3933" class="Symbol"
+      >(((</a
+      ><a name="3936" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3924" class="Bound"
+      >f</a
+      ><a name="3937"
+      > </a
+      ><a name="3938" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3939"
+      > </a
+      ><a name="3940" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="3943"
+      > </a
+      ><a name="3944" href="UsingFunext.Space.Fan.html#2094" class="Function"
+      >fan</a
+      ><a name="3947"
+      > </a
+      ><a name="3948" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3924" class="Bound"
+      >f</a
+      ><a name="3949" class="Symbol"
+      >)</a
+      ><a name="3950"
+      > </a
+      ><a name="3951" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3952"
+      > </a
+      ><a name="3953" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4308" class="Function"
+      >h&#8321;</a
+      ><a name="3955"
+      > </a
+      ><a name="3956" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3957"
+      > </a
+      ><a name="3958" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6588" class="Function"
+      >cts&#8321;</a
+      ><a name="3962" class="Symbol"
+      >)</a
+      ><a name="3963"
+      > </a
+      ><a name="3964" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3965"
+      > </a
+      ><a name="3966" class="Symbol"
+      >(&#955;</a
+      ><a name="3968"
+      > </a
+      ><a name="3969" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3969" class="Bound"
+      >_</a
+      ><a name="3970"
+      > </a
+      ><a name="3971" class="Symbol"
+      >&#8594;</a
+      ><a name="3972"
+      > </a
+      ><a name="3973" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="3977" class="Symbol"
+      >))</a
+      ><a name="3979"
+      > </a
+      ><a name="3980" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3981"
+      > </a
+      ><a name="3982" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="3986"
+      >
+   </a
+      ><a name="3990" class="Keyword"
+      >where</a
+      ><a name="3995"
+      >
+    </a
+      ><a name="4000" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4000" class="Function"
+      >dom-h&#8321;</a
+      ><a name="4006"
+      > </a
+      ><a name="4007" class="Symbol"
+      >:</a
+      ><a name="4008"
+      > </a
+      ><a name="4009" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="4014"
+      >
+    </a
+      ><a name="4019" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4000" class="Function"
+      >dom-h&#8321;</a
+      ><a name="4025"
+      > </a
+      ><a name="4026" class="Symbol"
+      >=</a
+      ><a name="4027"
+      > </a
+      ><a name="4028" href="UsingFunext.Space.LocalCartesianClosedness.html#485" class="Function"
+      >Subspace</a
+      ><a name="4036"
+      > </a
+      ><a name="4037" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2183" class="Function"
+      >&#915;&#179;</a
+      ><a name="4039"
+      > </a
+      ><a name="4040" class="Symbol"
+      >(&#955;</a
+      ><a name="4042"
+      > </a
+      ><a name="4043" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4043" class="Bound"
+      >w</a
+      ><a name="4044"
+      > </a
+      ><a name="4045" class="Symbol"
+      >&#8594;</a
+      ><a name="4046"
+      > </a
+      ><a name="4047" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="4050"
+      > </a
+      ><a name="4051" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4043" class="Bound"
+      >w</a
+      ><a name="4052"
+      > </a
+      ><a name="4053" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="4054"
+      > </a
+      ><a name="4055" class="Symbol"
+      >(</a
+      ><a name="4056" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3924" class="Bound"
+      >f</a
+      ><a name="4057"
+      > </a
+      ><a name="4058" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4059"
+      > </a
+      ><a name="4060" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="4063"
+      > </a
+      ><a name="4064" href="UsingFunext.Space.Fan.html#2094" class="Function"
+      >fan</a
+      ><a name="4067"
+      > </a
+      ><a name="4068" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3924" class="Bound"
+      >f</a
+      ><a name="4069" class="Symbol"
+      >))</a
+      ><a name="4071"
+      >
+          </a
+      ><a name="4082" class="Comment"
+      >-- &#10218; &#915;&#179; , &#915;&#178; &#10219; &#10214;u&#8325;'&#10215; &#8315;&#185;&#8333; (f , pr&#8321; fan f) &#8334;</a
+      ><a name="4124"
+      >
+    </a
+      ><a name="4129" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4129" class="Function"
+      >cod-h&#8321;</a
+      ><a name="4135"
+      > </a
+      ><a name="4136" class="Symbol"
+      >:</a
+      ><a name="4137"
+      > </a
+      ><a name="4138" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="4143"
+      >
+    </a
+      ><a name="4148" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4129" class="Function"
+      >cod-h&#8321;</a
+      ><a name="4154"
+      > </a
+      ><a name="4155" class="Symbol"
+      >=</a
+      ><a name="4156"
+      > </a
+      ><a name="4157" href="UsingFunext.Space.LocalCartesianClosedness.html#485" class="Function"
+      >Subspace</a
+      ><a name="4165"
+      > </a
+      ><a name="4166" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2311" class="Function"
+      >dom&#10214;u&#8324;&#10215;</a
+      ><a name="4173"
+      > </a
+      ><a name="4174" class="Symbol"
+      >(&#955;</a
+      ><a name="4176"
+      > </a
+      ><a name="4177" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4177" class="Bound"
+      >w</a
+      ><a name="4178"
+      > </a
+      ><a name="4179" class="Symbol"
+      >&#8594;</a
+      ><a name="4180"
+      > </a
+      ><a name="4181" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="4184"
+      > </a
+      ><a name="4185" class="Symbol"
+      >(</a
+      ><a name="4186" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="4189"
+      > </a
+      ><a name="4190" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#2380" class="Function"
+      >&#10214;u&#8324;&#10215;</a
+      ><a name="4194"
+      > </a
+      ><a name="4195" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4177" class="Bound"
+      >w</a
+      ><a name="4196" class="Symbol"
+      >)</a
+      ><a name="4197"
+      > </a
+      ><a name="4198" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="4199"
+      > </a
+      ><a name="4200" class="Symbol"
+      >(</a
+      ><a name="4201" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3924" class="Bound"
+      >f</a
+      ><a name="4202"
+      > </a
+      ><a name="4203" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4204"
+      > </a
+      ><a name="4205" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="4208"
+      > </a
+      ><a name="4209" href="UsingFunext.Space.Fan.html#2094" class="Function"
+      >fan</a
+      ><a name="4212"
+      > </a
+      ><a name="4213" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3924" class="Bound"
+      >f</a
+      ><a name="4214" class="Symbol"
+      >))</a
+      ><a name="4216"
+      >
+          </a
+      ><a name="4227" class="Comment"
+      >-- &#10218; dom&#10214;u&#8324;&#10215; , &#915;&#178; &#10219; &#10218; dom&#10214;u&#8324;&#10215; , &#915;&#179; , &#915;&#178; &#10219; &#10214;u&#8325;'&#10215; &#9675; &#10214;u&#8324;&#10215; &#8315;&#185;&#8333; (f , pr&#8321; fan f) &#8334;</a
+      ><a name="4303"
+      >
+    </a
+      ><a name="4308" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4308" class="Function"
+      >h&#8321;</a
+      ><a name="4310"
+      > </a
+      ><a name="4311" class="Symbol"
+      >:</a
+      ><a name="4312"
+      > </a
+      ><a name="4313" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="4314"
+      > </a
+      ><a name="4315" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4000" class="Function"
+      >dom-h&#8321;</a
+      ><a name="4321"
+      > </a
+      ><a name="4322" class="Symbol"
+      >&#8594;</a
+      ><a name="4323"
+      > </a
+      ><a name="4324" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="4325"
+      > </a
+      ><a name="4326" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4129" class="Function"
+      >cod-h&#8321;</a
+      ><a name="4332"
+      >
+    </a
+      ><a name="4337" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4308" class="Function"
+      >h&#8321;</a
+      ><a name="4339"
+      > </a
+      ><a name="4340" class="Symbol"
+      >(((</a
+      ><a name="4343" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4343" class="Bound"
+      >f&#8321;</a
+      ><a name="4345"
+      > </a
+      ><a name="4346" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4347"
+      > </a
+      ><a name="4348" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4348" class="Bound"
+      >n&#8321;</a
+      ><a name="4350" class="Symbol"
+      >)</a
+      ><a name="4351"
+      > </a
+      ><a name="4352" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4353"
+      > </a
+      ><a name="4354" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4354" class="Bound"
+      >&#945;</a
+      ><a name="4355" class="Symbol"
+      >)</a
+      ><a name="4356"
+      > </a
+      ><a name="4357" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4358"
+      > </a
+      ><a name="4359" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4359" class="Bound"
+      >e&#8321;</a
+      ><a name="4361" class="Symbol"
+      >)</a
+      ><a name="4362"
+      > </a
+      ><a name="4363" class="Symbol"
+      >=</a
+      ><a name="4364"
+      > </a
+      ><a name="4365" class="Symbol"
+      >(((((</a
+      ><a name="4370" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4343" class="Bound"
+      >f&#8321;</a
+      ><a name="4372"
+      > </a
+      ><a name="4373" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4374"
+      > </a
+      ><a name="4375" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4348" class="Bound"
+      >n&#8321;</a
+      ><a name="4377" class="Symbol"
+      >)</a
+      ><a name="4378"
+      > </a
+      ><a name="4379" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4380"
+      > </a
+      ><a name="4381" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4354" class="Bound"
+      >&#945;</a
+      ><a name="4382" class="Symbol"
+      >))</a
+      ><a name="4384"
+      > </a
+      ><a name="4385" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4386"
+      > </a
+      ><a name="4387" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4756" class="Function"
+      >h&#8322;</a
+      ><a name="4389"
+      > </a
+      ><a name="4390" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4391"
+      > </a
+      ><a name="4392" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6419" class="Function"
+      >cts&#8322;</a
+      ><a name="4396" class="Symbol"
+      >)</a
+      ><a name="4397"
+      > </a
+      ><a name="4398" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4399"
+      > </a
+      ><a name="4400" class="Symbol"
+      >(&#955;</a
+      ><a name="4402"
+      > </a
+      ><a name="4403" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4403" class="Bound"
+      >_</a
+      ><a name="4404"
+      > </a
+      ><a name="4405" class="Symbol"
+      >&#8594;</a
+      ><a name="4406"
+      > </a
+      ><a name="4407" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="4411" class="Symbol"
+      >))</a
+      ><a name="4413"
+      > </a
+      ><a name="4414" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4415"
+      > </a
+      ><a name="4416" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4359" class="Bound"
+      >e&#8321;</a
+      ><a name="4418"
+      >
+     </a
+      ><a name="4424" class="Keyword"
+      >where</a
+      ><a name="4429"
+      >
+      </a
+      ><a name="4436" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4436" class="Function"
+      >dom-h&#8322;</a
+      ><a name="4442"
+      > </a
+      ><a name="4443" class="Symbol"
+      >:</a
+      ><a name="4444"
+      > </a
+      ><a name="4445" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="4450"
+      >
+      </a
+      ><a name="4457" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4436" class="Function"
+      >dom-h&#8322;</a
+      ><a name="4463"
+      > </a
+      ><a name="4464" class="Symbol"
+      >=</a
+      ><a name="4465"
+      > </a
+      ><a name="4466" href="UsingFunext.Space.LocalCartesianClosedness.html#485" class="Function"
+      >Subspace</a
+      ><a name="4474"
+      > </a
+      ><a name="4475" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#851" class="Function"
+      >&#915;&#8308;</a
+      ><a name="4477"
+      > </a
+      ><a name="4478" class="Symbol"
+      >(&#955;</a
+      ><a name="4480"
+      > </a
+      ><a name="4481" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4481" class="Bound"
+      >w</a
+      ><a name="4482"
+      > </a
+      ><a name="4483" class="Symbol"
+      >&#8594;</a
+      ><a name="4484"
+      > </a
+      ><a name="4485" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="4488"
+      > </a
+      ><a name="4489" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4481" class="Bound"
+      >w</a
+      ><a name="4490"
+      > </a
+      ><a name="4491" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="4492"
+      > </a
+      ><a name="4493" class="Symbol"
+      >((</a
+      ><a name="4495" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4343" class="Bound"
+      >f&#8321;</a
+      ><a name="4497"
+      > </a
+      ><a name="4498" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4499"
+      > </a
+      ><a name="4500" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4348" class="Bound"
+      >n&#8321;</a
+      ><a name="4502" class="Symbol"
+      >)</a
+      ><a name="4503"
+      > </a
+      ><a name="4504" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4505"
+      > </a
+      ><a name="4506" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4354" class="Bound"
+      >&#945;</a
+      ><a name="4507" class="Symbol"
+      >))</a
+      ><a name="4509"
+      >
+            </a
+      ><a name="4522" class="Comment"
+      >-- &#10218; &#915;&#8308; , &#915;&#179; &#10219; &#10214;u&#8324;'&#10215; &#8315;&#185;&#8333; ((f&#8321; , n&#8321;) , &#945;) &#8334;</a
+      ><a name="4564"
+      >
+      </a
+      ><a name="4571" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4571" class="Function"
+      >cod-h&#8322;</a
+      ><a name="4577"
+      > </a
+      ><a name="4578" class="Symbol"
+      >:</a
+      ><a name="4579"
+      > </a
+      ><a name="4580" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="4585"
+      >
+      </a
+      ><a name="4592" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4571" class="Function"
+      >cod-h&#8322;</a
+      ><a name="4598"
+      > </a
+      ><a name="4599" class="Symbol"
+      >=</a
+      ><a name="4600"
+      > </a
+      ><a name="4601" href="UsingFunext.Space.LocalCartesianClosedness.html#485" class="Function"
+      >Subspace</a
+      ><a name="4609"
+      > </a
+      ><a name="4610" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1884" class="Function"
+      >dom&#10214;u&#8323;&#10215;</a
+      ><a name="4617"
+      > </a
+      ><a name="4618" class="Symbol"
+      >(&#955;</a
+      ><a name="4620"
+      > </a
+      ><a name="4621" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4621" class="Bound"
+      >w</a
+      ><a name="4622"
+      > </a
+      ><a name="4623" class="Symbol"
+      >&#8594;</a
+      ><a name="4624"
+      > </a
+      ><a name="4625" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="4628"
+      > </a
+      ><a name="4629" class="Symbol"
+      >(</a
+      ><a name="4630" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="4633"
+      > </a
+      ><a name="4634" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1957" class="Function"
+      >&#10214;u&#8323;&#10215;</a
+      ><a name="4638"
+      > </a
+      ><a name="4639" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4621" class="Bound"
+      >w</a
+      ><a name="4640" class="Symbol"
+      >)</a
+      ><a name="4641"
+      > </a
+      ><a name="4642" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="4643"
+      > </a
+      ><a name="4644" class="Symbol"
+      >((</a
+      ><a name="4646" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4343" class="Bound"
+      >f&#8321;</a
+      ><a name="4648"
+      > </a
+      ><a name="4649" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4650"
+      > </a
+      ><a name="4651" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4348" class="Bound"
+      >n&#8321;</a
+      ><a name="4653" class="Symbol"
+      >)</a
+      ><a name="4654"
+      > </a
+      ><a name="4655" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4656"
+      > </a
+      ><a name="4657" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4354" class="Bound"
+      >&#945;</a
+      ><a name="4658" class="Symbol"
+      >))</a
+      ><a name="4660"
+      >
+            </a
+      ><a name="4673" class="Comment"
+      >-- &#10218; dom&#10214;u&#8323;&#10215; , &#915;&#179; &#10219; &#10218; dom&#10214;u&#8323;&#10215; , &#915;&#8308; , &#915;&#179; &#10219; &#10214;u&#8324;'&#10215; &#9675; &#10214;u&#8323;&#10215; &#8315;&#185;&#8333; ((f&#8321; , n&#8321;) , &#945;) &#8334;</a
+      ><a name="4749"
+      >
+      </a
+      ><a name="4756" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4756" class="Function"
+      >h&#8322;</a
+      ><a name="4758"
+      > </a
+      ><a name="4759" class="Symbol"
+      >:</a
+      ><a name="4760"
+      > </a
+      ><a name="4761" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="4762"
+      > </a
+      ><a name="4763" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4436" class="Function"
+      >dom-h&#8322;</a
+      ><a name="4769"
+      > </a
+      ><a name="4770" class="Symbol"
+      >&#8594;</a
+      ><a name="4771"
+      > </a
+      ><a name="4772" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="4773"
+      > </a
+      ><a name="4774" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4571" class="Function"
+      >cod-h&#8322;</a
+      ><a name="4780"
+      >
+      </a
+      ><a name="4787" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4756" class="Function"
+      >h&#8322;</a
+      ><a name="4789"
+      > </a
+      ><a name="4790" class="Symbol"
+      >((((</a
+      ><a name="4794" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4794" class="Bound"
+      >f&#8322;</a
+      ><a name="4796"
+      > </a
+      ><a name="4797" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4798"
+      > </a
+      ><a name="4799" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4799" class="Bound"
+      >n&#8322;</a
+      ><a name="4801" class="Symbol"
+      >)</a
+      ><a name="4802"
+      > </a
+      ><a name="4803" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4804"
+      > </a
+      ><a name="4805" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4805" class="Bound"
+      >&#945;&#8322;</a
+      ><a name="4807" class="Symbol"
+      >)</a
+      ><a name="4808"
+      > </a
+      ><a name="4809" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4810"
+      > </a
+      ><a name="4811" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4811" class="Bound"
+      >&#946;</a
+      ><a name="4812" class="Symbol"
+      >)</a
+      ><a name="4813"
+      > </a
+      ><a name="4814" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4815"
+      > </a
+      ><a name="4816" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4816" class="Bound"
+      >e&#8322;</a
+      ><a name="4818" class="Symbol"
+      >)</a
+      ><a name="4819"
+      > </a
+      ><a name="4820" class="Symbol"
+      >=</a
+      ><a name="4821"
+      > </a
+      ><a name="4822" class="Symbol"
+      >(((((</a
+      ><a name="4827" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4794" class="Bound"
+      >f&#8322;</a
+      ><a name="4829"
+      > </a
+      ><a name="4830" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4831"
+      > </a
+      ><a name="4832" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4799" class="Bound"
+      >n&#8322;</a
+      ><a name="4834" class="Symbol"
+      >)</a
+      ><a name="4835"
+      > </a
+      ><a name="4836" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4837"
+      > </a
+      ><a name="4838" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4805" class="Bound"
+      >&#945;&#8322;</a
+      ><a name="4840" class="Symbol"
+      >)</a
+      ><a name="4841"
+      > </a
+      ><a name="4842" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4843"
+      > </a
+      ><a name="4844" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4811" class="Bound"
+      >&#946;</a
+      ><a name="4845" class="Symbol"
+      >)</a
+      ><a name="4846"
+      > </a
+      ><a name="4847" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4848"
+      > </a
+      ><a name="4849" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5270" class="Function"
+      >h&#8323;</a
+      ><a name="4851"
+      > </a
+      ><a name="4852" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4853"
+      > </a
+      ><a name="4854" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6238" class="Function"
+      >cts&#8323;</a
+      ><a name="4858" class="Symbol"
+      >)</a
+      ><a name="4859"
+      > </a
+      ><a name="4860" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4861"
+      > </a
+      ><a name="4862" class="Symbol"
+      >(&#955;</a
+      ><a name="4864"
+      > </a
+      ><a name="4865" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4865" class="Bound"
+      >_</a
+      ><a name="4866"
+      > </a
+      ><a name="4867" class="Symbol"
+      >&#8594;</a
+      ><a name="4868"
+      > </a
+      ><a name="4869" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="4873" class="Symbol"
+      >))</a
+      ><a name="4875"
+      > </a
+      ><a name="4876" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4877"
+      > </a
+      ><a name="4878" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4816" class="Bound"
+      >e&#8322;</a
+      ><a name="4880"
+      >
+       </a
+      ><a name="4888" class="Keyword"
+      >where</a
+      ><a name="4893"
+      >
+        </a
+      ><a name="4902" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4902" class="Function"
+      >dom-h&#8323;</a
+      ><a name="4908"
+      > </a
+      ><a name="4909" class="Symbol"
+      >:</a
+      ><a name="4910"
+      > </a
+      ><a name="4911" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="4916"
+      >
+        </a
+      ><a name="4925" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4902" class="Function"
+      >dom-h&#8323;</a
+      ><a name="4931"
+      > </a
+      ><a name="4932" class="Symbol"
+      >=</a
+      ><a name="4933"
+      > </a
+      ><a name="4934" href="UsingFunext.Space.LocalCartesianClosedness.html#485" class="Function"
+      >Subspace</a
+      ><a name="4942"
+      > </a
+      ><a name="4943" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1246" class="Function"
+      >dom&#10214;u&#8321;&#10215;</a
+      ><a name="4950"
+      > </a
+      ><a name="4951" class="Symbol"
+      >(&#955;</a
+      ><a name="4953"
+      > </a
+      ><a name="4954" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4954" class="Bound"
+      >w</a
+      ><a name="4955"
+      > </a
+      ><a name="4956" class="Symbol"
+      >&#8594;</a
+      ><a name="4957"
+      > </a
+      ><a name="4958" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="4961"
+      > </a
+      ><a name="4962" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4954" class="Bound"
+      >w</a
+      ><a name="4963"
+      > </a
+      ><a name="4964" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="4965"
+      > </a
+      ><a name="4966" class="Symbol"
+      >(((</a
+      ><a name="4969" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4794" class="Bound"
+      >f&#8322;</a
+      ><a name="4971"
+      > </a
+      ><a name="4972" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4973"
+      > </a
+      ><a name="4974" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4799" class="Bound"
+      >n&#8322;</a
+      ><a name="4976" class="Symbol"
+      >)</a
+      ><a name="4977"
+      > </a
+      ><a name="4978" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4979"
+      > </a
+      ><a name="4980" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4805" class="Bound"
+      >&#945;&#8322;</a
+      ><a name="4982" class="Symbol"
+      >)</a
+      ><a name="4983"
+      > </a
+      ><a name="4984" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4985"
+      > </a
+      ><a name="4986" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4811" class="Bound"
+      >&#946;</a
+      ><a name="4987" class="Symbol"
+      >))</a
+      ><a name="4989"
+      >
+              </a
+      ><a name="5004" class="Comment"
+      >-- &#10218; dom&#10214;u&#8321;&#10215; , &#915;&#8308; &#10219; &#10214;u&#8321;&#10215; &#8315;&#185;&#8333; (((f&#8322; , n&#8322;) , &#945;&#8322;) , &#946;) &#8334;</a
+      ><a name="5057"
+      >
+        </a
+      ><a name="5066" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5066" class="Function"
+      >cod-h&#8323;</a
+      ><a name="5072"
+      > </a
+      ><a name="5073" class="Symbol"
+      >:</a
+      ><a name="5074"
+      > </a
+      ><a name="5075" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="5080"
+      >
+        </a
+      ><a name="5089" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5066" class="Function"
+      >cod-h&#8323;</a
+      ><a name="5095"
+      > </a
+      ><a name="5096" class="Symbol"
+      >=</a
+      ><a name="5097"
+      > </a
+      ><a name="5098" href="UsingFunext.Space.LocalCartesianClosedness.html#485" class="Function"
+      >Subspace</a
+      ><a name="5106"
+      > </a
+      ><a name="5107" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1694" class="Function"
+      >dom&#10214;u&#8322;&#10215;</a
+      ><a name="5114"
+      > </a
+      ><a name="5115" class="Symbol"
+      >(&#955;</a
+      ><a name="5117"
+      > </a
+      ><a name="5118" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5118" class="Bound"
+      >w</a
+      ><a name="5119"
+      > </a
+      ><a name="5120" class="Symbol"
+      >&#8594;</a
+      ><a name="5121"
+      > </a
+      ><a name="5122" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="5125"
+      > </a
+      ><a name="5126" class="Symbol"
+      >(</a
+      ><a name="5127" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="5130"
+      > </a
+      ><a name="5131" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5118" class="Bound"
+      >w</a
+      ><a name="5132" class="Symbol"
+      >)</a
+      ><a name="5133"
+      > </a
+      ><a name="5134" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="5135"
+      > </a
+      ><a name="5136" class="Symbol"
+      >(((</a
+      ><a name="5139" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4794" class="Bound"
+      >f&#8322;</a
+      ><a name="5141"
+      > </a
+      ><a name="5142" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5143"
+      > </a
+      ><a name="5144" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4799" class="Bound"
+      >n&#8322;</a
+      ><a name="5146" class="Symbol"
+      >)</a
+      ><a name="5147"
+      > </a
+      ><a name="5148" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5149"
+      > </a
+      ><a name="5150" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4805" class="Bound"
+      >&#945;&#8322;</a
+      ><a name="5152" class="Symbol"
+      >)</a
+      ><a name="5153"
+      > </a
+      ><a name="5154" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5155"
+      > </a
+      ><a name="5156" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4811" class="Bound"
+      >&#946;</a
+      ><a name="5157" class="Symbol"
+      >))</a
+      ><a name="5159"
+      >
+              </a
+      ><a name="5174" class="Comment"
+      >-- &#10218; dom&#10214;u&#8322;&#10215; , &#915;&#8308; &#10219; &#10218; dom&#10214;u&#8322;&#10215; , dom&#10214;u&#8321;&#10215; , &#915;&#8308; &#10219; &#10214;u&#8321;&#10215; &#9675; &#10214;u&#8322;&#10215; &#8315;&#185;&#8333; (((f&#8322; , n&#8322;) , &#945;&#8322;) , &#946;) &#8334;</a
+      ><a name="5261"
+      >
+        </a
+      ><a name="5270" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5270" class="Function"
+      >h&#8323;</a
+      ><a name="5272"
+      > </a
+      ><a name="5273" class="Symbol"
+      >:</a
+      ><a name="5274"
+      > </a
+      ><a name="5275" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="5276"
+      > </a
+      ><a name="5277" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4902" class="Function"
+      >dom-h&#8323;</a
+      ><a name="5283"
+      > </a
+      ><a name="5284" class="Symbol"
+      >&#8594;</a
+      ><a name="5285"
+      > </a
+      ><a name="5286" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="5287"
+      > </a
+      ><a name="5288" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5066" class="Function"
+      >cod-h&#8323;</a
+      ><a name="5294"
+      >
+        </a
+      ><a name="5303" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5270" class="Function"
+      >h&#8323;</a
+      ><a name="5305"
+      > </a
+      ><a name="5306" class="Symbol"
+      >(((((</a
+      ><a name="5311" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5311" class="Bound"
+      >f&#8323;</a
+      ><a name="5313"
+      > </a
+      ><a name="5314" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5315"
+      > </a
+      ><a name="5316" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5316" class="Bound"
+      >n&#8323;</a
+      ><a name="5318" class="Symbol"
+      >)</a
+      ><a name="5319"
+      > </a
+      ><a name="5320" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5321"
+      > </a
+      ><a name="5322" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5322" class="Bound"
+      >&#945;&#8323;</a
+      ><a name="5324" class="Symbol"
+      >)</a
+      ><a name="5325"
+      > </a
+      ><a name="5326" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5327"
+      > </a
+      ><a name="5328" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5328" class="Bound"
+      >&#946;&#8323;</a
+      ><a name="5330" class="Symbol"
+      >)</a
+      ><a name="5331"
+      > </a
+      ><a name="5332" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5333"
+      > </a
+      ><a name="5334" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5334" class="Bound"
+      >en&#8323;</a
+      ><a name="5337" class="Symbol"
+      >)</a
+      ><a name="5338"
+      > </a
+      ><a name="5339" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5340"
+      > </a
+      ><a name="5341" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5341" class="Bound"
+      >e&#8323;</a
+      ><a name="5343" class="Symbol"
+      >)</a
+      ><a name="5344"
+      > </a
+      ><a name="5345" class="Symbol"
+      >=</a
+      ><a name="5346"
+      > </a
+      ><a name="5347" class="Symbol"
+      >(((((</a
+      ><a name="5352" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5311" class="Bound"
+      >f&#8323;</a
+      ><a name="5354"
+      > </a
+      ><a name="5355" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5356"
+      > </a
+      ><a name="5357" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5316" class="Bound"
+      >n&#8323;</a
+      ><a name="5359" class="Symbol"
+      >)</a
+      ><a name="5360"
+      > </a
+      ><a name="5361" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5362"
+      > </a
+      ><a name="5363" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5322" class="Bound"
+      >&#945;&#8323;</a
+      ><a name="5365" class="Symbol"
+      >)</a
+      ><a name="5366"
+      > </a
+      ><a name="5367" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5368"
+      > </a
+      ><a name="5369" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5328" class="Bound"
+      >&#946;&#8323;</a
+      ><a name="5371" class="Symbol"
+      >)</a
+      ><a name="5372"
+      > </a
+      ><a name="5373" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5374"
+      > </a
+      ><a name="5375" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5334" class="Bound"
+      >en&#8323;</a
+      ><a name="5378" class="Symbol"
+      >)</a
+      ><a name="5379"
+      > </a
+      ><a name="5380" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5381"
+      > </a
+      ><a name="5382" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6125" class="Function"
+      >goal</a
+      ><a name="5386" class="Symbol"
+      >)</a
+      ><a name="5387"
+      > </a
+      ><a name="5388" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5389"
+      > </a
+      ><a name="5390" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5341" class="Bound"
+      >e&#8323;</a
+      ><a name="5392"
+      >
+         </a
+      ><a name="5402" class="Keyword"
+      >where</a
+      ><a name="5407"
+      >
+</a
+      ><a name="5408" class="Comment"
+      >--        e&#8321; : [ (f&#8321; , n&#8321;) &#8801; (f , pr&#8321; fan f) ]</a
+      ><a name="5454"
+      >
+</a
+      ><a name="5455" class="Comment"
+      >--        e&#8322; : [ ((f&#8322; , n&#8322;) , &#945;&#8322;) &#8801; ((f&#8321; , n&#8321;) , &#945;) ]</a
+      ><a name="5508"
+      >
+</a
+      ><a name="5509" class="Comment"
+      >--        e&#8323; : [ (((f&#8323; , n&#8323;) , &#945;&#8323;) , &#946;&#8323;) &#8801; (((f&#8322; , n&#8322;) , &#945;&#8322;) , &#946;) ]</a
+      ><a name="5576"
+      >
+          </a
+      ><a name="5587" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5587" class="Function"
+      >eq&#8323;&#8322;</a
+      ><a name="5591"
+      > </a
+      ><a name="5592" class="Symbol"
+      >:</a
+      ><a name="5593"
+      > </a
+      ><a name="5594" class="Symbol"
+      >(</a
+      ><a name="5595" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5311" class="Bound"
+      >f&#8323;</a
+      ><a name="5597"
+      > </a
+      ><a name="5598" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5599"
+      > </a
+      ><a name="5600" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5316" class="Bound"
+      >n&#8323;</a
+      ><a name="5602" class="Symbol"
+      >)</a
+      ><a name="5603"
+      > </a
+      ><a name="5604" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="5605"
+      > </a
+      ><a name="5606" class="Symbol"
+      >(</a
+      ><a name="5607" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4794" class="Bound"
+      >f&#8322;</a
+      ><a name="5609"
+      > </a
+      ><a name="5610" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5611"
+      > </a
+      ><a name="5612" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4799" class="Bound"
+      >n&#8322;</a
+      ><a name="5614" class="Symbol"
+      >)</a
+      ><a name="5615"
+      >
+          </a
+      ><a name="5626" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5587" class="Function"
+      >eq&#8323;&#8322;</a
+      ><a name="5630"
+      > </a
+      ><a name="5631" class="Symbol"
+      >=</a
+      ><a name="5632"
+      > </a
+      ><a name="5633" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="5635"
+      > </a
+      ><a name="5636" class="Symbol"
+      >(</a
+      ><a name="5637" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="5640"
+      > </a
+      ><a name="5641" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="5642"
+      > </a
+      ><a name="5643" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="5646" class="Symbol"
+      >)</a
+      ><a name="5647"
+      > </a
+      ><a name="5648" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5341" class="Bound"
+      >e&#8323;</a
+      ><a name="5650"
+      >
+          </a
+      ><a name="5661" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5661" class="Function"
+      >eq&#8322;&#8321;</a
+      ><a name="5665"
+      > </a
+      ><a name="5666" class="Symbol"
+      >:</a
+      ><a name="5667"
+      > </a
+      ><a name="5668" class="Symbol"
+      >(</a
+      ><a name="5669" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4794" class="Bound"
+      >f&#8322;</a
+      ><a name="5671"
+      > </a
+      ><a name="5672" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5673"
+      > </a
+      ><a name="5674" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4799" class="Bound"
+      >n&#8322;</a
+      ><a name="5676" class="Symbol"
+      >)</a
+      ><a name="5677"
+      > </a
+      ><a name="5678" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="5679"
+      > </a
+      ><a name="5680" class="Symbol"
+      >(</a
+      ><a name="5681" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4343" class="Bound"
+      >f&#8321;</a
+      ><a name="5683"
+      > </a
+      ><a name="5684" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5685"
+      > </a
+      ><a name="5686" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4348" class="Bound"
+      >n&#8321;</a
+      ><a name="5688" class="Symbol"
+      >)</a
+      ><a name="5689"
+      >
+          </a
+      ><a name="5700" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5661" class="Function"
+      >eq&#8322;&#8321;</a
+      ><a name="5704"
+      > </a
+      ><a name="5705" class="Symbol"
+      >=</a
+      ><a name="5706"
+      > </a
+      ><a name="5707" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="5709"
+      > </a
+      ><a name="5710" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="5713"
+      > </a
+      ><a name="5714" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4816" class="Bound"
+      >e&#8322;</a
+      ><a name="5716"
+      >
+          </a
+      ><a name="5727" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5727" class="Function"
+      >eq&#8323;&#8320;</a
+      ><a name="5731"
+      > </a
+      ><a name="5732" class="Symbol"
+      >:</a
+      ><a name="5733"
+      > </a
+      ><a name="5734" class="Symbol"
+      >(</a
+      ><a name="5735" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5311" class="Bound"
+      >f&#8323;</a
+      ><a name="5737"
+      > </a
+      ><a name="5738" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5739"
+      > </a
+      ><a name="5740" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5316" class="Bound"
+      >n&#8323;</a
+      ><a name="5742" class="Symbol"
+      >)</a
+      ><a name="5743"
+      > </a
+      ><a name="5744" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="5745"
+      > </a
+      ><a name="5746" class="Symbol"
+      >(</a
+      ><a name="5747" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3924" class="Bound"
+      >f</a
+      ><a name="5748"
+      > </a
+      ><a name="5749" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5750"
+      > </a
+      ><a name="5751" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="5754"
+      > </a
+      ><a name="5755" href="UsingFunext.Space.Fan.html#2094" class="Function"
+      >fan</a
+      ><a name="5758"
+      > </a
+      ><a name="5759" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3924" class="Bound"
+      >f</a
+      ><a name="5760" class="Symbol"
+      >)</a
+      ><a name="5761"
+      >
+          </a
+      ><a name="5772" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5727" class="Function"
+      >eq&#8323;&#8320;</a
+      ><a name="5776"
+      > </a
+      ><a name="5777" class="Symbol"
+      >=</a
+      ><a name="5778"
+      > </a
+      ><a name="5779" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5587" class="Function"
+      >eq&#8323;&#8322;</a
+      ><a name="5783"
+      >  </a
+      ><a name="5785" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="5786"
+      > </a
+      ><a name="5787" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5661" class="Function"
+      >eq&#8322;&#8321;</a
+      ><a name="5791"
+      > </a
+      ><a name="5792" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="5793"
+      > </a
+      ><a name="5794" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4359" class="Bound"
+      >e&#8321;</a
+      ><a name="5796"
+      >
+          </a
+      ><a name="5807" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5807" class="Function"
+      >eqf</a
+      ><a name="5810"
+      > </a
+      ><a name="5811" class="Symbol"
+      >:</a
+      ><a name="5812"
+      > </a
+      ><a name="5813" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5311" class="Bound"
+      >f&#8323;</a
+      ><a name="5815"
+      > </a
+      ><a name="5816" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="5817"
+      > </a
+      ><a name="5818" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3924" class="Bound"
+      >f</a
+      ><a name="5819"
+      >
+          </a
+      ><a name="5830" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5807" class="Function"
+      >eqf</a
+      ><a name="5833"
+      > </a
+      ><a name="5834" class="Symbol"
+      >=</a
+      ><a name="5835"
+      > </a
+      ><a name="5836" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="5838"
+      > </a
+      ><a name="5839" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="5842"
+      > </a
+      ><a name="5843" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5727" class="Function"
+      >eq&#8323;&#8320;</a
+      ><a name="5847"
+      >
+          </a
+      ><a name="5858" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5858" class="Function"
+      >eqn</a
+      ><a name="5861"
+      > </a
+      ><a name="5862" class="Symbol"
+      >:</a
+      ><a name="5863"
+      > </a
+      ><a name="5864" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5316" class="Bound"
+      >n&#8323;</a
+      ><a name="5866"
+      > </a
+      ><a name="5867" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="5868"
+      > </a
+      ><a name="5869" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="5872"
+      > </a
+      ><a name="5873" href="UsingFunext.Space.Fan.html#2094" class="Function"
+      >fan</a
+      ><a name="5876"
+      > </a
+      ><a name="5877" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3924" class="Bound"
+      >f</a
+      ><a name="5878"
+      >
+          </a
+      ><a name="5889" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5858" class="Function"
+      >eqn</a
+      ><a name="5892"
+      > </a
+      ><a name="5893" class="Symbol"
+      >=</a
+      ><a name="5894"
+      > </a
+      ><a name="5895" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="5897"
+      > </a
+      ><a name="5898" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="5901"
+      > </a
+      ><a name="5902" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5727" class="Function"
+      >eq&#8323;&#8320;</a
+      ><a name="5906"
+      >
+          </a
+      ><a name="5917" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5917" class="Function"
+      >eqn&#8323;</a
+      ><a name="5921"
+      > </a
+      ><a name="5922" class="Symbol"
+      >:</a
+      ><a name="5923"
+      > </a
+      ><a name="5924" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5316" class="Bound"
+      >n&#8323;</a
+      ><a name="5926"
+      > </a
+      ><a name="5927" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="5928"
+      > </a
+      ><a name="5929" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="5932"
+      > </a
+      ><a name="5933" href="UsingFunext.Space.Fan.html#2094" class="Function"
+      >fan</a
+      ><a name="5936"
+      > </a
+      ><a name="5937" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5311" class="Bound"
+      >f&#8323;</a
+      ><a name="5939"
+      >
+          </a
+      ><a name="5950" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5917" class="Function"
+      >eqn&#8323;</a
+      ><a name="5954"
+      > </a
+      ><a name="5955" class="Symbol"
+      >=</a
+      ><a name="5956"
+      > </a
+      ><a name="5957" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="5966"
+      > </a
+      ><a name="5967" class="Symbol"
+      >(&#955;</a
+      ><a name="5969"
+      > </a
+      ><a name="5970" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5970" class="Bound"
+      >x</a
+      ><a name="5971"
+      > </a
+      ><a name="5972" class="Symbol"
+      >&#8594;</a
+      ><a name="5973"
+      > </a
+      ><a name="5974" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5316" class="Bound"
+      >n&#8323;</a
+      ><a name="5976"
+      > </a
+      ><a name="5977" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="5978"
+      > </a
+      ><a name="5979" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="5982"
+      > </a
+      ><a name="5983" href="UsingFunext.Space.Fan.html#2094" class="Function"
+      >fan</a
+      ><a name="5986"
+      > </a
+      ><a name="5987" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5970" class="Bound"
+      >x</a
+      ><a name="5988" class="Symbol"
+      >)</a
+      ><a name="5989"
+      > </a
+      ><a name="5990" class="Symbol"
+      >(</a
+      ><a name="5991" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5807" class="Function"
+      >eqf</a
+      ><a name="5994"
+      > </a
+      ><a name="5995" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="5997" class="Symbol"
+      >)</a
+      ><a name="5998"
+      > </a
+      ><a name="5999" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5858" class="Function"
+      >eqn</a
+      ><a name="6002"
+      >
+          </a
+      ><a name="6013" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6013" class="Function"
+      >en&#8323;'</a
+      ><a name="6017"
+      > </a
+      ><a name="6018" class="Symbol"
+      >:</a
+      ><a name="6019"
+      > </a
+      ><a name="6020" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="6023"
+      > </a
+      ><a name="6024" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5322" class="Bound"
+      >&#945;&#8323;</a
+      ><a name="6026"
+      > </a
+      ><a name="6027" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="6029"
+      > </a
+      ><a name="6030" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="6033"
+      > </a
+      ><a name="6034" href="UsingFunext.Space.Fan.html#2094" class="Function"
+      >fan</a
+      ><a name="6037"
+      > </a
+      ><a name="6038" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5311" class="Bound"
+      >f&#8323;</a
+      ><a name="6040"
+      > </a
+      ><a name="6041" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="6042"
+      > </a
+      ><a name="6043" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="6046"
+      > </a
+      ><a name="6047" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5328" class="Bound"
+      >&#946;&#8323;</a
+      ><a name="6049"
+      >
+          </a
+      ><a name="6060" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6013" class="Function"
+      >en&#8323;'</a
+      ><a name="6064"
+      > </a
+      ><a name="6065" class="Symbol"
+      >=</a
+      ><a name="6066"
+      > </a
+      ><a name="6067" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="6076"
+      > </a
+      ><a name="6077" class="Symbol"
+      >(&#955;</a
+      ><a name="6079"
+      > </a
+      ><a name="6080" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6080" class="Bound"
+      >x</a
+      ><a name="6081"
+      > </a
+      ><a name="6082" class="Symbol"
+      >&#8594;</a
+      ><a name="6083"
+      > </a
+      ><a name="6084" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="6087"
+      > </a
+      ><a name="6088" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5322" class="Bound"
+      >&#945;&#8323;</a
+      ><a name="6090"
+      > </a
+      ><a name="6091" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="6093"
+      > </a
+      ><a name="6094" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6080" class="Bound"
+      >x</a
+      ><a name="6095"
+      > </a
+      ><a name="6096" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="6097"
+      > </a
+      ><a name="6098" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="6101"
+      > </a
+      ><a name="6102" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5328" class="Bound"
+      >&#946;&#8323;</a
+      ><a name="6104" class="Symbol"
+      >)</a
+      ><a name="6105"
+      > </a
+      ><a name="6106" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5917" class="Function"
+      >eqn&#8323;</a
+      ><a name="6110"
+      > </a
+      ><a name="6111" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5334" class="Bound"
+      >en&#8323;</a
+      ><a name="6114"
+      >
+          </a
+      ><a name="6125" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6125" class="Function"
+      >goal</a
+      ><a name="6129"
+      > </a
+      ><a name="6130" class="Symbol"
+      >:</a
+      ><a name="6131"
+      > </a
+      ><a name="6132" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="6135"
+      > </a
+      ><a name="6136" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5311" class="Bound"
+      >f&#8323;</a
+      ><a name="6138"
+      > </a
+      ><a name="6139" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5322" class="Bound"
+      >&#945;&#8323;</a
+      ><a name="6141"
+      > </a
+      ><a name="6142" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="6143"
+      > </a
+      ><a name="6144" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="6147"
+      > </a
+      ><a name="6148" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5311" class="Bound"
+      >f&#8323;</a
+      ><a name="6150"
+      > </a
+      ><a name="6151" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5328" class="Bound"
+      >&#946;&#8323;</a
+      ><a name="6153"
+      >
+          </a
+      ><a name="6164" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6125" class="Function"
+      >goal</a
+      ><a name="6168"
+      > </a
+      ><a name="6169" class="Symbol"
+      >=</a
+      ><a name="6170"
+      > </a
+      ><a name="6171" href="UsingFunext.Space.Fan.html#6747" class="Function"
+      >fan-behaviour</a
+      ><a name="6184"
+      > </a
+      ><a name="6185" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5311" class="Bound"
+      >f&#8323;</a
+      ><a name="6187"
+      > </a
+      ><a name="6188" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5322" class="Bound"
+      >&#945;&#8323;</a
+      ><a name="6190"
+      > </a
+      ><a name="6191" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5328" class="Bound"
+      >&#946;&#8323;</a
+      ><a name="6193"
+      > </a
+      ><a name="6194" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6013" class="Function"
+      >en&#8323;'</a
+      ><a name="6198"
+      >
+                 </a
+      ><a name="6216" class="Comment"
+      >-------------</a
+      ><a name="6229"
+      >
+        </a
+      ><a name="6238" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6238" class="Function"
+      >cts&#8323;</a
+      ><a name="6242"
+      > </a
+      ><a name="6243" class="Symbol"
+      >:</a
+      ><a name="6244"
+      > </a
+      ><a name="6245" href="UsingFunext.Space.Space.html#1723" class="Function"
+      >continuous</a
+      ><a name="6255"
+      > </a
+      ><a name="6256" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4902" class="Function"
+      >dom-h&#8323;</a
+      ><a name="6262"
+      > </a
+      ><a name="6263" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5066" class="Function"
+      >cod-h&#8323;</a
+      ><a name="6269"
+      > </a
+      ><a name="6270" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#5270" class="Function"
+      >h&#8323;</a
+      ><a name="6272"
+      >
+            </a
+      ><a name="6285" class="Comment"
+      >-- &#8704;(p : &#8322;&#8469; &#8594; U dom-h&#8323;) &#8594; pr&#8321; &#8728; pr&#8321; &#8728; p &#8712; Probe &#915;&#8308; &#8594;</a
+      ><a name="6337"
+      >
+            </a
+      ><a name="6350" class="Comment"
+      >-- pr&#8321; &#8728; pr&#8321; &#8728; pr&#8321; &#8728; h&#8323; &#8728; p &#8712; Probe &#915;&#8308;</a
+      ><a name="6388"
+      >
+        </a
+      ><a name="6397" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6238" class="Function"
+      >cts&#8323;</a
+      ><a name="6401"
+      > </a
+      ><a name="6402" class="Symbol"
+      >_</a
+      ><a name="6403"
+      > </a
+      ><a name="6404" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6404" class="Bound"
+      >pP</a
+      ><a name="6406"
+      > </a
+      ><a name="6407" class="Symbol"
+      >=</a
+      ><a name="6408"
+      > </a
+      ><a name="6409" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6404" class="Bound"
+      >pP</a
+      ><a name="6411"
+      >
+
+      </a
+      ><a name="6419" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6419" class="Function"
+      >cts&#8322;</a
+      ><a name="6423"
+      > </a
+      ><a name="6424" class="Symbol"
+      >:</a
+      ><a name="6425"
+      > </a
+      ><a name="6426" href="UsingFunext.Space.Space.html#1723" class="Function"
+      >continuous</a
+      ><a name="6436"
+      > </a
+      ><a name="6437" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4436" class="Function"
+      >dom-h&#8322;</a
+      ><a name="6443"
+      > </a
+      ><a name="6444" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4571" class="Function"
+      >cod-h&#8322;</a
+      ><a name="6450"
+      > </a
+      ><a name="6451" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4756" class="Function"
+      >h&#8322;</a
+      ><a name="6453"
+      >
+          </a
+      ><a name="6464" class="Comment"
+      >-- &#8704;(p : &#8322;&#8469; &#8594; U dom-h&#8322;) &#8594; pr&#8321; &#8728; p &#8712; Probe &#915;&#8308; &#8594; pr&#8321; &#8728; h&#8322; &#8728; p &#8712; Probe dom&#10214;u&#8323;&#10215;</a
+      ><a name="6539"
+      >
+      </a
+      ><a name="6546" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6419" class="Function"
+      >cts&#8322;</a
+      ><a name="6550"
+      > </a
+      ><a name="6551" class="Symbol"
+      >_</a
+      ><a name="6552"
+      > </a
+      ><a name="6553" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6553" class="Bound"
+      >pP</a
+      ><a name="6555"
+      > </a
+      ><a name="6556" class="Symbol"
+      >=</a
+      ><a name="6557"
+      > </a
+      ><a name="6558" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6553" class="Bound"
+      >pP</a
+      ><a name="6560"
+      > </a
+      ><a name="6561" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="6562"
+      > </a
+      ><a name="6563" class="Symbol"
+      >(&#955;</a
+      ><a name="6565"
+      > </a
+      ><a name="6566" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6566" class="Bound"
+      >_</a
+      ><a name="6567"
+      > </a
+      ><a name="6568" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6568" class="Bound"
+      >_</a
+      ><a name="6569"
+      > </a
+      ><a name="6570" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6570" class="Bound"
+      >_</a
+      ><a name="6571"
+      > </a
+      ><a name="6572" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6572" class="Bound"
+      >qQ</a
+      ><a name="6574"
+      > </a
+      ><a name="6575" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6575" class="Bound"
+      >_</a
+      ><a name="6576"
+      > </a
+      ><a name="6577" class="Symbol"
+      >&#8594;</a
+      ><a name="6578"
+      > </a
+      ><a name="6579" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6572" class="Bound"
+      >qQ</a
+      ><a name="6581" class="Symbol"
+      >)</a
+      ><a name="6582"
+      >
+
+    </a
+      ><a name="6588" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6588" class="Function"
+      >cts&#8321;</a
+      ><a name="6592"
+      > </a
+      ><a name="6593" class="Symbol"
+      >:</a
+      ><a name="6594"
+      > </a
+      ><a name="6595" href="UsingFunext.Space.Space.html#1723" class="Function"
+      >continuous</a
+      ><a name="6605"
+      > </a
+      ><a name="6606" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4000" class="Function"
+      >dom-h&#8321;</a
+      ><a name="6612"
+      > </a
+      ><a name="6613" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4129" class="Function"
+      >cod-h&#8321;</a
+      ><a name="6619"
+      > </a
+      ><a name="6620" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#4308" class="Function"
+      >h&#8321;</a
+      ><a name="6622"
+      >
+        </a
+      ><a name="6631" class="Comment"
+      >-- &#8704;(p : &#8322;&#8469; &#8594; U dom-h&#8321;) &#8594; pr&#8321; &#8728; p &#8712; Probe &#915;&#179; &#8594; pr&#8321; &#8728; h&#8321; &#8728; p &#8712; Probe dom&#10214;u&#8324;&#10215;</a
+      ><a name="6706"
+      >
+    </a
+      ><a name="6711" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6588" class="Function"
+      >cts&#8321;</a
+      ><a name="6715"
+      > </a
+      ><a name="6716" class="Symbol"
+      >_</a
+      ><a name="6717"
+      > </a
+      ><a name="6718" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6718" class="Bound"
+      >pP</a
+      ><a name="6720"
+      > </a
+      ><a name="6721" class="Symbol"
+      >=</a
+      ><a name="6722"
+      > </a
+      ><a name="6723" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6718" class="Bound"
+      >pP</a
+      ><a name="6725"
+      > </a
+      ><a name="6726" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="6727"
+      > </a
+      ><a name="6728" class="Symbol"
+      >(&#955;</a
+      ><a name="6730"
+      > </a
+      ><a name="6731" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6731" class="Bound"
+      >_</a
+      ><a name="6732"
+      > </a
+      ><a name="6733" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6733" class="Bound"
+      >_</a
+      ><a name="6734"
+      > </a
+      ><a name="6735" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6735" class="Bound"
+      >_</a
+      ><a name="6736"
+      > </a
+      ><a name="6737" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6737" class="Bound"
+      >qQ</a
+      ><a name="6739"
+      > </a
+      ><a name="6740" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6740" class="Bound"
+      >_</a
+      ><a name="6741"
+      > </a
+      ><a name="6742" class="Symbol"
+      >&#8594;</a
+      ><a name="6743"
+      > </a
+      ><a name="6744" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6737" class="Bound"
+      >qQ</a
+      ><a name="6746"
+      > </a
+      ><a name="6747" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="6748"
+      > </a
+      ><a name="6749" class="Symbol"
+      >(&#955;</a
+      ><a name="6751"
+      > </a
+      ><a name="6752" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6752" class="Bound"
+      >_</a
+      ><a name="6753"
+      > </a
+      ><a name="6754" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6754" class="Bound"
+      >_</a
+      ><a name="6755"
+      > </a
+      ><a name="6756" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6756" class="Bound"
+      >_</a
+      ><a name="6757"
+      > </a
+      ><a name="6758" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6758" class="Bound"
+      >rR</a
+      ><a name="6760"
+      > </a
+      ><a name="6761" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6761" class="Bound"
+      >_</a
+      ><a name="6762"
+      > </a
+      ><a name="6763" class="Symbol"
+      >&#8594;</a
+      ><a name="6764"
+      > </a
+      ><a name="6765" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6758" class="Bound"
+      >rR</a
+      ><a name="6767" class="Symbol"
+      >))</a
+      ><a name="6769"
+      >
+
+  </a
+      ><a name="6773" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6773" class="Function"
+      >cts</a
+      ><a name="6776"
+      > </a
+      ><a name="6777" class="Symbol"
+      >:</a
+      ><a name="6778"
+      > </a
+      ><a name="6779" href="UsingFunext.Space.Space.html#1723" class="Function"
+      >continuous</a
+      ><a name="6789"
+      > </a
+      ><a name="6790" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3620" class="Function"
+      >dom-h</a
+      ><a name="6795"
+      > </a
+      ><a name="6796" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3751" class="Function"
+      >cod-h</a
+      ><a name="6801"
+      > </a
+      ><a name="6802" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3897" class="Function"
+      >h</a
+      ><a name="6803"
+      >
+     </a
+      ><a name="6809" class="Comment"
+      >-- &#8704;(p : &#8322;&#8469; &#8594; U dom-h) &#8594; pr&#8321; &#8728; p &#8712; Probe ((&#8469;Space &#8658; &#8322;Space) &#8658; &#8469;Space) &#8594;</a
+      ><a name="6880"
+      >
+     </a
+      ><a name="6886" class="Comment"
+      >-- pr&#8321; &#8728; h &#8728; p &#8712; Probe dom&#10214;u&#8325;&#10215;</a
+      ><a name="6916"
+      >
+  </a
+      ><a name="6919" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6773" class="Function"
+      >cts</a
+      ><a name="6922"
+      > </a
+      ><a name="6923" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6923" class="Bound"
+      >p</a
+      ><a name="6924"
+      > </a
+      ><a name="6925" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6925" class="Bound"
+      >pP</a
+      ><a name="6927"
+      > </a
+      ><a name="6928" class="Symbol"
+      >=</a
+      ><a name="6929"
+      > </a
+      ><a name="6930" class="Symbol"
+      >(</a
+      ><a name="6931" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6925" class="Bound"
+      >pP</a
+      ><a name="6933"
+      > </a
+      ><a name="6934" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="6935"
+      > </a
+      ><a name="6936" class="Symbol"
+      >(</a
+      ><a name="6937" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="6940"
+      > </a
+      ><a name="6941" href="UsingFunext.Space.Fan.html#2094" class="Function"
+      >fan</a
+      ><a name="6944"
+      > </a
+      ><a name="6945" class="Symbol"
+      >(</a
+      ><a name="6946" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="6949"
+      > </a
+      ><a name="6950" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="6951"
+      > </a
+      ><a name="6952" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6923" class="Bound"
+      >p</a
+      ><a name="6953" class="Symbol"
+      >)</a
+      ><a name="6954"
+      > </a
+      ><a name="6955" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6925" class="Bound"
+      >pP</a
+      ><a name="6957" class="Symbol"
+      >))</a
+      ><a name="6959"
+      > </a
+      ><a name="6960" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="6961"
+      >
+                 </a
+      ><a name="6979" class="Symbol"
+      >(&#955;</a
+      ><a name="6981"
+      > </a
+      ><a name="6982" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6982" class="Bound"
+      >_</a
+      ><a name="6983"
+      > </a
+      ><a name="6984" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6984" class="Bound"
+      >_</a
+      ><a name="6985"
+      > </a
+      ><a name="6986" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6986" class="Bound"
+      >_</a
+      ><a name="6987"
+      > </a
+      ><a name="6988" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6988" class="Bound"
+      >qQ</a
+      ><a name="6990"
+      > </a
+      ><a name="6991" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6991" class="Bound"
+      >_</a
+      ><a name="6992"
+      > </a
+      ><a name="6993" class="Symbol"
+      >&#8594;</a
+      ><a name="6994"
+      > </a
+      ><a name="6995" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#6988" class="Bound"
+      >qQ</a
+      ><a name="6997"
+      > </a
+      ><a name="6998" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="6999"
+      > </a
+      ><a name="7000" class="Symbol"
+      >(&#955;</a
+      ><a name="7002"
+      > </a
+      ><a name="7003" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#7003" class="Bound"
+      >_</a
+      ><a name="7004"
+      > </a
+      ><a name="7005" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#7005" class="Bound"
+      >_</a
+      ><a name="7006"
+      > </a
+      ><a name="7007" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#7007" class="Bound"
+      >_</a
+      ><a name="7008"
+      > </a
+      ><a name="7009" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#7009" class="Bound"
+      >rR</a
+      ><a name="7011"
+      > </a
+      ><a name="7012" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#7012" class="Bound"
+      >_</a
+      ><a name="7013"
+      > </a
+      ><a name="7014" class="Symbol"
+      >&#8594;</a
+      ><a name="7015"
+      > </a
+      ><a name="7016" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#7009" class="Bound"
+      >rR</a
+      ><a name="7018"
+      > </a
+      ><a name="7019" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="7020"
+      > </a
+      ><a name="7021" class="Symbol"
+      >(&#955;</a
+      ><a name="7023"
+      > </a
+      ><a name="7024" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#7024" class="Bound"
+      >_</a
+      ><a name="7025"
+      > </a
+      ><a name="7026" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#7026" class="Bound"
+      >_</a
+      ><a name="7027"
+      > </a
+      ><a name="7028" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#7028" class="Bound"
+      >_</a
+      ><a name="7029"
+      > </a
+      ><a name="7030" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#7030" class="Bound"
+      >sS</a
+      ><a name="7032"
+      > </a
+      ><a name="7033" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#7033" class="Bound"
+      >_</a
+      ><a name="7034"
+      > </a
+      ><a name="7035" class="Symbol"
+      >&#8594;</a
+      ><a name="7036"
+      > </a
+      ><a name="7037" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#7030" class="Bound"
+      >sS</a
+      ><a name="7039" class="Symbol"
+      >)))</a
+      ><a name="7042"
+      >
+
+\end{code}
+
+</a
+      ><a name="7056" class="Comment"
+      >To validate UC is equivalent to inhabit the space dom&#10214;uc&#10215;.</a
+      ><a name="7114"
+      >
+
+\begin{code}
+
+</a
+      ><a name="7130" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#7130" class="Function"
+      >UC-is-validated</a
+      ><a name="7145"
+      > </a
+      ><a name="7146" class="Symbol"
+      >:</a
+      ><a name="7147"
+      > </a
+      ><a name="7148" class="PrimitiveType"
+      >Set</a
+      ><a name="7151"
+      >
+</a
+      ><a name="7152" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#7130" class="Function"
+      >UC-is-validated</a
+      ><a name="7167"
+      > </a
+      ><a name="7168" class="Symbol"
+      >=</a
+      ><a name="7169"
+      > </a
+      ><a name="7170" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="7171"
+      > </a
+      ><a name="7172" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3345" class="Function"
+      >dom&#10214;uc&#10215;</a
+      ><a name="7179"
+      >
+
+</a
+      ><a name="7181" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#7181" class="Function"
+      >Theorem</a
+      ><a name="7188"
+      > </a
+      ><a name="7189" class="Symbol"
+      >:</a
+      ><a name="7190"
+      > </a
+      ><a name="7191" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#7130" class="Function"
+      >UC-is-validated</a
+      ><a name="7206"
+      >
+</a
+      ><a name="7207" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#7181" class="Function"
+      >Theorem</a
+      ><a name="7214"
+      > </a
+      ><a name="7215" class="Symbol"
+      >=</a
+      ><a name="7216"
+      > </a
+      ><a name="7217" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#3562" class="Function"
+      >uc</a
+      ><a name="7219"
+      >
+
+\end{code}
+</a
+      ></pre
+    ></body
+  ></html
+>

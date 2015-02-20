@@ -1,0 +1,3039 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >AddingProbeAxiom.Space.Coverage</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Comment"
+      >Chuangjie Xu 2013 (updated in February 2015)</a
+      ><a name="45"
+      >
+
+\begin{code}
+
+</a
+      ><a name="61" class="Symbol"
+      >{-#</a
+      ><a name="64"
+      > </a
+      ><a name="65" class="Keyword"
+      >OPTIONS</a
+      ><a name="72"
+      > --without-K </a
+      ><a name="85" class="Symbol"
+      >#-}</a
+      ><a name="88"
+      >
+
+</a
+      ><a name="90" class="Keyword"
+      >module</a
+      ><a name="96"
+      > </a
+      ><a name="97" href="AddingProbeAxiom.Space.Coverage.html#1" class="Module"
+      >AddingProbeAxiom.Space.Coverage</a
+      ><a name="128"
+      > </a
+      ><a name="129" class="Keyword"
+      >where</a
+      ><a name="134"
+      >
+
+</a
+      ><a name="136" class="Keyword"
+      >open</a
+      ><a name="140"
+      > </a
+      ><a name="141" class="Keyword"
+      >import</a
+      ><a name="147"
+      > </a
+      ><a name="148" href="Preliminaries.SetsAndFunctions.html#1" class="Module"
+      >Preliminaries.SetsAndFunctions</a
+      ><a name="178"
+      > </a
+      ><a name="179" class="Keyword"
+      >hiding</a
+      ><a name="185"
+      > </a
+      ><a name="186" class="Symbol"
+      >(</a
+      ><a name="187"
+      >_+_</a
+      ><a name="190" class="Symbol"
+      >)</a
+      ><a name="191"
+      >
+</a
+      ><a name="192" class="Keyword"
+      >open</a
+      ><a name="196"
+      > </a
+      ><a name="197" class="Keyword"
+      >import</a
+      ><a name="203"
+      > </a
+      ><a name="204" href="Preliminaries.NaturalNumber.html#1" class="Module"
+      >Preliminaries.NaturalNumber</a
+      ><a name="231"
+      >
+</a
+      ><a name="232" class="Keyword"
+      >open</a
+      ><a name="236"
+      > </a
+      ><a name="237" class="Keyword"
+      >import</a
+      ><a name="243"
+      > </a
+      ><a name="244" href="Preliminaries.Sequence.html#1" class="Module"
+      >Preliminaries.Sequence</a
+      ><a name="266"
+      >
+</a
+      ><a name="267" class="Keyword"
+      >open</a
+      ><a name="271"
+      > </a
+      ><a name="272" class="Keyword"
+      >import</a
+      ><a name="278"
+      > </a
+      ><a name="279" href="Continuity.UniformContinuity.html#1" class="Module"
+      >Continuity.UniformContinuity</a
+      ><a name="307"
+      >
+</a
+      ><a name="308" class="Keyword"
+      >open</a
+      ><a name="312"
+      > </a
+      ><a name="313" class="Keyword"
+      >import</a
+      ><a name="319"
+      > </a
+      ><a name="320" href="UsingFunext.Funext.html#1" class="Module"
+      >UsingFunext.Funext</a
+      ><a name="338"
+      >
+
+\end{code}
+
+</a
+      ><a name="352" class="Comment"
+      >The monoid of uniformly continuous &#8322;&#8469; &#8594; &#8322;&#8469;:</a
+      ><a name="395"
+      >
+
+\begin{code}
+
+</a
+      ><a name="411" href="AddingProbeAxiom.Space.Coverage.html#411" class="Function"
+      >C</a
+      ><a name="412"
+      > </a
+      ><a name="413" class="Symbol"
+      >:</a
+      ><a name="414"
+      > </a
+      ><a name="415" href="Preliminaries.SetsAndFunctions.html#531" class="Function"
+      >Subset</a
+      ><a name="421" class="Symbol"
+      >(</a
+      ><a name="422" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="424"
+      > </a
+      ><a name="425" class="Symbol"
+      >&#8594;</a
+      ><a name="426"
+      > </a
+      ><a name="427" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="429" class="Symbol"
+      >)</a
+      ><a name="430"
+      >
+</a
+      ><a name="431" href="AddingProbeAxiom.Space.Coverage.html#411" class="Function"
+      >C</a
+      ><a name="432"
+      > </a
+      ><a name="433" class="Symbol"
+      >=</a
+      ><a name="434"
+      > </a
+      ><a name="435" href="Continuity.UniformContinuity.html#592" class="Function"
+      >uniformly-continuous-&#8322;&#8469;</a
+      ><a name="458"
+      >
+
+\end{code}
+
+</a
+      ><a name="472" class="Comment"
+      >The coverage axiom amounts to uniform continuity of endo-functions of</a
+      ><a name="541"
+      >
+</a
+      ><a name="542" class="Comment"
+      >the Cantor space in the following sense.</a
+      ><a name="582"
+      >
+
+\begin{code}
+
+</a
+      ><a name="598" href="AddingProbeAxiom.Space.Coverage.html#598" class="Function"
+      >Theorem[Coverage-axiom]</a
+      ><a name="621"
+      > </a
+      ><a name="622" class="Symbol"
+      >:</a
+      ><a name="623"
+      > </a
+      ><a name="624" class="Symbol"
+      >&#8704;(</a
+      ><a name="626" href="AddingProbeAxiom.Space.Coverage.html#626" class="Bound"
+      >m</a
+      ><a name="627"
+      > </a
+      ><a name="628" class="Symbol"
+      >:</a
+      ><a name="629"
+      > </a
+      ><a name="630" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="631" class="Symbol"
+      >)</a
+      ><a name="632"
+      > </a
+      ><a name="633" class="Symbol"
+      >&#8594;</a
+      ><a name="634"
+      > </a
+      ><a name="635" class="Symbol"
+      >&#8704;(</a
+      ><a name="637" href="AddingProbeAxiom.Space.Coverage.html#637" class="Bound"
+      >t</a
+      ><a name="638"
+      > </a
+      ><a name="639" class="Symbol"
+      >:</a
+      ><a name="640"
+      > </a
+      ><a name="641" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="643"
+      > </a
+      ><a name="644" class="Symbol"
+      >&#8594;</a
+      ><a name="645"
+      > </a
+      ><a name="646" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="648" class="Symbol"
+      >)</a
+      ><a name="649"
+      > </a
+      ><a name="650" class="Symbol"
+      >&#8594;</a
+      ><a name="651"
+      > </a
+      ><a name="652" href="AddingProbeAxiom.Space.Coverage.html#637" class="Bound"
+      >t</a
+      ><a name="653"
+      > </a
+      ><a name="654" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="655"
+      > </a
+      ><a name="656" href="AddingProbeAxiom.Space.Coverage.html#411" class="Function"
+      >C</a
+      ><a name="657"
+      > </a
+      ><a name="658" class="Symbol"
+      >&#8594;</a
+      ><a name="659"
+      >
+                   </a
+      ><a name="679" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="680"
+      > </a
+      ><a name="681" class="Symbol"
+      >\(</a
+      ><a name="683" href="AddingProbeAxiom.Space.Coverage.html#683" class="Bound"
+      >n</a
+      ><a name="684"
+      > </a
+      ><a name="685" class="Symbol"
+      >:</a
+      ><a name="686"
+      > </a
+      ><a name="687" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="688" class="Symbol"
+      >)</a
+      ><a name="689"
+      > </a
+      ><a name="690" class="Symbol"
+      >&#8594;</a
+      ><a name="691"
+      > </a
+      ><a name="692" class="Symbol"
+      >&#8704;(</a
+      ><a name="694" href="AddingProbeAxiom.Space.Coverage.html#694" class="Bound"
+      >s</a
+      ><a name="695"
+      > </a
+      ><a name="696" class="Symbol"
+      >:</a
+      ><a name="697"
+      > </a
+      ><a name="698" href="Preliminaries.Sequence.html#507" class="Datatype"
+      >&#8322;Fin</a
+      ><a name="702"
+      > </a
+      ><a name="703" href="AddingProbeAxiom.Space.Coverage.html#683" class="Bound"
+      >n</a
+      ><a name="704" class="Symbol"
+      >)</a
+      ><a name="705"
+      > </a
+      ><a name="706" class="Symbol"
+      >&#8594;</a
+      ><a name="707"
+      >
+                    </a
+      ><a name="728" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="729"
+      > </a
+      ><a name="730" class="Symbol"
+      >\(</a
+      ><a name="732" href="AddingProbeAxiom.Space.Coverage.html#732" class="Bound"
+      >s'</a
+      ><a name="734"
+      > </a
+      ><a name="735" class="Symbol"
+      >:</a
+      ><a name="736"
+      > </a
+      ><a name="737" href="Preliminaries.Sequence.html#507" class="Datatype"
+      >&#8322;Fin</a
+      ><a name="741"
+      > </a
+      ><a name="742" href="AddingProbeAxiom.Space.Coverage.html#626" class="Bound"
+      >m</a
+      ><a name="743" class="Symbol"
+      >)</a
+      ><a name="744"
+      > </a
+      ><a name="745" class="Symbol"
+      >&#8594;</a
+      ><a name="746"
+      > </a
+      ><a name="747" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="748"
+      > </a
+      ><a name="749" class="Symbol"
+      >\(</a
+      ><a name="751" href="AddingProbeAxiom.Space.Coverage.html#751" class="Bound"
+      >t'</a
+      ><a name="753"
+      > </a
+      ><a name="754" class="Symbol"
+      >:</a
+      ><a name="755"
+      > </a
+      ><a name="756" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="758"
+      > </a
+      ><a name="759" class="Symbol"
+      >&#8594;</a
+      ><a name="760"
+      > </a
+      ><a name="761" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="763" class="Symbol"
+      >)</a
+      ><a name="764"
+      > </a
+      ><a name="765" class="Symbol"
+      >&#8594;</a
+      ><a name="766"
+      >
+                     </a
+      ><a name="788" class="Symbol"
+      >(</a
+      ><a name="789" href="AddingProbeAxiom.Space.Coverage.html#751" class="Bound"
+      >t'</a
+      ><a name="791"
+      > </a
+      ><a name="792" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="793"
+      > </a
+      ><a name="794" href="AddingProbeAxiom.Space.Coverage.html#411" class="Function"
+      >C</a
+      ><a name="795" class="Symbol"
+      >)</a
+      ><a name="796"
+      > </a
+      ><a name="797" href="Preliminaries.SetsAndFunctions.html#982" class="Function Operator"
+      >&#215;</a
+      ><a name="798"
+      > </a
+      ><a name="799" class="Symbol"
+      >(&#8704;</a
+      ><a name="801"
+      > </a
+      ><a name="802" href="AddingProbeAxiom.Space.Coverage.html#802" class="Bound"
+      >&#945;</a
+      ><a name="803"
+      > </a
+      ><a name="804" class="Symbol"
+      >&#8594;</a
+      ><a name="805"
+      > </a
+      ><a name="806" href="AddingProbeAxiom.Space.Coverage.html#637" class="Bound"
+      >t</a
+      ><a name="807" class="Symbol"
+      >(</a
+      ><a name="808" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="812"
+      > </a
+      ><a name="813" href="AddingProbeAxiom.Space.Coverage.html#694" class="Bound"
+      >s</a
+      ><a name="814"
+      > </a
+      ><a name="815" href="AddingProbeAxiom.Space.Coverage.html#802" class="Bound"
+      >&#945;</a
+      ><a name="816" class="Symbol"
+      >)</a
+      ><a name="817"
+      > </a
+      ><a name="818" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="819"
+      > </a
+      ><a name="820" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="824"
+      > </a
+      ><a name="825" href="AddingProbeAxiom.Space.Coverage.html#732" class="Bound"
+      >s'</a
+      ><a name="827"
+      > </a
+      ><a name="828" class="Symbol"
+      >(</a
+      ><a name="829" href="AddingProbeAxiom.Space.Coverage.html#751" class="Bound"
+      >t'</a
+      ><a name="831"
+      > </a
+      ><a name="832" href="AddingProbeAxiom.Space.Coverage.html#802" class="Bound"
+      >&#945;</a
+      ><a name="833" class="Symbol"
+      >))</a
+      ><a name="835"
+      >
+</a
+      ><a name="836" href="AddingProbeAxiom.Space.Coverage.html#598" class="Function"
+      >Theorem[Coverage-axiom]</a
+      ><a name="859"
+      > </a
+      ><a name="860" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="861"
+      > </a
+      ><a name="862" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="863"
+      > </a
+      ><a name="864" href="AddingProbeAxiom.Space.Coverage.html#864" class="Bound"
+      >tC</a
+      ><a name="866"
+      > </a
+      ><a name="867" class="Symbol"
+      >=</a
+      ><a name="868"
+      > </a
+      ><a name="869" href="AddingProbeAxiom.Space.Coverage.html#886" class="Function"
+      >n</a
+      ><a name="870"
+      > </a
+      ><a name="871" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="872"
+      > </a
+      ><a name="873" href="AddingProbeAxiom.Space.Coverage.html#911" class="Function"
+      >prf</a
+      ><a name="876"
+      >
+ </a
+      ><a name="878" class="Keyword"
+      >where</a
+      ><a name="883"
+      >
+  </a
+      ><a name="886" href="AddingProbeAxiom.Space.Coverage.html#886" class="Function"
+      >n</a
+      ><a name="887"
+      > </a
+      ><a name="888" class="Symbol"
+      >:</a
+      ><a name="889"
+      > </a
+      ><a name="890" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="891"
+      >
+  </a
+      ><a name="894" href="AddingProbeAxiom.Space.Coverage.html#886" class="Function"
+      >n</a
+      ><a name="895"
+      > </a
+      ><a name="896" class="Symbol"
+      >=</a
+      ><a name="897"
+      > </a
+      ><a name="898" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="901"
+      > </a
+      ><a name="902" class="Symbol"
+      >(</a
+      ><a name="903" href="AddingProbeAxiom.Space.Coverage.html#864" class="Bound"
+      >tC</a
+      ><a name="905"
+      > </a
+      ><a name="906" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="907" class="Symbol"
+      >)</a
+      ><a name="908"
+      >
+  </a
+      ><a name="911" href="AddingProbeAxiom.Space.Coverage.html#911" class="Function"
+      >prf</a
+      ><a name="914"
+      > </a
+      ><a name="915" class="Symbol"
+      >:</a
+      ><a name="916"
+      > </a
+      ><a name="917" class="Symbol"
+      >&#8704;(</a
+      ><a name="919" href="AddingProbeAxiom.Space.Coverage.html#919" class="Bound"
+      >s</a
+      ><a name="920"
+      > </a
+      ><a name="921" class="Symbol"
+      >:</a
+      ><a name="922"
+      > </a
+      ><a name="923" href="Preliminaries.Sequence.html#507" class="Datatype"
+      >&#8322;Fin</a
+      ><a name="927"
+      > </a
+      ><a name="928" href="AddingProbeAxiom.Space.Coverage.html#886" class="Function"
+      >n</a
+      ><a name="929" class="Symbol"
+      >)</a
+      ><a name="930"
+      > </a
+      ><a name="931" class="Symbol"
+      >&#8594;</a
+      ><a name="932"
+      > </a
+      ><a name="933" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="934"
+      > </a
+      ><a name="935" class="Symbol"
+      >\(</a
+      ><a name="937" href="AddingProbeAxiom.Space.Coverage.html#937" class="Bound"
+      >s'</a
+      ><a name="939"
+      > </a
+      ><a name="940" class="Symbol"
+      >:</a
+      ><a name="941"
+      > </a
+      ><a name="942" href="Preliminaries.Sequence.html#507" class="Datatype"
+      >&#8322;Fin</a
+      ><a name="946"
+      > </a
+      ><a name="947" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="948" class="Symbol"
+      >)</a
+      ><a name="949"
+      > </a
+      ><a name="950" class="Symbol"
+      >&#8594;</a
+      ><a name="951"
+      > </a
+      ><a name="952" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="953"
+      > </a
+      ><a name="954" class="Symbol"
+      >\(</a
+      ><a name="956" href="AddingProbeAxiom.Space.Coverage.html#956" class="Bound"
+      >t'</a
+      ><a name="958"
+      > </a
+      ><a name="959" class="Symbol"
+      >:</a
+      ><a name="960"
+      > </a
+      ><a name="961" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="963"
+      > </a
+      ><a name="964" class="Symbol"
+      >&#8594;</a
+      ><a name="965"
+      > </a
+      ><a name="966" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="968" class="Symbol"
+      >)</a
+      ><a name="969"
+      > </a
+      ><a name="970" class="Symbol"
+      >&#8594;</a
+      ><a name="971"
+      >
+         </a
+      ><a name="981" class="Symbol"
+      >(</a
+      ><a name="982" href="AddingProbeAxiom.Space.Coverage.html#956" class="Bound"
+      >t'</a
+      ><a name="984"
+      > </a
+      ><a name="985" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="986"
+      > </a
+      ><a name="987" href="AddingProbeAxiom.Space.Coverage.html#411" class="Function"
+      >C</a
+      ><a name="988" class="Symbol"
+      >)</a
+      ><a name="989"
+      > </a
+      ><a name="990" href="Preliminaries.SetsAndFunctions.html#982" class="Function Operator"
+      >&#215;</a
+      ><a name="991"
+      > </a
+      ><a name="992" class="Symbol"
+      >(&#8704;</a
+      ><a name="994"
+      > </a
+      ><a name="995" href="AddingProbeAxiom.Space.Coverage.html#995" class="Bound"
+      >&#945;</a
+      ><a name="996"
+      > </a
+      ><a name="997" class="Symbol"
+      >&#8594;</a
+      ><a name="998"
+      > </a
+      ><a name="999" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="1000" class="Symbol"
+      >(</a
+      ><a name="1001" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1005"
+      > </a
+      ><a name="1006" href="AddingProbeAxiom.Space.Coverage.html#919" class="Bound"
+      >s</a
+      ><a name="1007"
+      > </a
+      ><a name="1008" href="AddingProbeAxiom.Space.Coverage.html#995" class="Bound"
+      >&#945;</a
+      ><a name="1009" class="Symbol"
+      >)</a
+      ><a name="1010"
+      > </a
+      ><a name="1011" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1012"
+      > </a
+      ><a name="1013" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1017"
+      > </a
+      ><a name="1018" href="AddingProbeAxiom.Space.Coverage.html#937" class="Bound"
+      >s'</a
+      ><a name="1020"
+      > </a
+      ><a name="1021" class="Symbol"
+      >(</a
+      ><a name="1022" href="AddingProbeAxiom.Space.Coverage.html#956" class="Bound"
+      >t'</a
+      ><a name="1024"
+      > </a
+      ><a name="1025" href="AddingProbeAxiom.Space.Coverage.html#995" class="Bound"
+      >&#945;</a
+      ><a name="1026" class="Symbol"
+      >))</a
+      ><a name="1028"
+      >
+  </a
+      ><a name="1031" href="AddingProbeAxiom.Space.Coverage.html#911" class="Function"
+      >prf</a
+      ><a name="1034"
+      > </a
+      ><a name="1035" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="1036"
+      > </a
+      ><a name="1037" class="Symbol"
+      >=</a
+      ><a name="1038"
+      > </a
+      ><a name="1039" href="AddingProbeAxiom.Space.Coverage.html#1071" class="Function"
+      >s'</a
+      ><a name="1041"
+      > </a
+      ><a name="1042" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1043"
+      >  </a
+      ><a name="1045" href="AddingProbeAxiom.Space.Coverage.html#1119" class="Function"
+      >t'</a
+      ><a name="1047"
+      > </a
+      ><a name="1048" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1049"
+      > </a
+      ><a name="1050" href="AddingProbeAxiom.Space.Coverage.html#1169" class="Function"
+      >t'C</a
+      ><a name="1053"
+      > </a
+      ><a name="1054" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1055"
+      > </a
+      ><a name="1056" href="AddingProbeAxiom.Space.Coverage.html#2995" class="Function"
+      >e</a
+      ><a name="1057"
+      >
+   </a
+      ><a name="1061" class="Keyword"
+      >where</a
+      ><a name="1066"
+      >
+    </a
+      ><a name="1071" href="AddingProbeAxiom.Space.Coverage.html#1071" class="Function"
+      >s'</a
+      ><a name="1073"
+      > </a
+      ><a name="1074" class="Symbol"
+      >:</a
+      ><a name="1075"
+      > </a
+      ><a name="1076" href="Preliminaries.Sequence.html#507" class="Datatype"
+      >&#8322;Fin</a
+      ><a name="1080"
+      > </a
+      ><a name="1081" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="1082"
+      >
+    </a
+      ><a name="1087" href="AddingProbeAxiom.Space.Coverage.html#1071" class="Function"
+      >s'</a
+      ><a name="1089"
+      > </a
+      ><a name="1090" class="Symbol"
+      >=</a
+      ><a name="1091"
+      > </a
+      ><a name="1092" href="Preliminaries.Sequence.html#1121" class="Function"
+      >take</a
+      ><a name="1096"
+      > </a
+      ><a name="1097" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="1098"
+      > </a
+      ><a name="1099" class="Symbol"
+      >(</a
+      ><a name="1100" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="1101"
+      > </a
+      ><a name="1102" class="Symbol"
+      >(</a
+      ><a name="1103" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1107"
+      > </a
+      ><a name="1108" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="1109"
+      > </a
+      ><a name="1110" href="Preliminaries.Sequence.html#384" class="Function"
+      >0&#772;</a
+      ><a name="1112" class="Symbol"
+      >))</a
+      ><a name="1114"
+      >
+    </a
+      ><a name="1119" href="AddingProbeAxiom.Space.Coverage.html#1119" class="Function"
+      >t'</a
+      ><a name="1121"
+      > </a
+      ><a name="1122" class="Symbol"
+      >:</a
+      ><a name="1123"
+      > </a
+      ><a name="1124" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1126"
+      > </a
+      ><a name="1127" class="Symbol"
+      >&#8594;</a
+      ><a name="1128"
+      > </a
+      ><a name="1129" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1131"
+      >
+    </a
+      ><a name="1136" href="AddingProbeAxiom.Space.Coverage.html#1119" class="Function"
+      >t'</a
+      ><a name="1138"
+      > </a
+      ><a name="1139" href="AddingProbeAxiom.Space.Coverage.html#1139" class="Bound"
+      >&#945;</a
+      ><a name="1140"
+      > </a
+      ><a name="1141" class="Symbol"
+      >=</a
+      ><a name="1142"
+      > </a
+      ><a name="1143" href="Preliminaries.Sequence.html#1207" class="Function"
+      >drop</a
+      ><a name="1147"
+      > </a
+      ><a name="1148" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="1149"
+      > </a
+      ><a name="1150" class="Symbol"
+      >(</a
+      ><a name="1151" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="1152"
+      > </a
+      ><a name="1153" class="Symbol"
+      >(</a
+      ><a name="1154" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1158"
+      > </a
+      ><a name="1159" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="1160"
+      > </a
+      ><a name="1161" href="AddingProbeAxiom.Space.Coverage.html#1139" class="Bound"
+      >&#945;</a
+      ><a name="1162" class="Symbol"
+      >))</a
+      ><a name="1164"
+      >
+    </a
+      ><a name="1169" href="AddingProbeAxiom.Space.Coverage.html#1169" class="Function"
+      >t'C</a
+      ><a name="1172"
+      > </a
+      ><a name="1173" class="Symbol"
+      >:</a
+      ><a name="1174"
+      > </a
+      ><a name="1175" href="AddingProbeAxiom.Space.Coverage.html#1119" class="Function"
+      >t'</a
+      ><a name="1177"
+      > </a
+      ><a name="1178" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1179"
+      > </a
+      ><a name="1180" href="AddingProbeAxiom.Space.Coverage.html#411" class="Function"
+      >C</a
+      ><a name="1181"
+      >
+    </a
+      ><a name="1186" href="AddingProbeAxiom.Space.Coverage.html#1169" class="Function"
+      >t'C</a
+      ><a name="1189"
+      > </a
+      ><a name="1190" href="AddingProbeAxiom.Space.Coverage.html#1190" class="Bound"
+      >k</a
+      ><a name="1191"
+      > </a
+      ><a name="1192" class="Symbol"
+      >=</a
+      ><a name="1193"
+      > </a
+      ><a name="1194" href="Continuity.UniformContinuity.html#8709" class="Function"
+      >Lemma[LM-&#8322;&#8469;-least-modulus]</a
+      ><a name="1220"
+      > </a
+      ><a name="1221" href="AddingProbeAxiom.Space.Coverage.html#1119" class="Function"
+      >t'</a
+      ><a name="1223"
+      > </a
+      ><a name="1224" href="AddingProbeAxiom.Space.Coverage.html#1358" class="Function"
+      >l</a
+      ><a name="1225"
+      > </a
+      ><a name="1226" href="AddingProbeAxiom.Space.Coverage.html#2314" class="Function"
+      >prt'</a
+      ><a name="1230"
+      >
+     </a
+      ><a name="1236" class="Keyword"
+      >where</a
+      ><a name="1241"
+      >
+      </a
+      ><a name="1248" href="AddingProbeAxiom.Space.Coverage.html#1248" class="Function"
+      >ucts</a
+      ><a name="1252"
+      > </a
+      ><a name="1253" class="Symbol"
+      >:</a
+      ><a name="1254"
+      > </a
+      ><a name="1255" href="Continuity.UniformContinuity.html#592" class="Function"
+      >uniformly-continuous-&#8322;&#8469;</a
+      ><a name="1278"
+      > </a
+      ><a name="1279" class="Symbol"
+      >(</a
+      ><a name="1280" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1283"
+      > </a
+      ><a name="1284" class="Symbol"
+      >(</a
+      ><a name="1285" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1289"
+      > </a
+      ><a name="1290" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="1291" class="Symbol"
+      >))</a
+      ><a name="1293"
+      >
+      </a
+      ><a name="1300" href="AddingProbeAxiom.Space.Coverage.html#1248" class="Function"
+      >ucts</a
+      ><a name="1304"
+      > </a
+      ><a name="1305" class="Symbol"
+      >=</a
+      ><a name="1306"
+      > </a
+      ><a name="1307" href="Continuity.UniformContinuity.html#10300" class="Function"
+      >Lemma[&#8728;-UC]</a
+      ><a name="1318"
+      > </a
+      ><a name="1319" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="1320"
+      > </a
+      ><a name="1321" href="AddingProbeAxiom.Space.Coverage.html#864" class="Bound"
+      >tC</a
+      ><a name="1323"
+      > </a
+      ><a name="1324" class="Symbol"
+      >(</a
+      ><a name="1325" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1329"
+      > </a
+      ><a name="1330" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="1331" class="Symbol"
+      >)</a
+      ><a name="1332"
+      > </a
+      ><a name="1333" class="Symbol"
+      >(</a
+      ><a name="1334" href="Continuity.UniformContinuity.html#10882" class="Function"
+      >Lemma[cons-UC]</a
+      ><a name="1348"
+      > </a
+      ><a name="1349" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="1350" class="Symbol"
+      >)</a
+      ><a name="1351"
+      >
+      </a
+      ><a name="1358" href="AddingProbeAxiom.Space.Coverage.html#1358" class="Function"
+      >l</a
+      ><a name="1359"
+      > </a
+      ><a name="1360" class="Symbol"
+      >:</a
+      ><a name="1361"
+      > </a
+      ><a name="1362" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1363"
+      >
+      </a
+      ><a name="1370" href="AddingProbeAxiom.Space.Coverage.html#1358" class="Function"
+      >l</a
+      ><a name="1371"
+      > </a
+      ><a name="1372" class="Symbol"
+      >=</a
+      ><a name="1373"
+      > </a
+      ><a name="1374" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1377"
+      > </a
+      ><a name="1378" class="Symbol"
+      >(</a
+      ><a name="1379" href="AddingProbeAxiom.Space.Coverage.html#1248" class="Function"
+      >ucts</a
+      ><a name="1383"
+      > </a
+      ><a name="1384" class="Symbol"
+      >(</a
+      ><a name="1385" href="AddingProbeAxiom.Space.Coverage.html#1190" class="Bound"
+      >k</a
+      ><a name="1386"
+      > </a
+      ><a name="1387" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="1388"
+      > </a
+      ><a name="1389" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="1390" class="Symbol"
+      >))</a
+      ><a name="1392"
+      >
+      </a
+      ><a name="1399" href="AddingProbeAxiom.Space.Coverage.html#1399" class="Function"
+      >prts</a
+      ><a name="1403"
+      > </a
+      ><a name="1404" class="Symbol"
+      >:</a
+      ><a name="1405"
+      > </a
+      ><a name="1406" class="Symbol"
+      >&#8704;(</a
+      ><a name="1408" href="AddingProbeAxiom.Space.Coverage.html#1408" class="Bound"
+      >&#945;</a
+      ><a name="1409"
+      > </a
+      ><a name="1410" href="AddingProbeAxiom.Space.Coverage.html#1410" class="Bound"
+      >&#946;</a
+      ><a name="1411"
+      > </a
+      ><a name="1412" class="Symbol"
+      >:</a
+      ><a name="1413"
+      > </a
+      ><a name="1414" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1416" class="Symbol"
+      >)</a
+      ><a name="1417"
+      > </a
+      ><a name="1418" class="Symbol"
+      >&#8594;</a
+      ><a name="1419"
+      > </a
+      ><a name="1420" href="AddingProbeAxiom.Space.Coverage.html#1408" class="Bound"
+      >&#945;</a
+      ><a name="1421"
+      > </a
+      ><a name="1422" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="1424"
+      > </a
+      ><a name="1425" href="AddingProbeAxiom.Space.Coverage.html#1358" class="Function"
+      >l</a
+      ><a name="1426"
+      > </a
+      ><a name="1427" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="1428"
+      > </a
+      ><a name="1429" href="AddingProbeAxiom.Space.Coverage.html#1410" class="Bound"
+      >&#946;</a
+      ><a name="1430"
+      > </a
+      ><a name="1431" class="Symbol"
+      >&#8594;</a
+      ><a name="1432"
+      > </a
+      ><a name="1433" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="1434"
+      > </a
+      ><a name="1435" class="Symbol"
+      >(</a
+      ><a name="1436" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1440"
+      > </a
+      ><a name="1441" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="1442"
+      > </a
+      ><a name="1443" href="AddingProbeAxiom.Space.Coverage.html#1408" class="Bound"
+      >&#945;</a
+      ><a name="1444" class="Symbol"
+      >)</a
+      ><a name="1445"
+      > </a
+      ><a name="1446" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="1448"
+      > </a
+      ><a name="1449" href="AddingProbeAxiom.Space.Coverage.html#1190" class="Bound"
+      >k</a
+      ><a name="1450"
+      > </a
+      ><a name="1451" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="1452"
+      > </a
+      ><a name="1453" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="1454"
+      > </a
+      ><a name="1455" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="1456"
+      > </a
+      ><a name="1457" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="1458"
+      > </a
+      ><a name="1459" class="Symbol"
+      >(</a
+      ><a name="1460" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1464"
+      > </a
+      ><a name="1465" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="1466"
+      > </a
+      ><a name="1467" href="AddingProbeAxiom.Space.Coverage.html#1410" class="Bound"
+      >&#946;</a
+      ><a name="1468" class="Symbol"
+      >)</a
+      ><a name="1469"
+      >
+      </a
+      ><a name="1476" href="AddingProbeAxiom.Space.Coverage.html#1399" class="Function"
+      >prts</a
+      ><a name="1480"
+      > </a
+      ><a name="1481" class="Symbol"
+      >=</a
+      ><a name="1482"
+      > </a
+      ><a name="1483" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1486"
+      > </a
+      ><a name="1487" class="Symbol"
+      >(</a
+      ><a name="1488" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="1491"
+      > </a
+      ><a name="1492" class="Symbol"
+      >(</a
+      ><a name="1493" href="AddingProbeAxiom.Space.Coverage.html#1248" class="Function"
+      >ucts</a
+      ><a name="1497"
+      > </a
+      ><a name="1498" class="Symbol"
+      >(</a
+      ><a name="1499" href="AddingProbeAxiom.Space.Coverage.html#1190" class="Bound"
+      >k</a
+      ><a name="1500"
+      > </a
+      ><a name="1501" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="1502"
+      > </a
+      ><a name="1503" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="1504" class="Symbol"
+      >)))</a
+      ><a name="1507"
+      >
+      </a
+      ><a name="1514" href="AddingProbeAxiom.Space.Coverage.html#1514" class="Function"
+      >eq</a
+      ><a name="1516"
+      > </a
+      ><a name="1517" class="Symbol"
+      >:</a
+      ><a name="1518"
+      > </a
+      ><a name="1519" class="Symbol"
+      >&#8704;(</a
+      ><a name="1521" href="AddingProbeAxiom.Space.Coverage.html#1521" class="Bound"
+      >&#945;</a
+      ><a name="1522"
+      > </a
+      ><a name="1523" class="Symbol"
+      >:</a
+      ><a name="1524"
+      > </a
+      ><a name="1525" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1527" class="Symbol"
+      >)</a
+      ><a name="1528"
+      > </a
+      ><a name="1529" class="Symbol"
+      >&#8594;</a
+      ><a name="1530"
+      > </a
+      ><a name="1531" class="Symbol"
+      >&#8704;(</a
+      ><a name="1533" href="AddingProbeAxiom.Space.Coverage.html#1533" class="Bound"
+      >i</a
+      ><a name="1534"
+      > </a
+      ><a name="1535" class="Symbol"
+      >:</a
+      ><a name="1536"
+      > </a
+      ><a name="1537" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1538" class="Symbol"
+      >)</a
+      ><a name="1539"
+      > </a
+      ><a name="1540" class="Symbol"
+      >&#8594;</a
+      ><a name="1541"
+      > </a
+      ><a name="1542" href="AddingProbeAxiom.Space.Coverage.html#1119" class="Function"
+      >t'</a
+      ><a name="1544"
+      > </a
+      ><a name="1545" href="AddingProbeAxiom.Space.Coverage.html#1521" class="Bound"
+      >&#945;</a
+      ><a name="1546"
+      > </a
+      ><a name="1547" href="AddingProbeAxiom.Space.Coverage.html#1533" class="Bound"
+      >i</a
+      ><a name="1548"
+      > </a
+      ><a name="1549" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1550"
+      > </a
+      ><a name="1551" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="1552"
+      > </a
+      ><a name="1553" class="Symbol"
+      >(</a
+      ><a name="1554" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1558"
+      > </a
+      ><a name="1559" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="1560"
+      > </a
+      ><a name="1561" href="AddingProbeAxiom.Space.Coverage.html#1521" class="Bound"
+      >&#945;</a
+      ><a name="1562" class="Symbol"
+      >)</a
+      ><a name="1563"
+      > </a
+      ><a name="1564" class="Symbol"
+      >(</a
+      ><a name="1565" href="AddingProbeAxiom.Space.Coverage.html#1533" class="Bound"
+      >i</a
+      ><a name="1566"
+      > </a
+      ><a name="1567" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="1568"
+      > </a
+      ><a name="1569" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="1570" class="Symbol"
+      >)</a
+      ><a name="1571"
+      >
+      </a
+      ><a name="1578" href="AddingProbeAxiom.Space.Coverage.html#1514" class="Function"
+      >eq</a
+      ><a name="1580"
+      > </a
+      ><a name="1581" href="AddingProbeAxiom.Space.Coverage.html#1581" class="Bound"
+      >&#945;</a
+      ><a name="1582"
+      > </a
+      ><a name="1583" href="AddingProbeAxiom.Space.Coverage.html#1583" class="Bound"
+      >i</a
+      ><a name="1584"
+      > </a
+      ><a name="1585" class="Symbol"
+      >=</a
+      ><a name="1586"
+      > </a
+      ><a name="1587" href="Preliminaries.Sequence.html#1276" class="Function"
+      >Lemma[drop+]</a
+      ><a name="1599"
+      > </a
+      ><a name="1600" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="1601"
+      > </a
+      ><a name="1602" class="Symbol"
+      >(</a
+      ><a name="1603" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="1604"
+      > </a
+      ><a name="1605" class="Symbol"
+      >(</a
+      ><a name="1606" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1610"
+      > </a
+      ><a name="1611" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="1612"
+      > </a
+      ><a name="1613" href="AddingProbeAxiom.Space.Coverage.html#1581" class="Bound"
+      >&#945;</a
+      ><a name="1614" class="Symbol"
+      >))</a
+      ><a name="1616"
+      > </a
+      ><a name="1617" href="AddingProbeAxiom.Space.Coverage.html#1583" class="Bound"
+      >i</a
+      ><a name="1618"
+      >
+      </a
+      ><a name="1625" href="AddingProbeAxiom.Space.Coverage.html#1625" class="Function"
+      >claim&#8320;</a
+      ><a name="1631"
+      > </a
+      ><a name="1632" class="Symbol"
+      >:</a
+      ><a name="1633"
+      > </a
+      ><a name="1634" class="Symbol"
+      >&#8704;(</a
+      ><a name="1636" href="AddingProbeAxiom.Space.Coverage.html#1636" class="Bound"
+      >&#945;</a
+      ><a name="1637"
+      > </a
+      ><a name="1638" href="AddingProbeAxiom.Space.Coverage.html#1638" class="Bound"
+      >&#946;</a
+      ><a name="1639"
+      > </a
+      ><a name="1640" class="Symbol"
+      >:</a
+      ><a name="1641"
+      > </a
+      ><a name="1642" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1644" class="Symbol"
+      >)</a
+      ><a name="1645"
+      > </a
+      ><a name="1646" class="Symbol"
+      >&#8594;</a
+      ><a name="1647"
+      > </a
+      ><a name="1648" href="AddingProbeAxiom.Space.Coverage.html#1636" class="Bound"
+      >&#945;</a
+      ><a name="1649"
+      > </a
+      ><a name="1650" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="1652"
+      > </a
+      ><a name="1653" href="AddingProbeAxiom.Space.Coverage.html#1358" class="Function"
+      >l</a
+      ><a name="1654"
+      > </a
+      ><a name="1655" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="1656"
+      > </a
+      ><a name="1657" href="AddingProbeAxiom.Space.Coverage.html#1638" class="Bound"
+      >&#946;</a
+      ><a name="1658"
+      > </a
+      ><a name="1659" class="Symbol"
+      >&#8594;</a
+      ><a name="1660"
+      > </a
+      ><a name="1661" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="1662"
+      > </a
+      ><a name="1663" class="Symbol"
+      >(</a
+      ><a name="1664" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1668"
+      > </a
+      ><a name="1669" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="1670"
+      > </a
+      ><a name="1671" href="AddingProbeAxiom.Space.Coverage.html#1636" class="Bound"
+      >&#945;</a
+      ><a name="1672" class="Symbol"
+      >)</a
+      ><a name="1673"
+      > </a
+      ><a name="1674" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="1676"
+      > </a
+      ><a name="1677" href="AddingProbeAxiom.Space.Coverage.html#1190" class="Bound"
+      >k</a
+      ><a name="1678"
+      > </a
+      ><a name="1679" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="1680"
+      > </a
+      ><a name="1681" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="1682"
+      > </a
+      ><a name="1683" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="1684"
+      > </a
+      ><a name="1685" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="1686"
+      > </a
+      ><a name="1687" class="Symbol"
+      >(</a
+      ><a name="1688" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1692"
+      > </a
+      ><a name="1693" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="1694"
+      > </a
+      ><a name="1695" href="AddingProbeAxiom.Space.Coverage.html#1638" class="Bound"
+      >&#946;</a
+      ><a name="1696" class="Symbol"
+      >)</a
+      ><a name="1697"
+      > </a
+      ><a name="1698" class="Symbol"
+      >&#8594;</a
+      ><a name="1699"
+      >
+                </a
+      ><a name="1716" class="Symbol"
+      >&#8704;(</a
+      ><a name="1718" href="AddingProbeAxiom.Space.Coverage.html#1718" class="Bound"
+      >i</a
+      ><a name="1719"
+      > </a
+      ><a name="1720" class="Symbol"
+      >:</a
+      ><a name="1721"
+      > </a
+      ><a name="1722" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1723" class="Symbol"
+      >)</a
+      ><a name="1724"
+      > </a
+      ><a name="1725" class="Symbol"
+      >&#8594;</a
+      ><a name="1726"
+      > </a
+      ><a name="1727" href="AddingProbeAxiom.Space.Coverage.html#1718" class="Bound"
+      >i</a
+      ><a name="1728"
+      > </a
+      ><a name="1729" href="Preliminaries.NaturalNumber.html#1865" class="Function Operator"
+      >&lt;</a
+      ><a name="1730"
+      > </a
+      ><a name="1731" href="AddingProbeAxiom.Space.Coverage.html#1190" class="Bound"
+      >k</a
+      ><a name="1732"
+      > </a
+      ><a name="1733" class="Symbol"
+      >&#8594;</a
+      ><a name="1734"
+      > </a
+      ><a name="1735" href="AddingProbeAxiom.Space.Coverage.html#1119" class="Function"
+      >t'</a
+      ><a name="1737"
+      > </a
+      ><a name="1738" href="AddingProbeAxiom.Space.Coverage.html#1636" class="Bound"
+      >&#945;</a
+      ><a name="1739"
+      > </a
+      ><a name="1740" href="AddingProbeAxiom.Space.Coverage.html#1718" class="Bound"
+      >i</a
+      ><a name="1741"
+      > </a
+      ><a name="1742" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1743"
+      > </a
+      ><a name="1744" href="AddingProbeAxiom.Space.Coverage.html#1119" class="Function"
+      >t'</a
+      ><a name="1746"
+      > </a
+      ><a name="1747" href="AddingProbeAxiom.Space.Coverage.html#1638" class="Bound"
+      >&#946;</a
+      ><a name="1748"
+      > </a
+      ><a name="1749" href="AddingProbeAxiom.Space.Coverage.html#1718" class="Bound"
+      >i</a
+      ><a name="1750"
+      >
+      </a
+      ><a name="1757" href="AddingProbeAxiom.Space.Coverage.html#1625" class="Function"
+      >claim&#8320;</a
+      ><a name="1763"
+      > </a
+      ><a name="1764" href="AddingProbeAxiom.Space.Coverage.html#1764" class="Bound"
+      >&#945;</a
+      ><a name="1765"
+      > </a
+      ><a name="1766" href="AddingProbeAxiom.Space.Coverage.html#1766" class="Bound"
+      >&#946;</a
+      ><a name="1767"
+      > </a
+      ><a name="1768" href="AddingProbeAxiom.Space.Coverage.html#1768" class="Bound"
+      >el</a
+      ><a name="1770"
+      > </a
+      ><a name="1771" href="AddingProbeAxiom.Space.Coverage.html#1771" class="Bound"
+      >ekm</a
+      ><a name="1774"
+      > </a
+      ><a name="1775" href="AddingProbeAxiom.Space.Coverage.html#1775" class="Bound"
+      >i</a
+      ><a name="1776"
+      > </a
+      ><a name="1777" href="AddingProbeAxiom.Space.Coverage.html#1777" class="Bound"
+      >i&lt;k</a
+      ><a name="1780"
+      > </a
+      ><a name="1781" class="Symbol"
+      >=</a
+      ><a name="1782"
+      > </a
+      ><a name="1783" href="AddingProbeAxiom.Space.Coverage.html#2062" class="Function"
+      >sclaim&#8322;</a
+      ><a name="1790"
+      > </a
+      ><a name="1791" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="1792"
+      > </a
+      ><a name="1793" class="Symbol"
+      >(</a
+      ><a name="1794" href="AddingProbeAxiom.Space.Coverage.html#1514" class="Function"
+      >eq</a
+      ><a name="1796"
+      > </a
+      ><a name="1797" href="AddingProbeAxiom.Space.Coverage.html#1766" class="Bound"
+      >&#946;</a
+      ><a name="1798"
+      > </a
+      ><a name="1799" href="AddingProbeAxiom.Space.Coverage.html#1775" class="Bound"
+      >i</a
+      ><a name="1800" class="Symbol"
+      >)</a
+      ><a name="1801" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="1803"
+      >
+       </a
+      ><a name="1811" class="Keyword"
+      >where</a
+      ><a name="1816"
+      >
+        </a
+      ><a name="1825" href="AddingProbeAxiom.Space.Coverage.html#1825" class="Function"
+      >sclaim&#8320;</a
+      ><a name="1832"
+      > </a
+      ><a name="1833" class="Symbol"
+      >:</a
+      ><a name="1834"
+      > </a
+      ><a name="1835" class="Symbol"
+      >&#8704;(</a
+      ><a name="1837" href="AddingProbeAxiom.Space.Coverage.html#1837" class="Bound"
+      >i</a
+      ><a name="1838"
+      > </a
+      ><a name="1839" class="Symbol"
+      >:</a
+      ><a name="1840"
+      > </a
+      ><a name="1841" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1842" class="Symbol"
+      >)</a
+      ><a name="1843"
+      > </a
+      ><a name="1844" class="Symbol"
+      >&#8594;</a
+      ><a name="1845"
+      > </a
+      ><a name="1846" href="AddingProbeAxiom.Space.Coverage.html#1837" class="Bound"
+      >i</a
+      ><a name="1847"
+      > </a
+      ><a name="1848" href="Preliminaries.NaturalNumber.html#1865" class="Function Operator"
+      >&lt;</a
+      ><a name="1849"
+      > </a
+      ><a name="1850" class="Symbol"
+      >(</a
+      ><a name="1851" href="AddingProbeAxiom.Space.Coverage.html#1190" class="Bound"
+      >k</a
+      ><a name="1852"
+      > </a
+      ><a name="1853" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="1854"
+      > </a
+      ><a name="1855" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="1856" class="Symbol"
+      >)</a
+      ><a name="1857"
+      > </a
+      ><a name="1858" class="Symbol"
+      >&#8594;</a
+      ><a name="1859"
+      > </a
+      ><a name="1860" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="1861"
+      > </a
+      ><a name="1862" class="Symbol"
+      >(</a
+      ><a name="1863" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1867"
+      > </a
+      ><a name="1868" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="1869"
+      > </a
+      ><a name="1870" href="AddingProbeAxiom.Space.Coverage.html#1764" class="Bound"
+      >&#945;</a
+      ><a name="1871" class="Symbol"
+      >)</a
+      ><a name="1872"
+      > </a
+      ><a name="1873" href="AddingProbeAxiom.Space.Coverage.html#1837" class="Bound"
+      >i</a
+      ><a name="1874"
+      > </a
+      ><a name="1875" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1876"
+      > </a
+      ><a name="1877" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="1878"
+      > </a
+      ><a name="1879" class="Symbol"
+      >(</a
+      ><a name="1880" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1884"
+      > </a
+      ><a name="1885" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="1886"
+      > </a
+      ><a name="1887" href="AddingProbeAxiom.Space.Coverage.html#1766" class="Bound"
+      >&#946;</a
+      ><a name="1888" class="Symbol"
+      >)</a
+      ><a name="1889"
+      > </a
+      ><a name="1890" href="AddingProbeAxiom.Space.Coverage.html#1837" class="Bound"
+      >i</a
+      ><a name="1891"
+      >
+        </a
+      ><a name="1900" href="AddingProbeAxiom.Space.Coverage.html#1825" class="Function"
+      >sclaim&#8320;</a
+      ><a name="1907"
+      > </a
+      ><a name="1908" class="Symbol"
+      >=</a
+      ><a name="1909"
+      > </a
+      ><a name="1910" href="Preliminaries.Sequence.html#5459" class="Function"
+      >Lemma[&#8801;[]-&lt;]</a
+      ><a name="1922"
+      > </a
+      ><a name="1923" href="AddingProbeAxiom.Space.Coverage.html#1771" class="Bound"
+      >ekm</a
+      ><a name="1926"
+      >
+        </a
+      ><a name="1935" href="AddingProbeAxiom.Space.Coverage.html#1935" class="Function"
+      >sclaim&#8321;</a
+      ><a name="1942"
+      > </a
+      ><a name="1943" class="Symbol"
+      >:</a
+      ><a name="1944"
+      > </a
+      ><a name="1945" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="1946"
+      > </a
+      ><a name="1947" class="Symbol"
+      >(</a
+      ><a name="1948" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1952"
+      > </a
+      ><a name="1953" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="1954"
+      > </a
+      ><a name="1955" href="AddingProbeAxiom.Space.Coverage.html#1764" class="Bound"
+      >&#945;</a
+      ><a name="1956" class="Symbol"
+      >)</a
+      ><a name="1957"
+      > </a
+      ><a name="1958" class="Symbol"
+      >(</a
+      ><a name="1959" href="AddingProbeAxiom.Space.Coverage.html#1775" class="Bound"
+      >i</a
+      ><a name="1960"
+      > </a
+      ><a name="1961" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="1962"
+      > </a
+      ><a name="1963" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="1964" class="Symbol"
+      >)</a
+      ><a name="1965"
+      > </a
+      ><a name="1966" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1967"
+      > </a
+      ><a name="1968" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="1969"
+      > </a
+      ><a name="1970" class="Symbol"
+      >(</a
+      ><a name="1971" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1975"
+      > </a
+      ><a name="1976" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="1977"
+      > </a
+      ><a name="1978" href="AddingProbeAxiom.Space.Coverage.html#1766" class="Bound"
+      >&#946;</a
+      ><a name="1979" class="Symbol"
+      >)</a
+      ><a name="1980"
+      > </a
+      ><a name="1981" class="Symbol"
+      >(</a
+      ><a name="1982" href="AddingProbeAxiom.Space.Coverage.html#1775" class="Bound"
+      >i</a
+      ><a name="1983"
+      > </a
+      ><a name="1984" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="1985"
+      > </a
+      ><a name="1986" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="1987" class="Symbol"
+      >)</a
+      ><a name="1988"
+      >
+        </a
+      ><a name="1997" href="AddingProbeAxiom.Space.Coverage.html#1935" class="Function"
+      >sclaim&#8321;</a
+      ><a name="2004"
+      > </a
+      ><a name="2005" class="Symbol"
+      >=</a
+      ><a name="2006"
+      > </a
+      ><a name="2007" href="AddingProbeAxiom.Space.Coverage.html#1825" class="Function"
+      >sclaim&#8320;</a
+      ><a name="2014"
+      > </a
+      ><a name="2015" class="Symbol"
+      >(</a
+      ><a name="2016" href="AddingProbeAxiom.Space.Coverage.html#1775" class="Bound"
+      >i</a
+      ><a name="2017"
+      > </a
+      ><a name="2018" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="2019"
+      > </a
+      ><a name="2020" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="2021" class="Symbol"
+      >)</a
+      ><a name="2022"
+      > </a
+      ><a name="2023" class="Symbol"
+      >(</a
+      ><a name="2024" href="Preliminaries.NaturalNumber.html#3959" class="Function"
+      >Lemma[a&lt;b&#8594;a+c&lt;b+c]</a
+      ><a name="2042"
+      > </a
+      ><a name="2043" href="AddingProbeAxiom.Space.Coverage.html#1775" class="Bound"
+      >i</a
+      ><a name="2044"
+      > </a
+      ><a name="2045" href="AddingProbeAxiom.Space.Coverage.html#1190" class="Bound"
+      >k</a
+      ><a name="2046"
+      > </a
+      ><a name="2047" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="2048"
+      > </a
+      ><a name="2049" href="AddingProbeAxiom.Space.Coverage.html#1777" class="Bound"
+      >i&lt;k</a
+      ><a name="2052" class="Symbol"
+      >)</a
+      ><a name="2053"
+      >
+        </a
+      ><a name="2062" href="AddingProbeAxiom.Space.Coverage.html#2062" class="Function"
+      >sclaim&#8322;</a
+      ><a name="2069"
+      > </a
+      ><a name="2070" class="Symbol"
+      >:</a
+      ><a name="2071"
+      > </a
+      ><a name="2072" href="AddingProbeAxiom.Space.Coverage.html#1119" class="Function"
+      >t'</a
+      ><a name="2074"
+      > </a
+      ><a name="2075" href="AddingProbeAxiom.Space.Coverage.html#1764" class="Bound"
+      >&#945;</a
+      ><a name="2076"
+      > </a
+      ><a name="2077" href="AddingProbeAxiom.Space.Coverage.html#1775" class="Bound"
+      >i</a
+      ><a name="2078"
+      > </a
+      ><a name="2079" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2080"
+      > </a
+      ><a name="2081" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="2082"
+      > </a
+      ><a name="2083" class="Symbol"
+      >(</a
+      ><a name="2084" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2088"
+      > </a
+      ><a name="2089" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="2090"
+      > </a
+      ><a name="2091" href="AddingProbeAxiom.Space.Coverage.html#1766" class="Bound"
+      >&#946;</a
+      ><a name="2092" class="Symbol"
+      >)</a
+      ><a name="2093"
+      > </a
+      ><a name="2094" class="Symbol"
+      >(</a
+      ><a name="2095" href="AddingProbeAxiom.Space.Coverage.html#1775" class="Bound"
+      >i</a
+      ><a name="2096"
+      > </a
+      ><a name="2097" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="2098"
+      > </a
+      ><a name="2099" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="2100" class="Symbol"
+      >)</a
+      ><a name="2101"
+      >
+        </a
+      ><a name="2110" href="AddingProbeAxiom.Space.Coverage.html#2062" class="Function"
+      >sclaim&#8322;</a
+      ><a name="2117"
+      > </a
+      ><a name="2118" class="Symbol"
+      >=</a
+      ><a name="2119"
+      > </a
+      ><a name="2120" href="AddingProbeAxiom.Space.Coverage.html#1514" class="Function"
+      >eq</a
+      ><a name="2122"
+      > </a
+      ><a name="2123" href="AddingProbeAxiom.Space.Coverage.html#1764" class="Bound"
+      >&#945;</a
+      ><a name="2124"
+      > </a
+      ><a name="2125" href="AddingProbeAxiom.Space.Coverage.html#1775" class="Bound"
+      >i</a
+      ><a name="2126"
+      > </a
+      ><a name="2127" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2128"
+      > </a
+      ><a name="2129" href="AddingProbeAxiom.Space.Coverage.html#1935" class="Function"
+      >sclaim&#8321;</a
+      ><a name="2136"
+      > 
+      </a
+      ><a name="2144" href="AddingProbeAxiom.Space.Coverage.html#2144" class="Function"
+      >claim&#8321;</a
+      ><a name="2150"
+      > </a
+      ><a name="2151" class="Symbol"
+      >:</a
+      ><a name="2152"
+      > </a
+      ><a name="2153" class="Symbol"
+      >&#8704;(</a
+      ><a name="2155" href="AddingProbeAxiom.Space.Coverage.html#2155" class="Bound"
+      >&#945;</a
+      ><a name="2156"
+      > </a
+      ><a name="2157" href="AddingProbeAxiom.Space.Coverage.html#2157" class="Bound"
+      >&#946;</a
+      ><a name="2158"
+      > </a
+      ><a name="2159" class="Symbol"
+      >:</a
+      ><a name="2160"
+      > </a
+      ><a name="2161" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="2163" class="Symbol"
+      >)</a
+      ><a name="2164"
+      > </a
+      ><a name="2165" class="Symbol"
+      >&#8594;</a
+      ><a name="2166"
+      > </a
+      ><a name="2167" href="AddingProbeAxiom.Space.Coverage.html#2155" class="Bound"
+      >&#945;</a
+      ><a name="2168"
+      > </a
+      ><a name="2169" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="2171"
+      > </a
+      ><a name="2172" href="AddingProbeAxiom.Space.Coverage.html#1358" class="Function"
+      >l</a
+      ><a name="2173"
+      > </a
+      ><a name="2174" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="2175"
+      > </a
+      ><a name="2176" href="AddingProbeAxiom.Space.Coverage.html#2157" class="Bound"
+      >&#946;</a
+      ><a name="2177"
+      >
+             </a
+      ><a name="2191" class="Symbol"
+      >&#8594;</a
+      ><a name="2192"
+      > </a
+      ><a name="2193" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="2194"
+      > </a
+      ><a name="2195" class="Symbol"
+      >(</a
+      ><a name="2196" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2200"
+      > </a
+      ><a name="2201" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="2202"
+      > </a
+      ><a name="2203" href="AddingProbeAxiom.Space.Coverage.html#2155" class="Bound"
+      >&#945;</a
+      ><a name="2204" class="Symbol"
+      >)</a
+      ><a name="2205"
+      > </a
+      ><a name="2206" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="2208"
+      > </a
+      ><a name="2209" href="AddingProbeAxiom.Space.Coverage.html#1190" class="Bound"
+      >k</a
+      ><a name="2210"
+      > </a
+      ><a name="2211" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="2212"
+      > </a
+      ><a name="2213" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="2214"
+      > </a
+      ><a name="2215" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="2216"
+      > </a
+      ><a name="2217" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="2218"
+      > </a
+      ><a name="2219" class="Symbol"
+      >(</a
+      ><a name="2220" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2224"
+      > </a
+      ><a name="2225" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="2226"
+      > </a
+      ><a name="2227" href="AddingProbeAxiom.Space.Coverage.html#2157" class="Bound"
+      >&#946;</a
+      ><a name="2228" class="Symbol"
+      >)</a
+      ><a name="2229"
+      > </a
+      ><a name="2230" class="Symbol"
+      >&#8594;</a
+      ><a name="2231"
+      > </a
+      ><a name="2232" href="AddingProbeAxiom.Space.Coverage.html#1119" class="Function"
+      >t'</a
+      ><a name="2234"
+      > </a
+      ><a name="2235" href="AddingProbeAxiom.Space.Coverage.html#2155" class="Bound"
+      >&#945;</a
+      ><a name="2236"
+      > </a
+      ><a name="2237" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="2239"
+      > </a
+      ><a name="2240" href="AddingProbeAxiom.Space.Coverage.html#1190" class="Bound"
+      >k</a
+      ><a name="2241"
+      > </a
+      ><a name="2242" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="2243"
+      > </a
+      ><a name="2244" href="AddingProbeAxiom.Space.Coverage.html#1119" class="Function"
+      >t'</a
+      ><a name="2246"
+      > </a
+      ><a name="2247" href="AddingProbeAxiom.Space.Coverage.html#2157" class="Bound"
+      >&#946;</a
+      ><a name="2248"
+      >
+      </a
+      ><a name="2255" href="AddingProbeAxiom.Space.Coverage.html#2144" class="Function"
+      >claim&#8321;</a
+      ><a name="2261"
+      > </a
+      ><a name="2262" href="AddingProbeAxiom.Space.Coverage.html#2262" class="Bound"
+      >&#945;</a
+      ><a name="2263"
+      > </a
+      ><a name="2264" href="AddingProbeAxiom.Space.Coverage.html#2264" class="Bound"
+      >&#946;</a
+      ><a name="2265"
+      > </a
+      ><a name="2266" href="AddingProbeAxiom.Space.Coverage.html#2266" class="Bound"
+      >el</a
+      ><a name="2268"
+      > </a
+      ><a name="2269" href="AddingProbeAxiom.Space.Coverage.html#2269" class="Bound"
+      >ekm</a
+      ><a name="2272"
+      > </a
+      ><a name="2273" class="Symbol"
+      >=</a
+      ><a name="2274"
+      > </a
+      ><a name="2275" href="Preliminaries.Sequence.html#5100" class="Function"
+      >Lemma[&lt;-&#8801;[]]</a
+      ><a name="2287"
+      > </a
+      ><a name="2288" class="Symbol"
+      >(</a
+      ><a name="2289" href="AddingProbeAxiom.Space.Coverage.html#1625" class="Function"
+      >claim&#8320;</a
+      ><a name="2295"
+      > </a
+      ><a name="2296" href="AddingProbeAxiom.Space.Coverage.html#2262" class="Bound"
+      >&#945;</a
+      ><a name="2297"
+      > </a
+      ><a name="2298" href="AddingProbeAxiom.Space.Coverage.html#2264" class="Bound"
+      >&#946;</a
+      ><a name="2299"
+      > </a
+      ><a name="2300" href="AddingProbeAxiom.Space.Coverage.html#2266" class="Bound"
+      >el</a
+      ><a name="2302"
+      > </a
+      ><a name="2303" href="AddingProbeAxiom.Space.Coverage.html#2269" class="Bound"
+      >ekm</a
+      ><a name="2306" class="Symbol"
+      >)</a
+      ><a name="2307"
+      >
+      </a
+      ><a name="2314" href="AddingProbeAxiom.Space.Coverage.html#2314" class="Function"
+      >prt'</a
+      ><a name="2318"
+      > </a
+      ><a name="2319" class="Symbol"
+      >:</a
+      ><a name="2320"
+      > </a
+      ><a name="2321" class="Symbol"
+      >&#8704;(</a
+      ><a name="2323" href="AddingProbeAxiom.Space.Coverage.html#2323" class="Bound"
+      >&#945;</a
+      ><a name="2324"
+      > </a
+      ><a name="2325" href="AddingProbeAxiom.Space.Coverage.html#2325" class="Bound"
+      >&#946;</a
+      ><a name="2326"
+      > </a
+      ><a name="2327" class="Symbol"
+      >:</a
+      ><a name="2328"
+      > </a
+      ><a name="2329" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="2331" class="Symbol"
+      >)</a
+      ><a name="2332"
+      > </a
+      ><a name="2333" class="Symbol"
+      >&#8594;</a
+      ><a name="2334"
+      > </a
+      ><a name="2335" href="AddingProbeAxiom.Space.Coverage.html#2323" class="Bound"
+      >&#945;</a
+      ><a name="2336"
+      > </a
+      ><a name="2337" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="2339"
+      > </a
+      ><a name="2340" href="AddingProbeAxiom.Space.Coverage.html#1358" class="Function"
+      >l</a
+      ><a name="2341"
+      > </a
+      ><a name="2342" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="2343"
+      > </a
+      ><a name="2344" href="AddingProbeAxiom.Space.Coverage.html#2325" class="Bound"
+      >&#946;</a
+      ><a name="2345"
+      > </a
+      ><a name="2346" class="Symbol"
+      >&#8594;</a
+      ><a name="2347"
+      > </a
+      ><a name="2348" href="AddingProbeAxiom.Space.Coverage.html#1119" class="Function"
+      >t'</a
+      ><a name="2350"
+      > </a
+      ><a name="2351" href="AddingProbeAxiom.Space.Coverage.html#2323" class="Bound"
+      >&#945;</a
+      ><a name="2352"
+      > </a
+      ><a name="2353" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="2355"
+      > </a
+      ><a name="2356" href="AddingProbeAxiom.Space.Coverage.html#1190" class="Bound"
+      >k</a
+      ><a name="2357"
+      > </a
+      ><a name="2358" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="2359"
+      > </a
+      ><a name="2360" href="AddingProbeAxiom.Space.Coverage.html#1119" class="Function"
+      >t'</a
+      ><a name="2362"
+      > </a
+      ><a name="2363" href="AddingProbeAxiom.Space.Coverage.html#2325" class="Bound"
+      >&#946;</a
+      ><a name="2364"
+      >
+      </a
+      ><a name="2371" href="AddingProbeAxiom.Space.Coverage.html#2314" class="Function"
+      >prt'</a
+      ><a name="2375"
+      > </a
+      ><a name="2376" href="AddingProbeAxiom.Space.Coverage.html#2376" class="Bound"
+      >&#945;</a
+      ><a name="2377"
+      > </a
+      ><a name="2378" href="AddingProbeAxiom.Space.Coverage.html#2378" class="Bound"
+      >&#946;</a
+      ><a name="2379"
+      > </a
+      ><a name="2380" href="AddingProbeAxiom.Space.Coverage.html#2380" class="Bound"
+      >el</a
+      ><a name="2382"
+      > </a
+      ><a name="2383" class="Symbol"
+      >=</a
+      ><a name="2384"
+      > </a
+      ><a name="2385" href="AddingProbeAxiom.Space.Coverage.html#2144" class="Function"
+      >claim&#8321;</a
+      ><a name="2391"
+      > </a
+      ><a name="2392" href="AddingProbeAxiom.Space.Coverage.html#2376" class="Bound"
+      >&#945;</a
+      ><a name="2393"
+      > </a
+      ><a name="2394" href="AddingProbeAxiom.Space.Coverage.html#2378" class="Bound"
+      >&#946;</a
+      ><a name="2395"
+      > </a
+      ><a name="2396" href="AddingProbeAxiom.Space.Coverage.html#2380" class="Bound"
+      >el</a
+      ><a name="2398"
+      > </a
+      ><a name="2399" class="Symbol"
+      >(</a
+      ><a name="2400" href="AddingProbeAxiom.Space.Coverage.html#1399" class="Function"
+      >prts</a
+      ><a name="2404"
+      > </a
+      ><a name="2405" href="AddingProbeAxiom.Space.Coverage.html#2376" class="Bound"
+      >&#945;</a
+      ><a name="2406"
+      > </a
+      ><a name="2407" href="AddingProbeAxiom.Space.Coverage.html#2378" class="Bound"
+      >&#946;</a
+      ><a name="2408"
+      > </a
+      ><a name="2409" href="AddingProbeAxiom.Space.Coverage.html#2380" class="Bound"
+      >el</a
+      ><a name="2411" class="Symbol"
+      >)</a
+      ><a name="2412"
+      >
+    </a
+      ><a name="2417" href="AddingProbeAxiom.Space.Coverage.html#2417" class="Function"
+      >ex</a
+      ><a name="2419"
+      > </a
+      ><a name="2420" class="Symbol"
+      >:</a
+      ><a name="2421"
+      > </a
+      ><a name="2422" class="Symbol"
+      >&#8704;(</a
+      ><a name="2424" href="AddingProbeAxiom.Space.Coverage.html#2424" class="Bound"
+      >&#945;</a
+      ><a name="2425"
+      > </a
+      ><a name="2426" class="Symbol"
+      >:</a
+      ><a name="2427"
+      > </a
+      ><a name="2428" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="2430" class="Symbol"
+      >)</a
+      ><a name="2431"
+      > </a
+      ><a name="2432" class="Symbol"
+      >&#8594;</a
+      ><a name="2433"
+      > </a
+      ><a name="2434" class="Symbol"
+      >&#8704;(</a
+      ><a name="2436" href="AddingProbeAxiom.Space.Coverage.html#2436" class="Bound"
+      >i</a
+      ><a name="2437"
+      > </a
+      ><a name="2438" class="Symbol"
+      >:</a
+      ><a name="2439"
+      > </a
+      ><a name="2440" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="2441" class="Symbol"
+      >)</a
+      ><a name="2442"
+      > </a
+      ><a name="2443" class="Symbol"
+      >&#8594;</a
+      ><a name="2444"
+      > </a
+      ><a name="2445" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="2446"
+      > </a
+      ><a name="2447" class="Symbol"
+      >(</a
+      ><a name="2448" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2452"
+      > </a
+      ><a name="2453" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="2454"
+      > </a
+      ><a name="2455" href="AddingProbeAxiom.Space.Coverage.html#2424" class="Bound"
+      >&#945;</a
+      ><a name="2456" class="Symbol"
+      >)</a
+      ><a name="2457"
+      > </a
+      ><a name="2458" href="AddingProbeAxiom.Space.Coverage.html#2436" class="Bound"
+      >i</a
+      ><a name="2459"
+      > </a
+      ><a name="2460" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2461"
+      > </a
+      ><a name="2462" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2466"
+      > </a
+      ><a name="2467" href="AddingProbeAxiom.Space.Coverage.html#1071" class="Function"
+      >s'</a
+      ><a name="2469"
+      > </a
+      ><a name="2470" class="Symbol"
+      >(</a
+      ><a name="2471" href="AddingProbeAxiom.Space.Coverage.html#1119" class="Function"
+      >t'</a
+      ><a name="2473"
+      > </a
+      ><a name="2474" href="AddingProbeAxiom.Space.Coverage.html#2424" class="Bound"
+      >&#945;</a
+      ><a name="2475" class="Symbol"
+      >)</a
+      ><a name="2476"
+      > </a
+      ><a name="2477" href="AddingProbeAxiom.Space.Coverage.html#2436" class="Bound"
+      >i</a
+      ><a name="2478"
+      >
+    </a
+      ><a name="2483" href="AddingProbeAxiom.Space.Coverage.html#2417" class="Function"
+      >ex</a
+      ><a name="2485"
+      > </a
+      ><a name="2486" href="AddingProbeAxiom.Space.Coverage.html#2486" class="Bound"
+      >&#945;</a
+      ><a name="2487"
+      > </a
+      ><a name="2488" href="AddingProbeAxiom.Space.Coverage.html#2488" class="Bound"
+      >i</a
+      ><a name="2489"
+      > </a
+      ><a name="2490" class="Symbol"
+      >=</a
+      ><a name="2491"
+      > </a
+      ><a name="2492" href="AddingProbeAxiom.Space.Coverage.html#2527" class="Function"
+      >sclaim&#8320;</a
+      ><a name="2499"
+      > </a
+      ><a name="2500" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2501"
+      > </a
+      ><a name="2502" href="AddingProbeAxiom.Space.Coverage.html#2873" class="Function"
+      >sclaim&#8323;</a
+      ><a name="2509"
+      >
+     </a
+      ><a name="2515" class="Keyword"
+      >where</a
+      ><a name="2520"
+      >
+      </a
+      ><a name="2527" href="AddingProbeAxiom.Space.Coverage.html#2527" class="Function"
+      >sclaim&#8320;</a
+      ><a name="2534"
+      > </a
+      ><a name="2535" class="Symbol"
+      >:</a
+      ><a name="2536"
+      > </a
+      ><a name="2537" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="2538"
+      > </a
+      ><a name="2539" class="Symbol"
+      >(</a
+      ><a name="2540" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2544"
+      > </a
+      ><a name="2545" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="2546"
+      > </a
+      ><a name="2547" href="AddingProbeAxiom.Space.Coverage.html#2486" class="Bound"
+      >&#945;</a
+      ><a name="2548" class="Symbol"
+      >)</a
+      ><a name="2549"
+      > </a
+      ><a name="2550" href="AddingProbeAxiom.Space.Coverage.html#2488" class="Bound"
+      >i</a
+      ><a name="2551"
+      > </a
+      ><a name="2552" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2553"
+      > </a
+      ><a name="2554" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2558"
+      > </a
+      ><a name="2559" class="Symbol"
+      >(</a
+      ><a name="2560" href="Preliminaries.Sequence.html#1121" class="Function"
+      >take</a
+      ><a name="2564"
+      > </a
+      ><a name="2565" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="2566"
+      > </a
+      ><a name="2567" class="Symbol"
+      >(</a
+      ><a name="2568" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="2569"
+      > </a
+      ><a name="2570" class="Symbol"
+      >(</a
+      ><a name="2571" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2575"
+      > </a
+      ><a name="2576" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="2577"
+      > </a
+      ><a name="2578" href="AddingProbeAxiom.Space.Coverage.html#2486" class="Bound"
+      >&#945;</a
+      ><a name="2579" class="Symbol"
+      >)))</a
+      ><a name="2582"
+      > </a
+      ><a name="2583" class="Symbol"
+      >(</a
+      ><a name="2584" href="AddingProbeAxiom.Space.Coverage.html#1119" class="Function"
+      >t'</a
+      ><a name="2586"
+      > </a
+      ><a name="2587" href="AddingProbeAxiom.Space.Coverage.html#2486" class="Bound"
+      >&#945;</a
+      ><a name="2588" class="Symbol"
+      >)</a
+      ><a name="2589"
+      > </a
+      ><a name="2590" href="AddingProbeAxiom.Space.Coverage.html#2488" class="Bound"
+      >i</a
+      ><a name="2591"
+      >
+      </a
+      ><a name="2598" href="AddingProbeAxiom.Space.Coverage.html#2527" class="Function"
+      >sclaim&#8320;</a
+      ><a name="2605"
+      > </a
+      ><a name="2606" class="Symbol"
+      >=</a
+      ><a name="2607"
+      > </a
+      ><a name="2608" class="Symbol"
+      >(</a
+      ><a name="2609" href="Preliminaries.Sequence.html#7266" class="Function"
+      >Lemma[cons-take-drop]</a
+      ><a name="2630"
+      > </a
+      ><a name="2631" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="2632"
+      > </a
+      ><a name="2633" class="Symbol"
+      >(</a
+      ><a name="2634" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="2635"
+      > </a
+      ><a name="2636" class="Symbol"
+      >(</a
+      ><a name="2637" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2641"
+      > </a
+      ><a name="2642" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="2643"
+      > </a
+      ><a name="2644" href="AddingProbeAxiom.Space.Coverage.html#2486" class="Bound"
+      >&#945;</a
+      ><a name="2645" class="Symbol"
+      >))</a
+      ><a name="2647"
+      > </a
+      ><a name="2648" href="AddingProbeAxiom.Space.Coverage.html#2488" class="Bound"
+      >i</a
+      ><a name="2649" class="Symbol"
+      >)</a
+      ><a name="2650" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="2652"
+      >
+      </a
+      ><a name="2659" href="AddingProbeAxiom.Space.Coverage.html#2659" class="Function"
+      >sclaim&#8321;</a
+      ><a name="2666"
+      > </a
+      ><a name="2667" class="Symbol"
+      >:</a
+      ><a name="2668"
+      > </a
+      ><a name="2669" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="2670"
+      > </a
+      ><a name="2671" class="Symbol"
+      >(</a
+      ><a name="2672" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2676"
+      > </a
+      ><a name="2677" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="2678"
+      > </a
+      ><a name="2679" href="AddingProbeAxiom.Space.Coverage.html#2486" class="Bound"
+      >&#945;</a
+      ><a name="2680" class="Symbol"
+      >)</a
+      ><a name="2681"
+      > </a
+      ><a name="2682" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="2684"
+      > </a
+      ><a name="2685" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="2686"
+      > </a
+      ><a name="2687" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="2688"
+      > </a
+      ><a name="2689" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="2690"
+      > </a
+      ><a name="2691" class="Symbol"
+      >(</a
+      ><a name="2692" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2696"
+      > </a
+      ><a name="2697" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="2698"
+      > </a
+      ><a name="2699" href="Preliminaries.Sequence.html#384" class="Function"
+      >0&#772;</a
+      ><a name="2701" class="Symbol"
+      >)</a
+      ><a name="2702"
+      >
+      </a
+      ><a name="2709" href="AddingProbeAxiom.Space.Coverage.html#2659" class="Function"
+      >sclaim&#8321;</a
+      ><a name="2716"
+      > </a
+      ><a name="2717" class="Symbol"
+      >=</a
+      ><a name="2718"
+      > </a
+      ><a name="2719" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="2722"
+      > </a
+      ><a name="2723" class="Symbol"
+      >(</a
+      ><a name="2724" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="2727"
+      > </a
+      ><a name="2728" class="Symbol"
+      >(</a
+      ><a name="2729" href="AddingProbeAxiom.Space.Coverage.html#864" class="Bound"
+      >tC</a
+      ><a name="2731"
+      > </a
+      ><a name="2732" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="2733" class="Symbol"
+      >))</a
+      ><a name="2735"
+      > </a
+      ><a name="2736" class="Symbol"
+      >(</a
+      ><a name="2737" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2741"
+      > </a
+      ><a name="2742" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="2743"
+      > </a
+      ><a name="2744" href="AddingProbeAxiom.Space.Coverage.html#2486" class="Bound"
+      >&#945;</a
+      ><a name="2745" class="Symbol"
+      >)</a
+      ><a name="2746"
+      > </a
+      ><a name="2747" class="Symbol"
+      >(</a
+      ><a name="2748" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2752"
+      > </a
+      ><a name="2753" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="2754"
+      > </a
+      ><a name="2755" href="Preliminaries.Sequence.html#384" class="Function"
+      >0&#772;</a
+      ><a name="2757" class="Symbol"
+      >)</a
+      ><a name="2758"
+      > </a
+      ><a name="2759" class="Symbol"
+      >(</a
+      ><a name="2760" href="Preliminaries.Sequence.html#8001" class="Function"
+      >Lemma[cons-&#8801;[]]</a
+      ><a name="2775"
+      > </a
+      ><a name="2776" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="2777"
+      > </a
+      ><a name="2778" href="AddingProbeAxiom.Space.Coverage.html#2486" class="Bound"
+      >&#945;</a
+      ><a name="2779"
+      > </a
+      ><a name="2780" href="Preliminaries.Sequence.html#384" class="Function"
+      >0&#772;</a
+      ><a name="2782" class="Symbol"
+      >)</a
+      ><a name="2783"
+      >
+      </a
+      ><a name="2790" href="AddingProbeAxiom.Space.Coverage.html#2790" class="Function"
+      >sclaim&#8322;</a
+      ><a name="2797"
+      > </a
+      ><a name="2798" class="Symbol"
+      >:</a
+      ><a name="2799"
+      > </a
+      ><a name="2800" href="Preliminaries.Sequence.html#1121" class="Function"
+      >take</a
+      ><a name="2804"
+      > </a
+      ><a name="2805" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="2806"
+      > </a
+      ><a name="2807" class="Symbol"
+      >(</a
+      ><a name="2808" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="2809"
+      > </a
+      ><a name="2810" class="Symbol"
+      >(</a
+      ><a name="2811" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2815"
+      > </a
+      ><a name="2816" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="2817"
+      > </a
+      ><a name="2818" href="AddingProbeAxiom.Space.Coverage.html#2486" class="Bound"
+      >&#945;</a
+      ><a name="2819" class="Symbol"
+      >))</a
+      ><a name="2821"
+      > </a
+      ><a name="2822" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2823"
+      > </a
+      ><a name="2824" href="AddingProbeAxiom.Space.Coverage.html#1071" class="Function"
+      >s'</a
+      ><a name="2826"
+      >
+      </a
+      ><a name="2833" href="AddingProbeAxiom.Space.Coverage.html#2790" class="Function"
+      >sclaim&#8322;</a
+      ><a name="2840"
+      > </a
+      ><a name="2841" class="Symbol"
+      >=</a
+      ><a name="2842"
+      > </a
+      ><a name="2843" href="Preliminaries.Sequence.html#6062" class="Function"
+      >Lemma[&#8801;[]-take]</a
+      ><a name="2858"
+      > </a
+      ><a name="2859" href="AddingProbeAxiom.Space.Coverage.html#2659" class="Function"
+      >sclaim&#8321;</a
+      ><a name="2866"
+      >
+      </a
+      ><a name="2873" href="AddingProbeAxiom.Space.Coverage.html#2873" class="Function"
+      >sclaim&#8323;</a
+      ><a name="2880"
+      > </a
+      ><a name="2881" class="Symbol"
+      >:</a
+      ><a name="2882"
+      > </a
+      ><a name="2883" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2887"
+      > </a
+      ><a name="2888" class="Symbol"
+      >(</a
+      ><a name="2889" href="Preliminaries.Sequence.html#1121" class="Function"
+      >take</a
+      ><a name="2893"
+      > </a
+      ><a name="2894" href="AddingProbeAxiom.Space.Coverage.html#860" class="Bound"
+      >m</a
+      ><a name="2895"
+      > </a
+      ><a name="2896" class="Symbol"
+      >(</a
+      ><a name="2897" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="2898"
+      > </a
+      ><a name="2899" class="Symbol"
+      >(</a
+      ><a name="2900" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2904"
+      > </a
+      ><a name="2905" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="2906"
+      > </a
+      ><a name="2907" href="AddingProbeAxiom.Space.Coverage.html#2486" class="Bound"
+      >&#945;</a
+      ><a name="2908" class="Symbol"
+      >)))</a
+      ><a name="2911"
+      > </a
+      ><a name="2912" class="Symbol"
+      >(</a
+      ><a name="2913" href="AddingProbeAxiom.Space.Coverage.html#1119" class="Function"
+      >t'</a
+      ><a name="2915"
+      > </a
+      ><a name="2916" href="AddingProbeAxiom.Space.Coverage.html#2486" class="Bound"
+      >&#945;</a
+      ><a name="2917" class="Symbol"
+      >)</a
+      ><a name="2918"
+      > </a
+      ><a name="2919" href="AddingProbeAxiom.Space.Coverage.html#2488" class="Bound"
+      >i</a
+      ><a name="2920"
+      > </a
+      ><a name="2921" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2922"
+      > </a
+      ><a name="2923" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2927"
+      > </a
+      ><a name="2928" href="AddingProbeAxiom.Space.Coverage.html#1071" class="Function"
+      >s'</a
+      ><a name="2930"
+      > </a
+      ><a name="2931" class="Symbol"
+      >(</a
+      ><a name="2932" href="AddingProbeAxiom.Space.Coverage.html#1119" class="Function"
+      >t'</a
+      ><a name="2934"
+      > </a
+      ><a name="2935" href="AddingProbeAxiom.Space.Coverage.html#2486" class="Bound"
+      >&#945;</a
+      ><a name="2936" class="Symbol"
+      >)</a
+      ><a name="2937"
+      > </a
+      ><a name="2938" href="AddingProbeAxiom.Space.Coverage.html#2488" class="Bound"
+      >i</a
+      ><a name="2939"
+      >
+      </a
+      ><a name="2946" href="AddingProbeAxiom.Space.Coverage.html#2873" class="Function"
+      >sclaim&#8323;</a
+      ><a name="2953"
+      > </a
+      ><a name="2954" class="Symbol"
+      >=</a
+      ><a name="2955"
+      > </a
+      ><a name="2956" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="2958"
+      > </a
+      ><a name="2959" class="Symbol"
+      >(&#955;</a
+      ><a name="2961"
+      > </a
+      ><a name="2962" href="AddingProbeAxiom.Space.Coverage.html#2962" class="Bound"
+      >x</a
+      ><a name="2963"
+      > </a
+      ><a name="2964" class="Symbol"
+      >&#8594;</a
+      ><a name="2965"
+      > </a
+      ><a name="2966" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2970"
+      > </a
+      ><a name="2971" href="AddingProbeAxiom.Space.Coverage.html#2962" class="Bound"
+      >x</a
+      ><a name="2972"
+      > </a
+      ><a name="2973" class="Symbol"
+      >(</a
+      ><a name="2974" href="AddingProbeAxiom.Space.Coverage.html#1119" class="Function"
+      >t'</a
+      ><a name="2976"
+      > </a
+      ><a name="2977" href="AddingProbeAxiom.Space.Coverage.html#2486" class="Bound"
+      >&#945;</a
+      ><a name="2978" class="Symbol"
+      >)</a
+      ><a name="2979"
+      > </a
+      ><a name="2980" href="AddingProbeAxiom.Space.Coverage.html#2488" class="Bound"
+      >i</a
+      ><a name="2981" class="Symbol"
+      >)</a
+      ><a name="2982"
+      > </a
+      ><a name="2983" href="AddingProbeAxiom.Space.Coverage.html#2790" class="Function"
+      >sclaim&#8322;</a
+      ><a name="2990"
+      >
+    </a
+      ><a name="2995" href="AddingProbeAxiom.Space.Coverage.html#2995" class="Function"
+      >e</a
+      ><a name="2996"
+      > </a
+      ><a name="2997" class="Symbol"
+      >:</a
+      ><a name="2998"
+      > </a
+      ><a name="2999" class="Symbol"
+      >&#8704;(</a
+      ><a name="3001" href="AddingProbeAxiom.Space.Coverage.html#3001" class="Bound"
+      >&#945;</a
+      ><a name="3002"
+      > </a
+      ><a name="3003" class="Symbol"
+      >:</a
+      ><a name="3004"
+      > </a
+      ><a name="3005" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="3007" class="Symbol"
+      >)</a
+      ><a name="3008"
+      > </a
+      ><a name="3009" class="Symbol"
+      >&#8594;</a
+      ><a name="3010"
+      > </a
+      ><a name="3011" href="AddingProbeAxiom.Space.Coverage.html#862" class="Bound"
+      >t</a
+      ><a name="3012"
+      > </a
+      ><a name="3013" class="Symbol"
+      >(</a
+      ><a name="3014" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="3018"
+      > </a
+      ><a name="3019" href="AddingProbeAxiom.Space.Coverage.html#1035" class="Bound"
+      >s</a
+      ><a name="3020"
+      > </a
+      ><a name="3021" href="AddingProbeAxiom.Space.Coverage.html#3001" class="Bound"
+      >&#945;</a
+      ><a name="3022" class="Symbol"
+      >)</a
+      ><a name="3023"
+      > </a
+      ><a name="3024" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3025"
+      > </a
+      ><a name="3026" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="3030"
+      > </a
+      ><a name="3031" href="AddingProbeAxiom.Space.Coverage.html#1071" class="Function"
+      >s'</a
+      ><a name="3033"
+      > </a
+      ><a name="3034" class="Symbol"
+      >(</a
+      ><a name="3035" href="AddingProbeAxiom.Space.Coverage.html#1119" class="Function"
+      >t'</a
+      ><a name="3037"
+      > </a
+      ><a name="3038" href="AddingProbeAxiom.Space.Coverage.html#3001" class="Bound"
+      >&#945;</a
+      ><a name="3039" class="Symbol"
+      >)</a
+      ><a name="3040"
+      >
+    </a
+      ><a name="3045" href="AddingProbeAxiom.Space.Coverage.html#2995" class="Function"
+      >e</a
+      ><a name="3046"
+      > </a
+      ><a name="3047" href="AddingProbeAxiom.Space.Coverage.html#3047" class="Bound"
+      >&#945;</a
+      ><a name="3048"
+      > </a
+      ><a name="3049" class="Symbol"
+      >=</a
+      ><a name="3050"
+      > </a
+      ><a name="3051" href="UsingFunext.Funext.html#191" class="Postulate"
+      >funext</a
+      ><a name="3057"
+      > </a
+      ><a name="3058" class="Symbol"
+      >(</a
+      ><a name="3059" href="AddingProbeAxiom.Space.Coverage.html#2417" class="Function"
+      >ex</a
+      ><a name="3061"
+      > </a
+      ><a name="3062" href="AddingProbeAxiom.Space.Coverage.html#3047" class="Bound"
+      >&#945;</a
+      ><a name="3063" class="Symbol"
+      >)</a
+      ><a name="3064"
+      >
+         </a
+      ><a name="3074" class="Comment"
+      >--------</a
+      ><a name="3082"
+      >
+
+\end{code}
+</a
+      ></pre
+    ></body
+  ></html
+>

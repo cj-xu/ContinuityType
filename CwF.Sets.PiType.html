@@ -1,0 +1,1856 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >CwF.Sets.PiType</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Comment"
+      >Chuangjie Xu, November 2014</a
+      ><a name="28"
+      >
+
+\begin{code}
+
+</a
+      ><a name="44" class="Symbol"
+      >{-#</a
+      ><a name="47"
+      > </a
+      ><a name="48" class="Keyword"
+      >OPTIONS</a
+      ><a name="55"
+      > --without-K </a
+      ><a name="68" class="Symbol"
+      >#-}</a
+      ><a name="71"
+      >
+
+</a
+      ><a name="73" class="Keyword"
+      >module</a
+      ><a name="79"
+      > </a
+      ><a name="80" href="CwF.Sets.PiType.html#1" class="Module"
+      >CwF.Sets.PiType</a
+      ><a name="95"
+      > </a
+      ><a name="96" class="Keyword"
+      >where</a
+      ><a name="101"
+      >
+
+</a
+      ><a name="103" class="Keyword"
+      >open</a
+      ><a name="107"
+      > </a
+      ><a name="108" class="Keyword"
+      >import</a
+      ><a name="114"
+      > </a
+      ><a name="115" href="Preliminaries.SetsAndFunctions.html#1" class="Module"
+      >Preliminaries.SetsAndFunctions</a
+      ><a name="145"
+      >
+</a
+      ><a name="146" class="Keyword"
+      >open</a
+      ><a name="150"
+      > </a
+      ><a name="151" class="Keyword"
+      >import</a
+      ><a name="157"
+      > </a
+      ><a name="158" href="CwF.Sets.Base.html#1" class="Module"
+      >CwF.Sets.Base</a
+      ><a name="171"
+      >
+</a
+      ><a name="172" class="Keyword"
+      >open</a
+      ><a name="176"
+      > </a
+      ><a name="177" class="Keyword"
+      >import</a
+      ><a name="183"
+      > </a
+      ><a name="184" href="CwF.Sets.TypesAndTerms.html#1" class="Module"
+      >CwF.Sets.TypesAndTerms</a
+      ><a name="206"
+      >
+</a
+      ><a name="207" class="Keyword"
+      >open</a
+      ><a name="211"
+      > </a
+      ><a name="212" class="Keyword"
+      >import</a
+      ><a name="218"
+      > </a
+      ><a name="219" href="CwF.Sets.ContextComprehension.html#1" class="Module"
+      >CwF.Sets.ContextComprehension</a
+      ><a name="248"
+      >
+
+\end{code}
+
+</a
+      ><a name="262" class="Comment"
+      >Pi-type</a
+      ><a name="269"
+      >
+
+\begin{code}
+
+</a
+      ><a name="285" href="CwF.Sets.PiType.html#285" class="Function"
+      >[&#928;]</a
+      ><a name="288"
+      > </a
+      ><a name="289" class="Symbol"
+      >:</a
+      ><a name="290"
+      > </a
+      ><a name="291" class="Symbol"
+      >{</a
+      ><a name="292" href="CwF.Sets.PiType.html#292" class="Bound"
+      >&#915;</a
+      ><a name="293"
+      > </a
+      ><a name="294" class="Symbol"
+      >:</a
+      ><a name="295"
+      > </a
+      ><a name="296" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="299" class="Symbol"
+      >}</a
+      ><a name="300"
+      > </a
+      ><a name="301" class="Symbol"
+      >&#8594;</a
+      ><a name="302"
+      > </a
+      ><a name="303" class="Symbol"
+      >(</a
+      ><a name="304" href="CwF.Sets.PiType.html#304" class="Bound"
+      >A</a
+      ><a name="305"
+      > </a
+      ><a name="306" class="Symbol"
+      >:</a
+      ><a name="307"
+      > </a
+      ><a name="308" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="312"
+      > </a
+      ><a name="313" href="CwF.Sets.PiType.html#292" class="Bound"
+      >&#915;</a
+      ><a name="314" class="Symbol"
+      >)</a
+      ><a name="315"
+      > </a
+      ><a name="316" class="Symbol"
+      >&#8594;</a
+      ><a name="317"
+      > </a
+      ><a name="318" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="322"
+      > </a
+      ><a name="323" class="Symbol"
+      >(</a
+      ><a name="324" href="CwF.Sets.PiType.html#292" class="Bound"
+      >&#915;</a
+      ><a name="325"
+      > </a
+      ><a name="326" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="327"
+      > </a
+      ><a name="328" href="CwF.Sets.PiType.html#304" class="Bound"
+      >A</a
+      ><a name="329" class="Symbol"
+      >)</a
+      ><a name="330"
+      > </a
+      ><a name="331" class="Symbol"
+      >&#8594;</a
+      ><a name="332"
+      > </a
+      ><a name="333" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="337"
+      > </a
+      ><a name="338" href="CwF.Sets.PiType.html#292" class="Bound"
+      >&#915;</a
+      ><a name="339"
+      >
+</a
+      ><a name="340" href="CwF.Sets.PiType.html#285" class="Function"
+      >[&#928;]</a
+      ><a name="343"
+      > </a
+      ><a name="344" href="CwF.Sets.PiType.html#344" class="Bound"
+      >A</a
+      ><a name="345"
+      > </a
+      ><a name="346" href="CwF.Sets.PiType.html#346" class="Bound"
+      >B</a
+      ><a name="347"
+      > </a
+      ><a name="348" class="Symbol"
+      >=</a
+      ><a name="349"
+      > </a
+      ><a name="350" class="Symbol"
+      >&#955;</a
+      ><a name="351"
+      > </a
+      ><a name="352" href="CwF.Sets.PiType.html#352" class="Bound"
+      >&#947;</a
+      ><a name="353"
+      > </a
+      ><a name="354" class="Symbol"
+      >&#8594;</a
+      ><a name="355"
+      > </a
+      ><a name="356" class="Symbol"
+      >(</a
+      ><a name="357" href="CwF.Sets.PiType.html#357" class="Bound"
+      >a</a
+      ><a name="358"
+      > </a
+      ><a name="359" class="Symbol"
+      >:</a
+      ><a name="360"
+      > </a
+      ><a name="361" href="CwF.Sets.PiType.html#344" class="Bound"
+      >A</a
+      ><a name="362"
+      > </a
+      ><a name="363" href="CwF.Sets.PiType.html#352" class="Bound"
+      >&#947;</a
+      ><a name="364" class="Symbol"
+      >)</a
+      ><a name="365"
+      > </a
+      ><a name="366" class="Symbol"
+      >&#8594;</a
+      ><a name="367"
+      > </a
+      ><a name="368" href="CwF.Sets.PiType.html#346" class="Bound"
+      >B</a
+      ><a name="369"
+      > </a
+      ><a name="370" class="Symbol"
+      >(</a
+      ><a name="371" href="CwF.Sets.PiType.html#352" class="Bound"
+      >&#947;</a
+      ><a name="372"
+      > </a
+      ><a name="373" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="374"
+      > </a
+      ><a name="375" href="CwF.Sets.PiType.html#357" class="Bound"
+      >a</a
+      ><a name="376" class="Symbol"
+      >)</a
+      ><a name="377"
+      >
+
+</a
+      ><a name="379" href="CwF.Sets.PiType.html#379" class="Function"
+      >&#8911;</a
+      ><a name="380"
+      > </a
+      ><a name="381" class="Symbol"
+      >:</a
+      ><a name="382"
+      > </a
+      ><a name="383" class="Symbol"
+      >{</a
+      ><a name="384" href="CwF.Sets.PiType.html#384" class="Bound"
+      >&#915;</a
+      ><a name="385"
+      > </a
+      ><a name="386" class="Symbol"
+      >:</a
+      ><a name="387"
+      > </a
+      ><a name="388" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="391" class="Symbol"
+      >}</a
+      ><a name="392"
+      > </a
+      ><a name="393" class="Symbol"
+      >{</a
+      ><a name="394" href="CwF.Sets.PiType.html#394" class="Bound"
+      >A</a
+      ><a name="395"
+      > </a
+      ><a name="396" class="Symbol"
+      >:</a
+      ><a name="397"
+      > </a
+      ><a name="398" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="402"
+      > </a
+      ><a name="403" href="CwF.Sets.PiType.html#384" class="Bound"
+      >&#915;</a
+      ><a name="404" class="Symbol"
+      >}</a
+      ><a name="405"
+      > </a
+      ><a name="406" class="Symbol"
+      >{</a
+      ><a name="407" href="CwF.Sets.PiType.html#407" class="Bound"
+      >B</a
+      ><a name="408"
+      > </a
+      ><a name="409" class="Symbol"
+      >:</a
+      ><a name="410"
+      > </a
+      ><a name="411" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="415"
+      > </a
+      ><a name="416" class="Symbol"
+      >(</a
+      ><a name="417" href="CwF.Sets.PiType.html#384" class="Bound"
+      >&#915;</a
+      ><a name="418"
+      > </a
+      ><a name="419" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="420"
+      > </a
+      ><a name="421" href="CwF.Sets.PiType.html#394" class="Bound"
+      >A</a
+      ><a name="422" class="Symbol"
+      >)}</a
+      ><a name="424"
+      >
+  </a
+      ><a name="427" class="Symbol"
+      >&#8594;</a
+      ><a name="428"
+      > </a
+      ><a name="429" href="CwF.Sets.TypesAndTerms.html#259" class="Function"
+      >Term</a
+      ><a name="433"
+      > </a
+      ><a name="434" class="Symbol"
+      >(</a
+      ><a name="435" href="CwF.Sets.PiType.html#384" class="Bound"
+      >&#915;</a
+      ><a name="436"
+      > </a
+      ><a name="437" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="438"
+      > </a
+      ><a name="439" href="CwF.Sets.PiType.html#394" class="Bound"
+      >A</a
+      ><a name="440" class="Symbol"
+      >)</a
+      ><a name="441"
+      > </a
+      ><a name="442" href="CwF.Sets.PiType.html#407" class="Bound"
+      >B</a
+      ><a name="443"
+      > </a
+      ><a name="444" class="Symbol"
+      >&#8594;</a
+      ><a name="445"
+      > </a
+      ><a name="446" href="CwF.Sets.TypesAndTerms.html#259" class="Function"
+      >Term</a
+      ><a name="450"
+      > </a
+      ><a name="451" href="CwF.Sets.PiType.html#384" class="Bound"
+      >&#915;</a
+      ><a name="452"
+      > </a
+      ><a name="453" class="Symbol"
+      >(</a
+      ><a name="454" href="CwF.Sets.PiType.html#285" class="Function"
+      >[&#928;]</a
+      ><a name="457"
+      > </a
+      ><a name="458" href="CwF.Sets.PiType.html#394" class="Bound"
+      >A</a
+      ><a name="459"
+      > </a
+      ><a name="460" href="CwF.Sets.PiType.html#407" class="Bound"
+      >B</a
+      ><a name="461" class="Symbol"
+      >)</a
+      ><a name="462"
+      >
+</a
+      ><a name="463" href="CwF.Sets.PiType.html#379" class="Function"
+      >&#8911;</a
+      ><a name="464"
+      > </a
+      ><a name="465" href="CwF.Sets.PiType.html#465" class="Bound"
+      >v</a
+      ><a name="466"
+      > </a
+      ><a name="467" class="Symbol"
+      >=</a
+      ><a name="468"
+      > </a
+      ><a name="469" class="Symbol"
+      >&#955;</a
+      ><a name="470"
+      > </a
+      ><a name="471" href="CwF.Sets.PiType.html#471" class="Bound"
+      >&#947;</a
+      ><a name="472"
+      > </a
+      ><a name="473" href="CwF.Sets.PiType.html#473" class="Bound"
+      >a</a
+      ><a name="474"
+      > </a
+      ><a name="475" class="Symbol"
+      >&#8594;</a
+      ><a name="476"
+      > </a
+      ><a name="477" href="CwF.Sets.PiType.html#465" class="Bound"
+      >v</a
+      ><a name="478"
+      > </a
+      ><a name="479" class="Symbol"
+      >(</a
+      ><a name="480" href="CwF.Sets.PiType.html#471" class="Bound"
+      >&#947;</a
+      ><a name="481"
+      > </a
+      ><a name="482" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="483"
+      > </a
+      ><a name="484" href="CwF.Sets.PiType.html#473" class="Bound"
+      >a</a
+      ><a name="485" class="Symbol"
+      >)</a
+      ><a name="486"
+      >
+
+</a
+      ><a name="488" href="CwF.Sets.PiType.html#488" class="Function"
+      >app</a
+      ><a name="491"
+      > </a
+      ><a name="492" class="Symbol"
+      >:</a
+      ><a name="493"
+      > </a
+      ><a name="494" class="Symbol"
+      >{</a
+      ><a name="495" href="CwF.Sets.PiType.html#495" class="Bound"
+      >&#915;</a
+      ><a name="496"
+      > </a
+      ><a name="497" class="Symbol"
+      >:</a
+      ><a name="498"
+      > </a
+      ><a name="499" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="502" class="Symbol"
+      >}</a
+      ><a name="503"
+      > </a
+      ><a name="504" class="Symbol"
+      >{</a
+      ><a name="505" href="CwF.Sets.PiType.html#505" class="Bound"
+      >A</a
+      ><a name="506"
+      > </a
+      ><a name="507" class="Symbol"
+      >:</a
+      ><a name="508"
+      > </a
+      ><a name="509" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="513"
+      > </a
+      ><a name="514" href="CwF.Sets.PiType.html#495" class="Bound"
+      >&#915;</a
+      ><a name="515" class="Symbol"
+      >}</a
+      ><a name="516"
+      > </a
+      ><a name="517" class="Symbol"
+      >{</a
+      ><a name="518" href="CwF.Sets.PiType.html#518" class="Bound"
+      >B</a
+      ><a name="519"
+      > </a
+      ><a name="520" class="Symbol"
+      >:</a
+      ><a name="521"
+      > </a
+      ><a name="522" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="526"
+      > </a
+      ><a name="527" class="Symbol"
+      >(</a
+      ><a name="528" href="CwF.Sets.PiType.html#495" class="Bound"
+      >&#915;</a
+      ><a name="529"
+      > </a
+      ><a name="530" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="531"
+      > </a
+      ><a name="532" href="CwF.Sets.PiType.html#505" class="Bound"
+      >A</a
+      ><a name="533" class="Symbol"
+      >)}</a
+      ><a name="535"
+      >
+    </a
+      ><a name="540" class="Symbol"
+      >&#8594;</a
+      ><a name="541"
+      > </a
+      ><a name="542" href="CwF.Sets.TypesAndTerms.html#259" class="Function"
+      >Term</a
+      ><a name="546"
+      > </a
+      ><a name="547" href="CwF.Sets.PiType.html#495" class="Bound"
+      >&#915;</a
+      ><a name="548"
+      > </a
+      ><a name="549" class="Symbol"
+      >(</a
+      ><a name="550" href="CwF.Sets.PiType.html#285" class="Function"
+      >[&#928;]</a
+      ><a name="553"
+      > </a
+      ><a name="554" href="CwF.Sets.PiType.html#505" class="Bound"
+      >A</a
+      ><a name="555"
+      > </a
+      ><a name="556" href="CwF.Sets.PiType.html#518" class="Bound"
+      >B</a
+      ><a name="557" class="Symbol"
+      >)</a
+      ><a name="558"
+      > </a
+      ><a name="559" class="Symbol"
+      >&#8594;</a
+      ><a name="560"
+      > </a
+      ><a name="561" class="Symbol"
+      >(</a
+      ><a name="562" href="CwF.Sets.PiType.html#562" class="Bound"
+      >u</a
+      ><a name="563"
+      > </a
+      ><a name="564" class="Symbol"
+      >:</a
+      ><a name="565"
+      > </a
+      ><a name="566" href="CwF.Sets.TypesAndTerms.html#259" class="Function"
+      >Term</a
+      ><a name="570"
+      > </a
+      ><a name="571" href="CwF.Sets.PiType.html#495" class="Bound"
+      >&#915;</a
+      ><a name="572"
+      > </a
+      ><a name="573" href="CwF.Sets.PiType.html#505" class="Bound"
+      >A</a
+      ><a name="574" class="Symbol"
+      >)</a
+      ><a name="575"
+      > </a
+      ><a name="576" class="Symbol"
+      >&#8594;</a
+      ><a name="577"
+      > </a
+      ><a name="578" href="CwF.Sets.TypesAndTerms.html#259" class="Function"
+      >Term</a
+      ><a name="582"
+      > </a
+      ><a name="583" href="CwF.Sets.PiType.html#495" class="Bound"
+      >&#915;</a
+      ><a name="584"
+      > </a
+      ><a name="585" class="Symbol"
+      >(</a
+      ><a name="586" href="CwF.Sets.PiType.html#518" class="Bound"
+      >B</a
+      ><a name="587"
+      > </a
+      ><a name="588" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="589"
+      > </a
+      ><a name="590" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10216;</a
+      ><a name="591"
+      > </a
+      ><a name="592" href="CwF.Sets.Base.html#260" class="Function"
+      >&#921;</a
+      ><a name="593"
+      > </a
+      ><a name="594" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >,</a
+      ><a name="595"
+      > </a
+      ><a name="596" href="CwF.Sets.PiType.html#562" class="Bound"
+      >u</a
+      ><a name="597"
+      > </a
+      ><a name="598" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10217;</a
+      ><a name="599"
+      > </a
+      ><a name="600" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="602" class="Symbol"
+      >)</a
+      ><a name="603"
+      >
+</a
+      ><a name="604" href="CwF.Sets.PiType.html#488" class="Function"
+      >app</a
+      ><a name="607"
+      > </a
+      ><a name="608" href="CwF.Sets.PiType.html#608" class="Bound"
+      >w</a
+      ><a name="609"
+      > </a
+      ><a name="610" href="CwF.Sets.PiType.html#610" class="Bound"
+      >u</a
+      ><a name="611"
+      > </a
+      ><a name="612" class="Symbol"
+      >=</a
+      ><a name="613"
+      > </a
+      ><a name="614" class="Symbol"
+      >&#955;</a
+      ><a name="615"
+      > </a
+      ><a name="616" href="CwF.Sets.PiType.html#616" class="Bound"
+      >&#947;</a
+      ><a name="617"
+      > </a
+      ><a name="618" class="Symbol"
+      >&#8594;</a
+      ><a name="619"
+      > </a
+      ><a name="620" href="CwF.Sets.PiType.html#608" class="Bound"
+      >w</a
+      ><a name="621"
+      > </a
+      ><a name="622" href="CwF.Sets.PiType.html#616" class="Bound"
+      >&#947;</a
+      ><a name="623"
+      > </a
+      ><a name="624" class="Symbol"
+      >(</a
+      ><a name="625" href="CwF.Sets.PiType.html#610" class="Bound"
+      >u</a
+      ><a name="626"
+      > </a
+      ><a name="627" href="CwF.Sets.PiType.html#616" class="Bound"
+      >&#947;</a
+      ><a name="628" class="Symbol"
+      >)</a
+      ><a name="629"
+      >
+
+\end{code}
+
+</a
+      ><a name="643" class="Comment"
+      >Computational rules</a
+      ><a name="662"
+      >
+
+\begin{code}
+
+</a
+      ><a name="678" class="Comment"
+      >-- app(&#955;v,u) = v[(1,u)]</a
+      ><a name="701"
+      >
+</a
+      ><a name="702" href="CwF.Sets.PiType.html#702" class="Function"
+      >EqPT&#8321;</a
+      ><a name="707"
+      > </a
+      ><a name="708" class="Symbol"
+      >:</a
+      ><a name="709"
+      > </a
+      ><a name="710" class="Symbol"
+      >{</a
+      ><a name="711" href="CwF.Sets.PiType.html#711" class="Bound"
+      >&#915;</a
+      ><a name="712"
+      > </a
+      ><a name="713" class="Symbol"
+      >:</a
+      ><a name="714"
+      > </a
+      ><a name="715" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="718" class="Symbol"
+      >}</a
+      ><a name="719"
+      > </a
+      ><a name="720" class="Symbol"
+      >{</a
+      ><a name="721" href="CwF.Sets.PiType.html#721" class="Bound"
+      >A</a
+      ><a name="722"
+      > </a
+      ><a name="723" class="Symbol"
+      >:</a
+      ><a name="724"
+      > </a
+      ><a name="725" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="729"
+      > </a
+      ><a name="730" href="CwF.Sets.PiType.html#711" class="Bound"
+      >&#915;</a
+      ><a name="731" class="Symbol"
+      >}</a
+      ><a name="732"
+      > </a
+      ><a name="733" class="Symbol"
+      >{</a
+      ><a name="734" href="CwF.Sets.PiType.html#734" class="Bound"
+      >B</a
+      ><a name="735"
+      > </a
+      ><a name="736" class="Symbol"
+      >:</a
+      ><a name="737"
+      > </a
+      ><a name="738" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="742"
+      > </a
+      ><a name="743" class="Symbol"
+      >(</a
+      ><a name="744" href="CwF.Sets.PiType.html#711" class="Bound"
+      >&#915;</a
+      ><a name="745"
+      > </a
+      ><a name="746" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="747"
+      > </a
+      ><a name="748" href="CwF.Sets.PiType.html#721" class="Bound"
+      >A</a
+      ><a name="749" class="Symbol"
+      >)}</a
+      ><a name="751"
+      >
+        </a
+      ><a name="760" class="Symbol"
+      >{</a
+      ><a name="761" href="CwF.Sets.PiType.html#761" class="Bound"
+      >u</a
+      ><a name="762"
+      > </a
+      ><a name="763" class="Symbol"
+      >:</a
+      ><a name="764"
+      > </a
+      ><a name="765" href="CwF.Sets.TypesAndTerms.html#259" class="Function"
+      >Term</a
+      ><a name="769"
+      > </a
+      ><a name="770" href="CwF.Sets.PiType.html#711" class="Bound"
+      >&#915;</a
+      ><a name="771"
+      > </a
+      ><a name="772" href="CwF.Sets.PiType.html#721" class="Bound"
+      >A</a
+      ><a name="773" class="Symbol"
+      >}</a
+      ><a name="774"
+      > </a
+      ><a name="775" class="Symbol"
+      >{</a
+      ><a name="776" href="CwF.Sets.PiType.html#776" class="Bound"
+      >v</a
+      ><a name="777"
+      > </a
+      ><a name="778" class="Symbol"
+      >:</a
+      ><a name="779"
+      > </a
+      ><a name="780" href="CwF.Sets.TypesAndTerms.html#259" class="Function"
+      >Term</a
+      ><a name="784"
+      > </a
+      ><a name="785" class="Symbol"
+      >(</a
+      ><a name="786" href="CwF.Sets.PiType.html#711" class="Bound"
+      >&#915;</a
+      ><a name="787"
+      > </a
+      ><a name="788" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="789"
+      > </a
+      ><a name="790" href="CwF.Sets.PiType.html#721" class="Bound"
+      >A</a
+      ><a name="791" class="Symbol"
+      >)</a
+      ><a name="792"
+      > </a
+      ><a name="793" href="CwF.Sets.PiType.html#734" class="Bound"
+      >B</a
+      ><a name="794" class="Symbol"
+      >}</a
+      ><a name="795"
+      >
+      </a
+      ><a name="802" class="Symbol"
+      >&#8594;</a
+      ><a name="803"
+      > </a
+      ><a name="804" href="CwF.Sets.PiType.html#488" class="Function"
+      >app</a
+      ><a name="807"
+      > </a
+      ><a name="808" class="Symbol"
+      >(</a
+      ><a name="809" href="CwF.Sets.PiType.html#379" class="Function"
+      >&#8911;</a
+      ><a name="810"
+      > </a
+      ><a name="811" href="CwF.Sets.PiType.html#776" class="Bound"
+      >v</a
+      ><a name="812" class="Symbol"
+      >)</a
+      ><a name="813"
+      > </a
+      ><a name="814" href="CwF.Sets.PiType.html#761" class="Bound"
+      >u</a
+      ><a name="815"
+      > </a
+      ><a name="816" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="817"
+      > </a
+      ><a name="818" href="CwF.Sets.PiType.html#776" class="Bound"
+      >v</a
+      ><a name="819"
+      > </a
+      ><a name="820" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >[</a
+      ><a name="821"
+      > </a
+      ><a name="822" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10216;</a
+      ><a name="823"
+      > </a
+      ><a name="824" href="CwF.Sets.Base.html#260" class="Function"
+      >&#921;</a
+      ><a name="825"
+      > </a
+      ><a name="826" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >,</a
+      ><a name="827"
+      > </a
+      ><a name="828" href="CwF.Sets.PiType.html#761" class="Bound"
+      >u</a
+      ><a name="829"
+      > </a
+      ><a name="830" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10217;</a
+      ><a name="831"
+      > </a
+      ><a name="832" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >]&#7504;</a
+      ><a name="834"
+      >
+</a
+      ><a name="835" href="CwF.Sets.PiType.html#702" class="Function"
+      >EqPT&#8321;</a
+      ><a name="840"
+      > </a
+      ><a name="841" class="Symbol"
+      >=</a
+      ><a name="842"
+      > </a
+      ><a name="843" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="847"
+      >
+
+</a
+      ><a name="849" class="Comment"
+      >-- &#955;(app(w[p],q)) = w</a
+      ><a name="870"
+      >
+</a
+      ><a name="871" href="CwF.Sets.PiType.html#871" class="Function"
+      >EqPT&#8322;</a
+      ><a name="876"
+      > </a
+      ><a name="877" class="Symbol"
+      >:</a
+      ><a name="878"
+      > </a
+      ><a name="879" class="Symbol"
+      >{</a
+      ><a name="880" href="CwF.Sets.PiType.html#880" class="Bound"
+      >&#915;</a
+      ><a name="881"
+      > </a
+      ><a name="882" class="Symbol"
+      >:</a
+      ><a name="883"
+      > </a
+      ><a name="884" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="887" class="Symbol"
+      >}</a
+      ><a name="888"
+      > </a
+      ><a name="889" class="Symbol"
+      >{</a
+      ><a name="890" href="CwF.Sets.PiType.html#890" class="Bound"
+      >A</a
+      ><a name="891"
+      > </a
+      ><a name="892" class="Symbol"
+      >:</a
+      ><a name="893"
+      > </a
+      ><a name="894" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="898"
+      > </a
+      ><a name="899" href="CwF.Sets.PiType.html#880" class="Bound"
+      >&#915;</a
+      ><a name="900" class="Symbol"
+      >}</a
+      ><a name="901"
+      > </a
+      ><a name="902" class="Symbol"
+      >{</a
+      ><a name="903" href="CwF.Sets.PiType.html#903" class="Bound"
+      >B</a
+      ><a name="904"
+      > </a
+      ><a name="905" class="Symbol"
+      >:</a
+      ><a name="906"
+      > </a
+      ><a name="907" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="911"
+      > </a
+      ><a name="912" class="Symbol"
+      >(</a
+      ><a name="913" href="CwF.Sets.PiType.html#880" class="Bound"
+      >&#915;</a
+      ><a name="914"
+      > </a
+      ><a name="915" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="916"
+      > </a
+      ><a name="917" href="CwF.Sets.PiType.html#890" class="Bound"
+      >A</a
+      ><a name="918" class="Symbol"
+      >)}</a
+      ><a name="920"
+      >
+        </a
+      ><a name="929" class="Symbol"
+      >{</a
+      ><a name="930" href="CwF.Sets.PiType.html#930" class="Bound"
+      >w</a
+      ><a name="931"
+      > </a
+      ><a name="932" class="Symbol"
+      >:</a
+      ><a name="933"
+      > </a
+      ><a name="934" href="CwF.Sets.TypesAndTerms.html#259" class="Function"
+      >Term</a
+      ><a name="938"
+      > </a
+      ><a name="939" href="CwF.Sets.PiType.html#880" class="Bound"
+      >&#915;</a
+      ><a name="940"
+      > </a
+      ><a name="941" class="Symbol"
+      >(</a
+      ><a name="942" href="CwF.Sets.PiType.html#285" class="Function"
+      >[&#928;]</a
+      ><a name="945"
+      > </a
+      ><a name="946" href="CwF.Sets.PiType.html#890" class="Bound"
+      >A</a
+      ><a name="947"
+      > </a
+      ><a name="948" href="CwF.Sets.PiType.html#903" class="Bound"
+      >B</a
+      ><a name="949" class="Symbol"
+      >)}</a
+      ><a name="951"
+      >
+      </a
+      ><a name="958" class="Symbol"
+      >&#8594;</a
+      ><a name="959"
+      > </a
+      ><a name="960" href="CwF.Sets.PiType.html#379" class="Function"
+      >&#8911;</a
+      ><a name="961"
+      > </a
+      ><a name="962" class="Symbol"
+      >(</a
+      ><a name="963" href="CwF.Sets.PiType.html#488" class="Function"
+      >app</a
+      ><a name="966"
+      > </a
+      ><a name="967" class="Symbol"
+      >(</a
+      ><a name="968" href="CwF.Sets.PiType.html#930" class="Bound"
+      >w</a
+      ><a name="969"
+      > </a
+      ><a name="970" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >[</a
+      ><a name="971"
+      > </a
+      ><a name="972" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="973"
+      > </a
+      ><a name="974" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >]&#7504;</a
+      ><a name="976" class="Symbol"
+      >)</a
+      ><a name="977"
+      > </a
+      ><a name="978" href="CwF.Sets.ContextComprehension.html#401" class="Function"
+      >&#9440;</a
+      ><a name="979" class="Symbol"
+      >)</a
+      ><a name="980"
+      > </a
+      ><a name="981" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="982"
+      > </a
+      ><a name="983" href="CwF.Sets.PiType.html#930" class="Bound"
+      >w</a
+      ><a name="984"
+      >
+</a
+      ><a name="985" href="CwF.Sets.PiType.html#871" class="Function"
+      >EqPT&#8322;</a
+      ><a name="990"
+      > </a
+      ><a name="991" class="Symbol"
+      >=</a
+      ><a name="992"
+      > </a
+      ><a name="993" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="997"
+      >
+
+</a
+      ><a name="999" class="Comment"
+      >-- (&#928;AB)[&#963;] = &#928;(A[&#963;])(B[(&#963;&#8728;p,q)])</a
+      ><a name="1032"
+      >
+</a
+      ><a name="1033" href="CwF.Sets.PiType.html#1033" class="Function"
+      >EqPT&#8323;</a
+      ><a name="1038"
+      > </a
+      ><a name="1039" class="Symbol"
+      >:</a
+      ><a name="1040"
+      > </a
+      ><a name="1041" class="Symbol"
+      >{</a
+      ><a name="1042" href="CwF.Sets.PiType.html#1042" class="Bound"
+      >&#915;</a
+      ><a name="1043"
+      > </a
+      ><a name="1044" class="Symbol"
+      >:</a
+      ><a name="1045"
+      > </a
+      ><a name="1046" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="1049" class="Symbol"
+      >}</a
+      ><a name="1050"
+      > </a
+      ><a name="1051" class="Symbol"
+      >{</a
+      ><a name="1052" href="CwF.Sets.PiType.html#1052" class="Bound"
+      >A</a
+      ><a name="1053"
+      > </a
+      ><a name="1054" class="Symbol"
+      >:</a
+      ><a name="1055"
+      > </a
+      ><a name="1056" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="1060"
+      > </a
+      ><a name="1061" href="CwF.Sets.PiType.html#1042" class="Bound"
+      >&#915;</a
+      ><a name="1062" class="Symbol"
+      >}</a
+      ><a name="1063"
+      > </a
+      ><a name="1064" class="Symbol"
+      >{</a
+      ><a name="1065" href="CwF.Sets.PiType.html#1065" class="Bound"
+      >B</a
+      ><a name="1066"
+      > </a
+      ><a name="1067" class="Symbol"
+      >:</a
+      ><a name="1068"
+      > </a
+      ><a name="1069" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="1073"
+      > </a
+      ><a name="1074" class="Symbol"
+      >(</a
+      ><a name="1075" href="CwF.Sets.PiType.html#1042" class="Bound"
+      >&#915;</a
+      ><a name="1076"
+      > </a
+      ><a name="1077" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="1078"
+      > </a
+      ><a name="1079" href="CwF.Sets.PiType.html#1052" class="Bound"
+      >A</a
+      ><a name="1080" class="Symbol"
+      >)}</a
+      ><a name="1082"
+      >
+        </a
+      ><a name="1091" class="Symbol"
+      >{</a
+      ><a name="1092" href="CwF.Sets.PiType.html#1092" class="Bound"
+      >&#916;</a
+      ><a name="1093"
+      > </a
+      ><a name="1094" class="Symbol"
+      >:</a
+      ><a name="1095"
+      > </a
+      ><a name="1096" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="1099" class="Symbol"
+      >}</a
+      ><a name="1100"
+      > </a
+      ><a name="1101" class="Symbol"
+      >{</a
+      ><a name="1102" href="CwF.Sets.PiType.html#1102" class="Bound"
+      >&#963;</a
+      ><a name="1103"
+      > </a
+      ><a name="1104" class="Symbol"
+      >:</a
+      ><a name="1105"
+      > </a
+      ><a name="1106" href="CwF.Sets.Base.html#221" class="Function"
+      >Sub</a
+      ><a name="1109"
+      > </a
+      ><a name="1110" href="CwF.Sets.PiType.html#1092" class="Bound"
+      >&#916;</a
+      ><a name="1111"
+      > </a
+      ><a name="1112" href="CwF.Sets.PiType.html#1042" class="Bound"
+      >&#915;</a
+      ><a name="1113" class="Symbol"
+      >}</a
+      ><a name="1114"
+      >
+      </a
+      ><a name="1121" class="Symbol"
+      >&#8594;</a
+      ><a name="1122"
+      > </a
+      ><a name="1123" class="Symbol"
+      >(</a
+      ><a name="1124" href="CwF.Sets.PiType.html#285" class="Function"
+      >[&#928;]</a
+      ><a name="1127"
+      > </a
+      ><a name="1128" href="CwF.Sets.PiType.html#1052" class="Bound"
+      >A</a
+      ><a name="1129"
+      > </a
+      ><a name="1130" href="CwF.Sets.PiType.html#1065" class="Bound"
+      >B</a
+      ><a name="1131" class="Symbol"
+      >)</a
+      ><a name="1132"
+      > </a
+      ><a name="1133" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="1134"
+      > </a
+      ><a name="1135" href="CwF.Sets.PiType.html#1102" class="Bound"
+      >&#963;</a
+      ><a name="1136"
+      > </a
+      ><a name="1137" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="1139"
+      > </a
+      ><a name="1140" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1141"
+      > </a
+      ><a name="1142" href="CwF.Sets.PiType.html#285" class="Function"
+      >[&#928;]</a
+      ><a name="1145"
+      > </a
+      ><a name="1146" class="Symbol"
+      >(</a
+      ><a name="1147" href="CwF.Sets.PiType.html#1052" class="Bound"
+      >A</a
+      ><a name="1148"
+      > </a
+      ><a name="1149" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="1150"
+      > </a
+      ><a name="1151" href="CwF.Sets.PiType.html#1102" class="Bound"
+      >&#963;</a
+      ><a name="1152"
+      > </a
+      ><a name="1153" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="1155" class="Symbol"
+      >)</a
+      ><a name="1156"
+      > </a
+      ><a name="1157" class="Symbol"
+      >(</a
+      ><a name="1158" href="CwF.Sets.PiType.html#1065" class="Bound"
+      >B</a
+      ><a name="1159"
+      > </a
+      ><a name="1160" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="1161"
+      > </a
+      ><a name="1162" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10216;</a
+      ><a name="1163"
+      > </a
+      ><a name="1164" href="CwF.Sets.PiType.html#1102" class="Bound"
+      >&#963;</a
+      ><a name="1165"
+      > </a
+      ><a name="1166" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1167"
+      > </a
+      ><a name="1168" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="1169"
+      > </a
+      ><a name="1170" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >,</a
+      ><a name="1171"
+      > </a
+      ><a name="1172" href="CwF.Sets.ContextComprehension.html#401" class="Function"
+      >&#9440;</a
+      ><a name="1173"
+      > </a
+      ><a name="1174" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10217;</a
+      ><a name="1175"
+      > </a
+      ><a name="1176" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="1178" class="Symbol"
+      >)</a
+      ><a name="1179"
+      >
+</a
+      ><a name="1180" href="CwF.Sets.PiType.html#1033" class="Function"
+      >EqPT&#8323;</a
+      ><a name="1185"
+      > </a
+      ><a name="1186" class="Symbol"
+      >=</a
+      ><a name="1187"
+      > </a
+      ><a name="1188" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1192"
+      >
+
+</a
+      ><a name="1194" class="Comment"
+      >-- (&#955;v)[&#963;] = &#955;(v[(&#963;&#8728;p,q)])</a
+      ><a name="1220"
+      >
+</a
+      ><a name="1221" href="CwF.Sets.PiType.html#1221" class="Function"
+      >EqPT&#8324;</a
+      ><a name="1226"
+      > </a
+      ><a name="1227" class="Symbol"
+      >:</a
+      ><a name="1228"
+      > </a
+      ><a name="1229" class="Symbol"
+      >{</a
+      ><a name="1230" href="CwF.Sets.PiType.html#1230" class="Bound"
+      >&#915;</a
+      ><a name="1231"
+      > </a
+      ><a name="1232" class="Symbol"
+      >:</a
+      ><a name="1233"
+      > </a
+      ><a name="1234" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="1237" class="Symbol"
+      >}</a
+      ><a name="1238"
+      > </a
+      ><a name="1239" class="Symbol"
+      >{</a
+      ><a name="1240" href="CwF.Sets.PiType.html#1240" class="Bound"
+      >A</a
+      ><a name="1241"
+      > </a
+      ><a name="1242" class="Symbol"
+      >:</a
+      ><a name="1243"
+      > </a
+      ><a name="1244" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="1248"
+      > </a
+      ><a name="1249" href="CwF.Sets.PiType.html#1230" class="Bound"
+      >&#915;</a
+      ><a name="1250" class="Symbol"
+      >}</a
+      ><a name="1251"
+      > </a
+      ><a name="1252" class="Symbol"
+      >{</a
+      ><a name="1253" href="CwF.Sets.PiType.html#1253" class="Bound"
+      >B</a
+      ><a name="1254"
+      > </a
+      ><a name="1255" class="Symbol"
+      >:</a
+      ><a name="1256"
+      > </a
+      ><a name="1257" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="1261"
+      > </a
+      ><a name="1262" class="Symbol"
+      >(</a
+      ><a name="1263" href="CwF.Sets.PiType.html#1230" class="Bound"
+      >&#915;</a
+      ><a name="1264"
+      > </a
+      ><a name="1265" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="1266"
+      > </a
+      ><a name="1267" href="CwF.Sets.PiType.html#1240" class="Bound"
+      >A</a
+      ><a name="1268" class="Symbol"
+      >)}</a
+      ><a name="1270"
+      >
+        </a
+      ><a name="1279" class="Symbol"
+      >{</a
+      ><a name="1280" href="CwF.Sets.PiType.html#1280" class="Bound"
+      >v</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" class="Symbol"
+      >:</a
+      ><a name="1283"
+      > </a
+      ><a name="1284" href="CwF.Sets.TypesAndTerms.html#259" class="Function"
+      >Term</a
+      ><a name="1288"
+      > </a
+      ><a name="1289" class="Symbol"
+      >(</a
+      ><a name="1290" href="CwF.Sets.PiType.html#1230" class="Bound"
+      >&#915;</a
+      ><a name="1291"
+      > </a
+      ><a name="1292" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="1293"
+      > </a
+      ><a name="1294" href="CwF.Sets.PiType.html#1240" class="Bound"
+      >A</a
+      ><a name="1295" class="Symbol"
+      >)</a
+      ><a name="1296"
+      > </a
+      ><a name="1297" href="CwF.Sets.PiType.html#1253" class="Bound"
+      >B</a
+      ><a name="1298" class="Symbol"
+      >}</a
+      ><a name="1299"
+      > </a
+      ><a name="1300" class="Symbol"
+      >{</a
+      ><a name="1301" href="CwF.Sets.PiType.html#1301" class="Bound"
+      >&#916;</a
+      ><a name="1302"
+      > </a
+      ><a name="1303" class="Symbol"
+      >:</a
+      ><a name="1304"
+      > </a
+      ><a name="1305" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="1308" class="Symbol"
+      >}</a
+      ><a name="1309"
+      > </a
+      ><a name="1310" class="Symbol"
+      >{</a
+      ><a name="1311" href="CwF.Sets.PiType.html#1311" class="Bound"
+      >&#963;</a
+      ><a name="1312"
+      > </a
+      ><a name="1313" class="Symbol"
+      >:</a
+      ><a name="1314"
+      > </a
+      ><a name="1315" href="CwF.Sets.Base.html#221" class="Function"
+      >Sub</a
+      ><a name="1318"
+      > </a
+      ><a name="1319" href="CwF.Sets.PiType.html#1301" class="Bound"
+      >&#916;</a
+      ><a name="1320"
+      > </a
+      ><a name="1321" href="CwF.Sets.PiType.html#1230" class="Bound"
+      >&#915;</a
+      ><a name="1322" class="Symbol"
+      >}</a
+      ><a name="1323"
+      >
+      </a
+      ><a name="1330" class="Symbol"
+      >&#8594;</a
+      ><a name="1331"
+      > </a
+      ><a name="1332" class="Symbol"
+      >(</a
+      ><a name="1333" href="CwF.Sets.PiType.html#379" class="Function"
+      >&#8911;</a
+      ><a name="1334"
+      > </a
+      ><a name="1335" href="CwF.Sets.PiType.html#1280" class="Bound"
+      >v</a
+      ><a name="1336" class="Symbol"
+      >)</a
+      ><a name="1337"
+      > </a
+      ><a name="1338" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >[</a
+      ><a name="1339"
+      > </a
+      ><a name="1340" href="CwF.Sets.PiType.html#1311" class="Bound"
+      >&#963;</a
+      ><a name="1341"
+      > </a
+      ><a name="1342" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >]&#7504;</a
+      ><a name="1344"
+      > </a
+      ><a name="1345" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1346"
+      > </a
+      ><a name="1347" href="CwF.Sets.PiType.html#379" class="Function"
+      >&#8911;</a
+      ><a name="1348"
+      > </a
+      ><a name="1349" class="Symbol"
+      >(</a
+      ><a name="1350" href="CwF.Sets.PiType.html#1280" class="Bound"
+      >v</a
+      ><a name="1351"
+      > </a
+      ><a name="1352" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >[</a
+      ><a name="1353"
+      > </a
+      ><a name="1354" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10216;</a
+      ><a name="1355"
+      > </a
+      ><a name="1356" href="CwF.Sets.PiType.html#1311" class="Bound"
+      >&#963;</a
+      ><a name="1357"
+      > </a
+      ><a name="1358" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1359"
+      > </a
+      ><a name="1360" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="1361"
+      > </a
+      ><a name="1362" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >,</a
+      ><a name="1363"
+      > </a
+      ><a name="1364" href="CwF.Sets.ContextComprehension.html#401" class="Function"
+      >&#9440;</a
+      ><a name="1365"
+      > </a
+      ><a name="1366" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10217;</a
+      ><a name="1367"
+      > </a
+      ><a name="1368" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >]&#7504;</a
+      ><a name="1370" class="Symbol"
+      >)</a
+      ><a name="1371"
+      >
+</a
+      ><a name="1372" href="CwF.Sets.PiType.html#1221" class="Function"
+      >EqPT&#8324;</a
+      ><a name="1377"
+      > </a
+      ><a name="1378" class="Symbol"
+      >=</a
+      ><a name="1379"
+      > </a
+      ><a name="1380" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1384"
+      >
+
+</a
+      ><a name="1386" class="Comment"
+      >-- app(w,u)[&#963;] = app(w[&#963;],u[&#963;])</a
+      ><a name="1417"
+      >
+</a
+      ><a name="1418" href="CwF.Sets.PiType.html#1418" class="Function"
+      >EqPT&#8325;</a
+      ><a name="1423"
+      > </a
+      ><a name="1424" class="Symbol"
+      >:</a
+      ><a name="1425"
+      > </a
+      ><a name="1426" class="Symbol"
+      >{</a
+      ><a name="1427" href="CwF.Sets.PiType.html#1427" class="Bound"
+      >&#915;</a
+      ><a name="1428"
+      > </a
+      ><a name="1429" class="Symbol"
+      >:</a
+      ><a name="1430"
+      > </a
+      ><a name="1431" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="1434" class="Symbol"
+      >}</a
+      ><a name="1435"
+      > </a
+      ><a name="1436" class="Symbol"
+      >{</a
+      ><a name="1437" href="CwF.Sets.PiType.html#1437" class="Bound"
+      >A</a
+      ><a name="1438"
+      > </a
+      ><a name="1439" class="Symbol"
+      >:</a
+      ><a name="1440"
+      > </a
+      ><a name="1441" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="1445"
+      > </a
+      ><a name="1446" href="CwF.Sets.PiType.html#1427" class="Bound"
+      >&#915;</a
+      ><a name="1447" class="Symbol"
+      >}</a
+      ><a name="1448"
+      > </a
+      ><a name="1449" class="Symbol"
+      >{</a
+      ><a name="1450" href="CwF.Sets.PiType.html#1450" class="Bound"
+      >B</a
+      ><a name="1451"
+      > </a
+      ><a name="1452" class="Symbol"
+      >:</a
+      ><a name="1453"
+      > </a
+      ><a name="1454" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="1458"
+      > </a
+      ><a name="1459" class="Symbol"
+      >(</a
+      ><a name="1460" href="CwF.Sets.PiType.html#1427" class="Bound"
+      >&#915;</a
+      ><a name="1461"
+      > </a
+      ><a name="1462" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="1463"
+      > </a
+      ><a name="1464" href="CwF.Sets.PiType.html#1437" class="Bound"
+      >A</a
+      ><a name="1465" class="Symbol"
+      >)}</a
+      ><a name="1467"
+      >
+        </a
+      ><a name="1476" class="Symbol"
+      >{</a
+      ><a name="1477" href="CwF.Sets.PiType.html#1477" class="Bound"
+      >w</a
+      ><a name="1478"
+      > </a
+      ><a name="1479" class="Symbol"
+      >:</a
+      ><a name="1480"
+      > </a
+      ><a name="1481" href="CwF.Sets.TypesAndTerms.html#259" class="Function"
+      >Term</a
+      ><a name="1485"
+      > </a
+      ><a name="1486" href="CwF.Sets.PiType.html#1427" class="Bound"
+      >&#915;</a
+      ><a name="1487"
+      > </a
+      ><a name="1488" class="Symbol"
+      >(</a
+      ><a name="1489" href="CwF.Sets.PiType.html#285" class="Function"
+      >[&#928;]</a
+      ><a name="1492"
+      > </a
+      ><a name="1493" href="CwF.Sets.PiType.html#1437" class="Bound"
+      >A</a
+      ><a name="1494"
+      > </a
+      ><a name="1495" href="CwF.Sets.PiType.html#1450" class="Bound"
+      >B</a
+      ><a name="1496" class="Symbol"
+      >)}</a
+      ><a name="1498"
+      > </a
+      ><a name="1499" class="Symbol"
+      >{</a
+      ><a name="1500" href="CwF.Sets.PiType.html#1500" class="Bound"
+      >u</a
+      ><a name="1501"
+      > </a
+      ><a name="1502" class="Symbol"
+      >:</a
+      ><a name="1503"
+      > </a
+      ><a name="1504" href="CwF.Sets.TypesAndTerms.html#259" class="Function"
+      >Term</a
+      ><a name="1508"
+      > </a
+      ><a name="1509" href="CwF.Sets.PiType.html#1427" class="Bound"
+      >&#915;</a
+      ><a name="1510"
+      > </a
+      ><a name="1511" href="CwF.Sets.PiType.html#1437" class="Bound"
+      >A</a
+      ><a name="1512" class="Symbol"
+      >}</a
+      ><a name="1513"
+      > </a
+      ><a name="1514" class="Symbol"
+      >{</a
+      ><a name="1515" href="CwF.Sets.PiType.html#1515" class="Bound"
+      >&#916;</a
+      ><a name="1516"
+      > </a
+      ><a name="1517" class="Symbol"
+      >:</a
+      ><a name="1518"
+      > </a
+      ><a name="1519" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="1522" class="Symbol"
+      >}</a
+      ><a name="1523"
+      > </a
+      ><a name="1524" class="Symbol"
+      >{</a
+      ><a name="1525" href="CwF.Sets.PiType.html#1525" class="Bound"
+      >&#963;</a
+      ><a name="1526"
+      > </a
+      ><a name="1527" class="Symbol"
+      >:</a
+      ><a name="1528"
+      > </a
+      ><a name="1529" href="CwF.Sets.Base.html#221" class="Function"
+      >Sub</a
+      ><a name="1532"
+      > </a
+      ><a name="1533" href="CwF.Sets.PiType.html#1515" class="Bound"
+      >&#916;</a
+      ><a name="1534"
+      > </a
+      ><a name="1535" href="CwF.Sets.PiType.html#1427" class="Bound"
+      >&#915;</a
+      ><a name="1536" class="Symbol"
+      >}</a
+      ><a name="1537"
+      >
+      </a
+      ><a name="1544" class="Symbol"
+      >&#8594;</a
+      ><a name="1545"
+      > </a
+      ><a name="1546" class="Symbol"
+      >(</a
+      ><a name="1547" href="CwF.Sets.PiType.html#488" class="Function"
+      >app</a
+      ><a name="1550"
+      > </a
+      ><a name="1551" href="CwF.Sets.PiType.html#1477" class="Bound"
+      >w</a
+      ><a name="1552"
+      > </a
+      ><a name="1553" href="CwF.Sets.PiType.html#1500" class="Bound"
+      >u</a
+      ><a name="1554" class="Symbol"
+      >)</a
+      ><a name="1555"
+      > </a
+      ><a name="1556" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >[</a
+      ><a name="1557"
+      > </a
+      ><a name="1558" href="CwF.Sets.PiType.html#1525" class="Bound"
+      >&#963;</a
+      ><a name="1559"
+      > </a
+      ><a name="1560" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >]&#7504;</a
+      ><a name="1562"
+      > </a
+      ><a name="1563" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1564"
+      > </a
+      ><a name="1565" href="CwF.Sets.PiType.html#488" class="Function"
+      >app</a
+      ><a name="1568"
+      > </a
+      ><a name="1569" class="Symbol"
+      >(</a
+      ><a name="1570" href="CwF.Sets.PiType.html#1477" class="Bound"
+      >w</a
+      ><a name="1571"
+      > </a
+      ><a name="1572" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >[</a
+      ><a name="1573"
+      > </a
+      ><a name="1574" href="CwF.Sets.PiType.html#1525" class="Bound"
+      >&#963;</a
+      ><a name="1575"
+      > </a
+      ><a name="1576" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >]&#7504;</a
+      ><a name="1578" class="Symbol"
+      >)</a
+      ><a name="1579"
+      > </a
+      ><a name="1580" class="Symbol"
+      >(</a
+      ><a name="1581" href="CwF.Sets.PiType.html#1500" class="Bound"
+      >u</a
+      ><a name="1582"
+      > </a
+      ><a name="1583" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >[</a
+      ><a name="1584"
+      > </a
+      ><a name="1585" href="CwF.Sets.PiType.html#1525" class="Bound"
+      >&#963;</a
+      ><a name="1586"
+      > </a
+      ><a name="1587" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >]&#7504;</a
+      ><a name="1589" class="Symbol"
+      >)</a
+      ><a name="1590"
+      >
+</a
+      ><a name="1591" href="CwF.Sets.PiType.html#1418" class="Function"
+      >EqPT&#8325;</a
+      ><a name="1596"
+      > </a
+      ><a name="1597" class="Symbol"
+      >=</a
+      ><a name="1598"
+      > </a
+      ><a name="1599" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1603"
+      >
+
+\end{code}
+</a
+      ></pre
+    ></body
+  ></html
+>

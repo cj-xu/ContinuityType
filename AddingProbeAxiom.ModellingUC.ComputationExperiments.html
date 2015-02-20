@@ -1,0 +1,2002 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >AddingProbeAxiom.ModellingUC.ComputationExperiments</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Comment"
+      >Chuangjie Xu and Martin Escardo 2014 (updated in February 2015)</a
+      ><a name="64"
+      >
+
+</a
+      ><a name="66" class="Comment"
+      >Experiment of computing moduli of uniform continuity</a
+      ><a name="118"
+      >
+
+\begin{code}
+
+</a
+      ><a name="134" class="Symbol"
+      >{-#</a
+      ><a name="137"
+      > </a
+      ><a name="138" class="Keyword"
+      >OPTIONS</a
+      ><a name="145"
+      > --without-K </a
+      ><a name="158" class="Symbol"
+      >#-}</a
+      ><a name="161"
+      >
+
+</a
+      ><a name="163" class="Keyword"
+      >module</a
+      ><a name="169"
+      > </a
+      ><a name="170" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1" class="Module"
+      >AddingProbeAxiom.ModellingUC.ComputationExperiments</a
+      ><a name="221"
+      > </a
+      ><a name="222" class="Keyword"
+      >where</a
+      ><a name="227"
+      >
+
+</a
+      ><a name="229" class="Keyword"
+      >open</a
+      ><a name="233"
+      > </a
+      ><a name="234" class="Keyword"
+      >import</a
+      ><a name="240"
+      > </a
+      ><a name="241" href="Preliminaries.SetsAndFunctions.html#1" class="Module"
+      >Preliminaries.SetsAndFunctions</a
+      ><a name="271"
+      > </a
+      ><a name="272" class="Keyword"
+      >hiding</a
+      ><a name="278"
+      > </a
+      ><a name="279" class="Symbol"
+      >(</a
+      ><a name="280"
+      >_+_</a
+      ><a name="283" class="Symbol"
+      >)</a
+      ><a name="284"
+      >
+</a
+      ><a name="285" class="Keyword"
+      >open</a
+      ><a name="289"
+      > </a
+      ><a name="290" class="Keyword"
+      >import</a
+      ><a name="296"
+      > </a
+      ><a name="297" href="Preliminaries.NaturalNumber.html#1" class="Module"
+      >Preliminaries.NaturalNumber</a
+      ><a name="324"
+      >
+</a
+      ><a name="325" class="Keyword"
+      >open</a
+      ><a name="329"
+      > </a
+      ><a name="330" class="Keyword"
+      >import</a
+      ><a name="336"
+      > </a
+      ><a name="337" href="Preliminaries.Boolean.html#1" class="Module"
+      >Preliminaries.Boolean</a
+      ><a name="358"
+      >
+</a
+      ><a name="359" class="Keyword"
+      >open</a
+      ><a name="363"
+      > </a
+      ><a name="364" class="Keyword"
+      >import</a
+      ><a name="370"
+      > </a
+      ><a name="371" href="Preliminaries.Sequence.html#1" class="Module"
+      >Preliminaries.Sequence</a
+      ><a name="393"
+      >
+</a
+      ><a name="394" class="Keyword"
+      >open</a
+      ><a name="398"
+      > </a
+      ><a name="399" class="Keyword"
+      >import</a
+      ><a name="405"
+      > </a
+      ><a name="406" href="AddingProbeAxiom.Space.Space.html#1" class="Module"
+      >AddingProbeAxiom.Space.Space</a
+      ><a name="434"
+      >
+</a
+      ><a name="435" class="Keyword"
+      >open</a
+      ><a name="439"
+      > </a
+      ><a name="440" class="Keyword"
+      >import</a
+      ><a name="446"
+      > </a
+      ><a name="447" href="AddingProbeAxiom.Space.DiscreteSpace.html#1" class="Module"
+      >AddingProbeAxiom.Space.DiscreteSpace</a
+      ><a name="483"
+      >
+</a
+      ><a name="484" class="Keyword"
+      >open</a
+      ><a name="488"
+      > </a
+      ><a name="489" class="Keyword"
+      >import</a
+      ><a name="495"
+      > </a
+      ><a name="496" href="AddingProbeAxiom.Space.CartesianClosedness.html#1" class="Module"
+      >AddingProbeAxiom.Space.CartesianClosedness</a
+      ><a name="538"
+      >
+</a
+      ><a name="539" class="Keyword"
+      >open</a
+      ><a name="543"
+      > </a
+      ><a name="544" class="Keyword"
+      >import</a
+      ><a name="550"
+      > </a
+      ><a name="551" href="AddingProbeAxiom.Space.YonedaLemma.html#1" class="Module"
+      >AddingProbeAxiom.Space.YonedaLemma</a
+      ><a name="585"
+      >
+</a
+      ><a name="586" class="Keyword"
+      >open</a
+      ><a name="590"
+      > </a
+      ><a name="591" class="Keyword"
+      >import</a
+      ><a name="597"
+      > </a
+      ><a name="598" href="AddingProbeAxiom.Space.Fan.html#1" class="Module"
+      >AddingProbeAxiom.Space.Fan</a
+      ><a name="624"
+      >
+</a
+      ><a name="625" class="Keyword"
+      >open</a
+      ><a name="629"
+      > </a
+      ><a name="630" class="Keyword"
+      >import</a
+      ><a name="636"
+      > </a
+      ><a name="637" href="AddingProbeAxiom.ModellingUC.UCinT.html#1" class="Module"
+      >AddingProbeAxiom.ModellingUC.UCinT</a
+      ><a name="671"
+      >
+
+\end{code}
+
+</a
+      ><a name="685" class="Comment"
+      >We define an abbreviation of the interpretation of closed terms with</a
+      ><a name="753"
+      >
+</a
+      ><a name="754" class="Comment"
+      >meaning in the function space &#8322;&#8469; &#8594; &#8469;:</a
+      ><a name="791"
+      >
+
+\begin{code}
+
+</a
+      ><a name="807" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#807" class="Function Operator"
+      >&#10214;_&#10215;</a
+      ><a name="810"
+      > </a
+      ><a name="811" class="Symbol"
+      >:</a
+      ><a name="812"
+      > </a
+      ><a name="813" href="AddingProbeAxiom.ModellingUC.UCinT.html#1067" class="Datatype"
+      >Tm</a
+      ><a name="815"
+      > </a
+      ><a name="816" href="AddingProbeAxiom.ModellingUC.UCinT.html#802" class="InductiveConstructor"
+      >&#949;</a
+      ><a name="817"
+      > </a
+      ><a name="818" class="Symbol"
+      >(</a
+      ><a name="819"
+      > </a
+      ><a name="820" class="Symbol"
+      >((</a
+      ><a name="822" href="AddingProbeAxiom.ModellingUC.UCinT.html#713" class="InductiveConstructor"
+      >&#9411;</a
+      ><a name="823"
+      > </a
+      ><a name="824" href="AddingProbeAxiom.ModellingUC.UCinT.html#741" class="InductiveConstructor Operator"
+      >&#8680;</a
+      ><a name="825"
+      > </a
+      ><a name="826" href="AddingProbeAxiom.ModellingUC.UCinT.html#705" class="InductiveConstructor"
+      >&#9313;</a
+      ><a name="827" class="Symbol"
+      >)</a
+      ><a name="828"
+      > </a
+      ><a name="829" href="AddingProbeAxiom.ModellingUC.UCinT.html#741" class="InductiveConstructor Operator"
+      >&#8680;</a
+      ><a name="830"
+      > </a
+      ><a name="831" href="AddingProbeAxiom.ModellingUC.UCinT.html#713" class="InductiveConstructor"
+      >&#9411;</a
+      ><a name="832" class="Symbol"
+      >))</a
+      ><a name="834"
+      > </a
+      ><a name="835" class="Symbol"
+      >&#8594;</a
+      ><a name="836"
+      > </a
+      ><a name="837" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="839"
+      > </a
+      ><a name="840" class="Symbol"
+      >&#8594;</a
+      ><a name="841"
+      > </a
+      ><a name="842" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="843"
+      >
+</a
+      ><a name="844" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#807" class="Function Operator"
+      >&#10214;</a
+      ><a name="845"
+      > </a
+      ><a name="846" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#846" class="Bound"
+      >t</a
+      ><a name="847"
+      > </a
+      ><a name="848" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#807" class="Function Operator"
+      >&#10215;</a
+      ><a name="849"
+      > </a
+      ><a name="850" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#850" class="Bound"
+      >&#945;</a
+      ><a name="851"
+      > </a
+      ><a name="852" class="Symbol"
+      >=</a
+      ><a name="853"
+      > </a
+      ><a name="854" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="857"
+      > </a
+      ><a name="858" class="Symbol"
+      >(</a
+      ><a name="859" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="862"
+      > </a
+      ><a name="863" href="AddingProbeAxiom.ModellingUC.UCinT.html#2934" class="Function Operator"
+      >&#10214;</a
+      ><a name="864"
+      > </a
+      ><a name="865" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#846" class="Bound"
+      >t</a
+      ><a name="866"
+      > </a
+      ><a name="867" href="AddingProbeAxiom.ModellingUC.UCinT.html#2934" class="Function Operator"
+      >&#10215;&#7504;</a
+      ><a name="869"
+      > </a
+      ><a name="870" href="Preliminaries.SetsAndFunctions.html#3847" class="InductiveConstructor"
+      >&#8902;</a
+      ><a name="871" class="Symbol"
+      >)</a
+      ><a name="872"
+      > </a
+      ><a name="873" class="Symbol"
+      >(</a
+      ><a name="874" href="AddingProbeAxiom.Space.YonedaLemma.html#2844" class="Function"
+      >ID</a
+      ><a name="876"
+      > </a
+      ><a name="877" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#850" class="Bound"
+      >&#945;</a
+      ><a name="878" class="Symbol"
+      >)</a
+      ><a name="879"
+      >
+
+</a
+      ><a name="881" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#881" class="Function"
+      >modu</a
+      ><a name="885"
+      > </a
+      ><a name="886" class="Symbol"
+      >:</a
+      ><a name="887"
+      > </a
+      ><a name="888" href="AddingProbeAxiom.ModellingUC.UCinT.html#1067" class="Datatype"
+      >Tm</a
+      ><a name="890"
+      > </a
+      ><a name="891" href="AddingProbeAxiom.ModellingUC.UCinT.html#802" class="InductiveConstructor"
+      >&#949;</a
+      ><a name="892"
+      > </a
+      ><a name="893" class="Symbol"
+      >((</a
+      ><a name="895" href="AddingProbeAxiom.ModellingUC.UCinT.html#713" class="InductiveConstructor"
+      >&#9411;</a
+      ><a name="896"
+      > </a
+      ><a name="897" href="AddingProbeAxiom.ModellingUC.UCinT.html#741" class="InductiveConstructor Operator"
+      >&#8680;</a
+      ><a name="898"
+      > </a
+      ><a name="899" href="AddingProbeAxiom.ModellingUC.UCinT.html#705" class="InductiveConstructor"
+      >&#9313;</a
+      ><a name="900" class="Symbol"
+      >)</a
+      ><a name="901"
+      > </a
+      ><a name="902" href="AddingProbeAxiom.ModellingUC.UCinT.html#741" class="InductiveConstructor Operator"
+      >&#8680;</a
+      ><a name="903"
+      > </a
+      ><a name="904" href="AddingProbeAxiom.ModellingUC.UCinT.html#713" class="InductiveConstructor"
+      >&#9411;</a
+      ><a name="905" class="Symbol"
+      >)</a
+      ><a name="906"
+      > </a
+      ><a name="907" class="Symbol"
+      >&#8594;</a
+      ><a name="908"
+      > </a
+      ><a name="909" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="910"
+      >
+</a
+      ><a name="911" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#881" class="Function"
+      >modu</a
+      ><a name="915"
+      > </a
+      ><a name="916" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#916" class="Bound"
+      >F</a
+      ><a name="917"
+      > </a
+      ><a name="918" class="Symbol"
+      >=</a
+      ><a name="919"
+      > </a
+      ><a name="920" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="923"
+      > </a
+      ><a name="924" href="AddingProbeAxiom.Space.Fan.html#2200" class="Function"
+      >fan</a
+      ><a name="927"
+      > </a
+      ><a name="928" class="Symbol"
+      >(</a
+      ><a name="929" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="932"
+      > </a
+      ><a name="933" href="AddingProbeAxiom.ModellingUC.UCinT.html#2934" class="Function Operator"
+      >&#10214;</a
+      ><a name="934"
+      > </a
+      ><a name="935" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#916" class="Bound"
+      >F</a
+      ><a name="936"
+      > </a
+      ><a name="937" href="AddingProbeAxiom.ModellingUC.UCinT.html#2934" class="Function Operator"
+      >&#10215;&#7504;</a
+      ><a name="939"
+      > </a
+      ><a name="940" href="Preliminaries.SetsAndFunctions.html#3847" class="InductiveConstructor"
+      >&#8902;</a
+      ><a name="941" class="Symbol"
+      >)</a
+      ><a name="942"
+      >
+
+</a
+      ><a name="944" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#944" class="Function"
+      >ONE</a
+      ><a name="947"
+      > </a
+      ><a name="948" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#948" class="Function"
+      >TWO</a
+      ><a name="951"
+      > </a
+      ><a name="952" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#952" class="Function"
+      >THREE</a
+      ><a name="957"
+      > </a
+      ><a name="958" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#958" class="Function"
+      >FOUR</a
+      ><a name="962"
+      > </a
+      ><a name="963" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#963" class="Function"
+      >FIVE</a
+      ><a name="967"
+      > </a
+      ><a name="968" class="Symbol"
+      >:</a
+      ><a name="969"
+      > </a
+      ><a name="970" class="Symbol"
+      >{</a
+      ><a name="971" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#971" class="Bound"
+      >n</a
+      ><a name="972"
+      > </a
+      ><a name="973" class="Symbol"
+      >:</a
+      ><a name="974"
+      > </a
+      ><a name="975" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="976" class="Symbol"
+      >}{</a
+      ><a name="978" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#978" class="Bound"
+      >&#915;</a
+      ><a name="979"
+      > </a
+      ><a name="980" class="Symbol"
+      >:</a
+      ><a name="981"
+      > </a
+      ><a name="982" href="AddingProbeAxiom.ModellingUC.UCinT.html#781" class="Datatype"
+      >Cxt</a
+      ><a name="985"
+      > </a
+      ><a name="986" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#971" class="Bound"
+      >n</a
+      ><a name="987" class="Symbol"
+      >}</a
+      ><a name="988"
+      > </a
+      ><a name="989" class="Symbol"
+      >&#8594;</a
+      ><a name="990"
+      > </a
+      ><a name="991" href="AddingProbeAxiom.ModellingUC.UCinT.html#1067" class="Datatype"
+      >Tm</a
+      ><a name="993"
+      > </a
+      ><a name="994" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#978" class="Bound"
+      >&#915;</a
+      ><a name="995"
+      > </a
+      ><a name="996" href="AddingProbeAxiom.ModellingUC.UCinT.html#713" class="InductiveConstructor"
+      >&#9411;</a
+      ><a name="997"
+      >
+</a
+      ><a name="998" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#944" class="Function"
+      >ONE</a
+      ><a name="1001"
+      >   </a
+      ><a name="1004" class="Symbol"
+      >=</a
+      ><a name="1005"
+      > </a
+      ><a name="1006" href="AddingProbeAxiom.ModellingUC.UCinT.html#1372" class="InductiveConstructor"
+      >SUCC</a
+      ><a name="1010"
+      > </a
+      ><a name="1011" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1012"
+      > </a
+      ><a name="1013" href="AddingProbeAxiom.ModellingUC.UCinT.html#1326" class="InductiveConstructor"
+      >ZERO</a
+      ><a name="1017"
+      >
+</a
+      ><a name="1018" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#948" class="Function"
+      >TWO</a
+      ><a name="1021"
+      >   </a
+      ><a name="1024" class="Symbol"
+      >=</a
+      ><a name="1025"
+      > </a
+      ><a name="1026" href="AddingProbeAxiom.ModellingUC.UCinT.html#1372" class="InductiveConstructor"
+      >SUCC</a
+      ><a name="1030"
+      > </a
+      ><a name="1031" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1032"
+      > </a
+      ><a name="1033" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#944" class="Function"
+      >ONE</a
+      ><a name="1036"
+      >
+</a
+      ><a name="1037" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#952" class="Function"
+      >THREE</a
+      ><a name="1042"
+      > </a
+      ><a name="1043" class="Symbol"
+      >=</a
+      ><a name="1044"
+      > </a
+      ><a name="1045" href="AddingProbeAxiom.ModellingUC.UCinT.html#1372" class="InductiveConstructor"
+      >SUCC</a
+      ><a name="1049"
+      > </a
+      ><a name="1050" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1051"
+      > </a
+      ><a name="1052" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#948" class="Function"
+      >TWO</a
+      ><a name="1055"
+      >
+</a
+      ><a name="1056" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#958" class="Function"
+      >FOUR</a
+      ><a name="1060"
+      >  </a
+      ><a name="1062" class="Symbol"
+      >=</a
+      ><a name="1063"
+      > </a
+      ><a name="1064" href="AddingProbeAxiom.ModellingUC.UCinT.html#1372" class="InductiveConstructor"
+      >SUCC</a
+      ><a name="1068"
+      > </a
+      ><a name="1069" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1070"
+      > </a
+      ><a name="1071" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#952" class="Function"
+      >THREE</a
+      ><a name="1076"
+      >
+</a
+      ><a name="1077" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#963" class="Function"
+      >FIVE</a
+      ><a name="1081"
+      >  </a
+      ><a name="1083" class="Symbol"
+      >=</a
+      ><a name="1084"
+      > </a
+      ><a name="1085" href="AddingProbeAxiom.ModellingUC.UCinT.html#1372" class="InductiveConstructor"
+      >SUCC</a
+      ><a name="1089"
+      > </a
+      ><a name="1090" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1091"
+      > </a
+      ><a name="1092" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#958" class="Function"
+      >FOUR</a
+      ><a name="1096"
+      >
+
+</a
+      ><a name="1098" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1098" class="Function"
+      >F&#8321;</a
+      ><a name="1100"
+      > </a
+      ><a name="1101" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1101" class="Function"
+      >F&#8322;</a
+      ><a name="1103"
+      > </a
+      ><a name="1104" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1104" class="Function"
+      >F&#8323;</a
+      ><a name="1106"
+      > </a
+      ><a name="1107" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1107" class="Function"
+      >F&#8324;</a
+      ><a name="1109"
+      > </a
+      ><a name="1110" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1110" class="Function"
+      >F&#8325;</a
+      ><a name="1112"
+      > </a
+      ><a name="1113" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1113" class="Function"
+      >F&#8326;</a
+      ><a name="1115"
+      > </a
+      ><a name="1116" class="Symbol"
+      >:</a
+      ><a name="1117"
+      > </a
+      ><a name="1118" class="Symbol"
+      >{</a
+      ><a name="1119" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1119" class="Bound"
+      >n</a
+      ><a name="1120"
+      > </a
+      ><a name="1121" class="Symbol"
+      >:</a
+      ><a name="1122"
+      > </a
+      ><a name="1123" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1124" class="Symbol"
+      >}</a
+      ><a name="1125"
+      > </a
+      ><a name="1126" class="Symbol"
+      >{</a
+      ><a name="1127" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1127" class="Bound"
+      >&#915;</a
+      ><a name="1128"
+      > </a
+      ><a name="1129" class="Symbol"
+      >:</a
+      ><a name="1130"
+      > </a
+      ><a name="1131" href="AddingProbeAxiom.ModellingUC.UCinT.html#781" class="Datatype"
+      >Cxt</a
+      ><a name="1134"
+      > </a
+      ><a name="1135" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1119" class="Bound"
+      >n</a
+      ><a name="1136" class="Symbol"
+      >}</a
+      ><a name="1137"
+      > </a
+      ><a name="1138" class="Symbol"
+      >&#8594;</a
+      ><a name="1139"
+      > </a
+      ><a name="1140" href="AddingProbeAxiom.ModellingUC.UCinT.html#1067" class="Datatype"
+      >Tm</a
+      ><a name="1142"
+      > </a
+      ><a name="1143" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1127" class="Bound"
+      >&#915;</a
+      ><a name="1144"
+      > </a
+      ><a name="1145" class="Symbol"
+      >((</a
+      ><a name="1147" href="AddingProbeAxiom.ModellingUC.UCinT.html#713" class="InductiveConstructor"
+      >&#9411;</a
+      ><a name="1148"
+      > </a
+      ><a name="1149" href="AddingProbeAxiom.ModellingUC.UCinT.html#741" class="InductiveConstructor Operator"
+      >&#8680;</a
+      ><a name="1150"
+      > </a
+      ><a name="1151" href="AddingProbeAxiom.ModellingUC.UCinT.html#705" class="InductiveConstructor"
+      >&#9313;</a
+      ><a name="1152" class="Symbol"
+      >)</a
+      ><a name="1153"
+      > </a
+      ><a name="1154" href="AddingProbeAxiom.ModellingUC.UCinT.html#741" class="InductiveConstructor Operator"
+      >&#8680;</a
+      ><a name="1155"
+      > </a
+      ><a name="1156" href="AddingProbeAxiom.ModellingUC.UCinT.html#713" class="InductiveConstructor"
+      >&#9411;</a
+      ><a name="1157" class="Symbol"
+      >)</a
+      ><a name="1158"
+      >
+
+\end{code}
+
+</a
+      ><a name="1172" class="Comment"
+      >F&#8321; is constant.</a
+      ><a name="1187"
+      >
+
+\begin{code}
+
+</a
+      ><a name="1203" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1098" class="Function"
+      >F&#8321;</a
+      ><a name="1205"
+      > </a
+      ><a name="1206" class="Symbol"
+      >=</a
+      ><a name="1207"
+      > </a
+      ><a name="1208" href="AddingProbeAxiom.ModellingUC.UCinT.html#1686" class="InductiveConstructor"
+      >LAM</a
+      ><a name="1211"
+      > </a
+      ><a name="1212" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#948" class="Function"
+      >TWO</a
+      ><a name="1215"
+      >
+
+</a
+      ><a name="1217" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1217" class="Function"
+      >F&#8321;-interpretation</a
+      ><a name="1234"
+      > </a
+      ><a name="1235" class="Symbol"
+      >:</a
+      ><a name="1236"
+      > </a
+      ><a name="1237" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#807" class="Function Operator"
+      >&#10214;</a
+      ><a name="1238"
+      > </a
+      ><a name="1239" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1098" class="Function"
+      >F&#8321;</a
+      ><a name="1241"
+      > </a
+      ><a name="1242" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#807" class="Function Operator"
+      >&#10215;</a
+      ><a name="1243"
+      > </a
+      ><a name="1244" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1245"
+      > </a
+      ><a name="1246" class="Symbol"
+      >&#955;</a
+      ><a name="1247"
+      > </a
+      ><a name="1248" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1248" class="Bound"
+      >&#945;</a
+      ><a name="1249"
+      > </a
+      ><a name="1250" class="Symbol"
+      >&#8594;</a
+      ><a name="1251"
+      > </a
+      ><a name="1252" class="Number"
+      >2</a
+      ><a name="1253"
+      > 
+</a
+      ><a name="1255" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1217" class="Function"
+      >F&#8321;-interpretation</a
+      ><a name="1272"
+      > </a
+      ><a name="1273" class="Symbol"
+      >=</a
+      ><a name="1274"
+      > </a
+      ><a name="1275" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1279"
+      >
+
+\end{code}
+
+</a
+      ><a name="1293" class="Comment"
+      >F&#8322; is constant, though it looks at the 1st bit of input.</a
+      ><a name="1349"
+      >
+
+\begin{code}
+
+</a
+      ><a name="1365" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1101" class="Function"
+      >F&#8322;</a
+      ><a name="1367"
+      > </a
+      ><a name="1368" class="Symbol"
+      >=</a
+      ><a name="1369"
+      > </a
+      ><a name="1370" href="AddingProbeAxiom.ModellingUC.UCinT.html#1686" class="InductiveConstructor"
+      >LAM</a
+      ><a name="1373"
+      > </a
+      ><a name="1374" class="Symbol"
+      >(</a
+      ><a name="1375" href="AddingProbeAxiom.ModellingUC.UCinT.html#1266" class="InductiveConstructor"
+      >IF</a
+      ><a name="1377"
+      > </a
+      ><a name="1378" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1379"
+      > </a
+      ><a name="1380" class="Symbol"
+      >(</a
+      ><a name="1381" href="AddingProbeAxiom.ModellingUC.UCinT.html#1106" class="InductiveConstructor"
+      >VAR</a
+      ><a name="1384"
+      > </a
+      ><a name="1385" href="AddingProbeAxiom.ModellingUC.UCinT.html#885" class="InductiveConstructor"
+      >zero</a
+      ><a name="1389"
+      > </a
+      ><a name="1390" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1391"
+      > </a
+      ><a name="1392" href="AddingProbeAxiom.ModellingUC.UCinT.html#1326" class="InductiveConstructor"
+      >ZERO</a
+      ><a name="1396" class="Symbol"
+      >)</a
+      ><a name="1397"
+      > </a
+      ><a name="1398" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1399"
+      > </a
+      ><a name="1400" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#944" class="Function"
+      >ONE</a
+      ><a name="1403"
+      > </a
+      ><a name="1404" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1405"
+      > </a
+      ><a name="1406" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#944" class="Function"
+      >ONE</a
+      ><a name="1409" class="Symbol"
+      >)</a
+      ><a name="1410"
+      >
+
+</a
+      ><a name="1412" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1412" class="Function"
+      >F&#8322;-interpretation</a
+      ><a name="1429"
+      > </a
+      ><a name="1430" class="Symbol"
+      >:</a
+      ><a name="1431"
+      > </a
+      ><a name="1432" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#807" class="Function Operator"
+      >&#10214;</a
+      ><a name="1433"
+      > </a
+      ><a name="1434" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1101" class="Function"
+      >F&#8322;</a
+      ><a name="1436"
+      > </a
+      ><a name="1437" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#807" class="Function Operator"
+      >&#10215;</a
+      ><a name="1438"
+      > </a
+      ><a name="1439" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1440"
+      > </a
+      ><a name="1441" class="Symbol"
+      >&#955;</a
+      ><a name="1442"
+      > </a
+      ><a name="1443" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1443" class="Bound"
+      >&#945;</a
+      ><a name="1444"
+      > </a
+      ><a name="1445" class="Symbol"
+      >&#8594;</a
+      ><a name="1446"
+      > </a
+      ><a name="1447" href="Preliminaries.Boolean.html#302" class="Function"
+      >if</a
+      ><a name="1449"
+      > </a
+      ><a name="1450" class="Symbol"
+      >(</a
+      ><a name="1451" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1443" class="Bound"
+      >&#945;</a
+      ><a name="1452"
+      > </a
+      ><a name="1453" class="Number"
+      >0</a
+      ><a name="1454" class="Symbol"
+      >)</a
+      ><a name="1455"
+      > </a
+      ><a name="1456" class="Number"
+      >1</a
+      ><a name="1457"
+      > </a
+      ><a name="1458" class="Number"
+      >1</a
+      ><a name="1459"
+      >
+</a
+      ><a name="1460" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1412" class="Function"
+      >F&#8322;-interpretation</a
+      ><a name="1477"
+      > </a
+      ><a name="1478" class="Symbol"
+      >=</a
+      ><a name="1479"
+      > </a
+      ><a name="1480" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1484"
+      >
+
+\end{code}
+
+</a
+      ><a name="1498" class="Comment"
+      >F&#8323; returns 5, if the 4th bit is &#8869;.</a
+      ><a name="1532"
+      >
+</a
+      ><a name="1533" class="Comment"
+      >F&#8323; returns 1, if the 4th bit is &#8868; and the 5th one is &#8869;.</a
+      ><a name="1588"
+      >
+</a
+      ><a name="1589" class="Comment"
+      >F&#8323; returns 2, if both the 4th and 5th bits are &#8868;.</a
+      ><a name="1638"
+      >
+
+\begin{code}
+
+</a
+      ><a name="1654" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1104" class="Function"
+      >F&#8323;</a
+      ><a name="1656"
+      > </a
+      ><a name="1657" class="Symbol"
+      >=</a
+      ><a name="1658"
+      > </a
+      ><a name="1659" href="AddingProbeAxiom.ModellingUC.UCinT.html#1686" class="InductiveConstructor"
+      >LAM</a
+      ><a name="1662"
+      > </a
+      ><a name="1663" class="Symbol"
+      >(</a
+      ><a name="1664" href="AddingProbeAxiom.ModellingUC.UCinT.html#1266" class="InductiveConstructor"
+      >IF</a
+      ><a name="1666"
+      > </a
+      ><a name="1667" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1668"
+      > </a
+      ><a name="1669" class="Symbol"
+      >(</a
+      ><a name="1670" href="AddingProbeAxiom.ModellingUC.UCinT.html#1106" class="InductiveConstructor"
+      >VAR</a
+      ><a name="1673"
+      > </a
+      ><a name="1674" href="AddingProbeAxiom.ModellingUC.UCinT.html#885" class="InductiveConstructor"
+      >zero</a
+      ><a name="1678"
+      > </a
+      ><a name="1679" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1680"
+      > </a
+      ><a name="1681" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#952" class="Function"
+      >THREE</a
+      ><a name="1686" class="Symbol"
+      >)</a
+      ><a name="1687"
+      > </a
+      ><a name="1688" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1689"
+      > </a
+      ><a name="1690" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#963" class="Function"
+      >FIVE</a
+      ><a name="1694"
+      >
+             </a
+      ><a name="1708" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1709"
+      > </a
+      ><a name="1710" class="Symbol"
+      >(</a
+      ><a name="1711" href="AddingProbeAxiom.ModellingUC.UCinT.html#1266" class="InductiveConstructor"
+      >IF</a
+      ><a name="1713"
+      > </a
+      ><a name="1714" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1715"
+      > </a
+      ><a name="1716" class="Symbol"
+      >(</a
+      ><a name="1717" href="AddingProbeAxiom.ModellingUC.UCinT.html#1106" class="InductiveConstructor"
+      >VAR</a
+      ><a name="1720"
+      > </a
+      ><a name="1721" href="AddingProbeAxiom.ModellingUC.UCinT.html#885" class="InductiveConstructor"
+      >zero</a
+      ><a name="1725"
+      > </a
+      ><a name="1726" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1727"
+      > </a
+      ><a name="1728" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#958" class="Function"
+      >FOUR</a
+      ><a name="1732" class="Symbol"
+      >)</a
+      ><a name="1733"
+      > </a
+      ><a name="1734" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1735"
+      > </a
+      ><a name="1736" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#944" class="Function"
+      >ONE</a
+      ><a name="1739"
+      > </a
+      ><a name="1740" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1741"
+      > </a
+      ><a name="1742" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#948" class="Function"
+      >TWO</a
+      ><a name="1745" class="Symbol"
+      >))</a
+      ><a name="1747"
+      >
+
+</a
+      ><a name="1749" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1749" class="Function"
+      >F&#8323;-interpretation</a
+      ><a name="1766"
+      > </a
+      ><a name="1767" class="Symbol"
+      >:</a
+      ><a name="1768"
+      > </a
+      ><a name="1769" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#807" class="Function Operator"
+      >&#10214;</a
+      ><a name="1770"
+      > </a
+      ><a name="1771" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1104" class="Function"
+      >F&#8323;</a
+      ><a name="1773"
+      > </a
+      ><a name="1774" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#807" class="Function Operator"
+      >&#10215;</a
+      ><a name="1775"
+      > </a
+      ><a name="1776" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1777"
+      > </a
+      ><a name="1778" class="Symbol"
+      >&#955;</a
+      ><a name="1779"
+      > </a
+      ><a name="1780" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1780" class="Bound"
+      >&#945;</a
+      ><a name="1781"
+      > </a
+      ><a name="1782" class="Symbol"
+      >&#8594;</a
+      ><a name="1783"
+      > </a
+      ><a name="1784" href="Preliminaries.Boolean.html#302" class="Function"
+      >if</a
+      ><a name="1786"
+      > </a
+      ><a name="1787" class="Symbol"
+      >(</a
+      ><a name="1788" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1780" class="Bound"
+      >&#945;</a
+      ><a name="1789"
+      > </a
+      ><a name="1790" class="Number"
+      >3</a
+      ><a name="1791" class="Symbol"
+      >)</a
+      ><a name="1792"
+      > </a
+      ><a name="1793" class="Number"
+      >5</a
+      ><a name="1794"
+      > </a
+      ><a name="1795" class="Symbol"
+      >(</a
+      ><a name="1796" href="Preliminaries.Boolean.html#302" class="Function"
+      >if</a
+      ><a name="1798"
+      > </a
+      ><a name="1799" class="Symbol"
+      >(</a
+      ><a name="1800" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1780" class="Bound"
+      >&#945;</a
+      ><a name="1801"
+      > </a
+      ><a name="1802" class="Number"
+      >4</a
+      ><a name="1803" class="Symbol"
+      >)</a
+      ><a name="1804"
+      > </a
+      ><a name="1805" class="Number"
+      >1</a
+      ><a name="1806"
+      > </a
+      ><a name="1807" class="Number"
+      >2</a
+      ><a name="1808" class="Symbol"
+      >)</a
+      ><a name="1809"
+      > 
+</a
+      ><a name="1811" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1749" class="Function"
+      >F&#8323;-interpretation</a
+      ><a name="1828"
+      > </a
+      ><a name="1829" class="Symbol"
+      >=</a
+      ><a name="1830"
+      > </a
+      ><a name="1831" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1835"
+      >
+
+\end{code}
+
+</a
+      ><a name="1849" class="Comment"
+      >F&#8324; is constant. It looks at 2nd and 3rd or 4th bits and then returns 0.</a
+      ><a name="1920"
+      >
+
+\begin{code}
+
+</a
+      ><a name="1936" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1107" class="Function"
+      >F&#8324;</a
+      ><a name="1938"
+      > </a
+      ><a name="1939" class="Symbol"
+      >=</a
+      ><a name="1940"
+      > </a
+      ><a name="1941" href="AddingProbeAxiom.ModellingUC.UCinT.html#1686" class="InductiveConstructor"
+      >LAM</a
+      ><a name="1944"
+      > </a
+      ><a name="1945" class="Symbol"
+      >(</a
+      ><a name="1946" href="AddingProbeAxiom.ModellingUC.UCinT.html#1266" class="InductiveConstructor"
+      >IF</a
+      ><a name="1948"
+      > </a
+      ><a name="1949" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1950"
+      > </a
+      ><a name="1951" class="Symbol"
+      >(</a
+      ><a name="1952" href="AddingProbeAxiom.ModellingUC.UCinT.html#1106" class="InductiveConstructor"
+      >VAR</a
+      ><a name="1955"
+      > </a
+      ><a name="1956" href="AddingProbeAxiom.ModellingUC.UCinT.html#885" class="InductiveConstructor"
+      >zero</a
+      ><a name="1960"
+      > </a
+      ><a name="1961" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1962"
+      > </a
+      ><a name="1963" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#944" class="Function"
+      >ONE</a
+      ><a name="1966" class="Symbol"
+      >)</a
+      ><a name="1967"
+      > </a
+      ><a name="1968" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1969"
+      > </a
+      ><a name="1970" class="Symbol"
+      >(</a
+      ><a name="1971" href="AddingProbeAxiom.ModellingUC.UCinT.html#1266" class="InductiveConstructor"
+      >IF</a
+      ><a name="1973"
+      > </a
+      ><a name="1974" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1975"
+      > </a
+      ><a name="1976" class="Symbol"
+      >(</a
+      ><a name="1977" href="AddingProbeAxiom.ModellingUC.UCinT.html#1106" class="InductiveConstructor"
+      >VAR</a
+      ><a name="1980"
+      > </a
+      ><a name="1981" href="AddingProbeAxiom.ModellingUC.UCinT.html#885" class="InductiveConstructor"
+      >zero</a
+      ><a name="1985"
+      > </a
+      ><a name="1986" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1987"
+      > </a
+      ><a name="1988" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#948" class="Function"
+      >TWO</a
+      ><a name="1991" class="Symbol"
+      >)</a
+      ><a name="1992"
+      > </a
+      ><a name="1993" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1994"
+      > </a
+      ><a name="1995" href="AddingProbeAxiom.ModellingUC.UCinT.html#1326" class="InductiveConstructor"
+      >ZERO</a
+      ><a name="1999"
+      > </a
+      ><a name="2000" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2001"
+      > </a
+      ><a name="2002" href="AddingProbeAxiom.ModellingUC.UCinT.html#1326" class="InductiveConstructor"
+      >ZERO</a
+      ><a name="2006" class="Symbol"
+      >)</a
+      ><a name="2007"
+      >
+             </a
+      ><a name="2021" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2022"
+      > </a
+      ><a name="2023" class="Symbol"
+      >(</a
+      ><a name="2024" href="AddingProbeAxiom.ModellingUC.UCinT.html#1266" class="InductiveConstructor"
+      >IF</a
+      ><a name="2026"
+      > </a
+      ><a name="2027" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2028"
+      > </a
+      ><a name="2029" class="Symbol"
+      >(</a
+      ><a name="2030" href="AddingProbeAxiom.ModellingUC.UCinT.html#1106" class="InductiveConstructor"
+      >VAR</a
+      ><a name="2033"
+      > </a
+      ><a name="2034" href="AddingProbeAxiom.ModellingUC.UCinT.html#885" class="InductiveConstructor"
+      >zero</a
+      ><a name="2038"
+      > </a
+      ><a name="2039" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2040"
+      > </a
+      ><a name="2041" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#952" class="Function"
+      >THREE</a
+      ><a name="2046" class="Symbol"
+      >)</a
+      ><a name="2047"
+      > </a
+      ><a name="2048" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2049"
+      > </a
+      ><a name="2050" href="AddingProbeAxiom.ModellingUC.UCinT.html#1326" class="InductiveConstructor"
+      >ZERO</a
+      ><a name="2054"
+      > </a
+      ><a name="2055" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2056"
+      > </a
+      ><a name="2057" href="AddingProbeAxiom.ModellingUC.UCinT.html#1326" class="InductiveConstructor"
+      >ZERO</a
+      ><a name="2061" class="Symbol"
+      >))</a
+      ><a name="2063"
+      >
+
+</a
+      ><a name="2065" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#2065" class="Function"
+      >F&#8324;-interpretation</a
+      ><a name="2082"
+      > </a
+      ><a name="2083" class="Symbol"
+      >:</a
+      ><a name="2084"
+      > </a
+      ><a name="2085" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#807" class="Function Operator"
+      >&#10214;</a
+      ><a name="2086"
+      > </a
+      ><a name="2087" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1107" class="Function"
+      >F&#8324;</a
+      ><a name="2089"
+      > </a
+      ><a name="2090" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#807" class="Function Operator"
+      >&#10215;</a
+      ><a name="2091"
+      > </a
+      ><a name="2092" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2093"
+      > </a
+      ><a name="2094" class="Symbol"
+      >&#955;</a
+      ><a name="2095"
+      > </a
+      ><a name="2096" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#2096" class="Bound"
+      >&#945;</a
+      ><a name="2097"
+      > </a
+      ><a name="2098" class="Symbol"
+      >&#8594;</a
+      ><a name="2099"
+      > </a
+      ><a name="2100" href="Preliminaries.Boolean.html#302" class="Function"
+      >if</a
+      ><a name="2102"
+      > </a
+      ><a name="2103" class="Symbol"
+      >(</a
+      ><a name="2104" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#2096" class="Bound"
+      >&#945;</a
+      ><a name="2105"
+      > </a
+      ><a name="2106" class="Number"
+      >1</a
+      ><a name="2107" class="Symbol"
+      >)</a
+      ><a name="2108"
+      > </a
+      ><a name="2109" class="Symbol"
+      >(</a
+      ><a name="2110" href="Preliminaries.Boolean.html#302" class="Function"
+      >if</a
+      ><a name="2112"
+      > </a
+      ><a name="2113" class="Symbol"
+      >(</a
+      ><a name="2114" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#2096" class="Bound"
+      >&#945;</a
+      ><a name="2115"
+      > </a
+      ><a name="2116" class="Number"
+      >2</a
+      ><a name="2117" class="Symbol"
+      >)</a
+      ><a name="2118"
+      > </a
+      ><a name="2119" class="Number"
+      >0</a
+      ><a name="2120"
+      > </a
+      ><a name="2121" class="Number"
+      >0</a
+      ><a name="2122" class="Symbol"
+      >)</a
+      ><a name="2123"
+      > </a
+      ><a name="2124" class="Symbol"
+      >(</a
+      ><a name="2125" href="Preliminaries.Boolean.html#302" class="Function"
+      >if</a
+      ><a name="2127"
+      > </a
+      ><a name="2128" class="Symbol"
+      >(</a
+      ><a name="2129" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#2096" class="Bound"
+      >&#945;</a
+      ><a name="2130"
+      > </a
+      ><a name="2131" class="Number"
+      >3</a
+      ><a name="2132" class="Symbol"
+      >)</a
+      ><a name="2133"
+      > </a
+      ><a name="2134" class="Number"
+      >0</a
+      ><a name="2135"
+      > </a
+      ><a name="2136" class="Number"
+      >0</a
+      ><a name="2137" class="Symbol"
+      >)</a
+      ><a name="2138"
+      >
+</a
+      ><a name="2139" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#2065" class="Function"
+      >F&#8324;-interpretation</a
+      ><a name="2156"
+      > </a
+      ><a name="2157" class="Symbol"
+      >=</a
+      ><a name="2158"
+      > </a
+      ><a name="2159" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="2163"
+      >
+
+\end{code}
+
+</a
+      ><a name="2177" class="Comment"
+      >If the 2nd bit is &#8869;, then F&#8325; applies SUCC to ZERO 3 times, i.e. returns 3.</a
+      ><a name="2251"
+      >
+</a
+      ><a name="2252" class="Comment"
+      >If the 2nd bit is &#8868;, then F&#8325; applies SUCC to ZERO twice, i.e. returns 2.</a
+      ><a name="2324"
+      >
+
+\begin{code}
+
+</a
+      ><a name="2340" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1110" class="Function"
+      >F&#8325;</a
+      ><a name="2342"
+      > </a
+      ><a name="2343" class="Symbol"
+      >=</a
+      ><a name="2344"
+      > </a
+      ><a name="2345" href="AddingProbeAxiom.ModellingUC.UCinT.html#1686" class="InductiveConstructor"
+      >LAM</a
+      ><a name="2348"
+      > </a
+      ><a name="2349" class="Symbol"
+      >(</a
+      ><a name="2350" href="AddingProbeAxiom.ModellingUC.UCinT.html#1424" class="InductiveConstructor"
+      >REC</a
+      ><a name="2353"
+      > </a
+      ><a name="2354" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2355"
+      > </a
+      ><a name="2356" href="AddingProbeAxiom.ModellingUC.UCinT.html#1326" class="InductiveConstructor"
+      >ZERO</a
+      ><a name="2360"
+      > </a
+      ><a name="2361" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2362"
+      > </a
+      ><a name="2363" href="AddingProbeAxiom.ModellingUC.UCinT.html#1686" class="InductiveConstructor"
+      >LAM</a
+      ><a name="2366"
+      > </a
+      ><a name="2367" href="AddingProbeAxiom.ModellingUC.UCinT.html#1372" class="InductiveConstructor"
+      >SUCC</a
+      ><a name="2371"
+      > </a
+      ><a name="2372" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2373"
+      > </a
+      ><a name="2374" class="Symbol"
+      >(</a
+      ><a name="2375" href="AddingProbeAxiom.ModellingUC.UCinT.html#1266" class="InductiveConstructor"
+      >IF</a
+      ><a name="2377"
+      > </a
+      ><a name="2378" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2379"
+      > </a
+      ><a name="2380" class="Symbol"
+      >(</a
+      ><a name="2381" href="AddingProbeAxiom.ModellingUC.UCinT.html#1106" class="InductiveConstructor"
+      >VAR</a
+      ><a name="2384"
+      > </a
+      ><a name="2385" href="AddingProbeAxiom.ModellingUC.UCinT.html#885" class="InductiveConstructor"
+      >zero</a
+      ><a name="2389"
+      > </a
+      ><a name="2390" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2391"
+      > </a
+      ><a name="2392" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#944" class="Function"
+      >ONE</a
+      ><a name="2395" class="Symbol"
+      >)</a
+      ><a name="2396"
+      > </a
+      ><a name="2397" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2398"
+      > </a
+      ><a name="2399" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#952" class="Function"
+      >THREE</a
+      ><a name="2404"
+      > </a
+      ><a name="2405" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2406"
+      > </a
+      ><a name="2407" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#948" class="Function"
+      >TWO</a
+      ><a name="2410" class="Symbol"
+      >))</a
+      ><a name="2412"
+      >
+
+</a
+      ><a name="2414" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#2414" class="Function"
+      >F&#8325;-interpretation</a
+      ><a name="2431"
+      > </a
+      ><a name="2432" class="Symbol"
+      >:</a
+      ><a name="2433"
+      > </a
+      ><a name="2434" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#807" class="Function Operator"
+      >&#10214;</a
+      ><a name="2435"
+      > </a
+      ><a name="2436" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1110" class="Function"
+      >F&#8325;</a
+      ><a name="2438"
+      > </a
+      ><a name="2439" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#807" class="Function Operator"
+      >&#10215;</a
+      ><a name="2440"
+      > </a
+      ><a name="2441" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2442"
+      > </a
+      ><a name="2443" class="Symbol"
+      >&#955;</a
+      ><a name="2444"
+      > </a
+      ><a name="2445" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#2445" class="Bound"
+      >&#945;</a
+      ><a name="2446"
+      > </a
+      ><a name="2447" class="Symbol"
+      >&#8594;</a
+      ><a name="2448"
+      > </a
+      ><a name="2449" href="Preliminaries.NaturalNumber.html#475" class="Function"
+      >rec</a
+      ><a name="2452"
+      > </a
+      ><a name="2453" href="Preliminaries.NaturalNumber.html#300" class="InductiveConstructor"
+      >zero</a
+      ><a name="2457"
+      > </a
+      ><a name="2458" class="Symbol"
+      >(&#955;</a
+      ><a name="2460"
+      > </a
+      ><a name="2461" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#2461" class="Bound"
+      >_</a
+      ><a name="2462"
+      > </a
+      ><a name="2463" class="Symbol"
+      >&#8594;</a
+      ><a name="2464"
+      > </a
+      ><a name="2465" href="Preliminaries.NaturalNumber.html#311" class="InductiveConstructor"
+      >succ</a
+      ><a name="2469" class="Symbol"
+      >)</a
+      ><a name="2470"
+      > </a
+      ><a name="2471" class="Symbol"
+      >(</a
+      ><a name="2472" href="Preliminaries.Boolean.html#302" class="Function"
+      >if</a
+      ><a name="2474"
+      > </a
+      ><a name="2475" class="Symbol"
+      >(</a
+      ><a name="2476" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#2445" class="Bound"
+      >&#945;</a
+      ><a name="2477"
+      > </a
+      ><a name="2478" class="Number"
+      >1</a
+      ><a name="2479" class="Symbol"
+      >)</a
+      ><a name="2480"
+      > </a
+      ><a name="2481" class="Number"
+      >3</a
+      ><a name="2482"
+      > </a
+      ><a name="2483" class="Number"
+      >2</a
+      ><a name="2484" class="Symbol"
+      >)</a
+      ><a name="2485"
+      >
+</a
+      ><a name="2486" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#2414" class="Function"
+      >F&#8325;-interpretation</a
+      ><a name="2503"
+      > </a
+      ><a name="2504" class="Symbol"
+      >=</a
+      ><a name="2505"
+      > </a
+      ><a name="2506" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="2510"
+      >
+
+\end{code}
+
+</a
+      ><a name="2524" class="Comment"
+      >A more complicated example</a
+      ><a name="2550"
+      >
+
+\begin{code}
+
+</a
+      ><a name="2566" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1113" class="Function"
+      >F&#8326;</a
+      ><a name="2568"
+      > </a
+      ><a name="2569" class="Symbol"
+      >=</a
+      ><a name="2570"
+      > </a
+      ><a name="2571" href="AddingProbeAxiom.ModellingUC.UCinT.html#1686" class="InductiveConstructor"
+      >LAM</a
+      ><a name="2574"
+      > </a
+      ><a name="2575" class="Symbol"
+      >(</a
+      ><a name="2576" href="AddingProbeAxiom.ModellingUC.UCinT.html#1424" class="InductiveConstructor"
+      >REC</a
+      ><a name="2579"
+      > </a
+      ><a name="2580" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2581"
+      > </a
+      ><a name="2582" class="Symbol"
+      >(</a
+      ><a name="2583" href="AddingProbeAxiom.ModellingUC.UCinT.html#1266" class="InductiveConstructor"
+      >IF</a
+      ><a name="2585"
+      > </a
+      ><a name="2586" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2587"
+      > </a
+      ><a name="2588" class="Symbol"
+      >(</a
+      ><a name="2589" href="AddingProbeAxiom.ModellingUC.UCinT.html#1106" class="InductiveConstructor"
+      >VAR</a
+      ><a name="2592"
+      > </a
+      ><a name="2593" href="AddingProbeAxiom.ModellingUC.UCinT.html#885" class="InductiveConstructor"
+      >zero</a
+      ><a name="2597"
+      > </a
+      ><a name="2598" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2599"
+      > </a
+      ><a name="2600" class="Symbol"
+      >(</a
+      ><a name="2601" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1110" class="Function"
+      >F&#8325;</a
+      ><a name="2603"
+      > </a
+      ><a name="2604" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2605"
+      > </a
+      ><a name="2606" href="AddingProbeAxiom.ModellingUC.UCinT.html#1106" class="InductiveConstructor"
+      >VAR</a
+      ><a name="2609"
+      > </a
+      ><a name="2610" href="AddingProbeAxiom.ModellingUC.UCinT.html#885" class="InductiveConstructor"
+      >zero</a
+      ><a name="2614" class="Symbol"
+      >))</a
+      ><a name="2616"
+      > </a
+      ><a name="2617" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2618"
+      > </a
+      ><a name="2619" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#963" class="Function"
+      >FIVE</a
+      ><a name="2623"
+      > </a
+      ><a name="2624" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2625"
+      > </a
+      ><a name="2626" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#948" class="Function"
+      >TWO</a
+      ><a name="2629" class="Symbol"
+      >)</a
+      ><a name="2630"
+      > </a
+      ><a name="2631" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2632"
+      > </a
+      ><a name="2633" href="AddingProbeAxiom.ModellingUC.UCinT.html#1686" class="InductiveConstructor"
+      >LAM</a
+      ><a name="2636"
+      > </a
+      ><a name="2637" href="AddingProbeAxiom.ModellingUC.UCinT.html#1372" class="InductiveConstructor"
+      >SUCC</a
+      ><a name="2641"
+      >
+              </a
+      ><a name="2656" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2657"
+      > </a
+      ><a name="2658" class="Symbol"
+      >(</a
+      ><a name="2659" href="AddingProbeAxiom.ModellingUC.UCinT.html#1266" class="InductiveConstructor"
+      >IF</a
+      ><a name="2661"
+      > </a
+      ><a name="2662" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2663"
+      > </a
+      ><a name="2664" class="Symbol"
+      >(</a
+      ><a name="2665" href="AddingProbeAxiom.ModellingUC.UCinT.html#1106" class="InductiveConstructor"
+      >VAR</a
+      ><a name="2668"
+      > </a
+      ><a name="2669" href="AddingProbeAxiom.ModellingUC.UCinT.html#885" class="InductiveConstructor"
+      >zero</a
+      ><a name="2673"
+      > </a
+      ><a name="2674" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2675"
+      > </a
+      ><a name="2676" class="Symbol"
+      >(</a
+      ><a name="2677" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1107" class="Function"
+      >F&#8324;</a
+      ><a name="2679"
+      > </a
+      ><a name="2680" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2681"
+      > </a
+      ><a name="2682" href="AddingProbeAxiom.ModellingUC.UCinT.html#1106" class="InductiveConstructor"
+      >VAR</a
+      ><a name="2685"
+      > </a
+      ><a name="2686" href="AddingProbeAxiom.ModellingUC.UCinT.html#885" class="InductiveConstructor"
+      >zero</a
+      ><a name="2690" class="Symbol"
+      >))</a
+      ><a name="2692"
+      > </a
+      ><a name="2693" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2694"
+      > </a
+      ><a name="2695" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#952" class="Function"
+      >THREE</a
+      ><a name="2700"
+      > </a
+      ><a name="2701" href="AddingProbeAxiom.ModellingUC.UCinT.html#1753" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2702"
+      > </a
+      ><a name="2703" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#948" class="Function"
+      >TWO</a
+      ><a name="2706" class="Symbol"
+      >))</a
+      ><a name="2708"
+      >
+
+</a
+      ><a name="2710" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#2710" class="Function"
+      >F&#8326;-interpretation</a
+      ><a name="2727"
+      > </a
+      ><a name="2728" class="Symbol"
+      >:</a
+      ><a name="2729"
+      > </a
+      ><a name="2730" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#807" class="Function Operator"
+      >&#10214;</a
+      ><a name="2731"
+      > </a
+      ><a name="2732" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1113" class="Function"
+      >F&#8326;</a
+      ><a name="2734"
+      > </a
+      ><a name="2735" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#807" class="Function Operator"
+      >&#10215;</a
+      ><a name="2736"
+      > </a
+      ><a name="2737" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2738"
+      > </a
+      ><a name="2739" class="Symbol"
+      >&#955;</a
+      ><a name="2740"
+      > </a
+      ><a name="2741" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#2741" class="Bound"
+      >&#945;</a
+      ><a name="2742"
+      > </a
+      ><a name="2743" class="Symbol"
+      >&#8594;</a
+      ><a name="2744"
+      > </a
+      ><a name="2745" href="Preliminaries.NaturalNumber.html#475" class="Function"
+      >rec</a
+      ><a name="2748"
+      > </a
+      ><a name="2749" class="Symbol"
+      >(</a
+      ><a name="2750" href="Preliminaries.Boolean.html#302" class="Function"
+      >if</a
+      ><a name="2752"
+      > </a
+      ><a name="2753" class="Symbol"
+      >(</a
+      ><a name="2754" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#2741" class="Bound"
+      >&#945;</a
+      ><a name="2755"
+      > </a
+      ><a name="2756" class="Symbol"
+      >(</a
+      ><a name="2757" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#807" class="Function Operator"
+      >&#10214;</a
+      ><a name="2758"
+      > </a
+      ><a name="2759" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1110" class="Function"
+      >F&#8325;</a
+      ><a name="2761"
+      > </a
+      ><a name="2762" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#807" class="Function Operator"
+      >&#10215;</a
+      ><a name="2763"
+      > </a
+      ><a name="2764" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#2741" class="Bound"
+      >&#945;</a
+      ><a name="2765" class="Symbol"
+      >))</a
+      ><a name="2767"
+      > </a
+      ><a name="2768" class="Number"
+      >5</a
+      ><a name="2769"
+      > </a
+      ><a name="2770" class="Number"
+      >2</a
+      ><a name="2771" class="Symbol"
+      >)</a
+      ><a name="2772"
+      > </a
+      ><a name="2773" class="Symbol"
+      >(&#955;</a
+      ><a name="2775"
+      > </a
+      ><a name="2776" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#2776" class="Bound"
+      >_</a
+      ><a name="2777"
+      > </a
+      ><a name="2778" class="Symbol"
+      >&#8594;</a
+      ><a name="2779"
+      > </a
+      ><a name="2780" href="Preliminaries.NaturalNumber.html#311" class="InductiveConstructor"
+      >succ</a
+      ><a name="2784" class="Symbol"
+      >)</a
+      ><a name="2785"
+      >
+                                       </a
+      ><a name="2825" class="Symbol"
+      >(</a
+      ><a name="2826" href="Preliminaries.Boolean.html#302" class="Function"
+      >if</a
+      ><a name="2828"
+      > </a
+      ><a name="2829" class="Symbol"
+      >(</a
+      ><a name="2830" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#2741" class="Bound"
+      >&#945;</a
+      ><a name="2831"
+      > </a
+      ><a name="2832" class="Symbol"
+      >(</a
+      ><a name="2833" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#807" class="Function Operator"
+      >&#10214;</a
+      ><a name="2834"
+      > </a
+      ><a name="2835" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1107" class="Function"
+      >F&#8324;</a
+      ><a name="2837"
+      > </a
+      ><a name="2838" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#807" class="Function Operator"
+      >&#10215;</a
+      ><a name="2839"
+      > </a
+      ><a name="2840" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#2741" class="Bound"
+      >&#945;</a
+      ><a name="2841" class="Symbol"
+      >))</a
+      ><a name="2843"
+      > </a
+      ><a name="2844" class="Number"
+      >3</a
+      ><a name="2845"
+      > </a
+      ><a name="2846" class="Number"
+      >2</a
+      ><a name="2847" class="Symbol"
+      >)</a
+      ><a name="2848"
+      >
+</a
+      ><a name="2849" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#2710" class="Function"
+      >F&#8326;-interpretation</a
+      ><a name="2866"
+      > </a
+      ><a name="2867" class="Symbol"
+      >=</a
+      ><a name="2868"
+      > </a
+      ><a name="2869" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="2873"
+      >
+
+\end{code}
+</a
+      ></pre
+    ></body
+  ></html
+>

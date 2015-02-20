@@ -1,0 +1,2980 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >UsingIrrelevantFunext.Space.Coverage</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Comment"
+      >Chuangjie Xu 2013 (updated in February 2015)</a
+      ><a name="45"
+      >
+
+\begin{code}
+
+</a
+      ><a name="61" class="Symbol"
+      >{-#</a
+      ><a name="64"
+      > </a
+      ><a name="65" class="Keyword"
+      >OPTIONS</a
+      ><a name="72"
+      > --without-K </a
+      ><a name="85" class="Symbol"
+      >#-}</a
+      ><a name="88"
+      >
+
+</a
+      ><a name="90" class="Keyword"
+      >module</a
+      ><a name="96"
+      > </a
+      ><a name="97" href="UsingIrrelevantFunext.Space.Coverage.html#1" class="Module"
+      >UsingIrrelevantFunext.Space.Coverage</a
+      ><a name="133"
+      > </a
+      ><a name="134" class="Keyword"
+      >where</a
+      ><a name="139"
+      >
+
+</a
+      ><a name="141" class="Keyword"
+      >open</a
+      ><a name="145"
+      > </a
+      ><a name="146" class="Keyword"
+      >import</a
+      ><a name="152"
+      > </a
+      ><a name="153" href="Preliminaries.SetsAndFunctions.html#1" class="Module"
+      >Preliminaries.SetsAndFunctions</a
+      ><a name="183"
+      > </a
+      ><a name="184" class="Keyword"
+      >hiding</a
+      ><a name="190"
+      > </a
+      ><a name="191" class="Symbol"
+      >(</a
+      ><a name="192"
+      >_+_</a
+      ><a name="195" class="Symbol"
+      >)</a
+      ><a name="196"
+      >
+</a
+      ><a name="197" class="Keyword"
+      >open</a
+      ><a name="201"
+      > </a
+      ><a name="202" class="Keyword"
+      >import</a
+      ><a name="208"
+      > </a
+      ><a name="209" href="Preliminaries.NaturalNumber.html#1" class="Module"
+      >Preliminaries.NaturalNumber</a
+      ><a name="236"
+      >
+</a
+      ><a name="237" class="Keyword"
+      >open</a
+      ><a name="241"
+      > </a
+      ><a name="242" class="Keyword"
+      >import</a
+      ><a name="248"
+      > </a
+      ><a name="249" href="Preliminaries.Boolean.html#1" class="Module"
+      >Preliminaries.Boolean</a
+      ><a name="270"
+      >
+</a
+      ><a name="271" class="Keyword"
+      >open</a
+      ><a name="275"
+      > </a
+      ><a name="276" class="Keyword"
+      >import</a
+      ><a name="282"
+      > </a
+      ><a name="283" href="Preliminaries.Sequence.html#1" class="Module"
+      >Preliminaries.Sequence</a
+      ><a name="305"
+      >
+</a
+      ><a name="306" class="Keyword"
+      >open</a
+      ><a name="310"
+      > </a
+      ><a name="311" class="Keyword"
+      >import</a
+      ><a name="317"
+      > </a
+      ><a name="318" href="Continuity.UniformContinuity.html#1" class="Module"
+      >Continuity.UniformContinuity</a
+      ><a name="346"
+      >
+
+\end{code}
+
+</a
+      ><a name="360" class="Comment"
+      >The site we are working with is the monoid of uniformly continuous</a
+      ><a name="426"
+      >
+</a
+      ><a name="427" class="Comment"
+      >endo-functions of the Cantor space with a coverage in which, for each</a
+      ><a name="496"
+      >
+</a
+      ><a name="497" class="Comment"
+      >natural number n, there is a family of concatenation maps &quot;cons s&quot;</a
+      ><a name="563"
+      >
+</a
+      ><a name="564" class="Comment"
+      >indexed by finite binary sequence s of length n.</a
+      ><a name="612"
+      >
+
+</a
+      ><a name="614" class="Comment"
+      >The monoid of uniformly continuous &#8322;&#8469; &#8594; &#8322;&#8469;:</a
+      ><a name="657"
+      >
+
+\begin{code}
+
+</a
+      ><a name="673" href="UsingIrrelevantFunext.Space.Coverage.html#673" class="Function"
+      >C</a
+      ><a name="674"
+      > </a
+      ><a name="675" class="Symbol"
+      >:</a
+      ><a name="676"
+      > </a
+      ><a name="677" href="Preliminaries.SetsAndFunctions.html#531" class="Function"
+      >Subset</a
+      ><a name="683" class="Symbol"
+      >(</a
+      ><a name="684" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="686"
+      > </a
+      ><a name="687" class="Symbol"
+      >&#8594;</a
+      ><a name="688"
+      > </a
+      ><a name="689" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="691" class="Symbol"
+      >)</a
+      ><a name="692"
+      >
+</a
+      ><a name="693" href="UsingIrrelevantFunext.Space.Coverage.html#673" class="Function"
+      >C</a
+      ><a name="694"
+      > </a
+      ><a name="695" class="Symbol"
+      >=</a
+      ><a name="696"
+      > </a
+      ><a name="697" href="Continuity.UniformContinuity.html#592" class="Function"
+      >uniformly-continuous-&#8322;&#8469;</a
+      ><a name="720"
+      >
+
+\end{code}
+
+</a
+      ><a name="734" class="Comment"
+      >The coverage axiom amounts to uniform continuity of endo-functions of</a
+      ><a name="803"
+      >
+</a
+      ><a name="804" class="Comment"
+      >the Cantor space in the following sense.</a
+      ><a name="844"
+      >
+
+\begin{code}
+
+</a
+      ><a name="860" href="UsingIrrelevantFunext.Space.Coverage.html#860" class="Function"
+      >Theorem[Coverage-axiom]</a
+      ><a name="883"
+      > </a
+      ><a name="884" class="Symbol"
+      >:</a
+      ><a name="885"
+      > </a
+      ><a name="886" class="Symbol"
+      >&#8704;(</a
+      ><a name="888" href="UsingIrrelevantFunext.Space.Coverage.html#888" class="Bound"
+      >m</a
+      ><a name="889"
+      > </a
+      ><a name="890" class="Symbol"
+      >:</a
+      ><a name="891"
+      > </a
+      ><a name="892" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="893" class="Symbol"
+      >)</a
+      ><a name="894"
+      > </a
+      ><a name="895" class="Symbol"
+      >&#8594;</a
+      ><a name="896"
+      > </a
+      ><a name="897" class="Symbol"
+      >&#8704;(</a
+      ><a name="899" href="UsingIrrelevantFunext.Space.Coverage.html#899" class="Bound"
+      >t</a
+      ><a name="900"
+      > </a
+      ><a name="901" class="Symbol"
+      >:</a
+      ><a name="902"
+      > </a
+      ><a name="903" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="905"
+      > </a
+      ><a name="906" class="Symbol"
+      >&#8594;</a
+      ><a name="907"
+      > </a
+      ><a name="908" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="910" class="Symbol"
+      >)</a
+      ><a name="911"
+      > </a
+      ><a name="912" class="Symbol"
+      >&#8594;</a
+      ><a name="913"
+      > </a
+      ><a name="914" href="UsingIrrelevantFunext.Space.Coverage.html#899" class="Bound"
+      >t</a
+      ><a name="915"
+      > </a
+      ><a name="916" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="917"
+      > </a
+      ><a name="918" href="UsingIrrelevantFunext.Space.Coverage.html#673" class="Function"
+      >C</a
+      ><a name="919"
+      > </a
+      ><a name="920" class="Symbol"
+      >&#8594;</a
+      ><a name="921"
+      >
+                   </a
+      ><a name="941" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="942"
+      > </a
+      ><a name="943" class="Symbol"
+      >\(</a
+      ><a name="945" href="UsingIrrelevantFunext.Space.Coverage.html#945" class="Bound"
+      >n</a
+      ><a name="946"
+      > </a
+      ><a name="947" class="Symbol"
+      >:</a
+      ><a name="948"
+      > </a
+      ><a name="949" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="950" class="Symbol"
+      >)</a
+      ><a name="951"
+      > </a
+      ><a name="952" class="Symbol"
+      >&#8594;</a
+      ><a name="953"
+      > </a
+      ><a name="954" class="Symbol"
+      >&#8704;(</a
+      ><a name="956" href="UsingIrrelevantFunext.Space.Coverage.html#956" class="Bound"
+      >s</a
+      ><a name="957"
+      > </a
+      ><a name="958" class="Symbol"
+      >:</a
+      ><a name="959"
+      > </a
+      ><a name="960" href="Preliminaries.Sequence.html#507" class="Datatype"
+      >&#8322;Fin</a
+      ><a name="964"
+      > </a
+      ><a name="965" href="UsingIrrelevantFunext.Space.Coverage.html#945" class="Bound"
+      >n</a
+      ><a name="966" class="Symbol"
+      >)</a
+      ><a name="967"
+      > </a
+      ><a name="968" class="Symbol"
+      >&#8594;</a
+      ><a name="969"
+      >
+                    </a
+      ><a name="990" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="991"
+      > </a
+      ><a name="992" class="Symbol"
+      >\(</a
+      ><a name="994" href="UsingIrrelevantFunext.Space.Coverage.html#994" class="Bound"
+      >s'</a
+      ><a name="996"
+      > </a
+      ><a name="997" class="Symbol"
+      >:</a
+      ><a name="998"
+      > </a
+      ><a name="999" href="Preliminaries.Sequence.html#507" class="Datatype"
+      >&#8322;Fin</a
+      ><a name="1003"
+      > </a
+      ><a name="1004" href="UsingIrrelevantFunext.Space.Coverage.html#888" class="Bound"
+      >m</a
+      ><a name="1005" class="Symbol"
+      >)</a
+      ><a name="1006"
+      > </a
+      ><a name="1007" class="Symbol"
+      >&#8594;</a
+      ><a name="1008"
+      > </a
+      ><a name="1009" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="1010"
+      > </a
+      ><a name="1011" class="Symbol"
+      >\(</a
+      ><a name="1013" href="UsingIrrelevantFunext.Space.Coverage.html#1013" class="Bound"
+      >t'</a
+      ><a name="1015"
+      > </a
+      ><a name="1016" class="Symbol"
+      >:</a
+      ><a name="1017"
+      > </a
+      ><a name="1018" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1020"
+      > </a
+      ><a name="1021" class="Symbol"
+      >&#8594;</a
+      ><a name="1022"
+      > </a
+      ><a name="1023" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1025" class="Symbol"
+      >)</a
+      ><a name="1026"
+      > </a
+      ><a name="1027" class="Symbol"
+      >&#8594;</a
+      ><a name="1028"
+      >
+                     </a
+      ><a name="1050" class="Symbol"
+      >(</a
+      ><a name="1051" href="UsingIrrelevantFunext.Space.Coverage.html#1013" class="Bound"
+      >t'</a
+      ><a name="1053"
+      > </a
+      ><a name="1054" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1055"
+      > </a
+      ><a name="1056" href="UsingIrrelevantFunext.Space.Coverage.html#673" class="Function"
+      >C</a
+      ><a name="1057" class="Symbol"
+      >)</a
+      ><a name="1058"
+      > </a
+      ><a name="1059" href="Preliminaries.SetsAndFunctions.html#982" class="Function Operator"
+      >&#215;</a
+      ><a name="1060"
+      > </a
+      ><a name="1061" class="Symbol"
+      >(&#8704;</a
+      ><a name="1063"
+      > </a
+      ><a name="1064" href="UsingIrrelevantFunext.Space.Coverage.html#1064" class="Bound"
+      >&#945;</a
+      ><a name="1065"
+      > </a
+      ><a name="1066" class="Symbol"
+      >&#8594;</a
+      ><a name="1067"
+      > </a
+      ><a name="1068" href="UsingIrrelevantFunext.Space.Coverage.html#899" class="Bound"
+      >t</a
+      ><a name="1069"
+      > </a
+      ><a name="1070" class="Symbol"
+      >(</a
+      ><a name="1071" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1075"
+      > </a
+      ><a name="1076" href="UsingIrrelevantFunext.Space.Coverage.html#956" class="Bound"
+      >s</a
+      ><a name="1077"
+      > </a
+      ><a name="1078" href="UsingIrrelevantFunext.Space.Coverage.html#1064" class="Bound"
+      >&#945;</a
+      ><a name="1079" class="Symbol"
+      >)</a
+      ><a name="1080"
+      > </a
+      ><a name="1081" href="Preliminaries.Sequence.html#2505" class="Function Operator"
+      >&#8803;</a
+      ><a name="1082"
+      > </a
+      ><a name="1083" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1087"
+      > </a
+      ><a name="1088" href="UsingIrrelevantFunext.Space.Coverage.html#994" class="Bound"
+      >s'</a
+      ><a name="1090"
+      > </a
+      ><a name="1091" class="Symbol"
+      >(</a
+      ><a name="1092" href="UsingIrrelevantFunext.Space.Coverage.html#1013" class="Bound"
+      >t'</a
+      ><a name="1094"
+      > </a
+      ><a name="1095" href="UsingIrrelevantFunext.Space.Coverage.html#1064" class="Bound"
+      >&#945;</a
+      ><a name="1096" class="Symbol"
+      >))</a
+      ><a name="1098"
+      >
+</a
+      ><a name="1099" href="UsingIrrelevantFunext.Space.Coverage.html#860" class="Function"
+      >Theorem[Coverage-axiom]</a
+      ><a name="1122"
+      > </a
+      ><a name="1123" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="1124"
+      > </a
+      ><a name="1125" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="1126"
+      > </a
+      ><a name="1127" href="UsingIrrelevantFunext.Space.Coverage.html#1127" class="Bound"
+      >tC</a
+      ><a name="1129"
+      > </a
+      ><a name="1130" class="Symbol"
+      >=</a
+      ><a name="1131"
+      > </a
+      ><a name="1132" href="UsingIrrelevantFunext.Space.Coverage.html#1149" class="Function"
+      >n</a
+      ><a name="1133"
+      > </a
+      ><a name="1134" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1135"
+      > </a
+      ><a name="1136" href="UsingIrrelevantFunext.Space.Coverage.html#1174" class="Function"
+      >prf</a
+      ><a name="1139"
+      >
+ </a
+      ><a name="1141" class="Keyword"
+      >where</a
+      ><a name="1146"
+      >
+  </a
+      ><a name="1149" href="UsingIrrelevantFunext.Space.Coverage.html#1149" class="Function"
+      >n</a
+      ><a name="1150"
+      > </a
+      ><a name="1151" class="Symbol"
+      >:</a
+      ><a name="1152"
+      > </a
+      ><a name="1153" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1154"
+      >
+  </a
+      ><a name="1157" href="UsingIrrelevantFunext.Space.Coverage.html#1149" class="Function"
+      >n</a
+      ><a name="1158"
+      > </a
+      ><a name="1159" class="Symbol"
+      >=</a
+      ><a name="1160"
+      > </a
+      ><a name="1161" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1164"
+      > </a
+      ><a name="1165" class="Symbol"
+      >(</a
+      ><a name="1166" href="UsingIrrelevantFunext.Space.Coverage.html#1127" class="Bound"
+      >tC</a
+      ><a name="1168"
+      > </a
+      ><a name="1169" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="1170" class="Symbol"
+      >)</a
+      ><a name="1171"
+      >
+  </a
+      ><a name="1174" href="UsingIrrelevantFunext.Space.Coverage.html#1174" class="Function"
+      >prf</a
+      ><a name="1177"
+      > </a
+      ><a name="1178" class="Symbol"
+      >:</a
+      ><a name="1179"
+      > </a
+      ><a name="1180" class="Symbol"
+      >&#8704;(</a
+      ><a name="1182" href="UsingIrrelevantFunext.Space.Coverage.html#1182" class="Bound"
+      >s</a
+      ><a name="1183"
+      > </a
+      ><a name="1184" class="Symbol"
+      >:</a
+      ><a name="1185"
+      > </a
+      ><a name="1186" href="Preliminaries.Sequence.html#507" class="Datatype"
+      >&#8322;Fin</a
+      ><a name="1190"
+      > </a
+      ><a name="1191" href="UsingIrrelevantFunext.Space.Coverage.html#1149" class="Function"
+      >n</a
+      ><a name="1192" class="Symbol"
+      >)</a
+      ><a name="1193"
+      > </a
+      ><a name="1194" class="Symbol"
+      >&#8594;</a
+      ><a name="1195"
+      > </a
+      ><a name="1196" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="1197"
+      > </a
+      ><a name="1198" class="Symbol"
+      >\(</a
+      ><a name="1200" href="UsingIrrelevantFunext.Space.Coverage.html#1200" class="Bound"
+      >s'</a
+      ><a name="1202"
+      > </a
+      ><a name="1203" class="Symbol"
+      >:</a
+      ><a name="1204"
+      > </a
+      ><a name="1205" href="Preliminaries.Sequence.html#507" class="Datatype"
+      >&#8322;Fin</a
+      ><a name="1209"
+      > </a
+      ><a name="1210" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="1211" class="Symbol"
+      >)</a
+      ><a name="1212"
+      > </a
+      ><a name="1213" class="Symbol"
+      >&#8594;</a
+      ><a name="1214"
+      > </a
+      ><a name="1215" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="1216"
+      > </a
+      ><a name="1217" class="Symbol"
+      >\(</a
+      ><a name="1219" href="UsingIrrelevantFunext.Space.Coverage.html#1219" class="Bound"
+      >t'</a
+      ><a name="1221"
+      > </a
+      ><a name="1222" class="Symbol"
+      >:</a
+      ><a name="1223"
+      > </a
+      ><a name="1224" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1226"
+      > </a
+      ><a name="1227" class="Symbol"
+      >&#8594;</a
+      ><a name="1228"
+      > </a
+      ><a name="1229" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1231" class="Symbol"
+      >)</a
+      ><a name="1232"
+      > </a
+      ><a name="1233" class="Symbol"
+      >&#8594;</a
+      ><a name="1234"
+      >
+         </a
+      ><a name="1244" class="Symbol"
+      >(</a
+      ><a name="1245" href="UsingIrrelevantFunext.Space.Coverage.html#1219" class="Bound"
+      >t'</a
+      ><a name="1247"
+      > </a
+      ><a name="1248" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1249"
+      > </a
+      ><a name="1250" href="UsingIrrelevantFunext.Space.Coverage.html#673" class="Function"
+      >C</a
+      ><a name="1251" class="Symbol"
+      >)</a
+      ><a name="1252"
+      > </a
+      ><a name="1253" href="Preliminaries.SetsAndFunctions.html#982" class="Function Operator"
+      >&#215;</a
+      ><a name="1254"
+      > </a
+      ><a name="1255" class="Symbol"
+      >(&#8704;</a
+      ><a name="1257"
+      > </a
+      ><a name="1258" href="UsingIrrelevantFunext.Space.Coverage.html#1258" class="Bound"
+      >&#945;</a
+      ><a name="1259"
+      > </a
+      ><a name="1260" class="Symbol"
+      >&#8594;</a
+      ><a name="1261"
+      > </a
+      ><a name="1262" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="1263"
+      > </a
+      ><a name="1264" class="Symbol"
+      >(</a
+      ><a name="1265" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1269"
+      > </a
+      ><a name="1270" href="UsingIrrelevantFunext.Space.Coverage.html#1182" class="Bound"
+      >s</a
+      ><a name="1271"
+      > </a
+      ><a name="1272" href="UsingIrrelevantFunext.Space.Coverage.html#1258" class="Bound"
+      >&#945;</a
+      ><a name="1273" class="Symbol"
+      >)</a
+      ><a name="1274"
+      > </a
+      ><a name="1275" href="Preliminaries.Sequence.html#2505" class="Function Operator"
+      >&#8803;</a
+      ><a name="1276"
+      > </a
+      ><a name="1277" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" href="UsingIrrelevantFunext.Space.Coverage.html#1200" class="Bound"
+      >s'</a
+      ><a name="1284"
+      > </a
+      ><a name="1285" class="Symbol"
+      >(</a
+      ><a name="1286" href="UsingIrrelevantFunext.Space.Coverage.html#1219" class="Bound"
+      >t'</a
+      ><a name="1288"
+      > </a
+      ><a name="1289" href="UsingIrrelevantFunext.Space.Coverage.html#1258" class="Bound"
+      >&#945;</a
+      ><a name="1290" class="Symbol"
+      >))</a
+      ><a name="1292"
+      >
+  </a
+      ><a name="1295" href="UsingIrrelevantFunext.Space.Coverage.html#1174" class="Function"
+      >prf</a
+      ><a name="1298"
+      > </a
+      ><a name="1299" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="1300"
+      > </a
+      ><a name="1301" class="Symbol"
+      >=</a
+      ><a name="1302"
+      > </a
+      ><a name="1303" href="UsingIrrelevantFunext.Space.Coverage.html#1335" class="Function"
+      >s'</a
+      ><a name="1305"
+      > </a
+      ><a name="1306" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1307"
+      >  </a
+      ><a name="1309" href="UsingIrrelevantFunext.Space.Coverage.html#1383" class="Function"
+      >t'</a
+      ><a name="1311"
+      > </a
+      ><a name="1312" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1313"
+      > </a
+      ><a name="1314" href="UsingIrrelevantFunext.Space.Coverage.html#1433" class="Function"
+      >t'C</a
+      ><a name="1317"
+      > </a
+      ><a name="1318" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1319"
+      > </a
+      ><a name="1320" href="UsingIrrelevantFunext.Space.Coverage.html#2756" class="Function"
+      >e</a
+      ><a name="1321"
+      >
+   </a
+      ><a name="1325" class="Keyword"
+      >where</a
+      ><a name="1330"
+      >
+    </a
+      ><a name="1335" href="UsingIrrelevantFunext.Space.Coverage.html#1335" class="Function"
+      >s'</a
+      ><a name="1337"
+      > </a
+      ><a name="1338" class="Symbol"
+      >:</a
+      ><a name="1339"
+      > </a
+      ><a name="1340" href="Preliminaries.Sequence.html#507" class="Datatype"
+      >&#8322;Fin</a
+      ><a name="1344"
+      > </a
+      ><a name="1345" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="1346"
+      >
+    </a
+      ><a name="1351" href="UsingIrrelevantFunext.Space.Coverage.html#1335" class="Function"
+      >s'</a
+      ><a name="1353"
+      > </a
+      ><a name="1354" class="Symbol"
+      >=</a
+      ><a name="1355"
+      > </a
+      ><a name="1356" href="Preliminaries.Sequence.html#1121" class="Function"
+      >take</a
+      ><a name="1360"
+      > </a
+      ><a name="1361" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="1362"
+      > </a
+      ><a name="1363" class="Symbol"
+      >(</a
+      ><a name="1364" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="1365"
+      > </a
+      ><a name="1366" class="Symbol"
+      >(</a
+      ><a name="1367" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1371"
+      > </a
+      ><a name="1372" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="1373"
+      > </a
+      ><a name="1374" href="Preliminaries.Sequence.html#384" class="Function"
+      >0&#772;</a
+      ><a name="1376" class="Symbol"
+      >))</a
+      ><a name="1378"
+      >
+    </a
+      ><a name="1383" href="UsingIrrelevantFunext.Space.Coverage.html#1383" class="Function"
+      >t'</a
+      ><a name="1385"
+      > </a
+      ><a name="1386" class="Symbol"
+      >:</a
+      ><a name="1387"
+      > </a
+      ><a name="1388" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1390"
+      > </a
+      ><a name="1391" class="Symbol"
+      >&#8594;</a
+      ><a name="1392"
+      > </a
+      ><a name="1393" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1395"
+      >
+    </a
+      ><a name="1400" href="UsingIrrelevantFunext.Space.Coverage.html#1383" class="Function"
+      >t'</a
+      ><a name="1402"
+      > </a
+      ><a name="1403" href="UsingIrrelevantFunext.Space.Coverage.html#1403" class="Bound"
+      >&#945;</a
+      ><a name="1404"
+      > </a
+      ><a name="1405" class="Symbol"
+      >=</a
+      ><a name="1406"
+      > </a
+      ><a name="1407" href="Preliminaries.Sequence.html#1207" class="Function"
+      >drop</a
+      ><a name="1411"
+      > </a
+      ><a name="1412" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="1413"
+      > </a
+      ><a name="1414" class="Symbol"
+      >(</a
+      ><a name="1415" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="1416"
+      > </a
+      ><a name="1417" class="Symbol"
+      >(</a
+      ><a name="1418" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1422"
+      > </a
+      ><a name="1423" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="1424"
+      > </a
+      ><a name="1425" href="UsingIrrelevantFunext.Space.Coverage.html#1403" class="Bound"
+      >&#945;</a
+      ><a name="1426" class="Symbol"
+      >))</a
+      ><a name="1428"
+      >
+    </a
+      ><a name="1433" href="UsingIrrelevantFunext.Space.Coverage.html#1433" class="Function"
+      >t'C</a
+      ><a name="1436"
+      > </a
+      ><a name="1437" class="Symbol"
+      >:</a
+      ><a name="1438"
+      > </a
+      ><a name="1439" href="UsingIrrelevantFunext.Space.Coverage.html#1383" class="Function"
+      >t'</a
+      ><a name="1441"
+      > </a
+      ><a name="1442" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1443"
+      > </a
+      ><a name="1444" href="UsingIrrelevantFunext.Space.Coverage.html#673" class="Function"
+      >C</a
+      ><a name="1445"
+      >
+    </a
+      ><a name="1450" href="UsingIrrelevantFunext.Space.Coverage.html#1433" class="Function"
+      >t'C</a
+      ><a name="1453"
+      > </a
+      ><a name="1454" href="UsingIrrelevantFunext.Space.Coverage.html#1454" class="Bound"
+      >k</a
+      ><a name="1455"
+      > </a
+      ><a name="1456" class="Symbol"
+      >=</a
+      ><a name="1457"
+      > </a
+      ><a name="1458" href="Continuity.UniformContinuity.html#8709" class="Function"
+      >Lemma[LM-&#8322;&#8469;-least-modulus]</a
+      ><a name="1484"
+      > </a
+      ><a name="1485" href="UsingIrrelevantFunext.Space.Coverage.html#1383" class="Function"
+      >t'</a
+      ><a name="1487"
+      > </a
+      ><a name="1488" href="UsingIrrelevantFunext.Space.Coverage.html#1622" class="Function"
+      >l</a
+      ><a name="1489"
+      > </a
+      ><a name="1490" href="UsingIrrelevantFunext.Space.Coverage.html#2653" class="Function"
+      >prt'</a
+      ><a name="1494"
+      >
+     </a
+      ><a name="1500" class="Keyword"
+      >where</a
+      ><a name="1505"
+      >
+      </a
+      ><a name="1512" href="UsingIrrelevantFunext.Space.Coverage.html#1512" class="Function"
+      >ucts</a
+      ><a name="1516"
+      > </a
+      ><a name="1517" class="Symbol"
+      >:</a
+      ><a name="1518"
+      > </a
+      ><a name="1519" href="Continuity.UniformContinuity.html#592" class="Function"
+      >uniformly-continuous-&#8322;&#8469;</a
+      ><a name="1542"
+      > </a
+      ><a name="1543" class="Symbol"
+      >(</a
+      ><a name="1544" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="1545"
+      > </a
+      ><a name="1546" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1547"
+      > </a
+      ><a name="1548" class="Symbol"
+      >(</a
+      ><a name="1549" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1553"
+      > </a
+      ><a name="1554" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="1555" class="Symbol"
+      >))</a
+      ><a name="1557"
+      >
+      </a
+      ><a name="1564" href="UsingIrrelevantFunext.Space.Coverage.html#1512" class="Function"
+      >ucts</a
+      ><a name="1568"
+      > </a
+      ><a name="1569" class="Symbol"
+      >=</a
+      ><a name="1570"
+      > </a
+      ><a name="1571" href="Continuity.UniformContinuity.html#10300" class="Function"
+      >Lemma[&#8728;-UC]</a
+      ><a name="1582"
+      > </a
+      ><a name="1583" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="1584"
+      > </a
+      ><a name="1585" href="UsingIrrelevantFunext.Space.Coverage.html#1127" class="Bound"
+      >tC</a
+      ><a name="1587"
+      > </a
+      ><a name="1588" class="Symbol"
+      >(</a
+      ><a name="1589" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1593"
+      > </a
+      ><a name="1594" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="1595" class="Symbol"
+      >)</a
+      ><a name="1596"
+      > </a
+      ><a name="1597" class="Symbol"
+      >(</a
+      ><a name="1598" href="Continuity.UniformContinuity.html#10882" class="Function"
+      >Lemma[cons-UC]</a
+      ><a name="1612"
+      > </a
+      ><a name="1613" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="1614" class="Symbol"
+      >)</a
+      ><a name="1615"
+      >
+      </a
+      ><a name="1622" href="UsingIrrelevantFunext.Space.Coverage.html#1622" class="Function"
+      >l</a
+      ><a name="1623"
+      > </a
+      ><a name="1624" class="Symbol"
+      >:</a
+      ><a name="1625"
+      > </a
+      ><a name="1626" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1627"
+      >
+      </a
+      ><a name="1634" href="UsingIrrelevantFunext.Space.Coverage.html#1622" class="Function"
+      >l</a
+      ><a name="1635"
+      > </a
+      ><a name="1636" class="Symbol"
+      >=</a
+      ><a name="1637"
+      > </a
+      ><a name="1638" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1641"
+      > </a
+      ><a name="1642" class="Symbol"
+      >(</a
+      ><a name="1643" href="UsingIrrelevantFunext.Space.Coverage.html#1512" class="Function"
+      >ucts</a
+      ><a name="1647"
+      > </a
+      ><a name="1648" class="Symbol"
+      >(</a
+      ><a name="1649" href="UsingIrrelevantFunext.Space.Coverage.html#1454" class="Bound"
+      >k</a
+      ><a name="1650"
+      > </a
+      ><a name="1651" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="1652"
+      > </a
+      ><a name="1653" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="1654" class="Symbol"
+      >))</a
+      ><a name="1656"
+      >
+      </a
+      ><a name="1663" href="UsingIrrelevantFunext.Space.Coverage.html#1663" class="Function"
+      >prts</a
+      ><a name="1667"
+      > </a
+      ><a name="1668" class="Symbol"
+      >:</a
+      ><a name="1669"
+      > </a
+      ><a name="1670" class="Symbol"
+      >&#8704;(</a
+      ><a name="1672" href="UsingIrrelevantFunext.Space.Coverage.html#1672" class="Bound"
+      >&#945;</a
+      ><a name="1673"
+      > </a
+      ><a name="1674" href="UsingIrrelevantFunext.Space.Coverage.html#1674" class="Bound"
+      >&#946;</a
+      ><a name="1675"
+      > </a
+      ><a name="1676" class="Symbol"
+      >:</a
+      ><a name="1677"
+      > </a
+      ><a name="1678" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1680" class="Symbol"
+      >)</a
+      ><a name="1681"
+      > </a
+      ><a name="1682" class="Symbol"
+      >&#8594;</a
+      ><a name="1683"
+      > </a
+      ><a name="1684" href="UsingIrrelevantFunext.Space.Coverage.html#1672" class="Bound"
+      >&#945;</a
+      ><a name="1685"
+      > </a
+      ><a name="1686" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="1688"
+      > </a
+      ><a name="1689" href="UsingIrrelevantFunext.Space.Coverage.html#1622" class="Function"
+      >l</a
+      ><a name="1690"
+      > </a
+      ><a name="1691" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="1692"
+      > </a
+      ><a name="1693" href="UsingIrrelevantFunext.Space.Coverage.html#1674" class="Bound"
+      >&#946;</a
+      ><a name="1694"
+      > </a
+      ><a name="1695" class="Symbol"
+      >&#8594;</a
+      ><a name="1696"
+      > </a
+      ><a name="1697" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="1698"
+      > </a
+      ><a name="1699" class="Symbol"
+      >(</a
+      ><a name="1700" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1704"
+      > </a
+      ><a name="1705" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="1706"
+      > </a
+      ><a name="1707" href="UsingIrrelevantFunext.Space.Coverage.html#1672" class="Bound"
+      >&#945;</a
+      ><a name="1708" class="Symbol"
+      >)</a
+      ><a name="1709"
+      > </a
+      ><a name="1710" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="1712"
+      > </a
+      ><a name="1713" href="UsingIrrelevantFunext.Space.Coverage.html#1454" class="Bound"
+      >k</a
+      ><a name="1714"
+      > </a
+      ><a name="1715" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="1716"
+      > </a
+      ><a name="1717" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="1718"
+      > </a
+      ><a name="1719" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="1720"
+      > </a
+      ><a name="1721" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="1722"
+      > </a
+      ><a name="1723" class="Symbol"
+      >(</a
+      ><a name="1724" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1728"
+      > </a
+      ><a name="1729" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="1730"
+      > </a
+      ><a name="1731" href="UsingIrrelevantFunext.Space.Coverage.html#1674" class="Bound"
+      >&#946;</a
+      ><a name="1732" class="Symbol"
+      >)</a
+      ><a name="1733"
+      >
+      </a
+      ><a name="1740" href="UsingIrrelevantFunext.Space.Coverage.html#1663" class="Function"
+      >prts</a
+      ><a name="1744"
+      > </a
+      ><a name="1745" class="Symbol"
+      >=</a
+      ><a name="1746"
+      > </a
+      ><a name="1747" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1750"
+      > </a
+      ><a name="1751" class="Symbol"
+      >(</a
+      ><a name="1752" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="1755"
+      > </a
+      ><a name="1756" class="Symbol"
+      >(</a
+      ><a name="1757" href="UsingIrrelevantFunext.Space.Coverage.html#1512" class="Function"
+      >ucts</a
+      ><a name="1761"
+      > </a
+      ><a name="1762" class="Symbol"
+      >(</a
+      ><a name="1763" href="UsingIrrelevantFunext.Space.Coverage.html#1454" class="Bound"
+      >k</a
+      ><a name="1764"
+      > </a
+      ><a name="1765" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="1766"
+      > </a
+      ><a name="1767" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="1768" class="Symbol"
+      >)))</a
+      ><a name="1771"
+      >
+      </a
+      ><a name="1778" href="UsingIrrelevantFunext.Space.Coverage.html#1778" class="Function"
+      >eq</a
+      ><a name="1780"
+      > </a
+      ><a name="1781" class="Symbol"
+      >:</a
+      ><a name="1782"
+      > </a
+      ><a name="1783" class="Symbol"
+      >&#8704;(</a
+      ><a name="1785" href="UsingIrrelevantFunext.Space.Coverage.html#1785" class="Bound"
+      >&#945;</a
+      ><a name="1786"
+      > </a
+      ><a name="1787" class="Symbol"
+      >:</a
+      ><a name="1788"
+      > </a
+      ><a name="1789" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1791" class="Symbol"
+      >)</a
+      ><a name="1792"
+      > </a
+      ><a name="1793" class="Symbol"
+      >&#8594;</a
+      ><a name="1794"
+      > </a
+      ><a name="1795" class="Symbol"
+      >&#8704;(</a
+      ><a name="1797" href="UsingIrrelevantFunext.Space.Coverage.html#1797" class="Bound"
+      >i</a
+      ><a name="1798"
+      > </a
+      ><a name="1799" class="Symbol"
+      >:</a
+      ><a name="1800"
+      > </a
+      ><a name="1801" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1802" class="Symbol"
+      >)</a
+      ><a name="1803"
+      > </a
+      ><a name="1804" class="Symbol"
+      >&#8594;</a
+      ><a name="1805"
+      > </a
+      ><a name="1806" href="UsingIrrelevantFunext.Space.Coverage.html#1383" class="Function"
+      >t'</a
+      ><a name="1808"
+      > </a
+      ><a name="1809" href="UsingIrrelevantFunext.Space.Coverage.html#1785" class="Bound"
+      >&#945;</a
+      ><a name="1810"
+      > </a
+      ><a name="1811" href="UsingIrrelevantFunext.Space.Coverage.html#1797" class="Bound"
+      >i</a
+      ><a name="1812"
+      > </a
+      ><a name="1813" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1814"
+      > </a
+      ><a name="1815" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="1816"
+      > </a
+      ><a name="1817" class="Symbol"
+      >(</a
+      ><a name="1818" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1822"
+      > </a
+      ><a name="1823" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="1824"
+      > </a
+      ><a name="1825" href="UsingIrrelevantFunext.Space.Coverage.html#1785" class="Bound"
+      >&#945;</a
+      ><a name="1826" class="Symbol"
+      >)</a
+      ><a name="1827"
+      > </a
+      ><a name="1828" class="Symbol"
+      >(</a
+      ><a name="1829" href="UsingIrrelevantFunext.Space.Coverage.html#1797" class="Bound"
+      >i</a
+      ><a name="1830"
+      > </a
+      ><a name="1831" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="1832"
+      > </a
+      ><a name="1833" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="1834" class="Symbol"
+      >)</a
+      ><a name="1835"
+      >
+      </a
+      ><a name="1842" href="UsingIrrelevantFunext.Space.Coverage.html#1778" class="Function"
+      >eq</a
+      ><a name="1844"
+      > </a
+      ><a name="1845" href="UsingIrrelevantFunext.Space.Coverage.html#1845" class="Bound"
+      >&#945;</a
+      ><a name="1846"
+      > </a
+      ><a name="1847" href="UsingIrrelevantFunext.Space.Coverage.html#1847" class="Bound"
+      >i</a
+      ><a name="1848"
+      > </a
+      ><a name="1849" class="Symbol"
+      >=</a
+      ><a name="1850"
+      > </a
+      ><a name="1851" href="Preliminaries.Sequence.html#1276" class="Function"
+      >Lemma[drop+]</a
+      ><a name="1863"
+      > </a
+      ><a name="1864" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="1865"
+      > </a
+      ><a name="1866" class="Symbol"
+      >(</a
+      ><a name="1867" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="1868"
+      > </a
+      ><a name="1869" class="Symbol"
+      >(</a
+      ><a name="1870" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1874"
+      > </a
+      ><a name="1875" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="1876"
+      > </a
+      ><a name="1877" href="UsingIrrelevantFunext.Space.Coverage.html#1845" class="Bound"
+      >&#945;</a
+      ><a name="1878" class="Symbol"
+      >))</a
+      ><a name="1880"
+      > </a
+      ><a name="1881" href="UsingIrrelevantFunext.Space.Coverage.html#1847" class="Bound"
+      >i</a
+      ><a name="1882"
+      >
+      </a
+      ><a name="1889" href="UsingIrrelevantFunext.Space.Coverage.html#1889" class="Function"
+      >claim&#8320;</a
+      ><a name="1895"
+      > </a
+      ><a name="1896" class="Symbol"
+      >:</a
+      ><a name="1897"
+      > </a
+      ><a name="1898" class="Symbol"
+      >&#8704;(</a
+      ><a name="1900" href="UsingIrrelevantFunext.Space.Coverage.html#1900" class="Bound"
+      >&#945;</a
+      ><a name="1901"
+      > </a
+      ><a name="1902" href="UsingIrrelevantFunext.Space.Coverage.html#1902" class="Bound"
+      >&#946;</a
+      ><a name="1903"
+      > </a
+      ><a name="1904" class="Symbol"
+      >:</a
+      ><a name="1905"
+      > </a
+      ><a name="1906" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1908" class="Symbol"
+      >)</a
+      ><a name="1909"
+      > </a
+      ><a name="1910" class="Symbol"
+      >&#8594;</a
+      ><a name="1911"
+      > </a
+      ><a name="1912" href="UsingIrrelevantFunext.Space.Coverage.html#1900" class="Bound"
+      >&#945;</a
+      ><a name="1913"
+      > </a
+      ><a name="1914" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="1916"
+      > </a
+      ><a name="1917" href="UsingIrrelevantFunext.Space.Coverage.html#1622" class="Function"
+      >l</a
+      ><a name="1918"
+      > </a
+      ><a name="1919" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="1920"
+      > </a
+      ><a name="1921" href="UsingIrrelevantFunext.Space.Coverage.html#1902" class="Bound"
+      >&#946;</a
+      ><a name="1922"
+      > </a
+      ><a name="1923" class="Symbol"
+      >&#8594;</a
+      ><a name="1924"
+      > </a
+      ><a name="1925" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="1926"
+      > </a
+      ><a name="1927" class="Symbol"
+      >(</a
+      ><a name="1928" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1932"
+      > </a
+      ><a name="1933" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="1934"
+      > </a
+      ><a name="1935" href="UsingIrrelevantFunext.Space.Coverage.html#1900" class="Bound"
+      >&#945;</a
+      ><a name="1936" class="Symbol"
+      >)</a
+      ><a name="1937"
+      > </a
+      ><a name="1938" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="1940"
+      > </a
+      ><a name="1941" href="UsingIrrelevantFunext.Space.Coverage.html#1454" class="Bound"
+      >k</a
+      ><a name="1942"
+      > </a
+      ><a name="1943" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="1944"
+      > </a
+      ><a name="1945" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="1946"
+      > </a
+      ><a name="1947" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="1948"
+      > </a
+      ><a name="1949" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="1950"
+      > </a
+      ><a name="1951" class="Symbol"
+      >(</a
+      ><a name="1952" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1956"
+      > </a
+      ><a name="1957" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="1958"
+      > </a
+      ><a name="1959" href="UsingIrrelevantFunext.Space.Coverage.html#1902" class="Bound"
+      >&#946;</a
+      ><a name="1960" class="Symbol"
+      >)</a
+      ><a name="1961"
+      > </a
+      ><a name="1962" class="Symbol"
+      >&#8594;</a
+      ><a name="1963"
+      >
+                </a
+      ><a name="1980" class="Symbol"
+      >&#8704;(</a
+      ><a name="1982" href="UsingIrrelevantFunext.Space.Coverage.html#1982" class="Bound"
+      >i</a
+      ><a name="1983"
+      > </a
+      ><a name="1984" class="Symbol"
+      >:</a
+      ><a name="1985"
+      > </a
+      ><a name="1986" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1987" class="Symbol"
+      >)</a
+      ><a name="1988"
+      > </a
+      ><a name="1989" class="Symbol"
+      >&#8594;</a
+      ><a name="1990"
+      > </a
+      ><a name="1991" href="UsingIrrelevantFunext.Space.Coverage.html#1982" class="Bound"
+      >i</a
+      ><a name="1992"
+      > </a
+      ><a name="1993" href="Preliminaries.NaturalNumber.html#1865" class="Function Operator"
+      >&lt;</a
+      ><a name="1994"
+      > </a
+      ><a name="1995" href="UsingIrrelevantFunext.Space.Coverage.html#1454" class="Bound"
+      >k</a
+      ><a name="1996"
+      > </a
+      ><a name="1997" class="Symbol"
+      >&#8594;</a
+      ><a name="1998"
+      > </a
+      ><a name="1999" href="UsingIrrelevantFunext.Space.Coverage.html#1383" class="Function"
+      >t'</a
+      ><a name="2001"
+      > </a
+      ><a name="2002" href="UsingIrrelevantFunext.Space.Coverage.html#1900" class="Bound"
+      >&#945;</a
+      ><a name="2003"
+      > </a
+      ><a name="2004" href="UsingIrrelevantFunext.Space.Coverage.html#1982" class="Bound"
+      >i</a
+      ><a name="2005"
+      > </a
+      ><a name="2006" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2007"
+      > </a
+      ><a name="2008" href="UsingIrrelevantFunext.Space.Coverage.html#1383" class="Function"
+      >t'</a
+      ><a name="2010"
+      > </a
+      ><a name="2011" href="UsingIrrelevantFunext.Space.Coverage.html#1902" class="Bound"
+      >&#946;</a
+      ><a name="2012"
+      > </a
+      ><a name="2013" href="UsingIrrelevantFunext.Space.Coverage.html#1982" class="Bound"
+      >i</a
+      ><a name="2014"
+      >
+      </a
+      ><a name="2021" href="UsingIrrelevantFunext.Space.Coverage.html#1889" class="Function"
+      >claim&#8320;</a
+      ><a name="2027"
+      > </a
+      ><a name="2028" href="UsingIrrelevantFunext.Space.Coverage.html#2028" class="Bound"
+      >&#945;</a
+      ><a name="2029"
+      > </a
+      ><a name="2030" href="UsingIrrelevantFunext.Space.Coverage.html#2030" class="Bound"
+      >&#946;</a
+      ><a name="2031"
+      > </a
+      ><a name="2032" href="UsingIrrelevantFunext.Space.Coverage.html#2032" class="Bound"
+      >el</a
+      ><a name="2034"
+      > </a
+      ><a name="2035" href="UsingIrrelevantFunext.Space.Coverage.html#2035" class="Bound"
+      >ekm</a
+      ><a name="2038"
+      > </a
+      ><a name="2039" href="UsingIrrelevantFunext.Space.Coverage.html#2039" class="Bound"
+      >i</a
+      ><a name="2040"
+      > </a
+      ><a name="2041" href="UsingIrrelevantFunext.Space.Coverage.html#2041" class="Bound"
+      >i&lt;k</a
+      ><a name="2044"
+      > </a
+      ><a name="2045" class="Symbol"
+      >=</a
+      ><a name="2046"
+      > </a
+      ><a name="2047" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="2056"
+      > </a
+      ><a name="2057" class="Symbol"
+      >(&#955;</a
+      ><a name="2059"
+      > </a
+      ><a name="2060" href="UsingIrrelevantFunext.Space.Coverage.html#2060" class="Bound"
+      >b</a
+      ><a name="2061"
+      > </a
+      ><a name="2062" class="Symbol"
+      >&#8594;</a
+      ><a name="2063"
+      > </a
+      ><a name="2064" href="UsingIrrelevantFunext.Space.Coverage.html#1383" class="Function"
+      >t'</a
+      ><a name="2066"
+      > </a
+      ><a name="2067" href="UsingIrrelevantFunext.Space.Coverage.html#2028" class="Bound"
+      >&#945;</a
+      ><a name="2068"
+      > </a
+      ><a name="2069" href="UsingIrrelevantFunext.Space.Coverage.html#2039" class="Bound"
+      >i</a
+      ><a name="2070"
+      > </a
+      ><a name="2071" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2072"
+      > </a
+      ><a name="2073" href="UsingIrrelevantFunext.Space.Coverage.html#2060" class="Bound"
+      >b</a
+      ><a name="2074" class="Symbol"
+      >)</a
+      ><a name="2075"
+      > </a
+      ><a name="2076" class="Symbol"
+      >((</a
+      ><a name="2078" href="UsingIrrelevantFunext.Space.Coverage.html#1778" class="Function"
+      >eq</a
+      ><a name="2080"
+      > </a
+      ><a name="2081" href="UsingIrrelevantFunext.Space.Coverage.html#2030" class="Bound"
+      >&#946;</a
+      ><a name="2082"
+      > </a
+      ><a name="2083" href="UsingIrrelevantFunext.Space.Coverage.html#2039" class="Bound"
+      >i</a
+      ><a name="2084" class="Symbol"
+      >)</a
+      ><a name="2085" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="2087" class="Symbol"
+      >)</a
+      ><a name="2088"
+      > </a
+      ><a name="2089" href="UsingIrrelevantFunext.Space.Coverage.html#2355" class="Function"
+      >sclaim&#8322;</a
+      ><a name="2096"
+      >
+       </a
+      ><a name="2104" class="Keyword"
+      >where</a
+      ><a name="2109"
+      >
+        </a
+      ><a name="2118" href="UsingIrrelevantFunext.Space.Coverage.html#2118" class="Function"
+      >sclaim&#8320;</a
+      ><a name="2125"
+      > </a
+      ><a name="2126" class="Symbol"
+      >:</a
+      ><a name="2127"
+      > </a
+      ><a name="2128" class="Symbol"
+      >&#8704;(</a
+      ><a name="2130" href="UsingIrrelevantFunext.Space.Coverage.html#2130" class="Bound"
+      >i</a
+      ><a name="2131"
+      > </a
+      ><a name="2132" class="Symbol"
+      >:</a
+      ><a name="2133"
+      > </a
+      ><a name="2134" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="2135" class="Symbol"
+      >)</a
+      ><a name="2136"
+      > </a
+      ><a name="2137" class="Symbol"
+      >&#8594;</a
+      ><a name="2138"
+      > </a
+      ><a name="2139" href="UsingIrrelevantFunext.Space.Coverage.html#2130" class="Bound"
+      >i</a
+      ><a name="2140"
+      > </a
+      ><a name="2141" href="Preliminaries.NaturalNumber.html#1865" class="Function Operator"
+      >&lt;</a
+      ><a name="2142"
+      > </a
+      ><a name="2143" class="Symbol"
+      >(</a
+      ><a name="2144" href="UsingIrrelevantFunext.Space.Coverage.html#1454" class="Bound"
+      >k</a
+      ><a name="2145"
+      > </a
+      ><a name="2146" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="2147"
+      > </a
+      ><a name="2148" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="2149" class="Symbol"
+      >)</a
+      ><a name="2150"
+      > </a
+      ><a name="2151" class="Symbol"
+      >&#8594;</a
+      ><a name="2152"
+      > </a
+      ><a name="2153" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="2154"
+      > </a
+      ><a name="2155" class="Symbol"
+      >(</a
+      ><a name="2156" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2160"
+      > </a
+      ><a name="2161" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="2162"
+      > </a
+      ><a name="2163" href="UsingIrrelevantFunext.Space.Coverage.html#2028" class="Bound"
+      >&#945;</a
+      ><a name="2164" class="Symbol"
+      >)</a
+      ><a name="2165"
+      > </a
+      ><a name="2166" href="UsingIrrelevantFunext.Space.Coverage.html#2130" class="Bound"
+      >i</a
+      ><a name="2167"
+      > </a
+      ><a name="2168" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2169"
+      > </a
+      ><a name="2170" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="2171"
+      > </a
+      ><a name="2172" class="Symbol"
+      >(</a
+      ><a name="2173" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2177"
+      > </a
+      ><a name="2178" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="2179"
+      > </a
+      ><a name="2180" href="UsingIrrelevantFunext.Space.Coverage.html#2030" class="Bound"
+      >&#946;</a
+      ><a name="2181" class="Symbol"
+      >)</a
+      ><a name="2182"
+      > </a
+      ><a name="2183" href="UsingIrrelevantFunext.Space.Coverage.html#2130" class="Bound"
+      >i</a
+      ><a name="2184"
+      >
+        </a
+      ><a name="2193" href="UsingIrrelevantFunext.Space.Coverage.html#2118" class="Function"
+      >sclaim&#8320;</a
+      ><a name="2200"
+      > </a
+      ><a name="2201" class="Symbol"
+      >=</a
+      ><a name="2202"
+      > </a
+      ><a name="2203" href="Preliminaries.Sequence.html#5459" class="Function"
+      >Lemma[&#8801;[]-&lt;]</a
+      ><a name="2215"
+      > </a
+      ><a name="2216" href="UsingIrrelevantFunext.Space.Coverage.html#2035" class="Bound"
+      >ekm</a
+      ><a name="2219"
+      >
+        </a
+      ><a name="2228" href="UsingIrrelevantFunext.Space.Coverage.html#2228" class="Function"
+      >sclaim&#8321;</a
+      ><a name="2235"
+      > </a
+      ><a name="2236" class="Symbol"
+      >:</a
+      ><a name="2237"
+      > </a
+      ><a name="2238" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="2239"
+      > </a
+      ><a name="2240" class="Symbol"
+      >(</a
+      ><a name="2241" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2245"
+      > </a
+      ><a name="2246" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="2247"
+      > </a
+      ><a name="2248" href="UsingIrrelevantFunext.Space.Coverage.html#2028" class="Bound"
+      >&#945;</a
+      ><a name="2249" class="Symbol"
+      >)</a
+      ><a name="2250"
+      > </a
+      ><a name="2251" class="Symbol"
+      >(</a
+      ><a name="2252" href="UsingIrrelevantFunext.Space.Coverage.html#2039" class="Bound"
+      >i</a
+      ><a name="2253"
+      > </a
+      ><a name="2254" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="2255"
+      > </a
+      ><a name="2256" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="2257" class="Symbol"
+      >)</a
+      ><a name="2258"
+      > </a
+      ><a name="2259" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2260"
+      > </a
+      ><a name="2261" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="2262"
+      > </a
+      ><a name="2263" class="Symbol"
+      >(</a
+      ><a name="2264" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2268"
+      > </a
+      ><a name="2269" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="2270"
+      > </a
+      ><a name="2271" href="UsingIrrelevantFunext.Space.Coverage.html#2030" class="Bound"
+      >&#946;</a
+      ><a name="2272" class="Symbol"
+      >)</a
+      ><a name="2273"
+      > </a
+      ><a name="2274" class="Symbol"
+      >(</a
+      ><a name="2275" href="UsingIrrelevantFunext.Space.Coverage.html#2039" class="Bound"
+      >i</a
+      ><a name="2276"
+      > </a
+      ><a name="2277" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="2278"
+      > </a
+      ><a name="2279" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="2280" class="Symbol"
+      >)</a
+      ><a name="2281"
+      >
+        </a
+      ><a name="2290" href="UsingIrrelevantFunext.Space.Coverage.html#2228" class="Function"
+      >sclaim&#8321;</a
+      ><a name="2297"
+      > </a
+      ><a name="2298" class="Symbol"
+      >=</a
+      ><a name="2299"
+      > </a
+      ><a name="2300" href="UsingIrrelevantFunext.Space.Coverage.html#2118" class="Function"
+      >sclaim&#8320;</a
+      ><a name="2307"
+      > </a
+      ><a name="2308" class="Symbol"
+      >(</a
+      ><a name="2309" href="UsingIrrelevantFunext.Space.Coverage.html#2039" class="Bound"
+      >i</a
+      ><a name="2310"
+      > </a
+      ><a name="2311" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="2312"
+      > </a
+      ><a name="2313" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="2314" class="Symbol"
+      >)</a
+      ><a name="2315"
+      > </a
+      ><a name="2316" class="Symbol"
+      >(</a
+      ><a name="2317" href="Preliminaries.NaturalNumber.html#3959" class="Function"
+      >Lemma[a&lt;b&#8594;a+c&lt;b+c]</a
+      ><a name="2335"
+      > </a
+      ><a name="2336" href="UsingIrrelevantFunext.Space.Coverage.html#2039" class="Bound"
+      >i</a
+      ><a name="2337"
+      > </a
+      ><a name="2338" href="UsingIrrelevantFunext.Space.Coverage.html#1454" class="Bound"
+      >k</a
+      ><a name="2339"
+      > </a
+      ><a name="2340" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="2341"
+      > </a
+      ><a name="2342" href="UsingIrrelevantFunext.Space.Coverage.html#2041" class="Bound"
+      >i&lt;k</a
+      ><a name="2345" class="Symbol"
+      >)</a
+      ><a name="2346"
+      >
+        </a
+      ><a name="2355" href="UsingIrrelevantFunext.Space.Coverage.html#2355" class="Function"
+      >sclaim&#8322;</a
+      ><a name="2362"
+      > </a
+      ><a name="2363" class="Symbol"
+      >:</a
+      ><a name="2364"
+      > </a
+      ><a name="2365" href="UsingIrrelevantFunext.Space.Coverage.html#1383" class="Function"
+      >t'</a
+      ><a name="2367"
+      > </a
+      ><a name="2368" href="UsingIrrelevantFunext.Space.Coverage.html#2028" class="Bound"
+      >&#945;</a
+      ><a name="2369"
+      > </a
+      ><a name="2370" href="UsingIrrelevantFunext.Space.Coverage.html#2039" class="Bound"
+      >i</a
+      ><a name="2371"
+      > </a
+      ><a name="2372" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2373"
+      > </a
+      ><a name="2374" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="2375"
+      > </a
+      ><a name="2376" class="Symbol"
+      >(</a
+      ><a name="2377" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2381"
+      > </a
+      ><a name="2382" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="2383"
+      > </a
+      ><a name="2384" href="UsingIrrelevantFunext.Space.Coverage.html#2030" class="Bound"
+      >&#946;</a
+      ><a name="2385" class="Symbol"
+      >)</a
+      ><a name="2386"
+      > </a
+      ><a name="2387" class="Symbol"
+      >(</a
+      ><a name="2388" href="UsingIrrelevantFunext.Space.Coverage.html#2039" class="Bound"
+      >i</a
+      ><a name="2389"
+      > </a
+      ><a name="2390" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="2391"
+      > </a
+      ><a name="2392" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="2393" class="Symbol"
+      >)</a
+      ><a name="2394"
+      >
+        </a
+      ><a name="2403" href="UsingIrrelevantFunext.Space.Coverage.html#2355" class="Function"
+      >sclaim&#8322;</a
+      ><a name="2410"
+      > </a
+      ><a name="2411" class="Symbol"
+      >=</a
+      ><a name="2412"
+      > </a
+      ><a name="2413" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="2422"
+      > </a
+      ><a name="2423" class="Symbol"
+      >(&#955;</a
+      ><a name="2425"
+      > </a
+      ><a name="2426" href="UsingIrrelevantFunext.Space.Coverage.html#2426" class="Bound"
+      >b</a
+      ><a name="2427"
+      > </a
+      ><a name="2428" class="Symbol"
+      >&#8594;</a
+      ><a name="2429"
+      > </a
+      ><a name="2430" href="UsingIrrelevantFunext.Space.Coverage.html#2426" class="Bound"
+      >b</a
+      ><a name="2431"
+      > </a
+      ><a name="2432" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2433"
+      > </a
+      ><a name="2434" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="2435"
+      > </a
+      ><a name="2436" class="Symbol"
+      >(</a
+      ><a name="2437" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2441"
+      > </a
+      ><a name="2442" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="2443"
+      > </a
+      ><a name="2444" href="UsingIrrelevantFunext.Space.Coverage.html#2030" class="Bound"
+      >&#946;</a
+      ><a name="2445" class="Symbol"
+      >)</a
+      ><a name="2446"
+      > </a
+      ><a name="2447" class="Symbol"
+      >(</a
+      ><a name="2448" href="UsingIrrelevantFunext.Space.Coverage.html#2039" class="Bound"
+      >i</a
+      ><a name="2449"
+      > </a
+      ><a name="2450" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="2451"
+      > </a
+      ><a name="2452" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="2453" class="Symbol"
+      >))</a
+      ><a name="2455"
+      > </a
+      ><a name="2456" class="Symbol"
+      >((</a
+      ><a name="2458" href="UsingIrrelevantFunext.Space.Coverage.html#1778" class="Function"
+      >eq</a
+      ><a name="2460"
+      > </a
+      ><a name="2461" href="UsingIrrelevantFunext.Space.Coverage.html#2028" class="Bound"
+      >&#945;</a
+      ><a name="2462"
+      > </a
+      ><a name="2463" href="UsingIrrelevantFunext.Space.Coverage.html#2039" class="Bound"
+      >i</a
+      ><a name="2464" class="Symbol"
+      >)</a
+      ><a name="2465" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="2467" class="Symbol"
+      >)</a
+      ><a name="2468"
+      > </a
+      ><a name="2469" href="UsingIrrelevantFunext.Space.Coverage.html#2228" class="Function"
+      >sclaim&#8321;</a
+      ><a name="2476"
+      >
+      </a
+      ><a name="2483" href="UsingIrrelevantFunext.Space.Coverage.html#2483" class="Function"
+      >claim&#8321;</a
+      ><a name="2489"
+      > </a
+      ><a name="2490" class="Symbol"
+      >:</a
+      ><a name="2491"
+      > </a
+      ><a name="2492" class="Symbol"
+      >&#8704;(</a
+      ><a name="2494" href="UsingIrrelevantFunext.Space.Coverage.html#2494" class="Bound"
+      >&#945;</a
+      ><a name="2495"
+      > </a
+      ><a name="2496" href="UsingIrrelevantFunext.Space.Coverage.html#2496" class="Bound"
+      >&#946;</a
+      ><a name="2497"
+      > </a
+      ><a name="2498" class="Symbol"
+      >:</a
+      ><a name="2499"
+      > </a
+      ><a name="2500" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="2502" class="Symbol"
+      >)</a
+      ><a name="2503"
+      > </a
+      ><a name="2504" class="Symbol"
+      >&#8594;</a
+      ><a name="2505"
+      > </a
+      ><a name="2506" href="UsingIrrelevantFunext.Space.Coverage.html#2494" class="Bound"
+      >&#945;</a
+      ><a name="2507"
+      > </a
+      ><a name="2508" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="2510"
+      > </a
+      ><a name="2511" href="UsingIrrelevantFunext.Space.Coverage.html#1622" class="Function"
+      >l</a
+      ><a name="2512"
+      > </a
+      ><a name="2513" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="2514"
+      > </a
+      ><a name="2515" href="UsingIrrelevantFunext.Space.Coverage.html#2496" class="Bound"
+      >&#946;</a
+      ><a name="2516"
+      >
+             </a
+      ><a name="2530" class="Symbol"
+      >&#8594;</a
+      ><a name="2531"
+      > </a
+      ><a name="2532" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="2533"
+      > </a
+      ><a name="2534" class="Symbol"
+      >(</a
+      ><a name="2535" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2539"
+      > </a
+      ><a name="2540" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="2541"
+      > </a
+      ><a name="2542" href="UsingIrrelevantFunext.Space.Coverage.html#2494" class="Bound"
+      >&#945;</a
+      ><a name="2543" class="Symbol"
+      >)</a
+      ><a name="2544"
+      > </a
+      ><a name="2545" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="2547"
+      > </a
+      ><a name="2548" href="UsingIrrelevantFunext.Space.Coverage.html#1454" class="Bound"
+      >k</a
+      ><a name="2549"
+      > </a
+      ><a name="2550" href="Preliminaries.NaturalNumber.html#1029" class="Function Operator"
+      >+</a
+      ><a name="2551"
+      > </a
+      ><a name="2552" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="2553"
+      > </a
+      ><a name="2554" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="2555"
+      > </a
+      ><a name="2556" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="2557"
+      > </a
+      ><a name="2558" class="Symbol"
+      >(</a
+      ><a name="2559" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2563"
+      > </a
+      ><a name="2564" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="2565"
+      > </a
+      ><a name="2566" href="UsingIrrelevantFunext.Space.Coverage.html#2496" class="Bound"
+      >&#946;</a
+      ><a name="2567" class="Symbol"
+      >)</a
+      ><a name="2568"
+      > </a
+      ><a name="2569" class="Symbol"
+      >&#8594;</a
+      ><a name="2570"
+      > </a
+      ><a name="2571" href="UsingIrrelevantFunext.Space.Coverage.html#1383" class="Function"
+      >t'</a
+      ><a name="2573"
+      > </a
+      ><a name="2574" href="UsingIrrelevantFunext.Space.Coverage.html#2494" class="Bound"
+      >&#945;</a
+      ><a name="2575"
+      > </a
+      ><a name="2576" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="2578"
+      > </a
+      ><a name="2579" href="UsingIrrelevantFunext.Space.Coverage.html#1454" class="Bound"
+      >k</a
+      ><a name="2580"
+      > </a
+      ><a name="2581" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="2582"
+      > </a
+      ><a name="2583" href="UsingIrrelevantFunext.Space.Coverage.html#1383" class="Function"
+      >t'</a
+      ><a name="2585"
+      > </a
+      ><a name="2586" href="UsingIrrelevantFunext.Space.Coverage.html#2496" class="Bound"
+      >&#946;</a
+      ><a name="2587"
+      >
+      </a
+      ><a name="2594" href="UsingIrrelevantFunext.Space.Coverage.html#2483" class="Function"
+      >claim&#8321;</a
+      ><a name="2600"
+      > </a
+      ><a name="2601" href="UsingIrrelevantFunext.Space.Coverage.html#2601" class="Bound"
+      >&#945;</a
+      ><a name="2602"
+      > </a
+      ><a name="2603" href="UsingIrrelevantFunext.Space.Coverage.html#2603" class="Bound"
+      >&#946;</a
+      ><a name="2604"
+      > </a
+      ><a name="2605" href="UsingIrrelevantFunext.Space.Coverage.html#2605" class="Bound"
+      >el</a
+      ><a name="2607"
+      > </a
+      ><a name="2608" href="UsingIrrelevantFunext.Space.Coverage.html#2608" class="Bound"
+      >ekm</a
+      ><a name="2611"
+      > </a
+      ><a name="2612" class="Symbol"
+      >=</a
+      ><a name="2613"
+      > </a
+      ><a name="2614" href="Preliminaries.Sequence.html#5100" class="Function"
+      >Lemma[&lt;-&#8801;[]]</a
+      ><a name="2626"
+      > </a
+      ><a name="2627" class="Symbol"
+      >(</a
+      ><a name="2628" href="UsingIrrelevantFunext.Space.Coverage.html#1889" class="Function"
+      >claim&#8320;</a
+      ><a name="2634"
+      > </a
+      ><a name="2635" href="UsingIrrelevantFunext.Space.Coverage.html#2601" class="Bound"
+      >&#945;</a
+      ><a name="2636"
+      > </a
+      ><a name="2637" href="UsingIrrelevantFunext.Space.Coverage.html#2603" class="Bound"
+      >&#946;</a
+      ><a name="2638"
+      > </a
+      ><a name="2639" href="UsingIrrelevantFunext.Space.Coverage.html#2605" class="Bound"
+      >el</a
+      ><a name="2641"
+      > </a
+      ><a name="2642" href="UsingIrrelevantFunext.Space.Coverage.html#2608" class="Bound"
+      >ekm</a
+      ><a name="2645" class="Symbol"
+      >)</a
+      ><a name="2646"
+      >
+      </a
+      ><a name="2653" href="UsingIrrelevantFunext.Space.Coverage.html#2653" class="Function"
+      >prt'</a
+      ><a name="2657"
+      > </a
+      ><a name="2658" class="Symbol"
+      >:</a
+      ><a name="2659"
+      > </a
+      ><a name="2660" class="Symbol"
+      >&#8704;(</a
+      ><a name="2662" href="UsingIrrelevantFunext.Space.Coverage.html#2662" class="Bound"
+      >&#945;</a
+      ><a name="2663"
+      > </a
+      ><a name="2664" href="UsingIrrelevantFunext.Space.Coverage.html#2664" class="Bound"
+      >&#946;</a
+      ><a name="2665"
+      > </a
+      ><a name="2666" class="Symbol"
+      >:</a
+      ><a name="2667"
+      > </a
+      ><a name="2668" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="2670" class="Symbol"
+      >)</a
+      ><a name="2671"
+      > </a
+      ><a name="2672" class="Symbol"
+      >&#8594;</a
+      ><a name="2673"
+      > </a
+      ><a name="2674" href="UsingIrrelevantFunext.Space.Coverage.html#2662" class="Bound"
+      >&#945;</a
+      ><a name="2675"
+      > </a
+      ><a name="2676" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="2678"
+      > </a
+      ><a name="2679" href="UsingIrrelevantFunext.Space.Coverage.html#1622" class="Function"
+      >l</a
+      ><a name="2680"
+      > </a
+      ><a name="2681" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="2682"
+      > </a
+      ><a name="2683" href="UsingIrrelevantFunext.Space.Coverage.html#2664" class="Bound"
+      >&#946;</a
+      ><a name="2684"
+      > </a
+      ><a name="2685" class="Symbol"
+      >&#8594;</a
+      ><a name="2686"
+      > </a
+      ><a name="2687" href="UsingIrrelevantFunext.Space.Coverage.html#1383" class="Function"
+      >t'</a
+      ><a name="2689"
+      > </a
+      ><a name="2690" href="UsingIrrelevantFunext.Space.Coverage.html#2662" class="Bound"
+      >&#945;</a
+      ><a name="2691"
+      > </a
+      ><a name="2692" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="2694"
+      > </a
+      ><a name="2695" href="UsingIrrelevantFunext.Space.Coverage.html#1454" class="Bound"
+      >k</a
+      ><a name="2696"
+      > </a
+      ><a name="2697" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="2698"
+      > </a
+      ><a name="2699" href="UsingIrrelevantFunext.Space.Coverage.html#1383" class="Function"
+      >t'</a
+      ><a name="2701"
+      > </a
+      ><a name="2702" href="UsingIrrelevantFunext.Space.Coverage.html#2664" class="Bound"
+      >&#946;</a
+      ><a name="2703"
+      >
+      </a
+      ><a name="2710" href="UsingIrrelevantFunext.Space.Coverage.html#2653" class="Function"
+      >prt'</a
+      ><a name="2714"
+      > </a
+      ><a name="2715" href="UsingIrrelevantFunext.Space.Coverage.html#2715" class="Bound"
+      >&#945;</a
+      ><a name="2716"
+      > </a
+      ><a name="2717" href="UsingIrrelevantFunext.Space.Coverage.html#2717" class="Bound"
+      >&#946;</a
+      ><a name="2718"
+      > </a
+      ><a name="2719" href="UsingIrrelevantFunext.Space.Coverage.html#2719" class="Bound"
+      >el</a
+      ><a name="2721"
+      > </a
+      ><a name="2722" class="Symbol"
+      >=</a
+      ><a name="2723"
+      > </a
+      ><a name="2724" href="UsingIrrelevantFunext.Space.Coverage.html#2483" class="Function"
+      >claim&#8321;</a
+      ><a name="2730"
+      > </a
+      ><a name="2731" href="UsingIrrelevantFunext.Space.Coverage.html#2715" class="Bound"
+      >&#945;</a
+      ><a name="2732"
+      > </a
+      ><a name="2733" href="UsingIrrelevantFunext.Space.Coverage.html#2717" class="Bound"
+      >&#946;</a
+      ><a name="2734"
+      > </a
+      ><a name="2735" href="UsingIrrelevantFunext.Space.Coverage.html#2719" class="Bound"
+      >el</a
+      ><a name="2737"
+      > </a
+      ><a name="2738" class="Symbol"
+      >(</a
+      ><a name="2739" href="UsingIrrelevantFunext.Space.Coverage.html#1663" class="Function"
+      >prts</a
+      ><a name="2743"
+      > </a
+      ><a name="2744" href="UsingIrrelevantFunext.Space.Coverage.html#2715" class="Bound"
+      >&#945;</a
+      ><a name="2745"
+      > </a
+      ><a name="2746" href="UsingIrrelevantFunext.Space.Coverage.html#2717" class="Bound"
+      >&#946;</a
+      ><a name="2747"
+      > </a
+      ><a name="2748" href="UsingIrrelevantFunext.Space.Coverage.html#2719" class="Bound"
+      >el</a
+      ><a name="2750" class="Symbol"
+      >)</a
+      ><a name="2751"
+      >
+    </a
+      ><a name="2756" href="UsingIrrelevantFunext.Space.Coverage.html#2756" class="Function"
+      >e</a
+      ><a name="2757"
+      > </a
+      ><a name="2758" class="Symbol"
+      >:</a
+      ><a name="2759"
+      > </a
+      ><a name="2760" class="Symbol"
+      >&#8704;(</a
+      ><a name="2762" href="UsingIrrelevantFunext.Space.Coverage.html#2762" class="Bound"
+      >&#945;</a
+      ><a name="2763"
+      > </a
+      ><a name="2764" class="Symbol"
+      >:</a
+      ><a name="2765"
+      > </a
+      ><a name="2766" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="2768" class="Symbol"
+      >)</a
+      ><a name="2769"
+      > </a
+      ><a name="2770" class="Symbol"
+      >&#8594;</a
+      ><a name="2771"
+      > </a
+      ><a name="2772" class="Symbol"
+      >&#8704;(</a
+      ><a name="2774" href="UsingIrrelevantFunext.Space.Coverage.html#2774" class="Bound"
+      >i</a
+      ><a name="2775"
+      > </a
+      ><a name="2776" class="Symbol"
+      >:</a
+      ><a name="2777"
+      > </a
+      ><a name="2778" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="2779" class="Symbol"
+      >)</a
+      ><a name="2780"
+      > </a
+      ><a name="2781" class="Symbol"
+      >&#8594;</a
+      ><a name="2782"
+      > </a
+      ><a name="2783" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="2784"
+      > </a
+      ><a name="2785" class="Symbol"
+      >(</a
+      ><a name="2786" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2790"
+      > </a
+      ><a name="2791" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="2792"
+      > </a
+      ><a name="2793" href="UsingIrrelevantFunext.Space.Coverage.html#2762" class="Bound"
+      >&#945;</a
+      ><a name="2794" class="Symbol"
+      >)</a
+      ><a name="2795"
+      > </a
+      ><a name="2796" href="UsingIrrelevantFunext.Space.Coverage.html#2774" class="Bound"
+      >i</a
+      ><a name="2797"
+      > </a
+      ><a name="2798" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2799"
+      > </a
+      ><a name="2800" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2804"
+      > </a
+      ><a name="2805" href="UsingIrrelevantFunext.Space.Coverage.html#1335" class="Function"
+      >s'</a
+      ><a name="2807"
+      > </a
+      ><a name="2808" class="Symbol"
+      >(</a
+      ><a name="2809" href="UsingIrrelevantFunext.Space.Coverage.html#1383" class="Function"
+      >t'</a
+      ><a name="2811"
+      > </a
+      ><a name="2812" href="UsingIrrelevantFunext.Space.Coverage.html#2762" class="Bound"
+      >&#945;</a
+      ><a name="2813" class="Symbol"
+      >)</a
+      ><a name="2814"
+      > </a
+      ><a name="2815" href="UsingIrrelevantFunext.Space.Coverage.html#2774" class="Bound"
+      >i</a
+      ><a name="2816"
+      >
+    </a
+      ><a name="2821" href="UsingIrrelevantFunext.Space.Coverage.html#2756" class="Function"
+      >e</a
+      ><a name="2822"
+      > </a
+      ><a name="2823" href="UsingIrrelevantFunext.Space.Coverage.html#2823" class="Bound"
+      >&#945;</a
+      ><a name="2824"
+      > </a
+      ><a name="2825" href="UsingIrrelevantFunext.Space.Coverage.html#2825" class="Bound"
+      >i</a
+      ><a name="2826"
+      > </a
+      ><a name="2827" class="Symbol"
+      >=</a
+      ><a name="2828"
+      > </a
+      ><a name="2829" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="2838"
+      > </a
+      ><a name="2839" class="Symbol"
+      >(&#955;</a
+      ><a name="2841"
+      > </a
+      ><a name="2842" href="UsingIrrelevantFunext.Space.Coverage.html#2842" class="Bound"
+      >x</a
+      ><a name="2843"
+      > </a
+      ><a name="2844" class="Symbol"
+      >&#8594;</a
+      ><a name="2845"
+      > </a
+      ><a name="2846" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="2847"
+      > </a
+      ><a name="2848" class="Symbol"
+      >(</a
+      ><a name="2849" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2853"
+      > </a
+      ><a name="2854" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="2855"
+      > </a
+      ><a name="2856" href="UsingIrrelevantFunext.Space.Coverage.html#2823" class="Bound"
+      >&#945;</a
+      ><a name="2857" class="Symbol"
+      >)</a
+      ><a name="2858"
+      > </a
+      ><a name="2859" href="UsingIrrelevantFunext.Space.Coverage.html#2825" class="Bound"
+      >i</a
+      ><a name="2860"
+      > </a
+      ><a name="2861" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2862"
+      > </a
+      ><a name="2863" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2867"
+      > </a
+      ><a name="2868" href="UsingIrrelevantFunext.Space.Coverage.html#2842" class="Bound"
+      >x</a
+      ><a name="2869"
+      > </a
+      ><a name="2870" class="Symbol"
+      >(</a
+      ><a name="2871" href="UsingIrrelevantFunext.Space.Coverage.html#1383" class="Function"
+      >t'</a
+      ><a name="2873"
+      > </a
+      ><a name="2874" href="UsingIrrelevantFunext.Space.Coverage.html#2823" class="Bound"
+      >&#945;</a
+      ><a name="2875" class="Symbol"
+      >)</a
+      ><a name="2876"
+      > </a
+      ><a name="2877" href="UsingIrrelevantFunext.Space.Coverage.html#2825" class="Bound"
+      >i</a
+      ><a name="2878" class="Symbol"
+      >)</a
+      ><a name="2879"
+      > </a
+      ><a name="2880" href="UsingIrrelevantFunext.Space.Coverage.html#3170" class="Function"
+      >claim&#8322;</a
+      ><a name="2886"
+      > </a
+      ><a name="2887" href="UsingIrrelevantFunext.Space.Coverage.html#2911" class="Function"
+      >claim&#8320;</a
+      ><a name="2893"
+      >
+     </a
+      ><a name="2899" class="Keyword"
+      >where</a
+      ><a name="2904"
+      >
+      </a
+      ><a name="2911" href="UsingIrrelevantFunext.Space.Coverage.html#2911" class="Function"
+      >claim&#8320;</a
+      ><a name="2917"
+      > </a
+      ><a name="2918" class="Symbol"
+      >:</a
+      ><a name="2919"
+      > </a
+      ><a name="2920" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="2921"
+      > </a
+      ><a name="2922" class="Symbol"
+      >(</a
+      ><a name="2923" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2927"
+      > </a
+      ><a name="2928" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="2929"
+      > </a
+      ><a name="2930" href="UsingIrrelevantFunext.Space.Coverage.html#2823" class="Bound"
+      >&#945;</a
+      ><a name="2931" class="Symbol"
+      >)</a
+      ><a name="2932"
+      > </a
+      ><a name="2933" href="UsingIrrelevantFunext.Space.Coverage.html#2825" class="Bound"
+      >i</a
+      ><a name="2934"
+      > </a
+      ><a name="2935" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2936"
+      > </a
+      ><a name="2937" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2941"
+      > </a
+      ><a name="2942" class="Symbol"
+      >(</a
+      ><a name="2943" href="Preliminaries.Sequence.html#1121" class="Function"
+      >take</a
+      ><a name="2947"
+      > </a
+      ><a name="2948" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="2949"
+      > </a
+      ><a name="2950" class="Symbol"
+      >(</a
+      ><a name="2951" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="2952"
+      > </a
+      ><a name="2953" class="Symbol"
+      >(</a
+      ><a name="2954" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="2958"
+      > </a
+      ><a name="2959" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="2960"
+      > </a
+      ><a name="2961" href="UsingIrrelevantFunext.Space.Coverage.html#2823" class="Bound"
+      >&#945;</a
+      ><a name="2962" class="Symbol"
+      >)))</a
+      ><a name="2965"
+      > </a
+      ><a name="2966" class="Symbol"
+      >(</a
+      ><a name="2967" href="UsingIrrelevantFunext.Space.Coverage.html#1383" class="Function"
+      >t'</a
+      ><a name="2969"
+      > </a
+      ><a name="2970" href="UsingIrrelevantFunext.Space.Coverage.html#2823" class="Bound"
+      >&#945;</a
+      ><a name="2971" class="Symbol"
+      >)</a
+      ><a name="2972"
+      > </a
+      ><a name="2973" href="UsingIrrelevantFunext.Space.Coverage.html#2825" class="Bound"
+      >i</a
+      ><a name="2974"
+      >
+      </a
+      ><a name="2981" href="UsingIrrelevantFunext.Space.Coverage.html#2911" class="Function"
+      >claim&#8320;</a
+      ><a name="2987"
+      > </a
+      ><a name="2988" class="Symbol"
+      >=</a
+      ><a name="2989"
+      > </a
+      ><a name="2990" class="Symbol"
+      >(</a
+      ><a name="2991" href="Preliminaries.Sequence.html#7266" class="Function"
+      >Lemma[cons-take-drop]</a
+      ><a name="3012"
+      > </a
+      ><a name="3013" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="3014"
+      > </a
+      ><a name="3015" class="Symbol"
+      >(</a
+      ><a name="3016" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="3017"
+      > </a
+      ><a name="3018" class="Symbol"
+      >(</a
+      ><a name="3019" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="3023"
+      > </a
+      ><a name="3024" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="3025"
+      > </a
+      ><a name="3026" href="UsingIrrelevantFunext.Space.Coverage.html#2823" class="Bound"
+      >&#945;</a
+      ><a name="3027" class="Symbol"
+      >))</a
+      ><a name="3029"
+      > </a
+      ><a name="3030" href="UsingIrrelevantFunext.Space.Coverage.html#2825" class="Bound"
+      >i</a
+      ><a name="3031" class="Symbol"
+      >)</a
+      ><a name="3032" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="3034"
+      >
+      </a
+      ><a name="3041" href="UsingIrrelevantFunext.Space.Coverage.html#3041" class="Function"
+      >claim&#8321;</a
+      ><a name="3047"
+      > </a
+      ><a name="3048" class="Symbol"
+      >:</a
+      ><a name="3049"
+      > </a
+      ><a name="3050" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="3051"
+      > </a
+      ><a name="3052" class="Symbol"
+      >(</a
+      ><a name="3053" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="3057"
+      > </a
+      ><a name="3058" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="3059"
+      > </a
+      ><a name="3060" href="UsingIrrelevantFunext.Space.Coverage.html#2823" class="Bound"
+      >&#945;</a
+      ><a name="3061" class="Symbol"
+      >)</a
+      ><a name="3062"
+      > </a
+      ><a name="3063" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="3065"
+      > </a
+      ><a name="3066" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="3067"
+      > </a
+      ><a name="3068" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="3069"
+      > </a
+      ><a name="3070" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="3071"
+      > </a
+      ><a name="3072" class="Symbol"
+      >(</a
+      ><a name="3073" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="3077"
+      > </a
+      ><a name="3078" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="3079"
+      > </a
+      ><a name="3080" href="Preliminaries.Sequence.html#384" class="Function"
+      >0&#772;</a
+      ><a name="3082" class="Symbol"
+      >)</a
+      ><a name="3083"
+      >
+      </a
+      ><a name="3090" href="UsingIrrelevantFunext.Space.Coverage.html#3041" class="Function"
+      >claim&#8321;</a
+      ><a name="3096"
+      > </a
+      ><a name="3097" class="Symbol"
+      >=</a
+      ><a name="3098"
+      > </a
+      ><a name="3099" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="3102"
+      > </a
+      ><a name="3103" class="Symbol"
+      >(</a
+      ><a name="3104" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="3107"
+      > </a
+      ><a name="3108" class="Symbol"
+      >(</a
+      ><a name="3109" href="UsingIrrelevantFunext.Space.Coverage.html#1127" class="Bound"
+      >tC</a
+      ><a name="3111"
+      > </a
+      ><a name="3112" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="3113" class="Symbol"
+      >))</a
+      ><a name="3115"
+      > </a
+      ><a name="3116" class="Symbol"
+      >(</a
+      ><a name="3117" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="3121"
+      > </a
+      ><a name="3122" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="3123"
+      > </a
+      ><a name="3124" href="UsingIrrelevantFunext.Space.Coverage.html#2823" class="Bound"
+      >&#945;</a
+      ><a name="3125" class="Symbol"
+      >)</a
+      ><a name="3126"
+      > </a
+      ><a name="3127" class="Symbol"
+      >(</a
+      ><a name="3128" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="3132"
+      > </a
+      ><a name="3133" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="3134"
+      > </a
+      ><a name="3135" href="Preliminaries.Sequence.html#384" class="Function"
+      >0&#772;</a
+      ><a name="3137" class="Symbol"
+      >)</a
+      ><a name="3138"
+      > </a
+      ><a name="3139" class="Symbol"
+      >(</a
+      ><a name="3140" href="Preliminaries.Sequence.html#8001" class="Function"
+      >Lemma[cons-&#8801;[]]</a
+      ><a name="3155"
+      > </a
+      ><a name="3156" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="3157"
+      > </a
+      ><a name="3158" href="UsingIrrelevantFunext.Space.Coverage.html#2823" class="Bound"
+      >&#945;</a
+      ><a name="3159"
+      > </a
+      ><a name="3160" href="Preliminaries.Sequence.html#384" class="Function"
+      >0&#772;</a
+      ><a name="3162" class="Symbol"
+      >)</a
+      ><a name="3163"
+      >
+      </a
+      ><a name="3170" href="UsingIrrelevantFunext.Space.Coverage.html#3170" class="Function"
+      >claim&#8322;</a
+      ><a name="3176"
+      > </a
+      ><a name="3177" class="Symbol"
+      >:</a
+      ><a name="3178"
+      > </a
+      ><a name="3179" href="Preliminaries.Sequence.html#1121" class="Function"
+      >take</a
+      ><a name="3183"
+      > </a
+      ><a name="3184" href="UsingIrrelevantFunext.Space.Coverage.html#1123" class="Bound"
+      >m</a
+      ><a name="3185"
+      > </a
+      ><a name="3186" class="Symbol"
+      >(</a
+      ><a name="3187" href="UsingIrrelevantFunext.Space.Coverage.html#1125" class="Bound"
+      >t</a
+      ><a name="3188"
+      > </a
+      ><a name="3189" class="Symbol"
+      >(</a
+      ><a name="3190" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="3194"
+      > </a
+      ><a name="3195" href="UsingIrrelevantFunext.Space.Coverage.html#1299" class="Bound"
+      >s</a
+      ><a name="3196"
+      > </a
+      ><a name="3197" href="UsingIrrelevantFunext.Space.Coverage.html#2823" class="Bound"
+      >&#945;</a
+      ><a name="3198" class="Symbol"
+      >))</a
+      ><a name="3200"
+      > </a
+      ><a name="3201" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3202"
+      > </a
+      ><a name="3203" href="UsingIrrelevantFunext.Space.Coverage.html#1335" class="Function"
+      >s'</a
+      ><a name="3205"
+      >
+      </a
+      ><a name="3212" href="UsingIrrelevantFunext.Space.Coverage.html#3170" class="Function"
+      >claim&#8322;</a
+      ><a name="3218"
+      > </a
+      ><a name="3219" class="Symbol"
+      >=</a
+      ><a name="3220"
+      > </a
+      ><a name="3221" href="Preliminaries.Sequence.html#6062" class="Function"
+      >Lemma[&#8801;[]-take]</a
+      ><a name="3236"
+      > </a
+      ><a name="3237" href="UsingIrrelevantFunext.Space.Coverage.html#3041" class="Function"
+      >claim&#8321;</a
+      ><a name="3243"
+      >
+
+\end{code}
+
+</a
+      ></pre
+    ></body
+  ></html
+>

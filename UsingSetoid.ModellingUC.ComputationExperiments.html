@@ -1,0 +1,2049 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >UsingSetoid.ModellingUC.ComputationExperiments</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Comment"
+      >Chuangjie Xu and Martin Escardo 2014 (updated in February 2015)</a
+      ><a name="64"
+      >
+
+</a
+      ><a name="66" class="Comment"
+      >Experiment of computing moduli of uniform continuity</a
+      ><a name="118"
+      >
+
+\begin{code}
+
+</a
+      ><a name="134" class="Symbol"
+      >{-#</a
+      ><a name="137"
+      > </a
+      ><a name="138" class="Keyword"
+      >OPTIONS</a
+      ><a name="145"
+      > --without-K </a
+      ><a name="158" class="Symbol"
+      >#-}</a
+      ><a name="161"
+      >
+
+</a
+      ><a name="163" class="Keyword"
+      >module</a
+      ><a name="169"
+      > </a
+      ><a name="170" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1" class="Module"
+      >UsingSetoid.ModellingUC.ComputationExperiments</a
+      ><a name="216"
+      > </a
+      ><a name="217" class="Keyword"
+      >where</a
+      ><a name="222"
+      >
+
+</a
+      ><a name="224" class="Keyword"
+      >open</a
+      ><a name="228"
+      > </a
+      ><a name="229" class="Keyword"
+      >import</a
+      ><a name="235"
+      > </a
+      ><a name="236" href="Preliminaries.SetsAndFunctions.html#1" class="Module"
+      >Preliminaries.SetsAndFunctions</a
+      ><a name="266"
+      > </a
+      ><a name="267" class="Keyword"
+      >hiding</a
+      ><a name="273"
+      > </a
+      ><a name="274" class="Symbol"
+      >(</a
+      ><a name="275"
+      >_+_</a
+      ><a name="278" class="Symbol"
+      >)</a
+      ><a name="279"
+      >
+</a
+      ><a name="280" class="Keyword"
+      >open</a
+      ><a name="284"
+      > </a
+      ><a name="285" class="Keyword"
+      >import</a
+      ><a name="291"
+      > </a
+      ><a name="292" href="Preliminaries.NaturalNumber.html#1" class="Module"
+      >Preliminaries.NaturalNumber</a
+      ><a name="319"
+      >
+</a
+      ><a name="320" class="Keyword"
+      >open</a
+      ><a name="324"
+      > </a
+      ><a name="325" class="Keyword"
+      >import</a
+      ><a name="331"
+      > </a
+      ><a name="332" href="Preliminaries.Boolean.html#1" class="Module"
+      >Preliminaries.Boolean</a
+      ><a name="353"
+      >
+</a
+      ><a name="354" class="Keyword"
+      >open</a
+      ><a name="358"
+      > </a
+      ><a name="359" class="Keyword"
+      >import</a
+      ><a name="365"
+      > </a
+      ><a name="366" href="Preliminaries.Sequence.html#1" class="Module"
+      >Preliminaries.Sequence</a
+      ><a name="388"
+      >
+</a
+      ><a name="389" class="Keyword"
+      >open</a
+      ><a name="393"
+      > </a
+      ><a name="394" class="Keyword"
+      >import</a
+      ><a name="400"
+      > </a
+      ><a name="401" href="UsingSetoid.Setoid.html#1" class="Module"
+      >UsingSetoid.Setoid</a
+      ><a name="419"
+      >
+</a
+      ><a name="420" class="Keyword"
+      >open</a
+      ><a name="424"
+      > </a
+      ><a name="425" class="Keyword"
+      >import</a
+      ><a name="431"
+      > </a
+      ><a name="432" href="UsingSetoid.Space.Space.html#1" class="Module"
+      >UsingSetoid.Space.Space</a
+      ><a name="455"
+      >
+</a
+      ><a name="456" class="Keyword"
+      >open</a
+      ><a name="460"
+      > </a
+      ><a name="461" class="Keyword"
+      >import</a
+      ><a name="467"
+      > </a
+      ><a name="468" href="UsingSetoid.Space.CartesianClosedness.html#1" class="Module"
+      >UsingSetoid.Space.CartesianClosedness</a
+      ><a name="505"
+      >
+</a
+      ><a name="506" class="Keyword"
+      >open</a
+      ><a name="510"
+      > </a
+      ><a name="511" class="Keyword"
+      >import</a
+      ><a name="517"
+      > </a
+      ><a name="518" href="UsingSetoid.Space.DiscreteSpace.html#1" class="Module"
+      >UsingSetoid.Space.DiscreteSpace</a
+      ><a name="549"
+      >
+</a
+      ><a name="550" class="Keyword"
+      >open</a
+      ><a name="554"
+      > </a
+      ><a name="555" class="Keyword"
+      >import</a
+      ><a name="561"
+      > </a
+      ><a name="562" href="UsingSetoid.Space.YonedaLemma.html#1" class="Module"
+      >UsingSetoid.Space.YonedaLemma</a
+      ><a name="591"
+      >
+</a
+      ><a name="592" class="Keyword"
+      >open</a
+      ><a name="596"
+      > </a
+      ><a name="597" class="Keyword"
+      >import</a
+      ><a name="603"
+      > </a
+      ><a name="604" href="UsingSetoid.Space.Fan.html#1" class="Module"
+      >UsingSetoid.Space.Fan</a
+      ><a name="625"
+      >
+</a
+      ><a name="626" class="Keyword"
+      >open</a
+      ><a name="630"
+      > </a
+      ><a name="631" class="Keyword"
+      >import</a
+      ><a name="637"
+      > </a
+      ><a name="638" href="UsingSetoid.ModellingUC.UCinT.html#1" class="Module"
+      >UsingSetoid.ModellingUC.UCinT</a
+      ><a name="667"
+      >
+
+\end{code}
+
+</a
+      ><a name="681" class="Comment"
+      >We define an abbreviation of the interpretation of closed terms with</a
+      ><a name="749"
+      >
+</a
+      ><a name="750" class="Comment"
+      >meaning in the function space &#8322;&#8469; &#8594; &#8469;:</a
+      ><a name="787"
+      >
+
+\begin{code}
+
+</a
+      ><a name="803" href="UsingSetoid.ModellingUC.ComputationExperiments.html#803" class="Function Operator"
+      >&#10214;_&#10215;</a
+      ><a name="806"
+      > </a
+      ><a name="807" class="Symbol"
+      >:</a
+      ><a name="808"
+      > </a
+      ><a name="809" href="UsingSetoid.ModellingUC.UCinT.html#1029" class="Datatype"
+      >Tm</a
+      ><a name="811"
+      > </a
+      ><a name="812" href="UsingSetoid.ModellingUC.UCinT.html#764" class="InductiveConstructor"
+      >&#949;</a
+      ><a name="813"
+      > </a
+      ><a name="814" class="Symbol"
+      >(</a
+      ><a name="815"
+      > </a
+      ><a name="816" class="Symbol"
+      >((</a
+      ><a name="818" href="UsingSetoid.ModellingUC.UCinT.html#695" class="InductiveConstructor"
+      >&#9411;</a
+      ><a name="819"
+      > </a
+      ><a name="820" href="UsingSetoid.ModellingUC.UCinT.html#703" class="InductiveConstructor Operator"
+      >&#8680;</a
+      ><a name="821"
+      > </a
+      ><a name="822" href="UsingSetoid.ModellingUC.UCinT.html#687" class="InductiveConstructor"
+      >&#9313;</a
+      ><a name="823" class="Symbol"
+      >)</a
+      ><a name="824"
+      > </a
+      ><a name="825" href="UsingSetoid.ModellingUC.UCinT.html#703" class="InductiveConstructor Operator"
+      >&#8680;</a
+      ><a name="826"
+      > </a
+      ><a name="827" href="UsingSetoid.ModellingUC.UCinT.html#695" class="InductiveConstructor"
+      >&#9411;</a
+      ><a name="828" class="Symbol"
+      >))</a
+      ><a name="830"
+      > </a
+      ><a name="831" class="Symbol"
+      >&#8594;</a
+      ><a name="832"
+      > </a
+      ><a name="833" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="835"
+      > </a
+      ><a name="836" class="Symbol"
+      >&#8594;</a
+      ><a name="837"
+      > </a
+      ><a name="838" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="839"
+      >
+</a
+      ><a name="840" href="UsingSetoid.ModellingUC.ComputationExperiments.html#803" class="Function Operator"
+      >&#10214;</a
+      ><a name="841"
+      > </a
+      ><a name="842" href="UsingSetoid.ModellingUC.ComputationExperiments.html#842" class="Bound"
+      >t</a
+      ><a name="843"
+      > </a
+      ><a name="844" href="UsingSetoid.ModellingUC.ComputationExperiments.html#803" class="Function Operator"
+      >&#10215;</a
+      ><a name="845"
+      > </a
+      ><a name="846" href="UsingSetoid.ModellingUC.ComputationExperiments.html#846" class="Bound"
+      >&#945;</a
+      ><a name="847"
+      > </a
+      ><a name="848" class="Symbol"
+      >=</a
+      ><a name="849"
+      > </a
+      ><a name="850" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="853"
+      > </a
+      ><a name="854" class="Symbol"
+      >(</a
+      ><a name="855" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="858"
+      > </a
+      ><a name="859" class="Symbol"
+      >(</a
+      ><a name="860" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="863"
+      > </a
+      ><a name="864" class="Symbol"
+      >(</a
+      ><a name="865" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="868"
+      > </a
+      ><a name="869" href="UsingSetoid.ModellingUC.UCinT.html#3304" class="Function Operator"
+      >&#10214;</a
+      ><a name="870"
+      > </a
+      ><a name="871" href="UsingSetoid.ModellingUC.ComputationExperiments.html#842" class="Bound"
+      >t</a
+      ><a name="872"
+      > </a
+      ><a name="873" href="UsingSetoid.ModellingUC.UCinT.html#3304" class="Function Operator"
+      >&#10215;&#7504;</a
+      ><a name="875" class="Symbol"
+      >)</a
+      ><a name="876"
+      > </a
+      ><a name="877" href="Preliminaries.SetsAndFunctions.html#3847" class="InductiveConstructor"
+      >&#8902;</a
+      ><a name="878" class="Symbol"
+      >))</a
+      ><a name="880"
+      > </a
+      ><a name="881" class="Symbol"
+      >(</a
+      ><a name="882" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="885"
+      > </a
+      ><a name="886" href="UsingSetoid.Space.YonedaLemma.html#2830" class="Function"
+      >ID</a
+      ><a name="888"
+      > </a
+      ><a name="889" href="UsingSetoid.ModellingUC.ComputationExperiments.html#846" class="Bound"
+      >&#945;</a
+      ><a name="890" class="Symbol"
+      >)</a
+      ><a name="891"
+      >
+
+</a
+      ><a name="893" href="UsingSetoid.ModellingUC.ComputationExperiments.html#893" class="Function"
+      >modu</a
+      ><a name="897"
+      > </a
+      ><a name="898" class="Symbol"
+      >:</a
+      ><a name="899"
+      > </a
+      ><a name="900" href="UsingSetoid.ModellingUC.UCinT.html#1029" class="Datatype"
+      >Tm</a
+      ><a name="902"
+      > </a
+      ><a name="903" href="UsingSetoid.ModellingUC.UCinT.html#764" class="InductiveConstructor"
+      >&#949;</a
+      ><a name="904"
+      > </a
+      ><a name="905" class="Symbol"
+      >((</a
+      ><a name="907" href="UsingSetoid.ModellingUC.UCinT.html#695" class="InductiveConstructor"
+      >&#9411;</a
+      ><a name="908"
+      > </a
+      ><a name="909" href="UsingSetoid.ModellingUC.UCinT.html#703" class="InductiveConstructor Operator"
+      >&#8680;</a
+      ><a name="910"
+      > </a
+      ><a name="911" href="UsingSetoid.ModellingUC.UCinT.html#687" class="InductiveConstructor"
+      >&#9313;</a
+      ><a name="912" class="Symbol"
+      >)</a
+      ><a name="913"
+      > </a
+      ><a name="914" href="UsingSetoid.ModellingUC.UCinT.html#703" class="InductiveConstructor Operator"
+      >&#8680;</a
+      ><a name="915"
+      > </a
+      ><a name="916" href="UsingSetoid.ModellingUC.UCinT.html#695" class="InductiveConstructor"
+      >&#9411;</a
+      ><a name="917" class="Symbol"
+      >)</a
+      ><a name="918"
+      > </a
+      ><a name="919" class="Symbol"
+      >&#8594;</a
+      ><a name="920"
+      > </a
+      ><a name="921" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="922"
+      >
+</a
+      ><a name="923" href="UsingSetoid.ModellingUC.ComputationExperiments.html#893" class="Function"
+      >modu</a
+      ><a name="927"
+      > </a
+      ><a name="928" href="UsingSetoid.ModellingUC.ComputationExperiments.html#928" class="Bound"
+      >F</a
+      ><a name="929"
+      > </a
+      ><a name="930" class="Symbol"
+      >=</a
+      ><a name="931"
+      > </a
+      ><a name="932" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="935"
+      > </a
+      ><a name="936" class="Symbol"
+      >(</a
+      ><a name="937" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="940"
+      > </a
+      ><a name="941" href="UsingSetoid.Space.Fan.html#2121" class="Function"
+      >fan</a
+      ><a name="944" class="Symbol"
+      >)</a
+      ><a name="945"
+      > </a
+      ><a name="946" class="Symbol"
+      >(</a
+      ><a name="947" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="950"
+      > </a
+      ><a name="951" class="Symbol"
+      >(</a
+      ><a name="952" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="955"
+      > </a
+      ><a name="956" href="UsingSetoid.ModellingUC.UCinT.html#3304" class="Function Operator"
+      >&#10214;</a
+      ><a name="957"
+      > </a
+      ><a name="958" href="UsingSetoid.ModellingUC.ComputationExperiments.html#928" class="Bound"
+      >F</a
+      ><a name="959"
+      > </a
+      ><a name="960" href="UsingSetoid.ModellingUC.UCinT.html#3304" class="Function Operator"
+      >&#10215;&#7504;</a
+      ><a name="962" class="Symbol"
+      >)</a
+      ><a name="963"
+      > </a
+      ><a name="964" href="Preliminaries.SetsAndFunctions.html#3847" class="InductiveConstructor"
+      >&#8902;</a
+      ><a name="965" class="Symbol"
+      >)</a
+      ><a name="966"
+      >
+
+</a
+      ><a name="968" href="UsingSetoid.ModellingUC.ComputationExperiments.html#968" class="Function"
+      >ONE</a
+      ><a name="971"
+      > </a
+      ><a name="972" href="UsingSetoid.ModellingUC.ComputationExperiments.html#972" class="Function"
+      >TWO</a
+      ><a name="975"
+      > </a
+      ><a name="976" href="UsingSetoid.ModellingUC.ComputationExperiments.html#976" class="Function"
+      >THREE</a
+      ><a name="981"
+      > </a
+      ><a name="982" href="UsingSetoid.ModellingUC.ComputationExperiments.html#982" class="Function"
+      >FOUR</a
+      ><a name="986"
+      > </a
+      ><a name="987" href="UsingSetoid.ModellingUC.ComputationExperiments.html#987" class="Function"
+      >FIVE</a
+      ><a name="991"
+      > </a
+      ><a name="992" class="Symbol"
+      >:</a
+      ><a name="993"
+      > </a
+      ><a name="994" class="Symbol"
+      >{</a
+      ><a name="995" href="UsingSetoid.ModellingUC.ComputationExperiments.html#995" class="Bound"
+      >n</a
+      ><a name="996"
+      > </a
+      ><a name="997" class="Symbol"
+      >:</a
+      ><a name="998"
+      > </a
+      ><a name="999" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1000" class="Symbol"
+      >}{</a
+      ><a name="1002" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1002" class="Bound"
+      >&#915;</a
+      ><a name="1003"
+      > </a
+      ><a name="1004" class="Symbol"
+      >:</a
+      ><a name="1005"
+      > </a
+      ><a name="1006" href="UsingSetoid.ModellingUC.UCinT.html#743" class="Datatype"
+      >Cxt</a
+      ><a name="1009"
+      > </a
+      ><a name="1010" href="UsingSetoid.ModellingUC.ComputationExperiments.html#995" class="Bound"
+      >n</a
+      ><a name="1011" class="Symbol"
+      >}</a
+      ><a name="1012"
+      > </a
+      ><a name="1013" class="Symbol"
+      >&#8594;</a
+      ><a name="1014"
+      > </a
+      ><a name="1015" href="UsingSetoid.ModellingUC.UCinT.html#1029" class="Datatype"
+      >Tm</a
+      ><a name="1017"
+      > </a
+      ><a name="1018" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1002" class="Bound"
+      >&#915;</a
+      ><a name="1019"
+      > </a
+      ><a name="1020" href="UsingSetoid.ModellingUC.UCinT.html#695" class="InductiveConstructor"
+      >&#9411;</a
+      ><a name="1021"
+      >
+</a
+      ><a name="1022" href="UsingSetoid.ModellingUC.ComputationExperiments.html#968" class="Function"
+      >ONE</a
+      ><a name="1025"
+      >   </a
+      ><a name="1028" class="Symbol"
+      >=</a
+      ><a name="1029"
+      > </a
+      ><a name="1030" href="UsingSetoid.ModellingUC.UCinT.html#1334" class="InductiveConstructor"
+      >SUCC</a
+      ><a name="1034"
+      > </a
+      ><a name="1035" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1036"
+      > </a
+      ><a name="1037" href="UsingSetoid.ModellingUC.UCinT.html#1288" class="InductiveConstructor"
+      >ZERO</a
+      ><a name="1041"
+      >
+</a
+      ><a name="1042" href="UsingSetoid.ModellingUC.ComputationExperiments.html#972" class="Function"
+      >TWO</a
+      ><a name="1045"
+      >   </a
+      ><a name="1048" class="Symbol"
+      >=</a
+      ><a name="1049"
+      > </a
+      ><a name="1050" href="UsingSetoid.ModellingUC.UCinT.html#1334" class="InductiveConstructor"
+      >SUCC</a
+      ><a name="1054"
+      > </a
+      ><a name="1055" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1056"
+      > </a
+      ><a name="1057" href="UsingSetoid.ModellingUC.ComputationExperiments.html#968" class="Function"
+      >ONE</a
+      ><a name="1060"
+      >
+</a
+      ><a name="1061" href="UsingSetoid.ModellingUC.ComputationExperiments.html#976" class="Function"
+      >THREE</a
+      ><a name="1066"
+      > </a
+      ><a name="1067" class="Symbol"
+      >=</a
+      ><a name="1068"
+      > </a
+      ><a name="1069" href="UsingSetoid.ModellingUC.UCinT.html#1334" class="InductiveConstructor"
+      >SUCC</a
+      ><a name="1073"
+      > </a
+      ><a name="1074" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1075"
+      > </a
+      ><a name="1076" href="UsingSetoid.ModellingUC.ComputationExperiments.html#972" class="Function"
+      >TWO</a
+      ><a name="1079"
+      >
+</a
+      ><a name="1080" href="UsingSetoid.ModellingUC.ComputationExperiments.html#982" class="Function"
+      >FOUR</a
+      ><a name="1084"
+      >  </a
+      ><a name="1086" class="Symbol"
+      >=</a
+      ><a name="1087"
+      > </a
+      ><a name="1088" href="UsingSetoid.ModellingUC.UCinT.html#1334" class="InductiveConstructor"
+      >SUCC</a
+      ><a name="1092"
+      > </a
+      ><a name="1093" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1094"
+      > </a
+      ><a name="1095" href="UsingSetoid.ModellingUC.ComputationExperiments.html#976" class="Function"
+      >THREE</a
+      ><a name="1100"
+      >
+</a
+      ><a name="1101" href="UsingSetoid.ModellingUC.ComputationExperiments.html#987" class="Function"
+      >FIVE</a
+      ><a name="1105"
+      >  </a
+      ><a name="1107" class="Symbol"
+      >=</a
+      ><a name="1108"
+      > </a
+      ><a name="1109" href="UsingSetoid.ModellingUC.UCinT.html#1334" class="InductiveConstructor"
+      >SUCC</a
+      ><a name="1113"
+      > </a
+      ><a name="1114" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1115"
+      > </a
+      ><a name="1116" href="UsingSetoid.ModellingUC.ComputationExperiments.html#982" class="Function"
+      >FOUR</a
+      ><a name="1120"
+      >
+
+</a
+      ><a name="1122" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1122" class="Function"
+      >F&#8321;</a
+      ><a name="1124"
+      > </a
+      ><a name="1125" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1125" class="Function"
+      >F&#8322;</a
+      ><a name="1127"
+      > </a
+      ><a name="1128" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1128" class="Function"
+      >F&#8323;</a
+      ><a name="1130"
+      > </a
+      ><a name="1131" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1131" class="Function"
+      >F&#8324;</a
+      ><a name="1133"
+      > </a
+      ><a name="1134" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1134" class="Function"
+      >F&#8325;</a
+      ><a name="1136"
+      > </a
+      ><a name="1137" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1137" class="Function"
+      >F&#8326;</a
+      ><a name="1139"
+      > </a
+      ><a name="1140" class="Symbol"
+      >:</a
+      ><a name="1141"
+      > </a
+      ><a name="1142" class="Symbol"
+      >{</a
+      ><a name="1143" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1143" class="Bound"
+      >n</a
+      ><a name="1144"
+      > </a
+      ><a name="1145" class="Symbol"
+      >:</a
+      ><a name="1146"
+      > </a
+      ><a name="1147" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1148" class="Symbol"
+      >}</a
+      ><a name="1149"
+      > </a
+      ><a name="1150" class="Symbol"
+      >{</a
+      ><a name="1151" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1151" class="Bound"
+      >&#915;</a
+      ><a name="1152"
+      > </a
+      ><a name="1153" class="Symbol"
+      >:</a
+      ><a name="1154"
+      > </a
+      ><a name="1155" href="UsingSetoid.ModellingUC.UCinT.html#743" class="Datatype"
+      >Cxt</a
+      ><a name="1158"
+      > </a
+      ><a name="1159" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1143" class="Bound"
+      >n</a
+      ><a name="1160" class="Symbol"
+      >}</a
+      ><a name="1161"
+      > </a
+      ><a name="1162" class="Symbol"
+      >&#8594;</a
+      ><a name="1163"
+      > </a
+      ><a name="1164" href="UsingSetoid.ModellingUC.UCinT.html#1029" class="Datatype"
+      >Tm</a
+      ><a name="1166"
+      > </a
+      ><a name="1167" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1151" class="Bound"
+      >&#915;</a
+      ><a name="1168"
+      > </a
+      ><a name="1169" class="Symbol"
+      >((</a
+      ><a name="1171" href="UsingSetoid.ModellingUC.UCinT.html#695" class="InductiveConstructor"
+      >&#9411;</a
+      ><a name="1172"
+      > </a
+      ><a name="1173" href="UsingSetoid.ModellingUC.UCinT.html#703" class="InductiveConstructor Operator"
+      >&#8680;</a
+      ><a name="1174"
+      > </a
+      ><a name="1175" href="UsingSetoid.ModellingUC.UCinT.html#687" class="InductiveConstructor"
+      >&#9313;</a
+      ><a name="1176" class="Symbol"
+      >)</a
+      ><a name="1177"
+      > </a
+      ><a name="1178" href="UsingSetoid.ModellingUC.UCinT.html#703" class="InductiveConstructor Operator"
+      >&#8680;</a
+      ><a name="1179"
+      > </a
+      ><a name="1180" href="UsingSetoid.ModellingUC.UCinT.html#695" class="InductiveConstructor"
+      >&#9411;</a
+      ><a name="1181" class="Symbol"
+      >)</a
+      ><a name="1182"
+      >
+
+\end{code}
+
+</a
+      ><a name="1196" class="Comment"
+      >F&#8321; is constant.</a
+      ><a name="1211"
+      >
+
+\begin{code}
+
+</a
+      ><a name="1227" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1122" class="Function"
+      >F&#8321;</a
+      ><a name="1229"
+      > </a
+      ><a name="1230" class="Symbol"
+      >=</a
+      ><a name="1231"
+      > </a
+      ><a name="1232" href="UsingSetoid.ModellingUC.UCinT.html#1456" class="InductiveConstructor"
+      >LAM</a
+      ><a name="1235"
+      > </a
+      ><a name="1236" href="UsingSetoid.ModellingUC.ComputationExperiments.html#972" class="Function"
+      >TWO</a
+      ><a name="1239"
+      >
+
+</a
+      ><a name="1241" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1241" class="Function"
+      >F&#8321;-interpretation</a
+      ><a name="1258"
+      > </a
+      ><a name="1259" class="Symbol"
+      >:</a
+      ><a name="1260"
+      > </a
+      ><a name="1261" href="UsingSetoid.ModellingUC.ComputationExperiments.html#803" class="Function Operator"
+      >&#10214;</a
+      ><a name="1262"
+      > </a
+      ><a name="1263" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1122" class="Function"
+      >F&#8321;</a
+      ><a name="1265"
+      > </a
+      ><a name="1266" href="UsingSetoid.ModellingUC.ComputationExperiments.html#803" class="Function Operator"
+      >&#10215;</a
+      ><a name="1267"
+      > </a
+      ><a name="1268" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1269"
+      > </a
+      ><a name="1270" class="Symbol"
+      >&#955;</a
+      ><a name="1271"
+      > </a
+      ><a name="1272" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1272" class="Bound"
+      >&#945;</a
+      ><a name="1273"
+      > </a
+      ><a name="1274" class="Symbol"
+      >&#8594;</a
+      ><a name="1275"
+      > </a
+      ><a name="1276" class="Number"
+      >2</a
+      ><a name="1277"
+      > 
+</a
+      ><a name="1279" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1241" class="Function"
+      >F&#8321;-interpretation</a
+      ><a name="1296"
+      > </a
+      ><a name="1297" class="Symbol"
+      >=</a
+      ><a name="1298"
+      > </a
+      ><a name="1299" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1303"
+      >
+
+\end{code}
+
+</a
+      ><a name="1317" class="Comment"
+      >F&#8322; is constant, though it looks at the 1st bit of input.</a
+      ><a name="1373"
+      >
+
+\begin{code}
+
+</a
+      ><a name="1389" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1125" class="Function"
+      >F&#8322;</a
+      ><a name="1391"
+      > </a
+      ><a name="1392" class="Symbol"
+      >=</a
+      ><a name="1393"
+      > </a
+      ><a name="1394" href="UsingSetoid.ModellingUC.UCinT.html#1456" class="InductiveConstructor"
+      >LAM</a
+      ><a name="1397"
+      > </a
+      ><a name="1398" class="Symbol"
+      >(</a
+      ><a name="1399" href="UsingSetoid.ModellingUC.UCinT.html#1228" class="InductiveConstructor"
+      >IF</a
+      ><a name="1401"
+      > </a
+      ><a name="1402" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1403"
+      > </a
+      ><a name="1404" class="Symbol"
+      >(</a
+      ><a name="1405" href="UsingSetoid.ModellingUC.UCinT.html#1068" class="InductiveConstructor"
+      >VAR</a
+      ><a name="1408"
+      > </a
+      ><a name="1409" href="UsingSetoid.ModellingUC.UCinT.html#847" class="InductiveConstructor"
+      >zero</a
+      ><a name="1413"
+      > </a
+      ><a name="1414" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1415"
+      > </a
+      ><a name="1416" href="UsingSetoid.ModellingUC.UCinT.html#1288" class="InductiveConstructor"
+      >ZERO</a
+      ><a name="1420" class="Symbol"
+      >)</a
+      ><a name="1421"
+      > </a
+      ><a name="1422" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1423"
+      > </a
+      ><a name="1424" href="UsingSetoid.ModellingUC.ComputationExperiments.html#968" class="Function"
+      >ONE</a
+      ><a name="1427"
+      > </a
+      ><a name="1428" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1429"
+      > </a
+      ><a name="1430" href="UsingSetoid.ModellingUC.ComputationExperiments.html#968" class="Function"
+      >ONE</a
+      ><a name="1433" class="Symbol"
+      >)</a
+      ><a name="1434"
+      >
+
+</a
+      ><a name="1436" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1436" class="Function"
+      >F&#8322;-interpretation</a
+      ><a name="1453"
+      > </a
+      ><a name="1454" class="Symbol"
+      >:</a
+      ><a name="1455"
+      > </a
+      ><a name="1456" href="UsingSetoid.ModellingUC.ComputationExperiments.html#803" class="Function Operator"
+      >&#10214;</a
+      ><a name="1457"
+      > </a
+      ><a name="1458" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1125" class="Function"
+      >F&#8322;</a
+      ><a name="1460"
+      > </a
+      ><a name="1461" href="UsingSetoid.ModellingUC.ComputationExperiments.html#803" class="Function Operator"
+      >&#10215;</a
+      ><a name="1462"
+      > </a
+      ><a name="1463" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1464"
+      > </a
+      ><a name="1465" class="Symbol"
+      >&#955;</a
+      ><a name="1466"
+      > </a
+      ><a name="1467" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1467" class="Bound"
+      >&#945;</a
+      ><a name="1468"
+      > </a
+      ><a name="1469" class="Symbol"
+      >&#8594;</a
+      ><a name="1470"
+      > </a
+      ><a name="1471" href="Preliminaries.Boolean.html#302" class="Function"
+      >if</a
+      ><a name="1473"
+      > </a
+      ><a name="1474" class="Symbol"
+      >(</a
+      ><a name="1475" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1467" class="Bound"
+      >&#945;</a
+      ><a name="1476"
+      > </a
+      ><a name="1477" class="Number"
+      >0</a
+      ><a name="1478" class="Symbol"
+      >)</a
+      ><a name="1479"
+      > </a
+      ><a name="1480" class="Number"
+      >1</a
+      ><a name="1481"
+      > </a
+      ><a name="1482" class="Number"
+      >1</a
+      ><a name="1483"
+      >
+</a
+      ><a name="1484" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1436" class="Function"
+      >F&#8322;-interpretation</a
+      ><a name="1501"
+      > </a
+      ><a name="1502" class="Symbol"
+      >=</a
+      ><a name="1503"
+      > </a
+      ><a name="1504" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1508"
+      >
+
+\end{code}
+
+</a
+      ><a name="1522" class="Comment"
+      >F&#8323; returns 5, if the 4th bit is &#8869;.</a
+      ><a name="1556"
+      >
+</a
+      ><a name="1557" class="Comment"
+      >F&#8323; returns 1, if the 4th bit is &#8868; and the 5th one is &#8869;.</a
+      ><a name="1612"
+      >
+</a
+      ><a name="1613" class="Comment"
+      >F&#8323; returns 2, if both the 4th and 5th bits are &#8868;.</a
+      ><a name="1662"
+      >
+
+\begin{code}
+
+</a
+      ><a name="1678" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1128" class="Function"
+      >F&#8323;</a
+      ><a name="1680"
+      > </a
+      ><a name="1681" class="Symbol"
+      >=</a
+      ><a name="1682"
+      > </a
+      ><a name="1683" href="UsingSetoid.ModellingUC.UCinT.html#1456" class="InductiveConstructor"
+      >LAM</a
+      ><a name="1686"
+      > </a
+      ><a name="1687" class="Symbol"
+      >(</a
+      ><a name="1688" href="UsingSetoid.ModellingUC.UCinT.html#1228" class="InductiveConstructor"
+      >IF</a
+      ><a name="1690"
+      > </a
+      ><a name="1691" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1692"
+      > </a
+      ><a name="1693" class="Symbol"
+      >(</a
+      ><a name="1694" href="UsingSetoid.ModellingUC.UCinT.html#1068" class="InductiveConstructor"
+      >VAR</a
+      ><a name="1697"
+      > </a
+      ><a name="1698" href="UsingSetoid.ModellingUC.UCinT.html#847" class="InductiveConstructor"
+      >zero</a
+      ><a name="1702"
+      > </a
+      ><a name="1703" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1704"
+      > </a
+      ><a name="1705" href="UsingSetoid.ModellingUC.ComputationExperiments.html#976" class="Function"
+      >THREE</a
+      ><a name="1710" class="Symbol"
+      >)</a
+      ><a name="1711"
+      > </a
+      ><a name="1712" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1713"
+      > </a
+      ><a name="1714" href="UsingSetoid.ModellingUC.ComputationExperiments.html#987" class="Function"
+      >FIVE</a
+      ><a name="1718"
+      >
+             </a
+      ><a name="1732" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1733"
+      > </a
+      ><a name="1734" class="Symbol"
+      >(</a
+      ><a name="1735" href="UsingSetoid.ModellingUC.UCinT.html#1228" class="InductiveConstructor"
+      >IF</a
+      ><a name="1737"
+      > </a
+      ><a name="1738" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1739"
+      > </a
+      ><a name="1740" class="Symbol"
+      >(</a
+      ><a name="1741" href="UsingSetoid.ModellingUC.UCinT.html#1068" class="InductiveConstructor"
+      >VAR</a
+      ><a name="1744"
+      > </a
+      ><a name="1745" href="UsingSetoid.ModellingUC.UCinT.html#847" class="InductiveConstructor"
+      >zero</a
+      ><a name="1749"
+      > </a
+      ><a name="1750" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1751"
+      > </a
+      ><a name="1752" href="UsingSetoid.ModellingUC.ComputationExperiments.html#982" class="Function"
+      >FOUR</a
+      ><a name="1756" class="Symbol"
+      >)</a
+      ><a name="1757"
+      > </a
+      ><a name="1758" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1759"
+      > </a
+      ><a name="1760" href="UsingSetoid.ModellingUC.ComputationExperiments.html#968" class="Function"
+      >ONE</a
+      ><a name="1763"
+      > </a
+      ><a name="1764" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1765"
+      > </a
+      ><a name="1766" href="UsingSetoid.ModellingUC.ComputationExperiments.html#972" class="Function"
+      >TWO</a
+      ><a name="1769" class="Symbol"
+      >))</a
+      ><a name="1771"
+      >
+
+</a
+      ><a name="1773" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1773" class="Function"
+      >F&#8323;-interpretation</a
+      ><a name="1790"
+      > </a
+      ><a name="1791" class="Symbol"
+      >:</a
+      ><a name="1792"
+      > </a
+      ><a name="1793" href="UsingSetoid.ModellingUC.ComputationExperiments.html#803" class="Function Operator"
+      >&#10214;</a
+      ><a name="1794"
+      > </a
+      ><a name="1795" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1128" class="Function"
+      >F&#8323;</a
+      ><a name="1797"
+      > </a
+      ><a name="1798" href="UsingSetoid.ModellingUC.ComputationExperiments.html#803" class="Function Operator"
+      >&#10215;</a
+      ><a name="1799"
+      > </a
+      ><a name="1800" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1801"
+      > </a
+      ><a name="1802" class="Symbol"
+      >&#955;</a
+      ><a name="1803"
+      > </a
+      ><a name="1804" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1804" class="Bound"
+      >&#945;</a
+      ><a name="1805"
+      > </a
+      ><a name="1806" class="Symbol"
+      >&#8594;</a
+      ><a name="1807"
+      > </a
+      ><a name="1808" href="Preliminaries.Boolean.html#302" class="Function"
+      >if</a
+      ><a name="1810"
+      > </a
+      ><a name="1811" class="Symbol"
+      >(</a
+      ><a name="1812" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1804" class="Bound"
+      >&#945;</a
+      ><a name="1813"
+      > </a
+      ><a name="1814" class="Number"
+      >3</a
+      ><a name="1815" class="Symbol"
+      >)</a
+      ><a name="1816"
+      > </a
+      ><a name="1817" class="Number"
+      >5</a
+      ><a name="1818"
+      > </a
+      ><a name="1819" class="Symbol"
+      >(</a
+      ><a name="1820" href="Preliminaries.Boolean.html#302" class="Function"
+      >if</a
+      ><a name="1822"
+      > </a
+      ><a name="1823" class="Symbol"
+      >(</a
+      ><a name="1824" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1804" class="Bound"
+      >&#945;</a
+      ><a name="1825"
+      > </a
+      ><a name="1826" class="Number"
+      >4</a
+      ><a name="1827" class="Symbol"
+      >)</a
+      ><a name="1828"
+      > </a
+      ><a name="1829" class="Number"
+      >1</a
+      ><a name="1830"
+      > </a
+      ><a name="1831" class="Number"
+      >2</a
+      ><a name="1832" class="Symbol"
+      >)</a
+      ><a name="1833"
+      > 
+</a
+      ><a name="1835" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1773" class="Function"
+      >F&#8323;-interpretation</a
+      ><a name="1852"
+      > </a
+      ><a name="1853" class="Symbol"
+      >=</a
+      ><a name="1854"
+      > </a
+      ><a name="1855" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1859"
+      >
+
+\end{code}
+
+</a
+      ><a name="1873" class="Comment"
+      >F&#8324; is constant. It looks at 2nd and 3rd or 4th bits and then returns 0.</a
+      ><a name="1944"
+      >
+
+\begin{code}
+
+</a
+      ><a name="1960" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1131" class="Function"
+      >F&#8324;</a
+      ><a name="1962"
+      > </a
+      ><a name="1963" class="Symbol"
+      >=</a
+      ><a name="1964"
+      > </a
+      ><a name="1965" href="UsingSetoid.ModellingUC.UCinT.html#1456" class="InductiveConstructor"
+      >LAM</a
+      ><a name="1968"
+      > </a
+      ><a name="1969" class="Symbol"
+      >(</a
+      ><a name="1970" href="UsingSetoid.ModellingUC.UCinT.html#1228" class="InductiveConstructor"
+      >IF</a
+      ><a name="1972"
+      > </a
+      ><a name="1973" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1974"
+      > </a
+      ><a name="1975" class="Symbol"
+      >(</a
+      ><a name="1976" href="UsingSetoid.ModellingUC.UCinT.html#1068" class="InductiveConstructor"
+      >VAR</a
+      ><a name="1979"
+      > </a
+      ><a name="1980" href="UsingSetoid.ModellingUC.UCinT.html#847" class="InductiveConstructor"
+      >zero</a
+      ><a name="1984"
+      > </a
+      ><a name="1985" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1986"
+      > </a
+      ><a name="1987" href="UsingSetoid.ModellingUC.ComputationExperiments.html#968" class="Function"
+      >ONE</a
+      ><a name="1990" class="Symbol"
+      >)</a
+      ><a name="1991"
+      > </a
+      ><a name="1992" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1993"
+      > </a
+      ><a name="1994" class="Symbol"
+      >(</a
+      ><a name="1995" href="UsingSetoid.ModellingUC.UCinT.html#1228" class="InductiveConstructor"
+      >IF</a
+      ><a name="1997"
+      > </a
+      ><a name="1998" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="1999"
+      > </a
+      ><a name="2000" class="Symbol"
+      >(</a
+      ><a name="2001" href="UsingSetoid.ModellingUC.UCinT.html#1068" class="InductiveConstructor"
+      >VAR</a
+      ><a name="2004"
+      > </a
+      ><a name="2005" href="UsingSetoid.ModellingUC.UCinT.html#847" class="InductiveConstructor"
+      >zero</a
+      ><a name="2009"
+      > </a
+      ><a name="2010" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2011"
+      > </a
+      ><a name="2012" href="UsingSetoid.ModellingUC.ComputationExperiments.html#972" class="Function"
+      >TWO</a
+      ><a name="2015" class="Symbol"
+      >)</a
+      ><a name="2016"
+      > </a
+      ><a name="2017" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2018"
+      > </a
+      ><a name="2019" href="UsingSetoid.ModellingUC.UCinT.html#1288" class="InductiveConstructor"
+      >ZERO</a
+      ><a name="2023"
+      > </a
+      ><a name="2024" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2025"
+      > </a
+      ><a name="2026" href="UsingSetoid.ModellingUC.UCinT.html#1288" class="InductiveConstructor"
+      >ZERO</a
+      ><a name="2030" class="Symbol"
+      >)</a
+      ><a name="2031"
+      >
+             </a
+      ><a name="2045" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2046"
+      > </a
+      ><a name="2047" class="Symbol"
+      >(</a
+      ><a name="2048" href="UsingSetoid.ModellingUC.UCinT.html#1228" class="InductiveConstructor"
+      >IF</a
+      ><a name="2050"
+      > </a
+      ><a name="2051" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2052"
+      > </a
+      ><a name="2053" class="Symbol"
+      >(</a
+      ><a name="2054" href="UsingSetoid.ModellingUC.UCinT.html#1068" class="InductiveConstructor"
+      >VAR</a
+      ><a name="2057"
+      > </a
+      ><a name="2058" href="UsingSetoid.ModellingUC.UCinT.html#847" class="InductiveConstructor"
+      >zero</a
+      ><a name="2062"
+      > </a
+      ><a name="2063" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2064"
+      > </a
+      ><a name="2065" href="UsingSetoid.ModellingUC.ComputationExperiments.html#976" class="Function"
+      >THREE</a
+      ><a name="2070" class="Symbol"
+      >)</a
+      ><a name="2071"
+      > </a
+      ><a name="2072" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2073"
+      > </a
+      ><a name="2074" href="UsingSetoid.ModellingUC.UCinT.html#1288" class="InductiveConstructor"
+      >ZERO</a
+      ><a name="2078"
+      > </a
+      ><a name="2079" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2080"
+      > </a
+      ><a name="2081" href="UsingSetoid.ModellingUC.UCinT.html#1288" class="InductiveConstructor"
+      >ZERO</a
+      ><a name="2085" class="Symbol"
+      >))</a
+      ><a name="2087"
+      >
+
+</a
+      ><a name="2089" href="UsingSetoid.ModellingUC.ComputationExperiments.html#2089" class="Function"
+      >F&#8324;-interpretation</a
+      ><a name="2106"
+      > </a
+      ><a name="2107" class="Symbol"
+      >:</a
+      ><a name="2108"
+      > </a
+      ><a name="2109" href="UsingSetoid.ModellingUC.ComputationExperiments.html#803" class="Function Operator"
+      >&#10214;</a
+      ><a name="2110"
+      > </a
+      ><a name="2111" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1131" class="Function"
+      >F&#8324;</a
+      ><a name="2113"
+      > </a
+      ><a name="2114" href="UsingSetoid.ModellingUC.ComputationExperiments.html#803" class="Function Operator"
+      >&#10215;</a
+      ><a name="2115"
+      > </a
+      ><a name="2116" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2117"
+      > </a
+      ><a name="2118" class="Symbol"
+      >&#955;</a
+      ><a name="2119"
+      > </a
+      ><a name="2120" href="UsingSetoid.ModellingUC.ComputationExperiments.html#2120" class="Bound"
+      >&#945;</a
+      ><a name="2121"
+      > </a
+      ><a name="2122" class="Symbol"
+      >&#8594;</a
+      ><a name="2123"
+      > </a
+      ><a name="2124" href="Preliminaries.Boolean.html#302" class="Function"
+      >if</a
+      ><a name="2126"
+      > </a
+      ><a name="2127" class="Symbol"
+      >(</a
+      ><a name="2128" href="UsingSetoid.ModellingUC.ComputationExperiments.html#2120" class="Bound"
+      >&#945;</a
+      ><a name="2129"
+      > </a
+      ><a name="2130" class="Number"
+      >1</a
+      ><a name="2131" class="Symbol"
+      >)</a
+      ><a name="2132"
+      > </a
+      ><a name="2133" class="Symbol"
+      >(</a
+      ><a name="2134" href="Preliminaries.Boolean.html#302" class="Function"
+      >if</a
+      ><a name="2136"
+      > </a
+      ><a name="2137" class="Symbol"
+      >(</a
+      ><a name="2138" href="UsingSetoid.ModellingUC.ComputationExperiments.html#2120" class="Bound"
+      >&#945;</a
+      ><a name="2139"
+      > </a
+      ><a name="2140" class="Number"
+      >2</a
+      ><a name="2141" class="Symbol"
+      >)</a
+      ><a name="2142"
+      > </a
+      ><a name="2143" class="Number"
+      >0</a
+      ><a name="2144"
+      > </a
+      ><a name="2145" class="Number"
+      >0</a
+      ><a name="2146" class="Symbol"
+      >)</a
+      ><a name="2147"
+      > </a
+      ><a name="2148" class="Symbol"
+      >(</a
+      ><a name="2149" href="Preliminaries.Boolean.html#302" class="Function"
+      >if</a
+      ><a name="2151"
+      > </a
+      ><a name="2152" class="Symbol"
+      >(</a
+      ><a name="2153" href="UsingSetoid.ModellingUC.ComputationExperiments.html#2120" class="Bound"
+      >&#945;</a
+      ><a name="2154"
+      > </a
+      ><a name="2155" class="Number"
+      >3</a
+      ><a name="2156" class="Symbol"
+      >)</a
+      ><a name="2157"
+      > </a
+      ><a name="2158" class="Number"
+      >0</a
+      ><a name="2159"
+      > </a
+      ><a name="2160" class="Number"
+      >0</a
+      ><a name="2161" class="Symbol"
+      >)</a
+      ><a name="2162"
+      >
+</a
+      ><a name="2163" href="UsingSetoid.ModellingUC.ComputationExperiments.html#2089" class="Function"
+      >F&#8324;-interpretation</a
+      ><a name="2180"
+      > </a
+      ><a name="2181" class="Symbol"
+      >=</a
+      ><a name="2182"
+      > </a
+      ><a name="2183" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="2187"
+      >
+
+\end{code}
+
+</a
+      ><a name="2201" class="Comment"
+      >If the 2nd bit is &#8869;, then F&#8325; applies SUCC to ZERO 3 times, i.e. returns 3.</a
+      ><a name="2275"
+      >
+</a
+      ><a name="2276" class="Comment"
+      >If the 2nd bit is &#8868;, then F&#8325; applies SUCC to ZERO twice, i.e. returns 2.</a
+      ><a name="2348"
+      >
+
+\begin{code}
+
+</a
+      ><a name="2364" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1134" class="Function"
+      >F&#8325;</a
+      ><a name="2366"
+      > </a
+      ><a name="2367" class="Symbol"
+      >=</a
+      ><a name="2368"
+      > </a
+      ><a name="2369" href="UsingSetoid.ModellingUC.UCinT.html#1456" class="InductiveConstructor"
+      >LAM</a
+      ><a name="2372"
+      > </a
+      ><a name="2373" class="Symbol"
+      >(</a
+      ><a name="2374" href="UsingSetoid.ModellingUC.UCinT.html#1386" class="InductiveConstructor"
+      >REC</a
+      ><a name="2377"
+      > </a
+      ><a name="2378" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2379"
+      > </a
+      ><a name="2380" href="UsingSetoid.ModellingUC.UCinT.html#1288" class="InductiveConstructor"
+      >ZERO</a
+      ><a name="2384"
+      > </a
+      ><a name="2385" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2386"
+      > </a
+      ><a name="2387" href="UsingSetoid.ModellingUC.UCinT.html#1456" class="InductiveConstructor"
+      >LAM</a
+      ><a name="2390"
+      > </a
+      ><a name="2391" href="UsingSetoid.ModellingUC.UCinT.html#1334" class="InductiveConstructor"
+      >SUCC</a
+      ><a name="2395"
+      > </a
+      ><a name="2396" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2397"
+      > </a
+      ><a name="2398" class="Symbol"
+      >(</a
+      ><a name="2399" href="UsingSetoid.ModellingUC.UCinT.html#1228" class="InductiveConstructor"
+      >IF</a
+      ><a name="2401"
+      > </a
+      ><a name="2402" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2403"
+      > </a
+      ><a name="2404" class="Symbol"
+      >(</a
+      ><a name="2405" href="UsingSetoid.ModellingUC.UCinT.html#1068" class="InductiveConstructor"
+      >VAR</a
+      ><a name="2408"
+      > </a
+      ><a name="2409" href="UsingSetoid.ModellingUC.UCinT.html#847" class="InductiveConstructor"
+      >zero</a
+      ><a name="2413"
+      > </a
+      ><a name="2414" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2415"
+      > </a
+      ><a name="2416" href="UsingSetoid.ModellingUC.ComputationExperiments.html#968" class="Function"
+      >ONE</a
+      ><a name="2419" class="Symbol"
+      >)</a
+      ><a name="2420"
+      > </a
+      ><a name="2421" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2422"
+      > </a
+      ><a name="2423" href="UsingSetoid.ModellingUC.ComputationExperiments.html#976" class="Function"
+      >THREE</a
+      ><a name="2428"
+      > </a
+      ><a name="2429" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2430"
+      > </a
+      ><a name="2431" href="UsingSetoid.ModellingUC.ComputationExperiments.html#972" class="Function"
+      >TWO</a
+      ><a name="2434" class="Symbol"
+      >))</a
+      ><a name="2436"
+      >
+
+</a
+      ><a name="2438" href="UsingSetoid.ModellingUC.ComputationExperiments.html#2438" class="Function"
+      >F&#8325;-interpretation</a
+      ><a name="2455"
+      > </a
+      ><a name="2456" class="Symbol"
+      >:</a
+      ><a name="2457"
+      > </a
+      ><a name="2458" href="UsingSetoid.ModellingUC.ComputationExperiments.html#803" class="Function Operator"
+      >&#10214;</a
+      ><a name="2459"
+      > </a
+      ><a name="2460" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1134" class="Function"
+      >F&#8325;</a
+      ><a name="2462"
+      > </a
+      ><a name="2463" href="UsingSetoid.ModellingUC.ComputationExperiments.html#803" class="Function Operator"
+      >&#10215;</a
+      ><a name="2464"
+      > </a
+      ><a name="2465" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2466"
+      > </a
+      ><a name="2467" class="Symbol"
+      >&#955;</a
+      ><a name="2468"
+      > </a
+      ><a name="2469" href="UsingSetoid.ModellingUC.ComputationExperiments.html#2469" class="Bound"
+      >&#945;</a
+      ><a name="2470"
+      > </a
+      ><a name="2471" class="Symbol"
+      >&#8594;</a
+      ><a name="2472"
+      > </a
+      ><a name="2473" href="Preliminaries.NaturalNumber.html#475" class="Function"
+      >rec</a
+      ><a name="2476"
+      > </a
+      ><a name="2477" href="Preliminaries.NaturalNumber.html#300" class="InductiveConstructor"
+      >zero</a
+      ><a name="2481"
+      > </a
+      ><a name="2482" class="Symbol"
+      >(&#955;</a
+      ><a name="2484"
+      > </a
+      ><a name="2485" href="UsingSetoid.ModellingUC.ComputationExperiments.html#2485" class="Bound"
+      >_</a
+      ><a name="2486"
+      > </a
+      ><a name="2487" class="Symbol"
+      >&#8594;</a
+      ><a name="2488"
+      > </a
+      ><a name="2489" href="Preliminaries.NaturalNumber.html#311" class="InductiveConstructor"
+      >succ</a
+      ><a name="2493" class="Symbol"
+      >)</a
+      ><a name="2494"
+      > </a
+      ><a name="2495" class="Symbol"
+      >(</a
+      ><a name="2496" href="Preliminaries.Boolean.html#302" class="Function"
+      >if</a
+      ><a name="2498"
+      > </a
+      ><a name="2499" class="Symbol"
+      >(</a
+      ><a name="2500" href="UsingSetoid.ModellingUC.ComputationExperiments.html#2469" class="Bound"
+      >&#945;</a
+      ><a name="2501"
+      > </a
+      ><a name="2502" class="Number"
+      >1</a
+      ><a name="2503" class="Symbol"
+      >)</a
+      ><a name="2504"
+      > </a
+      ><a name="2505" class="Number"
+      >3</a
+      ><a name="2506"
+      > </a
+      ><a name="2507" class="Number"
+      >2</a
+      ><a name="2508" class="Symbol"
+      >)</a
+      ><a name="2509"
+      >
+</a
+      ><a name="2510" href="UsingSetoid.ModellingUC.ComputationExperiments.html#2438" class="Function"
+      >F&#8325;-interpretation</a
+      ><a name="2527"
+      > </a
+      ><a name="2528" class="Symbol"
+      >=</a
+      ><a name="2529"
+      > </a
+      ><a name="2530" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="2534"
+      >
+
+\end{code}
+
+</a
+      ><a name="2548" class="Comment"
+      >A more complicated example</a
+      ><a name="2574"
+      >
+
+\begin{code}
+
+</a
+      ><a name="2590" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1137" class="Function"
+      >F&#8326;</a
+      ><a name="2592"
+      > </a
+      ><a name="2593" class="Symbol"
+      >=</a
+      ><a name="2594"
+      > </a
+      ><a name="2595" href="UsingSetoid.ModellingUC.UCinT.html#1456" class="InductiveConstructor"
+      >LAM</a
+      ><a name="2598"
+      > </a
+      ><a name="2599" class="Symbol"
+      >(</a
+      ><a name="2600" href="UsingSetoid.ModellingUC.UCinT.html#1386" class="InductiveConstructor"
+      >REC</a
+      ><a name="2603"
+      > </a
+      ><a name="2604" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2605"
+      > </a
+      ><a name="2606" class="Symbol"
+      >(</a
+      ><a name="2607" href="UsingSetoid.ModellingUC.UCinT.html#1228" class="InductiveConstructor"
+      >IF</a
+      ><a name="2609"
+      > </a
+      ><a name="2610" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2611"
+      > </a
+      ><a name="2612" class="Symbol"
+      >(</a
+      ><a name="2613" href="UsingSetoid.ModellingUC.UCinT.html#1068" class="InductiveConstructor"
+      >VAR</a
+      ><a name="2616"
+      > </a
+      ><a name="2617" href="UsingSetoid.ModellingUC.UCinT.html#847" class="InductiveConstructor"
+      >zero</a
+      ><a name="2621"
+      > </a
+      ><a name="2622" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2623"
+      > </a
+      ><a name="2624" class="Symbol"
+      >(</a
+      ><a name="2625" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1134" class="Function"
+      >F&#8325;</a
+      ><a name="2627"
+      > </a
+      ><a name="2628" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2629"
+      > </a
+      ><a name="2630" href="UsingSetoid.ModellingUC.UCinT.html#1068" class="InductiveConstructor"
+      >VAR</a
+      ><a name="2633"
+      > </a
+      ><a name="2634" href="UsingSetoid.ModellingUC.UCinT.html#847" class="InductiveConstructor"
+      >zero</a
+      ><a name="2638" class="Symbol"
+      >))</a
+      ><a name="2640"
+      > </a
+      ><a name="2641" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2642"
+      > </a
+      ><a name="2643" href="UsingSetoid.ModellingUC.ComputationExperiments.html#987" class="Function"
+      >FIVE</a
+      ><a name="2647"
+      > </a
+      ><a name="2648" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2649"
+      > </a
+      ><a name="2650" href="UsingSetoid.ModellingUC.ComputationExperiments.html#972" class="Function"
+      >TWO</a
+      ><a name="2653" class="Symbol"
+      >)</a
+      ><a name="2654"
+      > </a
+      ><a name="2655" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2656"
+      > </a
+      ><a name="2657" href="UsingSetoid.ModellingUC.UCinT.html#1456" class="InductiveConstructor"
+      >LAM</a
+      ><a name="2660"
+      > </a
+      ><a name="2661" href="UsingSetoid.ModellingUC.UCinT.html#1334" class="InductiveConstructor"
+      >SUCC</a
+      ><a name="2665"
+      >
+              </a
+      ><a name="2680" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2681"
+      > </a
+      ><a name="2682" class="Symbol"
+      >(</a
+      ><a name="2683" href="UsingSetoid.ModellingUC.UCinT.html#1228" class="InductiveConstructor"
+      >IF</a
+      ><a name="2685"
+      > </a
+      ><a name="2686" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2687"
+      > </a
+      ><a name="2688" class="Symbol"
+      >(</a
+      ><a name="2689" href="UsingSetoid.ModellingUC.UCinT.html#1068" class="InductiveConstructor"
+      >VAR</a
+      ><a name="2692"
+      > </a
+      ><a name="2693" href="UsingSetoid.ModellingUC.UCinT.html#847" class="InductiveConstructor"
+      >zero</a
+      ><a name="2697"
+      > </a
+      ><a name="2698" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2699"
+      > </a
+      ><a name="2700" class="Symbol"
+      >(</a
+      ><a name="2701" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1131" class="Function"
+      >F&#8324;</a
+      ><a name="2703"
+      > </a
+      ><a name="2704" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2705"
+      > </a
+      ><a name="2706" href="UsingSetoid.ModellingUC.UCinT.html#1068" class="InductiveConstructor"
+      >VAR</a
+      ><a name="2709"
+      > </a
+      ><a name="2710" href="UsingSetoid.ModellingUC.UCinT.html#847" class="InductiveConstructor"
+      >zero</a
+      ><a name="2714" class="Symbol"
+      >))</a
+      ><a name="2716"
+      > </a
+      ><a name="2717" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2718"
+      > </a
+      ><a name="2719" href="UsingSetoid.ModellingUC.ComputationExperiments.html#976" class="Function"
+      >THREE</a
+      ><a name="2724"
+      > </a
+      ><a name="2725" href="UsingSetoid.ModellingUC.UCinT.html#1523" class="InductiveConstructor Operator"
+      >&#8729;</a
+      ><a name="2726"
+      > </a
+      ><a name="2727" href="UsingSetoid.ModellingUC.ComputationExperiments.html#972" class="Function"
+      >TWO</a
+      ><a name="2730" class="Symbol"
+      >))</a
+      ><a name="2732"
+      >
+
+</a
+      ><a name="2734" href="UsingSetoid.ModellingUC.ComputationExperiments.html#2734" class="Function"
+      >F&#8326;-interpretation</a
+      ><a name="2751"
+      > </a
+      ><a name="2752" class="Symbol"
+      >:</a
+      ><a name="2753"
+      > </a
+      ><a name="2754" href="UsingSetoid.ModellingUC.ComputationExperiments.html#803" class="Function Operator"
+      >&#10214;</a
+      ><a name="2755"
+      > </a
+      ><a name="2756" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1137" class="Function"
+      >F&#8326;</a
+      ><a name="2758"
+      > </a
+      ><a name="2759" href="UsingSetoid.ModellingUC.ComputationExperiments.html#803" class="Function Operator"
+      >&#10215;</a
+      ><a name="2760"
+      > </a
+      ><a name="2761" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2762"
+      > </a
+      ><a name="2763" class="Symbol"
+      >&#955;</a
+      ><a name="2764"
+      > </a
+      ><a name="2765" href="UsingSetoid.ModellingUC.ComputationExperiments.html#2765" class="Bound"
+      >&#945;</a
+      ><a name="2766"
+      > </a
+      ><a name="2767" class="Symbol"
+      >&#8594;</a
+      ><a name="2768"
+      > </a
+      ><a name="2769" href="Preliminaries.NaturalNumber.html#475" class="Function"
+      >rec</a
+      ><a name="2772"
+      > </a
+      ><a name="2773" class="Symbol"
+      >(</a
+      ><a name="2774" href="Preliminaries.Boolean.html#302" class="Function"
+      >if</a
+      ><a name="2776"
+      > </a
+      ><a name="2777" class="Symbol"
+      >(</a
+      ><a name="2778" href="UsingSetoid.ModellingUC.ComputationExperiments.html#2765" class="Bound"
+      >&#945;</a
+      ><a name="2779"
+      > </a
+      ><a name="2780" class="Symbol"
+      >(</a
+      ><a name="2781" href="UsingSetoid.ModellingUC.ComputationExperiments.html#803" class="Function Operator"
+      >&#10214;</a
+      ><a name="2782"
+      > </a
+      ><a name="2783" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1134" class="Function"
+      >F&#8325;</a
+      ><a name="2785"
+      > </a
+      ><a name="2786" href="UsingSetoid.ModellingUC.ComputationExperiments.html#803" class="Function Operator"
+      >&#10215;</a
+      ><a name="2787"
+      > </a
+      ><a name="2788" href="UsingSetoid.ModellingUC.ComputationExperiments.html#2765" class="Bound"
+      >&#945;</a
+      ><a name="2789" class="Symbol"
+      >))</a
+      ><a name="2791"
+      > </a
+      ><a name="2792" class="Number"
+      >5</a
+      ><a name="2793"
+      > </a
+      ><a name="2794" class="Number"
+      >2</a
+      ><a name="2795" class="Symbol"
+      >)</a
+      ><a name="2796"
+      > </a
+      ><a name="2797" class="Symbol"
+      >(&#955;</a
+      ><a name="2799"
+      > </a
+      ><a name="2800" href="UsingSetoid.ModellingUC.ComputationExperiments.html#2800" class="Bound"
+      >_</a
+      ><a name="2801"
+      > </a
+      ><a name="2802" class="Symbol"
+      >&#8594;</a
+      ><a name="2803"
+      > </a
+      ><a name="2804" href="Preliminaries.NaturalNumber.html#311" class="InductiveConstructor"
+      >succ</a
+      ><a name="2808" class="Symbol"
+      >)</a
+      ><a name="2809"
+      >
+                                       </a
+      ><a name="2849" class="Symbol"
+      >(</a
+      ><a name="2850" href="Preliminaries.Boolean.html#302" class="Function"
+      >if</a
+      ><a name="2852"
+      > </a
+      ><a name="2853" class="Symbol"
+      >(</a
+      ><a name="2854" href="UsingSetoid.ModellingUC.ComputationExperiments.html#2765" class="Bound"
+      >&#945;</a
+      ><a name="2855"
+      > </a
+      ><a name="2856" class="Symbol"
+      >(</a
+      ><a name="2857" href="UsingSetoid.ModellingUC.ComputationExperiments.html#803" class="Function Operator"
+      >&#10214;</a
+      ><a name="2858"
+      > </a
+      ><a name="2859" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1131" class="Function"
+      >F&#8324;</a
+      ><a name="2861"
+      > </a
+      ><a name="2862" href="UsingSetoid.ModellingUC.ComputationExperiments.html#803" class="Function Operator"
+      >&#10215;</a
+      ><a name="2863"
+      > </a
+      ><a name="2864" href="UsingSetoid.ModellingUC.ComputationExperiments.html#2765" class="Bound"
+      >&#945;</a
+      ><a name="2865" class="Symbol"
+      >))</a
+      ><a name="2867"
+      > </a
+      ><a name="2868" class="Number"
+      >3</a
+      ><a name="2869"
+      > </a
+      ><a name="2870" class="Number"
+      >2</a
+      ><a name="2871" class="Symbol"
+      >)</a
+      ><a name="2872"
+      >
+</a
+      ><a name="2873" href="UsingSetoid.ModellingUC.ComputationExperiments.html#2734" class="Function"
+      >F&#8326;-interpretation</a
+      ><a name="2890"
+      > </a
+      ><a name="2891" class="Symbol"
+      >=</a
+      ><a name="2892"
+      > </a
+      ><a name="2893" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="2897"
+      >
+
+\end{code}
+</a
+      ></pre
+    ></body
+  ></html
+>

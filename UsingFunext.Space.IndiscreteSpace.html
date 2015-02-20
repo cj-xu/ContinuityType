@@ -1,0 +1,1533 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >UsingFunext.Space.IndiscreteSpace</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Comment"
+      >Chuangjie Xu 2014</a
+      ><a name="18"
+      >
+
+\begin{code}
+
+</a
+      ><a name="34" class="Symbol"
+      >{-#</a
+      ><a name="37"
+      > </a
+      ><a name="38" class="Keyword"
+      >OPTIONS</a
+      ><a name="45"
+      > --without-K </a
+      ><a name="58" class="Symbol"
+      >#-}</a
+      ><a name="61"
+      >
+
+</a
+      ><a name="63" class="Keyword"
+      >module</a
+      ><a name="69"
+      > </a
+      ><a name="70" href="UsingFunext.Space.IndiscreteSpace.html#1" class="Module"
+      >UsingFunext.Space.IndiscreteSpace</a
+      ><a name="103"
+      > </a
+      ><a name="104" class="Keyword"
+      >where</a
+      ><a name="109"
+      >
+
+</a
+      ><a name="111" class="Keyword"
+      >open</a
+      ><a name="115"
+      > </a
+      ><a name="116" class="Keyword"
+      >import</a
+      ><a name="122"
+      > </a
+      ><a name="123" href="Preliminaries.SetsAndFunctions.html#1" class="Module"
+      >Preliminaries.SetsAndFunctions</a
+      ><a name="153"
+      > </a
+      ><a name="154" class="Keyword"
+      >hiding</a
+      ><a name="160"
+      > </a
+      ><a name="161" class="Symbol"
+      >(</a
+      ><a name="162"
+      >_+_</a
+      ><a name="165" class="Symbol"
+      >)</a
+      ><a name="166"
+      >
+</a
+      ><a name="167" class="Keyword"
+      >open</a
+      ><a name="171"
+      > </a
+      ><a name="172" class="Keyword"
+      >import</a
+      ><a name="178"
+      > </a
+      ><a name="179" href="Preliminaries.NaturalNumber.html#1" class="Module"
+      >Preliminaries.NaturalNumber</a
+      ><a name="206"
+      >
+</a
+      ><a name="207" class="Keyword"
+      >open</a
+      ><a name="211"
+      > </a
+      ><a name="212" class="Keyword"
+      >import</a
+      ><a name="218"
+      > </a
+      ><a name="219" href="Preliminaries.Boolean.html#1" class="Module"
+      >Preliminaries.Boolean</a
+      ><a name="240"
+      >
+</a
+      ><a name="241" class="Keyword"
+      >open</a
+      ><a name="245"
+      > </a
+      ><a name="246" class="Keyword"
+      >import</a
+      ><a name="252"
+      > </a
+      ><a name="253" href="Preliminaries.Sequence.html#1" class="Module"
+      >Preliminaries.Sequence</a
+      ><a name="275"
+      >
+</a
+      ><a name="276" class="Keyword"
+      >open</a
+      ><a name="280"
+      > </a
+      ><a name="281" class="Keyword"
+      >import</a
+      ><a name="287"
+      > </a
+      ><a name="288" href="Continuity.UniformContinuity.html#1" class="Module"
+      >Continuity.UniformContinuity</a
+      ><a name="316"
+      >
+</a
+      ><a name="317" class="Keyword"
+      >open</a
+      ><a name="321"
+      > </a
+      ><a name="322" class="Keyword"
+      >import</a
+      ><a name="328"
+      > </a
+      ><a name="329" href="UsingFunext.Space.Coverage.html#1" class="Module"
+      >UsingFunext.Space.Coverage</a
+      ><a name="355"
+      >
+</a
+      ><a name="356" class="Keyword"
+      >open</a
+      ><a name="360"
+      > </a
+      ><a name="361" class="Keyword"
+      >import</a
+      ><a name="367"
+      > </a
+      ><a name="368" href="UsingFunext.Space.Space.html#1" class="Module"
+      >UsingFunext.Space.Space</a
+      ><a name="391"
+      >
+</a
+      ><a name="392" class="Keyword"
+      >open</a
+      ><a name="396"
+      > </a
+      ><a name="397" class="Keyword"
+      >import</a
+      ><a name="403"
+      > </a
+      ><a name="404" href="UsingFunext.Space.CartesianClosedness.html#1" class="Module"
+      >UsingFunext.Space.CartesianClosedness</a
+      ><a name="441"
+      >
+</a
+      ><a name="442" class="Keyword"
+      >open</a
+      ><a name="446"
+      > </a
+      ><a name="447" class="Keyword"
+      >import</a
+      ><a name="453"
+      > </a
+      ><a name="454" href="UsingFunext.Space.Coproduct.html#1" class="Module"
+      >UsingFunext.Space.Coproduct</a
+      ><a name="481"
+      >
+
+\end{code}
+
+</a
+      ><a name="495" class="Comment"
+      >Indisrecte C-spaces</a
+      ><a name="514"
+      >
+
+\begin{code}
+
+</a
+      ><a name="530" href="UsingFunext.Space.IndiscreteSpace.html#530" class="Function"
+      >indiscrete</a
+      ><a name="540"
+      > </a
+      ><a name="541" class="Symbol"
+      >:</a
+      ><a name="542"
+      > </a
+      ><a name="543" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="548"
+      > </a
+      ><a name="549" class="Symbol"
+      >&#8594;</a
+      ><a name="550"
+      > </a
+      ><a name="551" class="PrimitiveType"
+      >Set</a
+      ><a name="554"
+      >
+</a
+      ><a name="555" href="UsingFunext.Space.IndiscreteSpace.html#530" class="Function"
+      >indiscrete</a
+      ><a name="565"
+      > </a
+      ><a name="566" href="UsingFunext.Space.IndiscreteSpace.html#566" class="Bound"
+      >X</a
+      ><a name="567"
+      > </a
+      ><a name="568" class="Symbol"
+      >=</a
+      ><a name="569"
+      > </a
+      ><a name="570" class="Symbol"
+      >&#8704;(</a
+      ><a name="572" href="UsingFunext.Space.IndiscreteSpace.html#572" class="Bound"
+      >p</a
+      ><a name="573"
+      > </a
+      ><a name="574" class="Symbol"
+      >:</a
+      ><a name="575"
+      > </a
+      ><a name="576" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="578"
+      > </a
+      ><a name="579" class="Symbol"
+      >&#8594;</a
+      ><a name="580"
+      > </a
+      ><a name="581" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="582"
+      > </a
+      ><a name="583" href="UsingFunext.Space.IndiscreteSpace.html#566" class="Bound"
+      >X</a
+      ><a name="584" class="Symbol"
+      >)</a
+      ><a name="585"
+      > </a
+      ><a name="586" class="Symbol"
+      >&#8594;</a
+      ><a name="587"
+      > </a
+      ><a name="588" href="UsingFunext.Space.IndiscreteSpace.html#572" class="Bound"
+      >p</a
+      ><a name="589"
+      > </a
+      ><a name="590" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="591"
+      > </a
+      ><a name="592" href="UsingFunext.Space.Space.html#1150" class="Function"
+      >Probe</a
+      ><a name="597"
+      > </a
+      ><a name="598" href="UsingFunext.Space.IndiscreteSpace.html#566" class="Bound"
+      >X</a
+      ><a name="599"
+      >
+
+\end{code}
+
+</a
+      ><a name="613" class="Comment"
+      >The arbitrary product of indiscrete spaces is indiscrete.</a
+      ><a name="670"
+      >
+
+\begin{code}
+
+</a
+      ><a name="686" href="UsingFunext.Space.IndiscreteSpace.html#686" class="Function"
+      >Proposition[&#8719;-indiscrete]</a
+      ><a name="711"
+      > </a
+      ><a name="712" class="Symbol"
+      >:</a
+      ><a name="713"
+      >
+
+  </a
+      ><a name="717" class="Symbol"
+      >&#8704;{</a
+      ><a name="719" href="UsingFunext.Space.IndiscreteSpace.html#719" class="Bound"
+      >I</a
+      ><a name="720"
+      > </a
+      ><a name="721" class="Symbol"
+      >:</a
+      ><a name="722"
+      > </a
+      ><a name="723" class="PrimitiveType"
+      >Set</a
+      ><a name="726" class="Symbol"
+      >}</a
+      ><a name="727"
+      > </a
+      ><a name="728" class="Symbol"
+      >(</a
+      ><a name="729" href="UsingFunext.Space.IndiscreteSpace.html#729" class="Bound"
+      >X</a
+      ><a name="730"
+      > </a
+      ><a name="731" class="Symbol"
+      >:</a
+      ><a name="732"
+      > </a
+      ><a name="733" href="UsingFunext.Space.IndiscreteSpace.html#719" class="Bound"
+      >I</a
+      ><a name="734"
+      > </a
+      ><a name="735" class="Symbol"
+      >&#8594;</a
+      ><a name="736"
+      > </a
+      ><a name="737" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="742" class="Symbol"
+      >)</a
+      ><a name="743"
+      > </a
+      ><a name="744" class="Symbol"
+      >&#8594;</a
+      ><a name="745"
+      > </a
+      ><a name="746" class="Symbol"
+      >(&#8704;</a
+      ><a name="748"
+      > </a
+      ><a name="749" href="UsingFunext.Space.IndiscreteSpace.html#749" class="Bound"
+      >i</a
+      ><a name="750"
+      > </a
+      ><a name="751" class="Symbol"
+      >&#8594;</a
+      ><a name="752"
+      > </a
+      ><a name="753" href="UsingFunext.Space.IndiscreteSpace.html#530" class="Function"
+      >indiscrete</a
+      ><a name="763"
+      > </a
+      ><a name="764" class="Symbol"
+      >(</a
+      ><a name="765" href="UsingFunext.Space.IndiscreteSpace.html#729" class="Bound"
+      >X</a
+      ><a name="766"
+      > </a
+      ><a name="767" href="UsingFunext.Space.IndiscreteSpace.html#749" class="Bound"
+      >i</a
+      ><a name="768" class="Symbol"
+      >))</a
+      ><a name="770"
+      > </a
+      ><a name="771" class="Symbol"
+      >&#8594;</a
+      ><a name="772"
+      > </a
+      ><a name="773" href="UsingFunext.Space.IndiscreteSpace.html#530" class="Function"
+      >indiscrete</a
+      ><a name="783"
+      > </a
+      ><a name="784" class="Symbol"
+      >(</a
+      ><a name="785" href="UsingFunext.Space.CartesianClosedness.html#4811" class="Function"
+      >&#8719;</a
+      ><a name="786"
+      > </a
+      ><a name="787" href="UsingFunext.Space.IndiscreteSpace.html#729" class="Bound"
+      >X</a
+      ><a name="788" class="Symbol"
+      >)</a
+      ><a name="789"
+      >
+
+</a
+      ><a name="791" href="UsingFunext.Space.IndiscreteSpace.html#686" class="Function"
+      >Proposition[&#8719;-indiscrete]</a
+      ><a name="816"
+      > </a
+      ><a name="817" href="UsingFunext.Space.IndiscreteSpace.html#817" class="Bound"
+      >X</a
+      ><a name="818"
+      > </a
+      ><a name="819" href="UsingFunext.Space.IndiscreteSpace.html#819" class="Bound"
+      >indX</a
+      ><a name="823"
+      > </a
+      ><a name="824" href="UsingFunext.Space.IndiscreteSpace.html#824" class="Bound"
+      >p</a
+      ><a name="825"
+      > </a
+      ><a name="826" class="Symbol"
+      >=</a
+      ><a name="827"
+      > </a
+      ><a name="828" href="UsingFunext.Space.IndiscreteSpace.html#842" class="Function"
+      >goal</a
+      ><a name="832"
+      >
+ </a
+      ><a name="834" class="Keyword"
+      >where</a
+      ><a name="839"
+      >
+  </a
+      ><a name="842" href="UsingFunext.Space.IndiscreteSpace.html#842" class="Function"
+      >goal</a
+      ><a name="846"
+      > </a
+      ><a name="847" class="Symbol"
+      >:</a
+      ><a name="848"
+      > </a
+      ><a name="849" href="UsingFunext.Space.IndiscreteSpace.html#824" class="Bound"
+      >p</a
+      ><a name="850"
+      > </a
+      ><a name="851" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="852"
+      > </a
+      ><a name="853" href="UsingFunext.Space.Space.html#1150" class="Function"
+      >Probe</a
+      ><a name="858"
+      > </a
+      ><a name="859" class="Symbol"
+      >(</a
+      ><a name="860" href="UsingFunext.Space.CartesianClosedness.html#4811" class="Function"
+      >&#8719;</a
+      ><a name="861"
+      > </a
+      ><a name="862" href="UsingFunext.Space.IndiscreteSpace.html#817" class="Bound"
+      >X</a
+      ><a name="863" class="Symbol"
+      >)</a
+      ><a name="864"
+      >
+      </a
+      ><a name="871" class="Comment"
+      >-- &#8704; i &#8594; (&#955; &#945; &#8594; p &#945; i) &#8712; Probe (X i)</a
+      ><a name="907"
+      >
+  </a
+      ><a name="910" href="UsingFunext.Space.IndiscreteSpace.html#842" class="Function"
+      >goal</a
+      ><a name="914"
+      > </a
+      ><a name="915" href="UsingFunext.Space.IndiscreteSpace.html#915" class="Bound"
+      >i</a
+      ><a name="916"
+      > </a
+      ><a name="917" class="Symbol"
+      >=</a
+      ><a name="918"
+      > </a
+      ><a name="919" href="UsingFunext.Space.IndiscreteSpace.html#819" class="Bound"
+      >indX</a
+      ><a name="923"
+      > </a
+      ><a name="924" href="UsingFunext.Space.IndiscreteSpace.html#915" class="Bound"
+      >i</a
+      ><a name="925"
+      > </a
+      ><a name="926" class="Symbol"
+      >(&#955;</a
+      ><a name="928"
+      > </a
+      ><a name="929" href="UsingFunext.Space.IndiscreteSpace.html#929" class="Bound"
+      >&#945;</a
+      ><a name="930"
+      > </a
+      ><a name="931" class="Symbol"
+      >&#8594;</a
+      ><a name="932"
+      > </a
+      ><a name="933" href="UsingFunext.Space.IndiscreteSpace.html#824" class="Bound"
+      >p</a
+      ><a name="934"
+      > </a
+      ><a name="935" href="UsingFunext.Space.IndiscreteSpace.html#929" class="Bound"
+      >&#945;</a
+      ><a name="936"
+      > </a
+      ><a name="937" href="UsingFunext.Space.IndiscreteSpace.html#915" class="Bound"
+      >i</a
+      ><a name="938" class="Symbol"
+      >)</a
+      ><a name="939"
+      >
+
+\end{code}
+
+</a
+      ><a name="953" class="Comment"
+      >The coproduct of countable family of indiscrete spaces is indiscrete, if UC</a
+      ><a name="1028"
+      >
+</a
+      ><a name="1029" class="Comment"
+      >holds in Set.</a
+      ><a name="1042"
+      >
+
+\begin{code}
+
+</a
+      ><a name="1058" href="UsingFunext.Space.IndiscreteSpace.html#1058" class="Function"
+      >Proposition[UC-&#8720;-indiscrete]</a
+      ><a name="1086"
+      > </a
+      ><a name="1087" class="Symbol"
+      >:</a
+      ><a name="1088"
+      > </a
+      ><a name="1089" href="Continuity.UniformContinuity.html#524" class="Function"
+      >Axiom[UC-&#8469;]</a
+      ><a name="1100"
+      > </a
+      ><a name="1101" class="Symbol"
+      >&#8594;</a
+      ><a name="1102"
+      >
+
+  </a
+      ><a name="1106" class="Symbol"
+      >&#8704;(</a
+      ><a name="1108" href="UsingFunext.Space.IndiscreteSpace.html#1108" class="Bound"
+      >X</a
+      ><a name="1109"
+      > </a
+      ><a name="1110" class="Symbol"
+      >:</a
+      ><a name="1111"
+      > </a
+      ><a name="1112" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1113"
+      > </a
+      ><a name="1114" class="Symbol"
+      >&#8594;</a
+      ><a name="1115"
+      > </a
+      ><a name="1116" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="1121" class="Symbol"
+      >)</a
+      ><a name="1122"
+      > </a
+      ><a name="1123" class="Symbol"
+      >&#8594;</a
+      ><a name="1124"
+      > </a
+      ><a name="1125" class="Symbol"
+      >(&#8704;(</a
+      ><a name="1128" href="UsingFunext.Space.IndiscreteSpace.html#1128" class="Bound"
+      >i</a
+      ><a name="1129"
+      > </a
+      ><a name="1130" class="Symbol"
+      >:</a
+      ><a name="1131"
+      > </a
+      ><a name="1132" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1133" class="Symbol"
+      >)</a
+      ><a name="1134"
+      > </a
+      ><a name="1135" class="Symbol"
+      >&#8594;</a
+      ><a name="1136"
+      > </a
+      ><a name="1137" href="UsingFunext.Space.IndiscreteSpace.html#530" class="Function"
+      >indiscrete</a
+      ><a name="1147"
+      > </a
+      ><a name="1148" class="Symbol"
+      >(</a
+      ><a name="1149" href="UsingFunext.Space.IndiscreteSpace.html#1108" class="Bound"
+      >X</a
+      ><a name="1150"
+      > </a
+      ><a name="1151" href="UsingFunext.Space.IndiscreteSpace.html#1128" class="Bound"
+      >i</a
+      ><a name="1152" class="Symbol"
+      >))</a
+      ><a name="1154"
+      > </a
+      ><a name="1155" class="Symbol"
+      >&#8594;</a
+      ><a name="1156"
+      > </a
+      ><a name="1157" href="UsingFunext.Space.IndiscreteSpace.html#530" class="Function"
+      >indiscrete</a
+      ><a name="1167"
+      > </a
+      ><a name="1168" class="Symbol"
+      >(</a
+      ><a name="1169" href="UsingFunext.Space.Coproduct.html#11290" class="Function"
+      >&#8720;</a
+      ><a name="1170"
+      > </a
+      ><a name="1171" href="UsingFunext.Space.IndiscreteSpace.html#1108" class="Bound"
+      >X</a
+      ><a name="1172" class="Symbol"
+      >)</a
+      ><a name="1173"
+      >
+
+</a
+      ><a name="1175" href="UsingFunext.Space.IndiscreteSpace.html#1058" class="Function"
+      >Proposition[UC-&#8720;-indiscrete]</a
+      ><a name="1203"
+      > </a
+      ><a name="1204" href="UsingFunext.Space.IndiscreteSpace.html#1204" class="Bound"
+      >uc</a
+      ><a name="1206"
+      > </a
+      ><a name="1207" href="UsingFunext.Space.IndiscreteSpace.html#1207" class="Bound"
+      >X</a
+      ><a name="1208"
+      > </a
+      ><a name="1209" href="UsingFunext.Space.IndiscreteSpace.html#1209" class="Bound"
+      >indX</a
+      ><a name="1213"
+      > </a
+      ><a name="1214" href="UsingFunext.Space.IndiscreteSpace.html#1214" class="Bound"
+      >p</a
+      ><a name="1215"
+      > </a
+      ><a name="1216" class="Symbol"
+      >=</a
+      ><a name="1217"
+      > </a
+      ><a name="1218" href="UsingFunext.Space.IndiscreteSpace.html#1297" class="Function"
+      >n</a
+      ><a name="1219"
+      > </a
+      ><a name="1220" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1221"
+      > </a
+      ><a name="1222" href="UsingFunext.Space.IndiscreteSpace.html#1408" class="Function"
+      >prf</a
+      ><a name="1225"
+      >
+ </a
+      ><a name="1227" class="Keyword"
+      >where</a
+      ><a name="1232"
+      >
+  </a
+      ><a name="1235" href="UsingFunext.Space.IndiscreteSpace.html#1235" class="Function"
+      >claim&#8320;</a
+      ><a name="1241"
+      > </a
+      ><a name="1242" class="Symbol"
+      >:</a
+      ><a name="1243"
+      > </a
+      ><a name="1244" href="Continuity.UniformContinuity.html#402" class="Function"
+      >locally-constant</a
+      ><a name="1260"
+      > </a
+      ><a name="1261" class="Symbol"
+      >(</a
+      ><a name="1262" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1265"
+      > </a
+      ><a name="1266" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1267"
+      > </a
+      ><a name="1268" href="UsingFunext.Space.IndiscreteSpace.html#1214" class="Bound"
+      >p</a
+      ><a name="1269" class="Symbol"
+      >)</a
+      ><a name="1270"
+      >
+  </a
+      ><a name="1273" href="UsingFunext.Space.IndiscreteSpace.html#1235" class="Function"
+      >claim&#8320;</a
+      ><a name="1279"
+      > </a
+      ><a name="1280" class="Symbol"
+      >=</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" href="UsingFunext.Space.IndiscreteSpace.html#1204" class="Bound"
+      >uc</a
+      ><a name="1284"
+      > </a
+      ><a name="1285" class="Symbol"
+      >(</a
+      ><a name="1286" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1289"
+      > </a
+      ><a name="1290" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1291"
+      > </a
+      ><a name="1292" href="UsingFunext.Space.IndiscreteSpace.html#1214" class="Bound"
+      >p</a
+      ><a name="1293" class="Symbol"
+      >)</a
+      ><a name="1294"
+      >
+  </a
+      ><a name="1297" href="UsingFunext.Space.IndiscreteSpace.html#1297" class="Function"
+      >n</a
+      ><a name="1298"
+      > </a
+      ><a name="1299" class="Symbol"
+      >:</a
+      ><a name="1300"
+      > </a
+      ><a name="1301" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1302"
+      >
+  </a
+      ><a name="1305" href="UsingFunext.Space.IndiscreteSpace.html#1297" class="Function"
+      >n</a
+      ><a name="1306"
+      > </a
+      ><a name="1307" class="Symbol"
+      >=</a
+      ><a name="1308"
+      > </a
+      ><a name="1309" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1312"
+      > </a
+      ><a name="1313" href="UsingFunext.Space.IndiscreteSpace.html#1235" class="Function"
+      >claim&#8320;</a
+      ><a name="1319"
+      >
+  </a
+      ><a name="1322" href="UsingFunext.Space.IndiscreteSpace.html#1322" class="Function"
+      >claim&#8321;</a
+      ><a name="1328"
+      > </a
+      ><a name="1329" class="Symbol"
+      >:</a
+      ><a name="1330"
+      > </a
+      ><a name="1331" class="Symbol"
+      >&#8704;(</a
+      ><a name="1333" href="UsingFunext.Space.IndiscreteSpace.html#1333" class="Bound"
+      >&#945;</a
+      ><a name="1334"
+      > </a
+      ><a name="1335" href="UsingFunext.Space.IndiscreteSpace.html#1335" class="Bound"
+      >&#946;</a
+      ><a name="1336"
+      > </a
+      ><a name="1337" class="Symbol"
+      >:</a
+      ><a name="1338"
+      > </a
+      ><a name="1339" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1341" class="Symbol"
+      >)</a
+      ><a name="1342"
+      > </a
+      ><a name="1343" class="Symbol"
+      >&#8594;</a
+      ><a name="1344"
+      > </a
+      ><a name="1345" href="UsingFunext.Space.IndiscreteSpace.html#1333" class="Bound"
+      >&#945;</a
+      ><a name="1346"
+      > </a
+      ><a name="1347" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="1349"
+      > </a
+      ><a name="1350" href="UsingFunext.Space.IndiscreteSpace.html#1297" class="Function"
+      >n</a
+      ><a name="1351"
+      > </a
+      ><a name="1352" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="1353"
+      > </a
+      ><a name="1354" href="UsingFunext.Space.IndiscreteSpace.html#1335" class="Bound"
+      >&#946;</a
+      ><a name="1355"
+      > </a
+      ><a name="1356" class="Symbol"
+      >&#8594;</a
+      ><a name="1357"
+      > </a
+      ><a name="1358" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1361" class="Symbol"
+      >(</a
+      ><a name="1362" href="UsingFunext.Space.IndiscreteSpace.html#1214" class="Bound"
+      >p</a
+      ><a name="1363"
+      > </a
+      ><a name="1364" href="UsingFunext.Space.IndiscreteSpace.html#1333" class="Bound"
+      >&#945;</a
+      ><a name="1365" class="Symbol"
+      >)</a
+      ><a name="1366"
+      > </a
+      ><a name="1367" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1368"
+      > </a
+      ><a name="1369" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1372" class="Symbol"
+      >(</a
+      ><a name="1373" href="UsingFunext.Space.IndiscreteSpace.html#1214" class="Bound"
+      >p</a
+      ><a name="1374"
+      > </a
+      ><a name="1375" href="UsingFunext.Space.IndiscreteSpace.html#1335" class="Bound"
+      >&#946;</a
+      ><a name="1376" class="Symbol"
+      >)</a
+      ><a name="1377"
+      >
+  </a
+      ><a name="1380" href="UsingFunext.Space.IndiscreteSpace.html#1322" class="Function"
+      >claim&#8321;</a
+      ><a name="1386"
+      > </a
+      ><a name="1387" class="Symbol"
+      >=</a
+      ><a name="1388"
+      > </a
+      ><a name="1389" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1392"
+      > </a
+      ><a name="1393" class="Symbol"
+      >(</a
+      ><a name="1394" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="1397"
+      > </a
+      ><a name="1398" href="UsingFunext.Space.IndiscreteSpace.html#1235" class="Function"
+      >claim&#8320;</a
+      ><a name="1404" class="Symbol"
+      >)</a
+      ><a name="1405"
+      >
+  </a
+      ><a name="1408" href="UsingFunext.Space.IndiscreteSpace.html#1408" class="Function"
+      >prf</a
+      ><a name="1411"
+      > </a
+      ><a name="1412" class="Symbol"
+      >:</a
+      ><a name="1413"
+      > </a
+      ><a name="1414" class="Symbol"
+      >&#8704;(</a
+      ><a name="1416" href="UsingFunext.Space.IndiscreteSpace.html#1416" class="Bound"
+      >s</a
+      ><a name="1417"
+      > </a
+      ><a name="1418" class="Symbol"
+      >:</a
+      ><a name="1419"
+      > </a
+      ><a name="1420" href="Preliminaries.Sequence.html#507" class="Datatype"
+      >&#8322;Fin</a
+      ><a name="1424"
+      > </a
+      ><a name="1425" href="UsingFunext.Space.IndiscreteSpace.html#1297" class="Function"
+      >n</a
+      ><a name="1426" class="Symbol"
+      >)</a
+      ><a name="1427"
+      > </a
+      ><a name="1428" class="Symbol"
+      >&#8594;</a
+      ><a name="1429"
+      > </a
+      ><a name="1430" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="1431"
+      > </a
+      ><a name="1432" class="Symbol"
+      >\(</a
+      ><a name="1434" href="UsingFunext.Space.IndiscreteSpace.html#1434" class="Bound"
+      >i</a
+      ><a name="1435"
+      > </a
+      ><a name="1436" class="Symbol"
+      >:</a
+      ><a name="1437"
+      > </a
+      ><a name="1438" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1439" class="Symbol"
+      >)</a
+      ><a name="1440"
+      > </a
+      ><a name="1441" class="Symbol"
+      >&#8594;</a
+      ><a name="1442"
+      > </a
+      ><a name="1443" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="1444"
+      > </a
+      ><a name="1445" class="Symbol"
+      >\(</a
+      ><a name="1447" href="UsingFunext.Space.IndiscreteSpace.html#1447" class="Bound"
+      >q</a
+      ><a name="1448"
+      > </a
+      ><a name="1449" class="Symbol"
+      >:</a
+      ><a name="1450"
+      > </a
+      ><a name="1451" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1453"
+      > </a
+      ><a name="1454" class="Symbol"
+      >&#8594;</a
+      ><a name="1455"
+      > </a
+      ><a name="1456" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="1457" class="Symbol"
+      >(</a
+      ><a name="1458" href="UsingFunext.Space.IndiscreteSpace.html#1207" class="Bound"
+      >X</a
+      ><a name="1459"
+      > </a
+      ><a name="1460" href="UsingFunext.Space.IndiscreteSpace.html#1434" class="Bound"
+      >i</a
+      ><a name="1461" class="Symbol"
+      >))</a
+      ><a name="1463"
+      > </a
+      ><a name="1464" class="Symbol"
+      >&#8594;</a
+      ><a name="1465"
+      >
+          </a
+      ><a name="1476" class="Symbol"
+      >(</a
+      ><a name="1477" href="UsingFunext.Space.IndiscreteSpace.html#1447" class="Bound"
+      >q</a
+      ><a name="1478"
+      > </a
+      ><a name="1479" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1480"
+      > </a
+      ><a name="1481" href="UsingFunext.Space.Space.html#1150" class="Function"
+      >Probe</a
+      ><a name="1486"
+      > </a
+      ><a name="1487" class="Symbol"
+      >(</a
+      ><a name="1488" href="UsingFunext.Space.IndiscreteSpace.html#1207" class="Bound"
+      >X</a
+      ><a name="1489"
+      > </a
+      ><a name="1490" href="UsingFunext.Space.IndiscreteSpace.html#1434" class="Bound"
+      >i</a
+      ><a name="1491" class="Symbol"
+      >))</a
+      ><a name="1493"
+      > </a
+      ><a name="1494" href="Preliminaries.SetsAndFunctions.html#982" class="Function Operator"
+      >&#215;</a
+      ><a name="1495"
+      > </a
+      ><a name="1496" class="Symbol"
+      >(&#8704;(</a
+      ><a name="1499" href="UsingFunext.Space.IndiscreteSpace.html#1499" class="Bound"
+      >&#945;</a
+      ><a name="1500"
+      > </a
+      ><a name="1501" class="Symbol"
+      >:</a
+      ><a name="1502"
+      > </a
+      ><a name="1503" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1505" class="Symbol"
+      >)</a
+      ><a name="1506"
+      > </a
+      ><a name="1507" class="Symbol"
+      >&#8594;</a
+      ><a name="1508"
+      > </a
+      ><a name="1509" href="UsingFunext.Space.IndiscreteSpace.html#1214" class="Bound"
+      >p</a
+      ><a name="1510" class="Symbol"
+      >(</a
+      ><a name="1511" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1515"
+      > </a
+      ><a name="1516" href="UsingFunext.Space.IndiscreteSpace.html#1416" class="Bound"
+      >s</a
+      ><a name="1517"
+      > </a
+      ><a name="1518" href="UsingFunext.Space.IndiscreteSpace.html#1499" class="Bound"
+      >&#945;</a
+      ><a name="1519" class="Symbol"
+      >)</a
+      ><a name="1520"
+      > </a
+      ><a name="1521" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1522"
+      > </a
+      ><a name="1523" class="Symbol"
+      >(</a
+      ><a name="1524" href="UsingFunext.Space.IndiscreteSpace.html#1434" class="Bound"
+      >i</a
+      ><a name="1525"
+      > </a
+      ><a name="1526" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1527"
+      > </a
+      ><a name="1528" href="UsingFunext.Space.IndiscreteSpace.html#1447" class="Bound"
+      >q</a
+      ><a name="1529"
+      > </a
+      ><a name="1530" href="UsingFunext.Space.IndiscreteSpace.html#1499" class="Bound"
+      >&#945;</a
+      ><a name="1531" class="Symbol"
+      >))</a
+      ><a name="1533"
+      >
+  </a
+      ><a name="1536" href="UsingFunext.Space.IndiscreteSpace.html#1408" class="Function"
+      >prf</a
+      ><a name="1539"
+      > </a
+      ><a name="1540" href="UsingFunext.Space.IndiscreteSpace.html#1540" class="Bound"
+      >s</a
+      ><a name="1541"
+      > </a
+      ><a name="1542" class="Symbol"
+      >=</a
+      ><a name="1543"
+      > </a
+      ><a name="1544" href="UsingFunext.Space.IndiscreteSpace.html#1583" class="Function"
+      >i</a
+      ><a name="1545"
+      > </a
+      ><a name="1546" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1547"
+      > </a
+      ><a name="1548" href="UsingFunext.Space.IndiscreteSpace.html#1727" class="Function"
+      >q</a
+      ><a name="1549"
+      > </a
+      ><a name="1550" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1551"
+      > </a
+      ><a name="1552" href="UsingFunext.Space.IndiscreteSpace.html#1801" class="Function"
+      >sclaim&#8320;</a
+      ><a name="1559"
+      > </a
+      ><a name="1560" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1561"
+      > </a
+      ><a name="1562" href="UsingFunext.Space.IndiscreteSpace.html#1853" class="Function"
+      >sclaim&#8321;</a
+      ><a name="1569"
+      >
+   </a
+      ><a name="1573" class="Keyword"
+      >where</a
+      ><a name="1578"
+      >
+    </a
+      ><a name="1583" href="UsingFunext.Space.IndiscreteSpace.html#1583" class="Function"
+      >i</a
+      ><a name="1584"
+      > </a
+      ><a name="1585" class="Symbol"
+      >:</a
+      ><a name="1586"
+      > </a
+      ><a name="1587" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1588"
+      >
+    </a
+      ><a name="1593" href="UsingFunext.Space.IndiscreteSpace.html#1583" class="Function"
+      >i</a
+      ><a name="1594"
+      > </a
+      ><a name="1595" class="Symbol"
+      >=</a
+      ><a name="1596"
+      > </a
+      ><a name="1597" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1600" class="Symbol"
+      >(</a
+      ><a name="1601" href="UsingFunext.Space.IndiscreteSpace.html#1214" class="Bound"
+      >p</a
+      ><a name="1602" class="Symbol"
+      >(</a
+      ><a name="1603" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1607"
+      > </a
+      ><a name="1608" href="UsingFunext.Space.IndiscreteSpace.html#1540" class="Bound"
+      >s</a
+      ><a name="1609"
+      > </a
+      ><a name="1610" href="Preliminaries.Sequence.html#384" class="Function"
+      >0&#772;</a
+      ><a name="1612" class="Symbol"
+      >))</a
+      ><a name="1614"
+      >
+    </a
+      ><a name="1619" href="UsingFunext.Space.IndiscreteSpace.html#1619" class="Function"
+      >e&#8320;</a
+      ><a name="1621"
+      > </a
+      ><a name="1622" class="Symbol"
+      >:</a
+      ><a name="1623"
+      > </a
+      ><a name="1624" class="Symbol"
+      >&#8704;(</a
+      ><a name="1626" href="UsingFunext.Space.IndiscreteSpace.html#1626" class="Bound"
+      >&#945;</a
+      ><a name="1627"
+      > </a
+      ><a name="1628" class="Symbol"
+      >:</a
+      ><a name="1629"
+      > </a
+      ><a name="1630" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1632" class="Symbol"
+      >)</a
+      ><a name="1633"
+      > </a
+      ><a name="1634" class="Symbol"
+      >&#8594;</a
+      ><a name="1635"
+      > </a
+      ><a name="1636" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1639" class="Symbol"
+      >(</a
+      ><a name="1640" href="UsingFunext.Space.IndiscreteSpace.html#1214" class="Bound"
+      >p</a
+      ><a name="1641" class="Symbol"
+      >(</a
+      ><a name="1642" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1646"
+      > </a
+      ><a name="1647" href="UsingFunext.Space.IndiscreteSpace.html#1540" class="Bound"
+      >s</a
+      ><a name="1648"
+      > </a
+      ><a name="1649" href="UsingFunext.Space.IndiscreteSpace.html#1626" class="Bound"
+      >&#945;</a
+      ><a name="1650" class="Symbol"
+      >))</a
+      ><a name="1652"
+      > </a
+      ><a name="1653" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1654"
+      > </a
+      ><a name="1655" href="UsingFunext.Space.IndiscreteSpace.html#1583" class="Function"
+      >i</a
+      ><a name="1656"
+      >
+    </a
+      ><a name="1661" href="UsingFunext.Space.IndiscreteSpace.html#1619" class="Function"
+      >e&#8320;</a
+      ><a name="1663"
+      > </a
+      ><a name="1664" href="UsingFunext.Space.IndiscreteSpace.html#1664" class="Bound"
+      >&#945;</a
+      ><a name="1665"
+      > </a
+      ><a name="1666" class="Symbol"
+      >=</a
+      ><a name="1667"
+      > </a
+      ><a name="1668" href="UsingFunext.Space.IndiscreteSpace.html#1322" class="Function"
+      >claim&#8321;</a
+      ><a name="1674"
+      > </a
+      ><a name="1675" class="Symbol"
+      >(</a
+      ><a name="1676" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1680"
+      > </a
+      ><a name="1681" href="UsingFunext.Space.IndiscreteSpace.html#1540" class="Bound"
+      >s</a
+      ><a name="1682"
+      > </a
+      ><a name="1683" href="UsingFunext.Space.IndiscreteSpace.html#1664" class="Bound"
+      >&#945;</a
+      ><a name="1684" class="Symbol"
+      >)</a
+      ><a name="1685"
+      > </a
+      ><a name="1686" class="Symbol"
+      >(</a
+      ><a name="1687" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1691"
+      > </a
+      ><a name="1692" href="UsingFunext.Space.IndiscreteSpace.html#1540" class="Bound"
+      >s</a
+      ><a name="1693"
+      > </a
+      ><a name="1694" href="Preliminaries.Sequence.html#384" class="Function"
+      >0&#772;</a
+      ><a name="1696" class="Symbol"
+      >)</a
+      ><a name="1697"
+      > </a
+      ><a name="1698" class="Symbol"
+      >(</a
+      ><a name="1699" href="Preliminaries.Sequence.html#8001" class="Function"
+      >Lemma[cons-&#8801;[]]</a
+      ><a name="1714"
+      > </a
+      ><a name="1715" href="UsingFunext.Space.IndiscreteSpace.html#1540" class="Bound"
+      >s</a
+      ><a name="1716"
+      > </a
+      ><a name="1717" href="UsingFunext.Space.IndiscreteSpace.html#1664" class="Bound"
+      >&#945;</a
+      ><a name="1718"
+      > </a
+      ><a name="1719" href="Preliminaries.Sequence.html#384" class="Function"
+      >0&#772;</a
+      ><a name="1721" class="Symbol"
+      >)</a
+      ><a name="1722"
+      >
+    </a
+      ><a name="1727" href="UsingFunext.Space.IndiscreteSpace.html#1727" class="Function"
+      >q</a
+      ><a name="1728"
+      > </a
+      ><a name="1729" class="Symbol"
+      >:</a
+      ><a name="1730"
+      > </a
+      ><a name="1731" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1733"
+      > </a
+      ><a name="1734" class="Symbol"
+      >&#8594;</a
+      ><a name="1735"
+      > </a
+      ><a name="1736" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="1737" class="Symbol"
+      >(</a
+      ><a name="1738" href="UsingFunext.Space.IndiscreteSpace.html#1207" class="Bound"
+      >X</a
+      ><a name="1739"
+      > </a
+      ><a name="1740" href="UsingFunext.Space.IndiscreteSpace.html#1583" class="Function"
+      >i</a
+      ><a name="1741" class="Symbol"
+      >)</a
+      ><a name="1742"
+      >
+    </a
+      ><a name="1747" href="UsingFunext.Space.IndiscreteSpace.html#1727" class="Function"
+      >q</a
+      ><a name="1748"
+      > </a
+      ><a name="1749" href="UsingFunext.Space.IndiscreteSpace.html#1749" class="Bound"
+      >&#945;</a
+      ><a name="1750"
+      > </a
+      ><a name="1751" class="Symbol"
+      >=</a
+      ><a name="1752"
+      > </a
+      ><a name="1753" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="1762"
+      > </a
+      ><a name="1763" class="Symbol"
+      >(</a
+      ><a name="1764" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="1765"
+      > </a
+      ><a name="1766" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1767"
+      > </a
+      ><a name="1768" href="UsingFunext.Space.IndiscreteSpace.html#1207" class="Bound"
+      >X</a
+      ><a name="1769" class="Symbol"
+      >)</a
+      ><a name="1770"
+      > </a
+      ><a name="1771" class="Symbol"
+      >(</a
+      ><a name="1772" href="UsingFunext.Space.IndiscreteSpace.html#1619" class="Function"
+      >e&#8320;</a
+      ><a name="1774"
+      > </a
+      ><a name="1775" href="UsingFunext.Space.IndiscreteSpace.html#1749" class="Bound"
+      >&#945;</a
+      ><a name="1776" class="Symbol"
+      >)</a
+      ><a name="1777"
+      > </a
+      ><a name="1778" class="Symbol"
+      >(</a
+      ><a name="1779" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="1782" class="Symbol"
+      >(</a
+      ><a name="1783" href="UsingFunext.Space.IndiscreteSpace.html#1214" class="Bound"
+      >p</a
+      ><a name="1784" class="Symbol"
+      >(</a
+      ><a name="1785" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1789"
+      > </a
+      ><a name="1790" href="UsingFunext.Space.IndiscreteSpace.html#1540" class="Bound"
+      >s</a
+      ><a name="1791"
+      > </a
+      ><a name="1792" href="UsingFunext.Space.IndiscreteSpace.html#1749" class="Bound"
+      >&#945;</a
+      ><a name="1793" class="Symbol"
+      >)))</a
+      ><a name="1796"
+      >
+    </a
+      ><a name="1801" href="UsingFunext.Space.IndiscreteSpace.html#1801" class="Function"
+      >sclaim&#8320;</a
+      ><a name="1808"
+      > </a
+      ><a name="1809" class="Symbol"
+      >:</a
+      ><a name="1810"
+      > </a
+      ><a name="1811" href="UsingFunext.Space.IndiscreteSpace.html#1727" class="Function"
+      >q</a
+      ><a name="1812"
+      > </a
+      ><a name="1813" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1814"
+      > </a
+      ><a name="1815" href="UsingFunext.Space.Space.html#1150" class="Function"
+      >Probe</a
+      ><a name="1820" class="Symbol"
+      >(</a
+      ><a name="1821" href="UsingFunext.Space.IndiscreteSpace.html#1207" class="Bound"
+      >X</a
+      ><a name="1822"
+      > </a
+      ><a name="1823" href="UsingFunext.Space.IndiscreteSpace.html#1583" class="Function"
+      >i</a
+      ><a name="1824" class="Symbol"
+      >)</a
+      ><a name="1825"
+      >
+    </a
+      ><a name="1830" href="UsingFunext.Space.IndiscreteSpace.html#1801" class="Function"
+      >sclaim&#8320;</a
+      ><a name="1837"
+      > </a
+      ><a name="1838" class="Symbol"
+      >=</a
+      ><a name="1839"
+      > </a
+      ><a name="1840" href="UsingFunext.Space.IndiscreteSpace.html#1209" class="Bound"
+      >indX</a
+      ><a name="1844"
+      > </a
+      ><a name="1845" href="UsingFunext.Space.IndiscreteSpace.html#1583" class="Function"
+      >i</a
+      ><a name="1846"
+      > </a
+      ><a name="1847" href="UsingFunext.Space.IndiscreteSpace.html#1727" class="Function"
+      >q</a
+      ><a name="1848"
+      >
+    </a
+      ><a name="1853" href="UsingFunext.Space.IndiscreteSpace.html#1853" class="Function"
+      >sclaim&#8321;</a
+      ><a name="1860"
+      > </a
+      ><a name="1861" class="Symbol"
+      >:</a
+      ><a name="1862"
+      > </a
+      ><a name="1863" class="Symbol"
+      >&#8704;(</a
+      ><a name="1865" href="UsingFunext.Space.IndiscreteSpace.html#1865" class="Bound"
+      >&#945;</a
+      ><a name="1866"
+      > </a
+      ><a name="1867" class="Symbol"
+      >:</a
+      ><a name="1868"
+      > </a
+      ><a name="1869" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1871" class="Symbol"
+      >)</a
+      ><a name="1872"
+      > </a
+      ><a name="1873" class="Symbol"
+      >&#8594;</a
+      ><a name="1874"
+      > </a
+      ><a name="1875" href="UsingFunext.Space.IndiscreteSpace.html#1214" class="Bound"
+      >p</a
+      ><a name="1876" class="Symbol"
+      >(</a
+      ><a name="1877" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1881"
+      > </a
+      ><a name="1882" href="UsingFunext.Space.IndiscreteSpace.html#1540" class="Bound"
+      >s</a
+      ><a name="1883"
+      > </a
+      ><a name="1884" href="UsingFunext.Space.IndiscreteSpace.html#1865" class="Bound"
+      >&#945;</a
+      ><a name="1885" class="Symbol"
+      >)</a
+      ><a name="1886"
+      > </a
+      ><a name="1887" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1888"
+      > </a
+      ><a name="1889" class="Symbol"
+      >(</a
+      ><a name="1890" href="UsingFunext.Space.IndiscreteSpace.html#1583" class="Function"
+      >i</a
+      ><a name="1891"
+      > </a
+      ><a name="1892" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1893"
+      > </a
+      ><a name="1894" href="UsingFunext.Space.IndiscreteSpace.html#1727" class="Function"
+      >q</a
+      ><a name="1895"
+      > </a
+      ><a name="1896" href="UsingFunext.Space.IndiscreteSpace.html#1865" class="Bound"
+      >&#945;</a
+      ><a name="1897" class="Symbol"
+      >)</a
+      ><a name="1898"
+      >
+    </a
+      ><a name="1903" href="UsingFunext.Space.IndiscreteSpace.html#1853" class="Function"
+      >sclaim&#8321;</a
+      ><a name="1910"
+      > </a
+      ><a name="1911" href="UsingFunext.Space.IndiscreteSpace.html#1911" class="Bound"
+      >&#945;</a
+      ><a name="1912"
+      > </a
+      ><a name="1913" class="Symbol"
+      >=</a
+      ><a name="1914"
+      > </a
+      ><a name="1915" href="Preliminaries.SetsAndFunctions.html#2423" class="Function"
+      >pair&#8316;</a
+      ><a name="1920"
+      > </a
+      ><a name="1921" class="Symbol"
+      >(</a
+      ><a name="1922" href="UsingFunext.Space.IndiscreteSpace.html#1619" class="Function"
+      >e&#8320;</a
+      ><a name="1924"
+      > </a
+      ><a name="1925" href="UsingFunext.Space.IndiscreteSpace.html#1911" class="Bound"
+      >&#945;</a
+      ><a name="1926" class="Symbol"
+      >)</a
+      ><a name="1927"
+      > </a
+      ><a name="1928" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1932"
+      >
+
+\end{code}
+</a
+      ></pre
+    ></body
+  ></html
+>

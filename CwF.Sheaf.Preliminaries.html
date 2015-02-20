@@ -1,0 +1,1884 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >CwF.Sheaf.Preliminaries</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Comment"
+      >Chuangjie Xu 2014</a
+      ><a name="18"
+      >
+
+\begin{code}
+
+</a
+      ><a name="34" class="Symbol"
+      >{-#</a
+      ><a name="37"
+      > </a
+      ><a name="38" class="Keyword"
+      >OPTIONS</a
+      ><a name="45"
+      > --without-K </a
+      ><a name="58" class="Symbol"
+      >#-}</a
+      ><a name="61"
+      >
+
+</a
+      ><a name="63" class="Keyword"
+      >module</a
+      ><a name="69"
+      > </a
+      ><a name="70" href="CwF.Sheaf.Preliminaries.html#1" class="Module"
+      >CwF.Sheaf.Preliminaries</a
+      ><a name="93"
+      > </a
+      ><a name="94" class="Keyword"
+      >where</a
+      ><a name="99"
+      >
+
+</a
+      ><a name="101" class="Keyword"
+      >open</a
+      ><a name="105"
+      > </a
+      ><a name="106" class="Keyword"
+      >import</a
+      ><a name="112"
+      > </a
+      ><a name="113" href="Agda.Primitive.html#1" class="Module"
+      >Agda.Primitive</a
+      ><a name="127"
+      > </a
+      ><a name="128" class="Keyword"
+      >using</a
+      ><a name="133"
+      > </a
+      ><a name="134" class="Symbol"
+      >(</a
+      ><a name="135"
+      >Level </a
+      ><a name="141" class="Symbol"
+      >;</a
+      ><a name="142"
+      > lzero </a
+      ><a name="149" class="Symbol"
+      >;</a
+      ><a name="150"
+      > lsuc </a
+      ><a name="156" class="Symbol"
+      >;</a
+      ><a name="157"
+      > _&#8852;_</a
+      ><a name="161" class="Symbol"
+      >)</a
+      ><a name="162"
+      >
+</a
+      ><a name="163" class="Keyword"
+      >open</a
+      ><a name="167"
+      > </a
+      ><a name="168" class="Keyword"
+      >import</a
+      ><a name="174"
+      > </a
+      ><a name="175" href="Preliminaries.SetsAndFunctions.html#1" class="Module"
+      >Preliminaries.SetsAndFunctions</a
+      ><a name="205"
+      > </a
+      ><a name="206" class="Keyword"
+      >hiding</a
+      ><a name="212"
+      > </a
+      ><a name="213" class="Symbol"
+      >(</a
+      ><a name="214"
+      >_+_</a
+      ><a name="217" class="Symbol"
+      >)</a
+      ><a name="218"
+      >
+
+\end{code}
+
+</a
+      ><a name="232" class="Comment"
+      >More preliminaries which are used when defining our sheaf model</a
+      ><a name="295"
+      >
+
+\begin{code}
+
+</a
+      ><a name="311" href="CwF.Sheaf.Preliminaries.html#311" class="Function"
+      >&#931;!</a
+      ><a name="313"
+      > </a
+      ><a name="314" class="Symbol"
+      >:</a
+      ><a name="315"
+      > </a
+      ><a name="316" class="Symbol"
+      >{</a
+      ><a name="317" href="CwF.Sheaf.Preliminaries.html#317" class="Bound"
+      >i</a
+      ><a name="318"
+      > </a
+      ><a name="319" href="CwF.Sheaf.Preliminaries.html#319" class="Bound"
+      >j</a
+      ><a name="320"
+      > </a
+      ><a name="321" class="Symbol"
+      >:</a
+      ><a name="322"
+      > </a
+      ><a name="323" href="Agda.Primitive.html#379" class="Postulate"
+      >Level</a
+      ><a name="328" class="Symbol"
+      >}{</a
+      ><a name="330" href="CwF.Sheaf.Preliminaries.html#330" class="Bound"
+      >X</a
+      ><a name="331"
+      > </a
+      ><a name="332" class="Symbol"
+      >:</a
+      ><a name="333"
+      > </a
+      ><a name="334" class="PrimitiveType"
+      >Set</a
+      ><a name="337"
+      > </a
+      ><a name="338" href="CwF.Sheaf.Preliminaries.html#317" class="Bound"
+      >i</a
+      ><a name="339" class="Symbol"
+      >}</a
+      ><a name="340"
+      > </a
+      ><a name="341" class="Symbol"
+      >&#8594;</a
+      ><a name="342"
+      > </a
+      ><a name="343" class="Symbol"
+      >(</a
+      ><a name="344" href="CwF.Sheaf.Preliminaries.html#330" class="Bound"
+      >X</a
+      ><a name="345"
+      > </a
+      ><a name="346" class="Symbol"
+      >&#8594;</a
+      ><a name="347"
+      > </a
+      ><a name="348" class="PrimitiveType"
+      >Set</a
+      ><a name="351"
+      > </a
+      ><a name="352" href="CwF.Sheaf.Preliminaries.html#319" class="Bound"
+      >j</a
+      ><a name="353" class="Symbol"
+      >)</a
+      ><a name="354"
+      > </a
+      ><a name="355" class="Symbol"
+      >&#8594;</a
+      ><a name="356"
+      > </a
+      ><a name="357" class="PrimitiveType"
+      >Set</a
+      ><a name="360" class="Symbol"
+      >(</a
+      ><a name="361" href="CwF.Sheaf.Preliminaries.html#317" class="Bound"
+      >i</a
+      ><a name="362"
+      > </a
+      ><a name="363" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="364"
+      > </a
+      ><a name="365" href="CwF.Sheaf.Preliminaries.html#319" class="Bound"
+      >j</a
+      ><a name="366" class="Symbol"
+      >)</a
+      ><a name="367"
+      >
+</a
+      ><a name="368" href="CwF.Sheaf.Preliminaries.html#311" class="Function"
+      >&#931;!</a
+      ><a name="370"
+      > </a
+      ><a name="371" class="Symbol"
+      >{</a
+      ><a name="372" href="CwF.Sheaf.Preliminaries.html#372" class="Bound"
+      >i</a
+      ><a name="373" class="Symbol"
+      >}</a
+      ><a name="374"
+      > </a
+      ><a name="375" class="Symbol"
+      >{</a
+      ><a name="376" href="CwF.Sheaf.Preliminaries.html#376" class="Bound"
+      >j</a
+      ><a name="377" class="Symbol"
+      >}</a
+      ><a name="378"
+      > </a
+      ><a name="379" class="Symbol"
+      >{</a
+      ><a name="380" href="CwF.Sheaf.Preliminaries.html#380" class="Bound"
+      >X</a
+      ><a name="381" class="Symbol"
+      >}</a
+      ><a name="382"
+      > </a
+      ><a name="383" href="CwF.Sheaf.Preliminaries.html#383" class="Bound"
+      >P</a
+      ><a name="384"
+      > </a
+      ><a name="385" class="Symbol"
+      >=</a
+      ><a name="386"
+      > </a
+      ><a name="387" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="388"
+      > </a
+      ><a name="389" class="Symbol"
+      >\(</a
+      ><a name="391" href="CwF.Sheaf.Preliminaries.html#391" class="Bound"
+      >x&#8320;</a
+      ><a name="393"
+      > </a
+      ><a name="394" class="Symbol"
+      >:</a
+      ><a name="395"
+      > </a
+      ><a name="396" href="CwF.Sheaf.Preliminaries.html#380" class="Bound"
+      >X</a
+      ><a name="397" class="Symbol"
+      >)</a
+      ><a name="398"
+      > </a
+      ><a name="399" class="Symbol"
+      >&#8594;</a
+      ><a name="400"
+      > </a
+      ><a name="401" class="Symbol"
+      >(</a
+      ><a name="402" href="CwF.Sheaf.Preliminaries.html#383" class="Bound"
+      >P</a
+      ><a name="403"
+      > </a
+      ><a name="404" href="CwF.Sheaf.Preliminaries.html#391" class="Bound"
+      >x&#8320;</a
+      ><a name="406"
+      > </a
+      ><a name="407" href="Preliminaries.SetsAndFunctions.html#982" class="Function Operator"
+      >&#215;</a
+      ><a name="408"
+      > </a
+      ><a name="409" class="Symbol"
+      >(&#8704;</a
+      ><a name="411"
+      > </a
+      ><a name="412" href="CwF.Sheaf.Preliminaries.html#412" class="Bound"
+      >x</a
+      ><a name="413"
+      > </a
+      ><a name="414" class="Symbol"
+      >&#8594;</a
+      ><a name="415"
+      > </a
+      ><a name="416" href="CwF.Sheaf.Preliminaries.html#383" class="Bound"
+      >P</a
+      ><a name="417"
+      > </a
+      ><a name="418" href="CwF.Sheaf.Preliminaries.html#412" class="Bound"
+      >x</a
+      ><a name="419"
+      > </a
+      ><a name="420" class="Symbol"
+      >&#8594;</a
+      ><a name="421"
+      > </a
+      ><a name="422" href="CwF.Sheaf.Preliminaries.html#391" class="Bound"
+      >x&#8320;</a
+      ><a name="424"
+      > </a
+      ><a name="425" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="426"
+      > </a
+      ><a name="427" href="CwF.Sheaf.Preliminaries.html#412" class="Bound"
+      >x</a
+      ><a name="428" class="Symbol"
+      >))</a
+      ><a name="430"
+      >
+
+</a
+      ><a name="432" href="CwF.Sheaf.Preliminaries.html#432" class="Function"
+      >IdP</a
+      ><a name="435"
+      > </a
+      ><a name="436" class="Symbol"
+      >:</a
+      ><a name="437"
+      > </a
+      ><a name="438" class="Symbol"
+      >{</a
+      ><a name="439" href="CwF.Sheaf.Preliminaries.html#439" class="Bound"
+      >i</a
+      ><a name="440"
+      > </a
+      ><a name="441" href="CwF.Sheaf.Preliminaries.html#441" class="Bound"
+      >j</a
+      ><a name="442"
+      > </a
+      ><a name="443" class="Symbol"
+      >:</a
+      ><a name="444"
+      > </a
+      ><a name="445" href="Agda.Primitive.html#379" class="Postulate"
+      >Level</a
+      ><a name="450" class="Symbol"
+      >}</a
+      ><a name="451"
+      > </a
+      ><a name="452" class="Symbol"
+      >{</a
+      ><a name="453" href="CwF.Sheaf.Preliminaries.html#453" class="Bound"
+      >A</a
+      ><a name="454"
+      > </a
+      ><a name="455" class="Symbol"
+      >:</a
+      ><a name="456"
+      > </a
+      ><a name="457" class="PrimitiveType"
+      >Set</a
+      ><a name="460"
+      > </a
+      ><a name="461" href="CwF.Sheaf.Preliminaries.html#439" class="Bound"
+      >i</a
+      ><a name="462" class="Symbol"
+      >}</a
+      ><a name="463"
+      > </a
+      ><a name="464" class="Symbol"
+      >{</a
+      ><a name="465" href="CwF.Sheaf.Preliminaries.html#465" class="Bound"
+      >a&#8320;</a
+      ><a name="467"
+      > </a
+      ><a name="468" href="CwF.Sheaf.Preliminaries.html#468" class="Bound"
+      >a&#8321;</a
+      ><a name="470"
+      > </a
+      ><a name="471" class="Symbol"
+      >:</a
+      ><a name="472"
+      > </a
+      ><a name="473" href="CwF.Sheaf.Preliminaries.html#453" class="Bound"
+      >A</a
+      ><a name="474" class="Symbol"
+      >}</a
+      ><a name="475"
+      >
+    </a
+      ><a name="480" class="Symbol"
+      >&#8594;</a
+      ><a name="481"
+      > </a
+      ><a name="482" class="Symbol"
+      >(</a
+      ><a name="483" href="CwF.Sheaf.Preliminaries.html#483" class="Bound"
+      >B</a
+      ><a name="484"
+      > </a
+      ><a name="485" class="Symbol"
+      >:</a
+      ><a name="486"
+      > </a
+      ><a name="487" href="CwF.Sheaf.Preliminaries.html#453" class="Bound"
+      >A</a
+      ><a name="488"
+      > </a
+      ><a name="489" class="Symbol"
+      >&#8594;</a
+      ><a name="490"
+      > </a
+      ><a name="491" class="PrimitiveType"
+      >Set</a
+      ><a name="494"
+      > </a
+      ><a name="495" href="CwF.Sheaf.Preliminaries.html#441" class="Bound"
+      >j</a
+      ><a name="496" class="Symbol"
+      >)</a
+      ><a name="497"
+      > </a
+      ><a name="498" class="Symbol"
+      >&#8594;</a
+      ><a name="499"
+      > </a
+      ><a name="500" href="CwF.Sheaf.Preliminaries.html#465" class="Bound"
+      >a&#8320;</a
+      ><a name="502"
+      > </a
+      ><a name="503" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="504"
+      > </a
+      ><a name="505" href="CwF.Sheaf.Preliminaries.html#468" class="Bound"
+      >a&#8321;</a
+      ><a name="507"
+      > </a
+      ><a name="508" class="Symbol"
+      >&#8594;</a
+      ><a name="509"
+      > </a
+      ><a name="510" href="CwF.Sheaf.Preliminaries.html#483" class="Bound"
+      >B</a
+      ><a name="511"
+      > </a
+      ><a name="512" href="CwF.Sheaf.Preliminaries.html#465" class="Bound"
+      >a&#8320;</a
+      ><a name="514"
+      > </a
+      ><a name="515" class="Symbol"
+      >&#8594;</a
+      ><a name="516"
+      > </a
+      ><a name="517" href="CwF.Sheaf.Preliminaries.html#483" class="Bound"
+      >B</a
+      ><a name="518"
+      > </a
+      ><a name="519" href="CwF.Sheaf.Preliminaries.html#468" class="Bound"
+      >a&#8321;</a
+      ><a name="521"
+      > </a
+      ><a name="522" class="Symbol"
+      >&#8594;</a
+      ><a name="523"
+      > </a
+      ><a name="524" class="PrimitiveType"
+      >Set</a
+      ><a name="527"
+      > </a
+      ><a name="528" href="CwF.Sheaf.Preliminaries.html#441" class="Bound"
+      >j</a
+      ><a name="529"
+      >
+</a
+      ><a name="530" href="CwF.Sheaf.Preliminaries.html#432" class="Function"
+      >IdP</a
+      ><a name="533"
+      > </a
+      ><a name="534" href="CwF.Sheaf.Preliminaries.html#534" class="Bound"
+      >B</a
+      ><a name="535"
+      > </a
+      ><a name="536" href="CwF.Sheaf.Preliminaries.html#536" class="Bound"
+      >p</a
+      ><a name="537"
+      > </a
+      ><a name="538" href="CwF.Sheaf.Preliminaries.html#538" class="Bound"
+      >b&#8320;</a
+      ><a name="540"
+      > </a
+      ><a name="541" href="CwF.Sheaf.Preliminaries.html#541" class="Bound"
+      >b&#8321;</a
+      ><a name="543"
+      > </a
+      ><a name="544" class="Symbol"
+      >=</a
+      ><a name="545"
+      > </a
+      ><a name="546" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="555"
+      > </a
+      ><a name="556" href="CwF.Sheaf.Preliminaries.html#534" class="Bound"
+      >B</a
+      ><a name="557"
+      > </a
+      ><a name="558" href="CwF.Sheaf.Preliminaries.html#536" class="Bound"
+      >p</a
+      ><a name="559"
+      > </a
+      ><a name="560" href="CwF.Sheaf.Preliminaries.html#538" class="Bound"
+      >b&#8320;</a
+      ><a name="562"
+      > </a
+      ><a name="563" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="564"
+      > </a
+      ><a name="565" href="CwF.Sheaf.Preliminaries.html#541" class="Bound"
+      >b&#8321;</a
+      ><a name="567"
+      >
+</a
+      ><a name="568" class="Keyword"
+      >syntax</a
+      ><a name="574"
+      > IdP B p x y </a
+      ><a name="587" class="Symbol"
+      >=</a
+      ><a name="588"
+      > x &#8776;[ B , p ]&#8776; y
+
+</a
+      ><a name="606" href="CwF.Sheaf.Preliminaries.html#606" class="Function"
+      >apd</a
+      ><a name="609"
+      > </a
+      ><a name="610" class="Symbol"
+      >:</a
+      ><a name="611"
+      > </a
+      ><a name="612" class="Symbol"
+      >{</a
+      ><a name="613" href="CwF.Sheaf.Preliminaries.html#613" class="Bound"
+      >i</a
+      ><a name="614"
+      > </a
+      ><a name="615" href="CwF.Sheaf.Preliminaries.html#615" class="Bound"
+      >j</a
+      ><a name="616"
+      > </a
+      ><a name="617" class="Symbol"
+      >:</a
+      ><a name="618"
+      > </a
+      ><a name="619" href="Agda.Primitive.html#379" class="Postulate"
+      >Level</a
+      ><a name="624" class="Symbol"
+      >}</a
+      ><a name="625"
+      > </a
+      ><a name="626" class="Symbol"
+      >{</a
+      ><a name="627" href="CwF.Sheaf.Preliminaries.html#627" class="Bound"
+      >X</a
+      ><a name="628"
+      > </a
+      ><a name="629" class="Symbol"
+      >:</a
+      ><a name="630"
+      > </a
+      ><a name="631" class="PrimitiveType"
+      >Set</a
+      ><a name="634"
+      > </a
+      ><a name="635" href="CwF.Sheaf.Preliminaries.html#613" class="Bound"
+      >i</a
+      ><a name="636" class="Symbol"
+      >}</a
+      ><a name="637"
+      > </a
+      ><a name="638" class="Symbol"
+      >{</a
+      ><a name="639" href="CwF.Sheaf.Preliminaries.html#639" class="Bound"
+      >Y</a
+      ><a name="640"
+      > </a
+      ><a name="641" class="Symbol"
+      >:</a
+      ><a name="642"
+      > </a
+      ><a name="643" href="CwF.Sheaf.Preliminaries.html#627" class="Bound"
+      >X</a
+      ><a name="644"
+      > </a
+      ><a name="645" class="Symbol"
+      >&#8594;</a
+      ><a name="646"
+      > </a
+      ><a name="647" class="PrimitiveType"
+      >Set</a
+      ><a name="650"
+      > </a
+      ><a name="651" href="CwF.Sheaf.Preliminaries.html#615" class="Bound"
+      >j</a
+      ><a name="652" class="Symbol"
+      >}</a
+      ><a name="653"
+      > </a
+      ><a name="654" class="Symbol"
+      >{</a
+      ><a name="655" href="CwF.Sheaf.Preliminaries.html#655" class="Bound"
+      >x&#8320;</a
+      ><a name="657"
+      > </a
+      ><a name="658" href="CwF.Sheaf.Preliminaries.html#658" class="Bound"
+      >x&#8321;</a
+      ><a name="660"
+      > </a
+      ><a name="661" class="Symbol"
+      >:</a
+      ><a name="662"
+      > </a
+      ><a name="663" href="CwF.Sheaf.Preliminaries.html#627" class="Bound"
+      >X</a
+      ><a name="664" class="Symbol"
+      >}</a
+      ><a name="665"
+      >
+    </a
+      ><a name="670" class="Symbol"
+      >&#8594;</a
+      ><a name="671"
+      > </a
+      ><a name="672" class="Symbol"
+      >(</a
+      ><a name="673" href="CwF.Sheaf.Preliminaries.html#673" class="Bound"
+      >f</a
+      ><a name="674"
+      > </a
+      ><a name="675" class="Symbol"
+      >:</a
+      ><a name="676"
+      > </a
+      ><a name="677" class="Symbol"
+      >(</a
+      ><a name="678" href="CwF.Sheaf.Preliminaries.html#678" class="Bound"
+      >x</a
+      ><a name="679"
+      > </a
+      ><a name="680" class="Symbol"
+      >:</a
+      ><a name="681"
+      > </a
+      ><a name="682" href="CwF.Sheaf.Preliminaries.html#627" class="Bound"
+      >X</a
+      ><a name="683" class="Symbol"
+      >)</a
+      ><a name="684"
+      > </a
+      ><a name="685" class="Symbol"
+      >&#8594;</a
+      ><a name="686"
+      > </a
+      ><a name="687" href="CwF.Sheaf.Preliminaries.html#639" class="Bound"
+      >Y</a
+      ><a name="688"
+      > </a
+      ><a name="689" href="CwF.Sheaf.Preliminaries.html#678" class="Bound"
+      >x</a
+      ><a name="690" class="Symbol"
+      >)</a
+      ><a name="691"
+      > </a
+      ><a name="692" class="Symbol"
+      >&#8594;</a
+      ><a name="693"
+      > </a
+      ><a name="694" class="Symbol"
+      >(</a
+      ><a name="695" href="CwF.Sheaf.Preliminaries.html#695" class="Bound"
+      >p</a
+      ><a name="696"
+      > </a
+      ><a name="697" class="Symbol"
+      >:</a
+      ><a name="698"
+      > </a
+      ><a name="699" href="CwF.Sheaf.Preliminaries.html#655" class="Bound"
+      >x&#8320;</a
+      ><a name="701"
+      > </a
+      ><a name="702" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="703"
+      > </a
+      ><a name="704" href="CwF.Sheaf.Preliminaries.html#658" class="Bound"
+      >x&#8321;</a
+      ><a name="706" class="Symbol"
+      >)</a
+      ><a name="707"
+      > </a
+      ><a name="708" class="Symbol"
+      >&#8594;</a
+      ><a name="709"
+      > </a
+      ><a name="710" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="719"
+      > </a
+      ><a name="720" href="CwF.Sheaf.Preliminaries.html#639" class="Bound"
+      >Y</a
+      ><a name="721"
+      > </a
+      ><a name="722" href="CwF.Sheaf.Preliminaries.html#695" class="Bound"
+      >p</a
+      ><a name="723"
+      > </a
+      ><a name="724" class="Symbol"
+      >(</a
+      ><a name="725" href="CwF.Sheaf.Preliminaries.html#673" class="Bound"
+      >f</a
+      ><a name="726"
+      > </a
+      ><a name="727" href="CwF.Sheaf.Preliminaries.html#655" class="Bound"
+      >x&#8320;</a
+      ><a name="729" class="Symbol"
+      >)</a
+      ><a name="730"
+      > </a
+      ><a name="731" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="732"
+      > </a
+      ><a name="733" href="CwF.Sheaf.Preliminaries.html#673" class="Bound"
+      >f</a
+      ><a name="734"
+      > </a
+      ><a name="735" href="CwF.Sheaf.Preliminaries.html#658" class="Bound"
+      >x&#8321;</a
+      ><a name="737"
+      >
+</a
+      ><a name="738" href="CwF.Sheaf.Preliminaries.html#606" class="Function"
+      >apd</a
+      ><a name="741"
+      > </a
+      ><a name="742" href="CwF.Sheaf.Preliminaries.html#742" class="Bound"
+      >f</a
+      ><a name="743"
+      > </a
+      ><a name="744" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="748"
+      > </a
+      ><a name="749" class="Symbol"
+      >=</a
+      ><a name="750"
+      > </a
+      ><a name="751" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="755"
+      >
+
+</a
+      ><a name="757" href="CwF.Sheaf.Preliminaries.html#757" class="Function"
+      >transport-&#183;</a
+      ><a name="768"
+      > </a
+      ><a name="769" class="Symbol"
+      >:</a
+      ><a name="770"
+      > </a
+      ><a name="771" class="Symbol"
+      >{</a
+      ><a name="772" href="CwF.Sheaf.Preliminaries.html#772" class="Bound"
+      >i</a
+      ><a name="773"
+      > </a
+      ><a name="774" href="CwF.Sheaf.Preliminaries.html#774" class="Bound"
+      >j</a
+      ><a name="775"
+      > </a
+      ><a name="776" class="Symbol"
+      >:</a
+      ><a name="777"
+      > </a
+      ><a name="778" href="Agda.Primitive.html#379" class="Postulate"
+      >Level</a
+      ><a name="783" class="Symbol"
+      >}</a
+      ><a name="784"
+      > </a
+      ><a name="785" class="Symbol"
+      >{</a
+      ><a name="786" href="CwF.Sheaf.Preliminaries.html#786" class="Bound"
+      >A</a
+      ><a name="787"
+      > </a
+      ><a name="788" class="Symbol"
+      >:</a
+      ><a name="789"
+      > </a
+      ><a name="790" class="PrimitiveType"
+      >Set</a
+      ><a name="793"
+      > </a
+      ><a name="794" href="CwF.Sheaf.Preliminaries.html#772" class="Bound"
+      >i</a
+      ><a name="795" class="Symbol"
+      >}</a
+      ><a name="796"
+      > </a
+      ><a name="797" class="Symbol"
+      >(</a
+      ><a name="798" href="CwF.Sheaf.Preliminaries.html#798" class="Bound"
+      >B</a
+      ><a name="799"
+      > </a
+      ><a name="800" class="Symbol"
+      >:</a
+      ><a name="801"
+      > </a
+      ><a name="802" href="CwF.Sheaf.Preliminaries.html#786" class="Bound"
+      >A</a
+      ><a name="803"
+      > </a
+      ><a name="804" class="Symbol"
+      >&#8594;</a
+      ><a name="805"
+      > </a
+      ><a name="806" class="PrimitiveType"
+      >Set</a
+      ><a name="809"
+      > </a
+      ><a name="810" href="CwF.Sheaf.Preliminaries.html#774" class="Bound"
+      >j</a
+      ><a name="811" class="Symbol"
+      >)</a
+      ><a name="812"
+      > </a
+      ><a name="813" class="Symbol"
+      >{</a
+      ><a name="814" href="CwF.Sheaf.Preliminaries.html#814" class="Bound"
+      >x</a
+      ><a name="815"
+      > </a
+      ><a name="816" href="CwF.Sheaf.Preliminaries.html#816" class="Bound"
+      >y</a
+      ><a name="817"
+      > </a
+      ><a name="818" href="CwF.Sheaf.Preliminaries.html#818" class="Bound"
+      >z</a
+      ><a name="819"
+      > </a
+      ><a name="820" class="Symbol"
+      >:</a
+      ><a name="821"
+      > </a
+      ><a name="822" href="CwF.Sheaf.Preliminaries.html#786" class="Bound"
+      >A</a
+      ><a name="823" class="Symbol"
+      >}</a
+      ><a name="824"
+      > </a
+      ><a name="825" class="Symbol"
+      >&#8594;</a
+      ><a name="826"
+      >
+              </a
+      ><a name="841" class="Symbol"
+      >(</a
+      ><a name="842" href="CwF.Sheaf.Preliminaries.html#842" class="Bound"
+      >p</a
+      ><a name="843"
+      > </a
+      ><a name="844" class="Symbol"
+      >:</a
+      ><a name="845"
+      > </a
+      ><a name="846" href="CwF.Sheaf.Preliminaries.html#814" class="Bound"
+      >x</a
+      ><a name="847"
+      > </a
+      ><a name="848" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="849"
+      > </a
+      ><a name="850" href="CwF.Sheaf.Preliminaries.html#816" class="Bound"
+      >y</a
+      ><a name="851" class="Symbol"
+      >)</a
+      ><a name="852"
+      > </a
+      ><a name="853" class="Symbol"
+      >(</a
+      ><a name="854" href="CwF.Sheaf.Preliminaries.html#854" class="Bound"
+      >q</a
+      ><a name="855"
+      > </a
+      ><a name="856" class="Symbol"
+      >:</a
+      ><a name="857"
+      > </a
+      ><a name="858" href="CwF.Sheaf.Preliminaries.html#816" class="Bound"
+      >y</a
+      ><a name="859"
+      > </a
+      ><a name="860" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="861"
+      > </a
+      ><a name="862" href="CwF.Sheaf.Preliminaries.html#818" class="Bound"
+      >z</a
+      ><a name="863" class="Symbol"
+      >)</a
+      ><a name="864"
+      > </a
+      ><a name="865" class="Symbol"
+      >{</a
+      ><a name="866" href="CwF.Sheaf.Preliminaries.html#866" class="Bound"
+      >b</a
+      ><a name="867"
+      > </a
+      ><a name="868" class="Symbol"
+      >:</a
+      ><a name="869"
+      > </a
+      ><a name="870" href="CwF.Sheaf.Preliminaries.html#798" class="Bound"
+      >B</a
+      ><a name="871"
+      > </a
+      ><a name="872" href="CwF.Sheaf.Preliminaries.html#814" class="Bound"
+      >x</a
+      ><a name="873" class="Symbol"
+      >}</a
+      ><a name="874"
+      >
+            </a
+      ><a name="887" class="Symbol"
+      >&#8594;</a
+      ><a name="888"
+      > </a
+      ><a name="889" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="898"
+      > </a
+      ><a name="899" href="CwF.Sheaf.Preliminaries.html#798" class="Bound"
+      >B</a
+      ><a name="900"
+      > </a
+      ><a name="901" href="CwF.Sheaf.Preliminaries.html#854" class="Bound"
+      >q</a
+      ><a name="902"
+      > </a
+      ><a name="903" class="Symbol"
+      >(</a
+      ><a name="904" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="913"
+      > </a
+      ><a name="914" href="CwF.Sheaf.Preliminaries.html#798" class="Bound"
+      >B</a
+      ><a name="915"
+      > </a
+      ><a name="916" href="CwF.Sheaf.Preliminaries.html#842" class="Bound"
+      >p</a
+      ><a name="917"
+      > </a
+      ><a name="918" href="CwF.Sheaf.Preliminaries.html#866" class="Bound"
+      >b</a
+      ><a name="919" class="Symbol"
+      >)</a
+      ><a name="920"
+      > </a
+      ><a name="921" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="922"
+      > </a
+      ><a name="923" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="932"
+      > </a
+      ><a name="933" href="CwF.Sheaf.Preliminaries.html#798" class="Bound"
+      >B</a
+      ><a name="934"
+      > </a
+      ><a name="935" class="Symbol"
+      >(</a
+      ><a name="936" href="CwF.Sheaf.Preliminaries.html#842" class="Bound"
+      >p</a
+      ><a name="937"
+      > </a
+      ><a name="938" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="939"
+      > </a
+      ><a name="940" href="CwF.Sheaf.Preliminaries.html#854" class="Bound"
+      >q</a
+      ><a name="941" class="Symbol"
+      >)</a
+      ><a name="942"
+      > </a
+      ><a name="943" href="CwF.Sheaf.Preliminaries.html#866" class="Bound"
+      >b</a
+      ><a name="944"
+      >
+</a
+      ><a name="945" href="CwF.Sheaf.Preliminaries.html#757" class="Function"
+      >transport-&#183;</a
+      ><a name="956"
+      > </a
+      ><a name="957" href="CwF.Sheaf.Preliminaries.html#957" class="Bound"
+      >B</a
+      ><a name="958"
+      > </a
+      ><a name="959" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="963"
+      > </a
+      ><a name="964" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="968"
+      > </a
+      ><a name="969" class="Symbol"
+      >=</a
+      ><a name="970"
+      > </a
+      ><a name="971" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="975"
+      >
+
+</a
+      ><a name="977" href="CwF.Sheaf.Preliminaries.html#977" class="Function"
+      >transport-p&#8315;&#185;&#183;p</a
+      ><a name="992"
+      > </a
+      ><a name="993" class="Symbol"
+      >:</a
+      ><a name="994"
+      > </a
+      ><a name="995" class="Symbol"
+      >{</a
+      ><a name="996" href="CwF.Sheaf.Preliminaries.html#996" class="Bound"
+      >i</a
+      ><a name="997"
+      > </a
+      ><a name="998" href="CwF.Sheaf.Preliminaries.html#998" class="Bound"
+      >j</a
+      ><a name="999"
+      > </a
+      ><a name="1000" class="Symbol"
+      >:</a
+      ><a name="1001"
+      > </a
+      ><a name="1002" href="Agda.Primitive.html#379" class="Postulate"
+      >Level</a
+      ><a name="1007" class="Symbol"
+      >}</a
+      ><a name="1008"
+      > </a
+      ><a name="1009" class="Symbol"
+      >{</a
+      ><a name="1010" href="CwF.Sheaf.Preliminaries.html#1010" class="Bound"
+      >A</a
+      ><a name="1011"
+      > </a
+      ><a name="1012" class="Symbol"
+      >:</a
+      ><a name="1013"
+      > </a
+      ><a name="1014" class="PrimitiveType"
+      >Set</a
+      ><a name="1017"
+      > </a
+      ><a name="1018" href="CwF.Sheaf.Preliminaries.html#996" class="Bound"
+      >i</a
+      ><a name="1019" class="Symbol"
+      >}</a
+      ><a name="1020"
+      > </a
+      ><a name="1021" class="Symbol"
+      >(</a
+      ><a name="1022" href="CwF.Sheaf.Preliminaries.html#1022" class="Bound"
+      >B</a
+      ><a name="1023"
+      > </a
+      ><a name="1024" class="Symbol"
+      >:</a
+      ><a name="1025"
+      > </a
+      ><a name="1026" href="CwF.Sheaf.Preliminaries.html#1010" class="Bound"
+      >A</a
+      ><a name="1027"
+      > </a
+      ><a name="1028" class="Symbol"
+      >&#8594;</a
+      ><a name="1029"
+      > </a
+      ><a name="1030" class="PrimitiveType"
+      >Set</a
+      ><a name="1033"
+      > </a
+      ><a name="1034" href="CwF.Sheaf.Preliminaries.html#998" class="Bound"
+      >j</a
+      ><a name="1035" class="Symbol"
+      >)</a
+      ><a name="1036"
+      > </a
+      ><a name="1037" class="Symbol"
+      >{</a
+      ><a name="1038" href="CwF.Sheaf.Preliminaries.html#1038" class="Bound"
+      >x</a
+      ><a name="1039"
+      > </a
+      ><a name="1040" href="CwF.Sheaf.Preliminaries.html#1040" class="Bound"
+      >y</a
+      ><a name="1041"
+      > </a
+      ><a name="1042" class="Symbol"
+      >:</a
+      ><a name="1043"
+      > </a
+      ><a name="1044" href="CwF.Sheaf.Preliminaries.html#1010" class="Bound"
+      >A</a
+      ><a name="1045" class="Symbol"
+      >}</a
+      ><a name="1046"
+      > </a
+      ><a name="1047" class="Symbol"
+      >&#8594;</a
+      ><a name="1048"
+      >
+                  </a
+      ><a name="1067" class="Symbol"
+      >(</a
+      ><a name="1068" href="CwF.Sheaf.Preliminaries.html#1068" class="Bound"
+      >p</a
+      ><a name="1069"
+      > </a
+      ><a name="1070" class="Symbol"
+      >:</a
+      ><a name="1071"
+      > </a
+      ><a name="1072" href="CwF.Sheaf.Preliminaries.html#1038" class="Bound"
+      >x</a
+      ><a name="1073"
+      > </a
+      ><a name="1074" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1075"
+      > </a
+      ><a name="1076" href="CwF.Sheaf.Preliminaries.html#1040" class="Bound"
+      >y</a
+      ><a name="1077" class="Symbol"
+      >)</a
+      ><a name="1078"
+      > </a
+      ><a name="1079" class="Symbol"
+      >(</a
+      ><a name="1080" href="CwF.Sheaf.Preliminaries.html#1080" class="Bound"
+      >b</a
+      ><a name="1081"
+      > </a
+      ><a name="1082" class="Symbol"
+      >:</a
+      ><a name="1083"
+      > </a
+      ><a name="1084" href="CwF.Sheaf.Preliminaries.html#1022" class="Bound"
+      >B</a
+      ><a name="1085"
+      > </a
+      ><a name="1086" href="CwF.Sheaf.Preliminaries.html#1040" class="Bound"
+      >y</a
+      ><a name="1087" class="Symbol"
+      >)</a
+      ><a name="1088"
+      >
+                </a
+      ><a name="1105" class="Symbol"
+      >&#8594;</a
+      ><a name="1106"
+      > </a
+      ><a name="1107" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="1116"
+      > </a
+      ><a name="1117" href="CwF.Sheaf.Preliminaries.html#1022" class="Bound"
+      >B</a
+      ><a name="1118"
+      > </a
+      ><a name="1119" href="CwF.Sheaf.Preliminaries.html#1068" class="Bound"
+      >p</a
+      ><a name="1120"
+      > </a
+      ><a name="1121" class="Symbol"
+      >(</a
+      ><a name="1122" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="1131"
+      > </a
+      ><a name="1132" href="CwF.Sheaf.Preliminaries.html#1022" class="Bound"
+      >B</a
+      ><a name="1133"
+      > </a
+      ><a name="1134" class="Symbol"
+      >(</a
+      ><a name="1135" href="CwF.Sheaf.Preliminaries.html#1068" class="Bound"
+      >p</a
+      ><a name="1136"
+      > </a
+      ><a name="1137" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="1139" class="Symbol"
+      >)</a
+      ><a name="1140"
+      > </a
+      ><a name="1141" href="CwF.Sheaf.Preliminaries.html#1080" class="Bound"
+      >b</a
+      ><a name="1142" class="Symbol"
+      >)</a
+      ><a name="1143"
+      > </a
+      ><a name="1144" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1145"
+      > </a
+      ><a name="1146" href="CwF.Sheaf.Preliminaries.html#1080" class="Bound"
+      >b</a
+      ><a name="1147"
+      >
+</a
+      ><a name="1148" href="CwF.Sheaf.Preliminaries.html#977" class="Function"
+      >transport-p&#8315;&#185;&#183;p</a
+      ><a name="1163"
+      > </a
+      ><a name="1164" href="CwF.Sheaf.Preliminaries.html#1164" class="Bound"
+      >B</a
+      ><a name="1165"
+      > </a
+      ><a name="1166" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1170"
+      > </a
+      ><a name="1171" href="CwF.Sheaf.Preliminaries.html#1171" class="Bound"
+      >b</a
+      ><a name="1172"
+      > </a
+      ><a name="1173" class="Symbol"
+      >=</a
+      ><a name="1174"
+      > </a
+      ><a name="1175" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1179"
+      >
+
+</a
+      ><a name="1181" href="CwF.Sheaf.Preliminaries.html#1181" class="Function"
+      >transport-&#8728;</a
+      ><a name="1192"
+      > </a
+      ><a name="1193" class="Symbol"
+      >:</a
+      ><a name="1194"
+      > </a
+      ><a name="1195" class="Symbol"
+      >{</a
+      ><a name="1196" href="CwF.Sheaf.Preliminaries.html#1196" class="Bound"
+      >i</a
+      ><a name="1197"
+      > </a
+      ><a name="1198" href="CwF.Sheaf.Preliminaries.html#1198" class="Bound"
+      >j</a
+      ><a name="1199"
+      > </a
+      ><a name="1200" href="CwF.Sheaf.Preliminaries.html#1200" class="Bound"
+      >k</a
+      ><a name="1201"
+      > </a
+      ><a name="1202" class="Symbol"
+      >:</a
+      ><a name="1203"
+      > </a
+      ><a name="1204" href="Agda.Primitive.html#379" class="Postulate"
+      >Level</a
+      ><a name="1209" class="Symbol"
+      >}</a
+      ><a name="1210"
+      > </a
+      ><a name="1211" class="Symbol"
+      >{</a
+      ><a name="1212" href="CwF.Sheaf.Preliminaries.html#1212" class="Bound"
+      >&#915;</a
+      ><a name="1213"
+      > </a
+      ><a name="1214" class="Symbol"
+      >:</a
+      ><a name="1215"
+      > </a
+      ><a name="1216" class="PrimitiveType"
+      >Set</a
+      ><a name="1219"
+      > </a
+      ><a name="1220" href="CwF.Sheaf.Preliminaries.html#1196" class="Bound"
+      >i</a
+      ><a name="1221" class="Symbol"
+      >}</a
+      ><a name="1222"
+      > </a
+      ><a name="1223" class="Symbol"
+      >{</a
+      ><a name="1224" href="CwF.Sheaf.Preliminaries.html#1224" class="Bound"
+      >&#916;</a
+      ><a name="1225"
+      > </a
+      ><a name="1226" class="Symbol"
+      >:</a
+      ><a name="1227"
+      > </a
+      ><a name="1228" class="PrimitiveType"
+      >Set</a
+      ><a name="1231"
+      > </a
+      ><a name="1232" href="CwF.Sheaf.Preliminaries.html#1198" class="Bound"
+      >j</a
+      ><a name="1233" class="Symbol"
+      >}</a
+      ><a name="1234"
+      > </a
+      ><a name="1235" class="Symbol"
+      >{</a
+      ><a name="1236" href="CwF.Sheaf.Preliminaries.html#1236" class="Bound"
+      >&#948;&#8320;</a
+      ><a name="1238"
+      > </a
+      ><a name="1239" href="CwF.Sheaf.Preliminaries.html#1239" class="Bound"
+      >&#948;&#8321;</a
+      ><a name="1241"
+      > </a
+      ><a name="1242" class="Symbol"
+      >:</a
+      ><a name="1243"
+      > </a
+      ><a name="1244" href="CwF.Sheaf.Preliminaries.html#1224" class="Bound"
+      >&#916;</a
+      ><a name="1245" class="Symbol"
+      >}</a
+      ><a name="1246"
+      > </a
+      ><a name="1247" class="Symbol"
+      >&#8594;</a
+      ><a name="1248"
+      >
+              </a
+      ><a name="1263" class="Symbol"
+      >(</a
+      ><a name="1264" href="CwF.Sheaf.Preliminaries.html#1264" class="Bound"
+      >A</a
+      ><a name="1265"
+      > </a
+      ><a name="1266" class="Symbol"
+      >:</a
+      ><a name="1267"
+      > </a
+      ><a name="1268" href="CwF.Sheaf.Preliminaries.html#1212" class="Bound"
+      >&#915;</a
+      ><a name="1269"
+      > </a
+      ><a name="1270" class="Symbol"
+      >&#8594;</a
+      ><a name="1271"
+      > </a
+      ><a name="1272" class="PrimitiveType"
+      >Set</a
+      ><a name="1275"
+      > </a
+      ><a name="1276" href="CwF.Sheaf.Preliminaries.html#1200" class="Bound"
+      >k</a
+      ><a name="1277" class="Symbol"
+      >)</a
+      ><a name="1278"
+      > </a
+      ><a name="1279" class="Symbol"
+      >(</a
+      ><a name="1280" href="CwF.Sheaf.Preliminaries.html#1280" class="Bound"
+      >&#963;</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" class="Symbol"
+      >:</a
+      ><a name="1283"
+      > </a
+      ><a name="1284" href="CwF.Sheaf.Preliminaries.html#1224" class="Bound"
+      >&#916;</a
+      ><a name="1285"
+      > </a
+      ><a name="1286" class="Symbol"
+      >&#8594;</a
+      ><a name="1287"
+      > </a
+      ><a name="1288" href="CwF.Sheaf.Preliminaries.html#1212" class="Bound"
+      >&#915;</a
+      ><a name="1289" class="Symbol"
+      >)</a
+      ><a name="1290"
+      > </a
+      ><a name="1291" class="Symbol"
+      >(</a
+      ><a name="1292" href="CwF.Sheaf.Preliminaries.html#1292" class="Bound"
+      >p</a
+      ><a name="1293"
+      > </a
+      ><a name="1294" class="Symbol"
+      >:</a
+      ><a name="1295"
+      > </a
+      ><a name="1296" href="CwF.Sheaf.Preliminaries.html#1236" class="Bound"
+      >&#948;&#8320;</a
+      ><a name="1298"
+      > </a
+      ><a name="1299" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1300"
+      > </a
+      ><a name="1301" href="CwF.Sheaf.Preliminaries.html#1239" class="Bound"
+      >&#948;&#8321;</a
+      ><a name="1303" class="Symbol"
+      >)</a
+      ><a name="1304"
+      > </a
+      ><a name="1305" class="Symbol"
+      >{</a
+      ><a name="1306" href="CwF.Sheaf.Preliminaries.html#1306" class="Bound"
+      >a</a
+      ><a name="1307"
+      > </a
+      ><a name="1308" class="Symbol"
+      >:</a
+      ><a name="1309"
+      > </a
+      ><a name="1310" href="CwF.Sheaf.Preliminaries.html#1264" class="Bound"
+      >A</a
+      ><a name="1311" class="Symbol"
+      >(</a
+      ><a name="1312" href="CwF.Sheaf.Preliminaries.html#1280" class="Bound"
+      >&#963;</a
+      ><a name="1313"
+      > </a
+      ><a name="1314" href="CwF.Sheaf.Preliminaries.html#1236" class="Bound"
+      >&#948;&#8320;</a
+      ><a name="1316" class="Symbol"
+      >)}</a
+      ><a name="1318"
+      >
+            </a
+      ><a name="1331" class="Symbol"
+      >&#8594;</a
+      ><a name="1332"
+      > </a
+      ><a name="1333" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="1342"
+      > </a
+      ><a name="1343" class="Symbol"
+      >(</a
+      ><a name="1344" href="CwF.Sheaf.Preliminaries.html#1264" class="Bound"
+      >A</a
+      ><a name="1345"
+      > </a
+      ><a name="1346" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1347"
+      > </a
+      ><a name="1348" href="CwF.Sheaf.Preliminaries.html#1280" class="Bound"
+      >&#963;</a
+      ><a name="1349" class="Symbol"
+      >)</a
+      ><a name="1350"
+      > </a
+      ><a name="1351" href="CwF.Sheaf.Preliminaries.html#1292" class="Bound"
+      >p</a
+      ><a name="1352"
+      > </a
+      ><a name="1353" href="CwF.Sheaf.Preliminaries.html#1306" class="Bound"
+      >a</a
+      ><a name="1354"
+      > </a
+      ><a name="1355" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1356"
+      > </a
+      ><a name="1357" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="1366"
+      > </a
+      ><a name="1367" href="CwF.Sheaf.Preliminaries.html#1264" class="Bound"
+      >A</a
+      ><a name="1368"
+      > </a
+      ><a name="1369" class="Symbol"
+      >(</a
+      ><a name="1370" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="1372"
+      > </a
+      ><a name="1373" href="CwF.Sheaf.Preliminaries.html#1280" class="Bound"
+      >&#963;</a
+      ><a name="1374"
+      > </a
+      ><a name="1375" href="CwF.Sheaf.Preliminaries.html#1292" class="Bound"
+      >p</a
+      ><a name="1376" class="Symbol"
+      >)</a
+      ><a name="1377"
+      > </a
+      ><a name="1378" href="CwF.Sheaf.Preliminaries.html#1306" class="Bound"
+      >a</a
+      ><a name="1379"
+      >
+</a
+      ><a name="1380" href="CwF.Sheaf.Preliminaries.html#1181" class="Function"
+      >transport-&#8728;</a
+      ><a name="1391"
+      > </a
+      ><a name="1392" href="CwF.Sheaf.Preliminaries.html#1392" class="Bound"
+      >A</a
+      ><a name="1393"
+      > </a
+      ><a name="1394" href="CwF.Sheaf.Preliminaries.html#1394" class="Bound"
+      >&#963;</a
+      ><a name="1395"
+      > </a
+      ><a name="1396" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1400"
+      > </a
+      ><a name="1401" class="Symbol"
+      >=</a
+      ><a name="1402"
+      > </a
+      ><a name="1403" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1407"
+      >
+
+</a
+      ><a name="1409" href="CwF.Sheaf.Preliminaries.html#1409" class="Function"
+      >transport-ap</a
+      ><a name="1421"
+      > </a
+      ><a name="1422" class="Symbol"
+      >:</a
+      ><a name="1423"
+      > </a
+      ><a name="1424" class="Symbol"
+      >{</a
+      ><a name="1425" href="CwF.Sheaf.Preliminaries.html#1425" class="Bound"
+      >i</a
+      ><a name="1426"
+      > </a
+      ><a name="1427" href="CwF.Sheaf.Preliminaries.html#1427" class="Bound"
+      >j</a
+      ><a name="1428"
+      > </a
+      ><a name="1429" class="Symbol"
+      >:</a
+      ><a name="1430"
+      > </a
+      ><a name="1431" href="Agda.Primitive.html#379" class="Postulate"
+      >Level</a
+      ><a name="1436" class="Symbol"
+      >}</a
+      ><a name="1437"
+      > </a
+      ><a name="1438" class="Symbol"
+      >{</a
+      ><a name="1439" href="CwF.Sheaf.Preliminaries.html#1439" class="Bound"
+      >&#915;</a
+      ><a name="1440"
+      > </a
+      ><a name="1441" class="Symbol"
+      >:</a
+      ><a name="1442"
+      > </a
+      ><a name="1443" class="PrimitiveType"
+      >Set</a
+      ><a name="1446"
+      > </a
+      ><a name="1447" href="CwF.Sheaf.Preliminaries.html#1425" class="Bound"
+      >i</a
+      ><a name="1448" class="Symbol"
+      >}</a
+      ><a name="1449"
+      > </a
+      ><a name="1450" class="Symbol"
+      >{</a
+      ><a name="1451" href="CwF.Sheaf.Preliminaries.html#1451" class="Bound"
+      >&#947;&#8320;</a
+      ><a name="1453"
+      > </a
+      ><a name="1454" href="CwF.Sheaf.Preliminaries.html#1454" class="Bound"
+      >&#947;&#8321;</a
+      ><a name="1456"
+      > </a
+      ><a name="1457" class="Symbol"
+      >:</a
+      ><a name="1458"
+      > </a
+      ><a name="1459" href="CwF.Sheaf.Preliminaries.html#1439" class="Bound"
+      >&#915;</a
+      ><a name="1460" class="Symbol"
+      >}</a
+      ><a name="1461"
+      > </a
+      ><a name="1462" class="Symbol"
+      >&#8594;</a
+      ><a name="1463"
+      >
+               </a
+      ><a name="1479" class="Symbol"
+      >(</a
+      ><a name="1480" href="CwF.Sheaf.Preliminaries.html#1480" class="Bound"
+      >A</a
+      ><a name="1481"
+      > </a
+      ><a name="1482" class="Symbol"
+      >:</a
+      ><a name="1483"
+      > </a
+      ><a name="1484" href="CwF.Sheaf.Preliminaries.html#1439" class="Bound"
+      >&#915;</a
+      ><a name="1485"
+      > </a
+      ><a name="1486" class="Symbol"
+      >&#8594;</a
+      ><a name="1487"
+      > </a
+      ><a name="1488" class="PrimitiveType"
+      >Set</a
+      ><a name="1491"
+      > </a
+      ><a name="1492" href="CwF.Sheaf.Preliminaries.html#1427" class="Bound"
+      >j</a
+      ><a name="1493" class="Symbol"
+      >)</a
+      ><a name="1494"
+      > </a
+      ><a name="1495" class="Symbol"
+      >{</a
+      ><a name="1496" href="CwF.Sheaf.Preliminaries.html#1496" class="Bound"
+      >a</a
+      ><a name="1497"
+      > </a
+      ><a name="1498" class="Symbol"
+      >:</a
+      ><a name="1499"
+      > </a
+      ><a name="1500" href="CwF.Sheaf.Preliminaries.html#1480" class="Bound"
+      >A</a
+      ><a name="1501"
+      > </a
+      ><a name="1502" href="CwF.Sheaf.Preliminaries.html#1451" class="Bound"
+      >&#947;&#8320;</a
+      ><a name="1504" class="Symbol"
+      >}</a
+      ><a name="1505"
+      > </a
+      ><a name="1506" class="Symbol"
+      >(</a
+      ><a name="1507" href="CwF.Sheaf.Preliminaries.html#1507" class="Bound"
+      >p</a
+      ><a name="1508"
+      > </a
+      ><a name="1509" class="Symbol"
+      >:</a
+      ><a name="1510"
+      > </a
+      ><a name="1511" href="CwF.Sheaf.Preliminaries.html#1451" class="Bound"
+      >&#947;&#8320;</a
+      ><a name="1513"
+      > </a
+      ><a name="1514" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1515"
+      > </a
+      ><a name="1516" href="CwF.Sheaf.Preliminaries.html#1454" class="Bound"
+      >&#947;&#8321;</a
+      ><a name="1518" class="Symbol"
+      >)</a
+      ><a name="1519"
+      > </a
+      ><a name="1520" class="Symbol"
+      >&#8594;</a
+      ><a name="1521"
+      >
+               </a
+      ><a name="1537" class="Symbol"
+      >{</a
+      ><a name="1538" href="CwF.Sheaf.Preliminaries.html#1538" class="Bound"
+      >f</a
+      ><a name="1539"
+      > </a
+      ><a name="1540" class="Symbol"
+      >:</a
+      ><a name="1541"
+      > </a
+      ><a name="1542" href="CwF.Sheaf.Preliminaries.html#1439" class="Bound"
+      >&#915;</a
+      ><a name="1543"
+      > </a
+      ><a name="1544" class="Symbol"
+      >&#8594;</a
+      ><a name="1545"
+      > </a
+      ><a name="1546" href="CwF.Sheaf.Preliminaries.html#1439" class="Bound"
+      >&#915;</a
+      ><a name="1547" class="Symbol"
+      >}</a
+      ><a name="1548"
+      > </a
+      ><a name="1549" class="Symbol"
+      >(</a
+      ><a name="1550" href="CwF.Sheaf.Preliminaries.html#1550" class="Bound"
+      >F</a
+      ><a name="1551"
+      > </a
+      ><a name="1552" class="Symbol"
+      >:</a
+      ><a name="1553"
+      > </a
+      ><a name="1554" class="Symbol"
+      >{</a
+      ><a name="1555" href="CwF.Sheaf.Preliminaries.html#1555" class="Bound"
+      >&#947;</a
+      ><a name="1556"
+      > </a
+      ><a name="1557" class="Symbol"
+      >:</a
+      ><a name="1558"
+      > </a
+      ><a name="1559" href="CwF.Sheaf.Preliminaries.html#1439" class="Bound"
+      >&#915;</a
+      ><a name="1560" class="Symbol"
+      >}</a
+      ><a name="1561"
+      > </a
+      ><a name="1562" class="Symbol"
+      >&#8594;</a
+      ><a name="1563"
+      > </a
+      ><a name="1564" href="CwF.Sheaf.Preliminaries.html#1480" class="Bound"
+      >A</a
+      ><a name="1565"
+      > </a
+      ><a name="1566" href="CwF.Sheaf.Preliminaries.html#1555" class="Bound"
+      >&#947;</a
+      ><a name="1567"
+      > </a
+      ><a name="1568" class="Symbol"
+      >&#8594;</a
+      ><a name="1569"
+      > </a
+      ><a name="1570" href="CwF.Sheaf.Preliminaries.html#1480" class="Bound"
+      >A</a
+      ><a name="1571" class="Symbol"
+      >(</a
+      ><a name="1572" href="CwF.Sheaf.Preliminaries.html#1538" class="Bound"
+      >f</a
+      ><a name="1573"
+      > </a
+      ><a name="1574" href="CwF.Sheaf.Preliminaries.html#1555" class="Bound"
+      >&#947;</a
+      ><a name="1575" class="Symbol"
+      >))</a
+      ><a name="1577"
+      >
+             </a
+      ><a name="1591" class="Symbol"
+      >&#8594;</a
+      ><a name="1592"
+      > </a
+      ><a name="1593" href="CwF.Sheaf.Preliminaries.html#1550" class="Bound"
+      >F</a
+      ><a name="1594"
+      > </a
+      ><a name="1595" class="Symbol"
+      >(</a
+      ><a name="1596" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="1605"
+      > </a
+      ><a name="1606" href="CwF.Sheaf.Preliminaries.html#1480" class="Bound"
+      >A</a
+      ><a name="1607"
+      > </a
+      ><a name="1608" href="CwF.Sheaf.Preliminaries.html#1507" class="Bound"
+      >p</a
+      ><a name="1609"
+      > </a
+      ><a name="1610" href="CwF.Sheaf.Preliminaries.html#1496" class="Bound"
+      >a</a
+      ><a name="1611" class="Symbol"
+      >)</a
+      ><a name="1612"
+      > </a
+      ><a name="1613" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1614"
+      > </a
+      ><a name="1615" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="1624"
+      > </a
+      ><a name="1625" href="CwF.Sheaf.Preliminaries.html#1480" class="Bound"
+      >A</a
+      ><a name="1626"
+      > </a
+      ><a name="1627" class="Symbol"
+      >(</a
+      ><a name="1628" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="1630"
+      > </a
+      ><a name="1631" href="CwF.Sheaf.Preliminaries.html#1538" class="Bound"
+      >f</a
+      ><a name="1632"
+      > </a
+      ><a name="1633" href="CwF.Sheaf.Preliminaries.html#1507" class="Bound"
+      >p</a
+      ><a name="1634" class="Symbol"
+      >)</a
+      ><a name="1635"
+      > </a
+      ><a name="1636" class="Symbol"
+      >(</a
+      ><a name="1637" href="CwF.Sheaf.Preliminaries.html#1550" class="Bound"
+      >F</a
+      ><a name="1638"
+      > </a
+      ><a name="1639" href="CwF.Sheaf.Preliminaries.html#1496" class="Bound"
+      >a</a
+      ><a name="1640" class="Symbol"
+      >)</a
+      ><a name="1641"
+      >
+</a
+      ><a name="1642" href="CwF.Sheaf.Preliminaries.html#1409" class="Function"
+      >transport-ap</a
+      ><a name="1654"
+      > </a
+      ><a name="1655" href="CwF.Sheaf.Preliminaries.html#1655" class="Bound"
+      >A</a
+      ><a name="1656"
+      > </a
+      ><a name="1657" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1661"
+      > </a
+      ><a name="1662" href="CwF.Sheaf.Preliminaries.html#1662" class="Bound"
+      >F</a
+      ><a name="1663"
+      > </a
+      ><a name="1664" class="Symbol"
+      >=</a
+      ><a name="1665"
+      > </a
+      ><a name="1666" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1670"
+      >
+
+\end{code}
+</a
+      ></pre
+    ></body
+  ></html
+>

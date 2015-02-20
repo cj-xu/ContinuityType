@@ -1,0 +1,2326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >AddingProbeAxiom.Space.Space</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Comment"
+      >Chuangjie Xu 2013 (updated in February 2015)</a
+      ><a name="45"
+      >
+
+\begin{code}
+
+</a
+      ><a name="61" class="Symbol"
+      >{-#</a
+      ><a name="64"
+      > </a
+      ><a name="65" class="Keyword"
+      >OPTIONS</a
+      ><a name="72"
+      > --without-K </a
+      ><a name="85" class="Symbol"
+      >#-}</a
+      ><a name="88"
+      >
+
+</a
+      ><a name="90" class="Keyword"
+      >module</a
+      ><a name="96"
+      > </a
+      ><a name="97" href="AddingProbeAxiom.Space.Space.html#1" class="Module"
+      >AddingProbeAxiom.Space.Space</a
+      ><a name="125"
+      > </a
+      ><a name="126" class="Keyword"
+      >where</a
+      ><a name="131"
+      >
+
+</a
+      ><a name="133" class="Keyword"
+      >open</a
+      ><a name="137"
+      > </a
+      ><a name="138" class="Keyword"
+      >import</a
+      ><a name="144"
+      > </a
+      ><a name="145" href="Preliminaries.SetsAndFunctions.html#1" class="Module"
+      >Preliminaries.SetsAndFunctions</a
+      ><a name="175"
+      >
+</a
+      ><a name="176" class="Keyword"
+      >open</a
+      ><a name="180"
+      > </a
+      ><a name="181" class="Keyword"
+      >import</a
+      ><a name="187"
+      > </a
+      ><a name="188" href="Preliminaries.NaturalNumber.html#1" class="Module"
+      >Preliminaries.NaturalNumber</a
+      ><a name="215"
+      >
+</a
+      ><a name="216" class="Keyword"
+      >open</a
+      ><a name="220"
+      > </a
+      ><a name="221" class="Keyword"
+      >import</a
+      ><a name="227"
+      > </a
+      ><a name="228" href="Preliminaries.Sequence.html#1" class="Module"
+      >Preliminaries.Sequence</a
+      ><a name="250"
+      >
+</a
+      ><a name="251" class="Keyword"
+      >open</a
+      ><a name="255"
+      > </a
+      ><a name="256" class="Keyword"
+      >import</a
+      ><a name="262"
+      > </a
+      ><a name="263" href="Continuity.UniformContinuity.html#1" class="Module"
+      >Continuity.UniformContinuity</a
+      ><a name="291"
+      >
+</a
+      ><a name="292" class="Keyword"
+      >open</a
+      ><a name="296"
+      > </a
+      ><a name="297" class="Keyword"
+      >import</a
+      ><a name="303"
+      > </a
+      ><a name="304" href="AddingProbeAxiom.Space.Coverage.html#1" class="Module"
+      >AddingProbeAxiom.Space.Coverage</a
+      ><a name="335"
+      >
+
+\end{code}
+
+</a
+      ><a name="349" class="Comment"
+      >C-topologies and C-spaces</a
+      ><a name="374"
+      >
+
+\begin{code}
+
+</a
+      ><a name="390" href="AddingProbeAxiom.Space.Space.html#390" class="Function"
+      >probe-axioms</a
+      ><a name="402"
+      > </a
+      ><a name="403" class="Symbol"
+      >:</a
+      ><a name="404"
+      > </a
+      ><a name="405" class="Symbol"
+      >(</a
+      ><a name="406" href="AddingProbeAxiom.Space.Space.html#406" class="Bound"
+      >X</a
+      ><a name="407"
+      > </a
+      ><a name="408" class="Symbol"
+      >:</a
+      ><a name="409"
+      > </a
+      ><a name="410" class="PrimitiveType"
+      >Set</a
+      ><a name="413" class="Symbol"
+      >)</a
+      ><a name="414"
+      > </a
+      ><a name="415" class="Symbol"
+      >&#8594;</a
+      ><a name="416"
+      > </a
+      ><a name="417" href="Preliminaries.SetsAndFunctions.html#531" class="Function"
+      >Subset</a
+      ><a name="423" class="Symbol"
+      >(</a
+      ><a name="424" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="426"
+      > </a
+      ><a name="427" class="Symbol"
+      >&#8594;</a
+      ><a name="428"
+      > </a
+      ><a name="429" href="AddingProbeAxiom.Space.Space.html#406" class="Bound"
+      >X</a
+      ><a name="430" class="Symbol"
+      >)</a
+      ><a name="431"
+      > </a
+      ><a name="432" class="Symbol"
+      >&#8594;</a
+      ><a name="433"
+      > </a
+      ><a name="434" class="PrimitiveType"
+      >Set</a
+      ><a name="437"
+      >
+</a
+      ><a name="438" href="AddingProbeAxiom.Space.Space.html#390" class="Function"
+      >probe-axioms</a
+      ><a name="450"
+      > </a
+      ><a name="451" href="AddingProbeAxiom.Space.Space.html#451" class="Bound"
+      >X</a
+      ><a name="452"
+      > </a
+      ><a name="453" href="AddingProbeAxiom.Space.Space.html#453" class="Bound"
+      >P</a
+      ><a name="454"
+      > </a
+      ><a name="455" class="Symbol"
+      >=</a
+      ><a name="456"
+      >
+    </a
+      ><a name="461" class="Symbol"
+      >(&#8704;(</a
+      ><a name="464" href="AddingProbeAxiom.Space.Space.html#464" class="Bound"
+      >x</a
+      ><a name="465"
+      > </a
+      ><a name="466" class="Symbol"
+      >:</a
+      ><a name="467"
+      > </a
+      ><a name="468" href="AddingProbeAxiom.Space.Space.html#451" class="Bound"
+      >X</a
+      ><a name="469" class="Symbol"
+      >)</a
+      ><a name="470"
+      > </a
+      ><a name="471" class="Symbol"
+      >&#8594;</a
+      ><a name="472"
+      > </a
+      ><a name="473" class="Symbol"
+      >(&#955;</a
+      ><a name="475"
+      > </a
+      ><a name="476" href="AddingProbeAxiom.Space.Space.html#476" class="Bound"
+      >&#945;</a
+      ><a name="477"
+      > </a
+      ><a name="478" class="Symbol"
+      >&#8594;</a
+      ><a name="479"
+      > </a
+      ><a name="480" href="AddingProbeAxiom.Space.Space.html#464" class="Bound"
+      >x</a
+      ><a name="481" class="Symbol"
+      >)</a
+      ><a name="482"
+      > </a
+      ><a name="483" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="484"
+      > </a
+      ><a name="485" href="AddingProbeAxiom.Space.Space.html#453" class="Bound"
+      >P</a
+      ><a name="486" class="Symbol"
+      >)</a
+      ><a name="487"
+      >
+  </a
+      ><a name="490" href="Preliminaries.SetsAndFunctions.html#982" class="Function Operator"
+      >&#215;</a
+      ><a name="491"
+      > </a
+      ><a name="492" class="Symbol"
+      >(&#8704;(</a
+      ><a name="495" href="AddingProbeAxiom.Space.Space.html#495" class="Bound"
+      >t</a
+      ><a name="496"
+      > </a
+      ><a name="497" class="Symbol"
+      >:</a
+      ><a name="498"
+      > </a
+      ><a name="499" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="501"
+      > </a
+      ><a name="502" class="Symbol"
+      >&#8594;</a
+      ><a name="503"
+      > </a
+      ><a name="504" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="506" class="Symbol"
+      >)</a
+      ><a name="507"
+      > </a
+      ><a name="508" class="Symbol"
+      >&#8594;</a
+      ><a name="509"
+      > </a
+      ><a name="510" href="AddingProbeAxiom.Space.Space.html#495" class="Bound"
+      >t</a
+      ><a name="511"
+      > </a
+      ><a name="512" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="513"
+      > </a
+      ><a name="514" href="AddingProbeAxiom.Space.Coverage.html#411" class="Function"
+      >C</a
+      ><a name="515"
+      > </a
+      ><a name="516" class="Symbol"
+      >&#8594;</a
+      ><a name="517"
+      > </a
+      ><a name="518" class="Symbol"
+      >&#8704;(</a
+      ><a name="520" href="AddingProbeAxiom.Space.Space.html#520" class="Bound"
+      >p</a
+      ><a name="521"
+      > </a
+      ><a name="522" class="Symbol"
+      >:</a
+      ><a name="523"
+      > </a
+      ><a name="524" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="526"
+      > </a
+      ><a name="527" class="Symbol"
+      >&#8594;</a
+      ><a name="528"
+      > </a
+      ><a name="529" href="AddingProbeAxiom.Space.Space.html#451" class="Bound"
+      >X</a
+      ><a name="530" class="Symbol"
+      >)</a
+      ><a name="531"
+      > </a
+      ><a name="532" class="Symbol"
+      >&#8594;</a
+      ><a name="533"
+      > </a
+      ><a name="534" href="AddingProbeAxiom.Space.Space.html#520" class="Bound"
+      >p</a
+      ><a name="535"
+      > </a
+      ><a name="536" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="537"
+      > </a
+      ><a name="538" href="AddingProbeAxiom.Space.Space.html#453" class="Bound"
+      >P</a
+      ><a name="539"
+      > </a
+      ><a name="540" class="Symbol"
+      >&#8594;</a
+      ><a name="541"
+      > </a
+      ><a name="542" href="AddingProbeAxiom.Space.Space.html#520" class="Bound"
+      >p</a
+      ><a name="543"
+      > </a
+      ><a name="544" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="545"
+      > </a
+      ><a name="546" href="AddingProbeAxiom.Space.Space.html#495" class="Bound"
+      >t</a
+      ><a name="547"
+      > </a
+      ><a name="548" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="549"
+      > </a
+      ><a name="550" href="AddingProbeAxiom.Space.Space.html#453" class="Bound"
+      >P</a
+      ><a name="551" class="Symbol"
+      >)</a
+      ><a name="552"
+      >
+  </a
+      ><a name="555" href="Preliminaries.SetsAndFunctions.html#982" class="Function Operator"
+      >&#215;</a
+      ><a name="556"
+      > </a
+      ><a name="557" class="Symbol"
+      >(&#8704;(</a
+      ><a name="560" href="AddingProbeAxiom.Space.Space.html#560" class="Bound"
+      >p</a
+      ><a name="561"
+      > </a
+      ><a name="562" class="Symbol"
+      >:</a
+      ><a name="563"
+      > </a
+      ><a name="564" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="566"
+      > </a
+      ><a name="567" class="Symbol"
+      >&#8594;</a
+      ><a name="568"
+      > </a
+      ><a name="569" href="AddingProbeAxiom.Space.Space.html#451" class="Bound"
+      >X</a
+      ><a name="570" class="Symbol"
+      >)</a
+      ><a name="571"
+      > </a
+      ><a name="572" class="Symbol"
+      >&#8594;</a
+      ><a name="573"
+      > </a
+      ><a name="574" class="Symbol"
+      >(</a
+      ><a name="575" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="576"
+      > </a
+      ><a name="577" class="Symbol"
+      >\(</a
+      ><a name="579" href="AddingProbeAxiom.Space.Space.html#579" class="Bound"
+      >n</a
+      ><a name="580"
+      > </a
+      ><a name="581" class="Symbol"
+      >:</a
+      ><a name="582"
+      > </a
+      ><a name="583" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="584" class="Symbol"
+      >)</a
+      ><a name="585"
+      > </a
+      ><a name="586" class="Symbol"
+      >&#8594;</a
+      ><a name="587"
+      > </a
+      ><a name="588" class="Symbol"
+      >&#8704;(</a
+      ><a name="590" href="AddingProbeAxiom.Space.Space.html#590" class="Bound"
+      >s</a
+      ><a name="591"
+      > </a
+      ><a name="592" class="Symbol"
+      >:</a
+      ><a name="593"
+      > </a
+      ><a name="594" href="Preliminaries.Sequence.html#507" class="Datatype"
+      >&#8322;Fin</a
+      ><a name="598"
+      > </a
+      ><a name="599" href="AddingProbeAxiom.Space.Space.html#579" class="Bound"
+      >n</a
+      ><a name="600" class="Symbol"
+      >)</a
+      ><a name="601"
+      > </a
+      ><a name="602" class="Symbol"
+      >&#8594;</a
+      ><a name="603"
+      > </a
+      ><a name="604" class="Symbol"
+      >(</a
+      ><a name="605" href="AddingProbeAxiom.Space.Space.html#560" class="Bound"
+      >p</a
+      ><a name="606"
+      > </a
+      ><a name="607" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="608"
+      > </a
+      ><a name="609" class="Symbol"
+      >(</a
+      ><a name="610" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="614"
+      > </a
+      ><a name="615" href="AddingProbeAxiom.Space.Space.html#590" class="Bound"
+      >s</a
+      ><a name="616" class="Symbol"
+      >))</a
+      ><a name="618"
+      > </a
+      ><a name="619" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="620"
+      > </a
+      ><a name="621" href="AddingProbeAxiom.Space.Space.html#453" class="Bound"
+      >P</a
+      ><a name="622" class="Symbol"
+      >)</a
+      ><a name="623"
+      > </a
+      ><a name="624" class="Symbol"
+      >&#8594;</a
+      ><a name="625"
+      > </a
+      ><a name="626" href="AddingProbeAxiom.Space.Space.html#560" class="Bound"
+      >p</a
+      ><a name="627"
+      > </a
+      ><a name="628" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="629"
+      > </a
+      ><a name="630" href="AddingProbeAxiom.Space.Space.html#453" class="Bound"
+      >P</a
+      ><a name="631" class="Symbol"
+      >)</a
+      ><a name="632"
+      >
+  </a
+      ><a name="635" href="Preliminaries.SetsAndFunctions.html#982" class="Function Operator"
+      >&#215;</a
+      ><a name="636"
+      > </a
+      ><a name="637" class="Symbol"
+      >(&#8704;(</a
+      ><a name="640" href="AddingProbeAxiom.Space.Space.html#640" class="Bound"
+      >p</a
+      ><a name="641"
+      > </a
+      ><a name="642" href="AddingProbeAxiom.Space.Space.html#642" class="Bound"
+      >q</a
+      ><a name="643"
+      > </a
+      ><a name="644" class="Symbol"
+      >:</a
+      ><a name="645"
+      > </a
+      ><a name="646" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="648"
+      > </a
+      ><a name="649" class="Symbol"
+      >&#8594;</a
+      ><a name="650"
+      > </a
+      ><a name="651" href="AddingProbeAxiom.Space.Space.html#451" class="Bound"
+      >X</a
+      ><a name="652" class="Symbol"
+      >)</a
+      ><a name="653"
+      > </a
+      ><a name="654" class="Symbol"
+      >&#8594;</a
+      ><a name="655"
+      > </a
+      ><a name="656" href="AddingProbeAxiom.Space.Space.html#640" class="Bound"
+      >p</a
+      ><a name="657"
+      > </a
+      ><a name="658" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="659"
+      > </a
+      ><a name="660" href="AddingProbeAxiom.Space.Space.html#453" class="Bound"
+      >P</a
+      ><a name="661"
+      > </a
+      ><a name="662" class="Symbol"
+      >&#8594;</a
+      ><a name="663"
+      > </a
+      ><a name="664" class="Symbol"
+      >(&#8704;</a
+      ><a name="666"
+      > </a
+      ><a name="667" href="AddingProbeAxiom.Space.Space.html#667" class="Bound"
+      >&#945;</a
+      ><a name="668"
+      > </a
+      ><a name="669" class="Symbol"
+      >&#8594;</a
+      ><a name="670"
+      > </a
+      ><a name="671" href="AddingProbeAxiom.Space.Space.html#640" class="Bound"
+      >p</a
+      ><a name="672"
+      > </a
+      ><a name="673" href="AddingProbeAxiom.Space.Space.html#667" class="Bound"
+      >&#945;</a
+      ><a name="674"
+      > </a
+      ><a name="675" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="676"
+      > </a
+      ><a name="677" href="AddingProbeAxiom.Space.Space.html#642" class="Bound"
+      >q</a
+      ><a name="678"
+      > </a
+      ><a name="679" href="AddingProbeAxiom.Space.Space.html#667" class="Bound"
+      >&#945;</a
+      ><a name="680" class="Symbol"
+      >)</a
+      ><a name="681"
+      > </a
+      ><a name="682" class="Symbol"
+      >&#8594;</a
+      ><a name="683"
+      > </a
+      ><a name="684" href="AddingProbeAxiom.Space.Space.html#642" class="Bound"
+      >q</a
+      ><a name="685"
+      > </a
+      ><a name="686" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="687"
+      > </a
+      ><a name="688" href="AddingProbeAxiom.Space.Space.html#453" class="Bound"
+      >P</a
+      ><a name="689" class="Symbol"
+      >)</a
+      ><a name="690"
+      >
+
+</a
+      ><a name="692" href="AddingProbeAxiom.Space.Space.html#692" class="Function"
+      >TopologyOn</a
+      ><a name="702"
+      > </a
+      ><a name="703" class="Symbol"
+      >:</a
+      ><a name="704"
+      > </a
+      ><a name="705" class="PrimitiveType"
+      >Set</a
+      ><a name="708"
+      > </a
+      ><a name="709" class="Symbol"
+      >&#8594;</a
+      ><a name="710"
+      > </a
+      ><a name="711" class="PrimitiveType"
+      >Set&#8321;</a
+      ><a name="715"
+      >
+</a
+      ><a name="716" href="AddingProbeAxiom.Space.Space.html#692" class="Function"
+      >TopologyOn</a
+      ><a name="726"
+      > </a
+      ><a name="727" href="AddingProbeAxiom.Space.Space.html#727" class="Bound"
+      >X</a
+      ><a name="728"
+      > </a
+      ><a name="729" class="Symbol"
+      >=</a
+      ><a name="730"
+      > </a
+      ><a name="731" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="732"
+      > </a
+      ><a name="733" class="Symbol"
+      >\(</a
+      ><a name="735" href="AddingProbeAxiom.Space.Space.html#735" class="Bound"
+      >P</a
+      ><a name="736"
+      > </a
+      ><a name="737" class="Symbol"
+      >:</a
+      ><a name="738"
+      > </a
+      ><a name="739" href="Preliminaries.SetsAndFunctions.html#531" class="Function"
+      >Subset</a
+      ><a name="745" class="Symbol"
+      >(</a
+      ><a name="746" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="748"
+      > </a
+      ><a name="749" class="Symbol"
+      >&#8594;</a
+      ><a name="750"
+      > </a
+      ><a name="751" href="AddingProbeAxiom.Space.Space.html#727" class="Bound"
+      >X</a
+      ><a name="752" class="Symbol"
+      >))</a
+      ><a name="754"
+      > </a
+      ><a name="755" class="Symbol"
+      >&#8594;</a
+      ><a name="756"
+      > </a
+      ><a name="757" href="AddingProbeAxiom.Space.Space.html#390" class="Function"
+      >probe-axioms</a
+      ><a name="769"
+      > </a
+      ><a name="770" href="AddingProbeAxiom.Space.Space.html#727" class="Bound"
+      >X</a
+      ><a name="771"
+      > </a
+      ><a name="772" href="AddingProbeAxiom.Space.Space.html#735" class="Bound"
+      >P</a
+      ><a name="773"
+      >
+
+</a
+      ><a name="775" href="AddingProbeAxiom.Space.Space.html#775" class="Function"
+      >Space</a
+      ><a name="780"
+      > </a
+      ><a name="781" class="Symbol"
+      >:</a
+      ><a name="782"
+      > </a
+      ><a name="783" class="PrimitiveType"
+      >Set&#8321;</a
+      ><a name="787"
+      >
+</a
+      ><a name="788" href="AddingProbeAxiom.Space.Space.html#775" class="Function"
+      >Space</a
+      ><a name="793"
+      > </a
+      ><a name="794" class="Symbol"
+      >=</a
+      ><a name="795"
+      > </a
+      ><a name="796" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="797"
+      > </a
+      ><a name="798" class="Symbol"
+      >\(</a
+      ><a name="800" href="AddingProbeAxiom.Space.Space.html#800" class="Bound"
+      >X</a
+      ><a name="801"
+      > </a
+      ><a name="802" class="Symbol"
+      >:</a
+      ><a name="803"
+      > </a
+      ><a name="804" class="PrimitiveType"
+      >Set</a
+      ><a name="807" class="Symbol"
+      >)</a
+      ><a name="808"
+      > </a
+      ><a name="809" class="Symbol"
+      >&#8594;</a
+      ><a name="810"
+      > </a
+      ><a name="811" href="AddingProbeAxiom.Space.Space.html#692" class="Function"
+      >TopologyOn</a
+      ><a name="821"
+      > </a
+      ><a name="822" href="AddingProbeAxiom.Space.Space.html#800" class="Bound"
+      >X</a
+      ><a name="823"
+      >
+
+</a
+      ><a name="825" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="826"
+      > </a
+      ><a name="827" class="Symbol"
+      >:</a
+      ><a name="828"
+      > </a
+      ><a name="829" href="AddingProbeAxiom.Space.Space.html#775" class="Function"
+      >Space</a
+      ><a name="834"
+      > </a
+      ><a name="835" class="Symbol"
+      >&#8594;</a
+      ><a name="836"
+      > </a
+      ><a name="837" class="PrimitiveType"
+      >Set</a
+      ><a name="840"
+      >
+</a
+      ><a name="841" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="842"
+      > </a
+      ><a name="843" class="Symbol"
+      >=</a
+      ><a name="844"
+      > </a
+      ><a name="845" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="848"
+      >
+
+</a
+      ><a name="850" href="AddingProbeAxiom.Space.Space.html#850" class="Function"
+      >Probe</a
+      ><a name="855"
+      > </a
+      ><a name="856" class="Symbol"
+      >:</a
+      ><a name="857"
+      > </a
+      ><a name="858" class="Symbol"
+      >(</a
+      ><a name="859" href="AddingProbeAxiom.Space.Space.html#859" class="Bound"
+      >X</a
+      ><a name="860"
+      > </a
+      ><a name="861" class="Symbol"
+      >:</a
+      ><a name="862"
+      > </a
+      ><a name="863" href="AddingProbeAxiom.Space.Space.html#775" class="Function"
+      >Space</a
+      ><a name="868" class="Symbol"
+      >)</a
+      ><a name="869"
+      > </a
+      ><a name="870" class="Symbol"
+      >&#8594;</a
+      ><a name="871"
+      > </a
+      ><a name="872" href="Preliminaries.SetsAndFunctions.html#531" class="Function"
+      >Subset</a
+      ><a name="878" class="Symbol"
+      >(</a
+      ><a name="879" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="881"
+      > </a
+      ><a name="882" class="Symbol"
+      >&#8594;</a
+      ><a name="883"
+      > </a
+      ><a name="884" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="885"
+      > </a
+      ><a name="886" href="AddingProbeAxiom.Space.Space.html#859" class="Bound"
+      >X</a
+      ><a name="887" class="Symbol"
+      >)</a
+      ><a name="888"
+      > 
+</a
+      ><a name="890" href="AddingProbeAxiom.Space.Space.html#850" class="Function"
+      >Probe</a
+      ><a name="895"
+      > </a
+      ><a name="896" href="AddingProbeAxiom.Space.Space.html#896" class="Bound"
+      >X</a
+      ><a name="897"
+      > </a
+      ><a name="898" class="Symbol"
+      >=</a
+      ><a name="899"
+      > </a
+      ><a name="900" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="903"
+      > </a
+      ><a name="904" class="Symbol"
+      >(</a
+      ><a name="905" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="908"
+      > </a
+      ><a name="909" href="AddingProbeAxiom.Space.Space.html#896" class="Bound"
+      >X</a
+      ><a name="910" class="Symbol"
+      >)</a
+      ><a name="911"
+      >
+
+</a
+      ><a name="913" href="AddingProbeAxiom.Space.Space.html#913" class="Function"
+      >cond&#8320;</a
+      ><a name="918"
+      > </a
+      ><a name="919" class="Symbol"
+      >:</a
+      ><a name="920"
+      > </a
+      ><a name="921" class="Symbol"
+      >(</a
+      ><a name="922" href="AddingProbeAxiom.Space.Space.html#922" class="Bound"
+      >X</a
+      ><a name="923"
+      > </a
+      ><a name="924" class="Symbol"
+      >:</a
+      ><a name="925"
+      > </a
+      ><a name="926" href="AddingProbeAxiom.Space.Space.html#775" class="Function"
+      >Space</a
+      ><a name="931" class="Symbol"
+      >)</a
+      ><a name="932"
+      > </a
+      ><a name="933" class="Symbol"
+      >&#8594;</a
+      ><a name="934"
+      >
+        </a
+      ><a name="943" class="Symbol"
+      >&#8704;(</a
+      ><a name="945" href="AddingProbeAxiom.Space.Space.html#945" class="Bound"
+      >x</a
+      ><a name="946"
+      > </a
+      ><a name="947" class="Symbol"
+      >:</a
+      ><a name="948"
+      > </a
+      ><a name="949" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="950"
+      > </a
+      ><a name="951" href="AddingProbeAxiom.Space.Space.html#922" class="Bound"
+      >X</a
+      ><a name="952" class="Symbol"
+      >)</a
+      ><a name="953"
+      > </a
+      ><a name="954" class="Symbol"
+      >&#8594;</a
+      ><a name="955"
+      > </a
+      ><a name="956" class="Symbol"
+      >(&#955;</a
+      ><a name="958"
+      > </a
+      ><a name="959" href="AddingProbeAxiom.Space.Space.html#959" class="Bound"
+      >&#945;</a
+      ><a name="960"
+      > </a
+      ><a name="961" class="Symbol"
+      >&#8594;</a
+      ><a name="962"
+      > </a
+      ><a name="963" href="AddingProbeAxiom.Space.Space.html#945" class="Bound"
+      >x</a
+      ><a name="964" class="Symbol"
+      >)</a
+      ><a name="965"
+      > </a
+      ><a name="966" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="967"
+      > </a
+      ><a name="968" href="AddingProbeAxiom.Space.Space.html#850" class="Function"
+      >Probe</a
+      ><a name="973"
+      > </a
+      ><a name="974" href="AddingProbeAxiom.Space.Space.html#922" class="Bound"
+      >X</a
+      ><a name="975"
+      >
+</a
+      ><a name="976" href="AddingProbeAxiom.Space.Space.html#913" class="Function"
+      >cond&#8320;</a
+      ><a name="981"
+      > </a
+      ><a name="982" class="Symbol"
+      >(_</a
+      ><a name="984"
+      > </a
+      ><a name="985" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="986"
+      > </a
+      ><a name="987" class="Symbol"
+      >_</a
+      ><a name="988"
+      > </a
+      ><a name="989" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="990"
+      > </a
+      ><a name="991" href="AddingProbeAxiom.Space.Space.html#991" class="Bound"
+      >c&#8320;</a
+      ><a name="993"
+      > </a
+      ><a name="994" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="995"
+      > </a
+      ><a name="996" class="Symbol"
+      >_)</a
+      ><a name="998"
+      > </a
+      ><a name="999" class="Symbol"
+      >=</a
+      ><a name="1000"
+      > </a
+      ><a name="1001" href="AddingProbeAxiom.Space.Space.html#991" class="Bound"
+      >c&#8320;</a
+      ><a name="1003"
+      >
+
+</a
+      ><a name="1005" href="AddingProbeAxiom.Space.Space.html#1005" class="Function"
+      >cond&#8321;</a
+      ><a name="1010"
+      > </a
+      ><a name="1011" class="Symbol"
+      >:</a
+      ><a name="1012"
+      > </a
+      ><a name="1013" class="Symbol"
+      >(</a
+      ><a name="1014" href="AddingProbeAxiom.Space.Space.html#1014" class="Bound"
+      >X</a
+      ><a name="1015"
+      > </a
+      ><a name="1016" class="Symbol"
+      >:</a
+      ><a name="1017"
+      > </a
+      ><a name="1018" href="AddingProbeAxiom.Space.Space.html#775" class="Function"
+      >Space</a
+      ><a name="1023" class="Symbol"
+      >)</a
+      ><a name="1024"
+      > </a
+      ><a name="1025" class="Symbol"
+      >&#8594;</a
+      ><a name="1026"
+      >
+        </a
+      ><a name="1035" class="Symbol"
+      >&#8704;(</a
+      ><a name="1037" href="AddingProbeAxiom.Space.Space.html#1037" class="Bound"
+      >t</a
+      ><a name="1038"
+      > </a
+      ><a name="1039" class="Symbol"
+      >:</a
+      ><a name="1040"
+      > </a
+      ><a name="1041" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1043"
+      > </a
+      ><a name="1044" class="Symbol"
+      >&#8594;</a
+      ><a name="1045"
+      > </a
+      ><a name="1046" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1048" class="Symbol"
+      >)</a
+      ><a name="1049"
+      > </a
+      ><a name="1050" class="Symbol"
+      >&#8594;</a
+      ><a name="1051"
+      > </a
+      ><a name="1052" href="AddingProbeAxiom.Space.Space.html#1037" class="Bound"
+      >t</a
+      ><a name="1053"
+      > </a
+      ><a name="1054" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1055"
+      > </a
+      ><a name="1056" href="AddingProbeAxiom.Space.Coverage.html#411" class="Function"
+      >C</a
+      ><a name="1057"
+      > </a
+      ><a name="1058" class="Symbol"
+      >&#8594;</a
+      ><a name="1059"
+      > </a
+      ><a name="1060" class="Symbol"
+      >&#8704;(</a
+      ><a name="1062" href="AddingProbeAxiom.Space.Space.html#1062" class="Bound"
+      >p</a
+      ><a name="1063"
+      > </a
+      ><a name="1064" class="Symbol"
+      >:</a
+      ><a name="1065"
+      > </a
+      ><a name="1066" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1068"
+      > </a
+      ><a name="1069" class="Symbol"
+      >&#8594;</a
+      ><a name="1070"
+      > </a
+      ><a name="1071" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="1072"
+      > </a
+      ><a name="1073" href="AddingProbeAxiom.Space.Space.html#1014" class="Bound"
+      >X</a
+      ><a name="1074" class="Symbol"
+      >)</a
+      ><a name="1075"
+      > </a
+      ><a name="1076" class="Symbol"
+      >&#8594;</a
+      ><a name="1077"
+      > </a
+      ><a name="1078" href="AddingProbeAxiom.Space.Space.html#1062" class="Bound"
+      >p</a
+      ><a name="1079"
+      > </a
+      ><a name="1080" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1081"
+      > </a
+      ><a name="1082" href="AddingProbeAxiom.Space.Space.html#850" class="Function"
+      >Probe</a
+      ><a name="1087"
+      > </a
+      ><a name="1088" href="AddingProbeAxiom.Space.Space.html#1014" class="Bound"
+      >X</a
+      ><a name="1089"
+      > </a
+      ><a name="1090" class="Symbol"
+      >&#8594;</a
+      ><a name="1091"
+      >
+        </a
+      ><a name="1100" href="AddingProbeAxiom.Space.Space.html#1062" class="Bound"
+      >p</a
+      ><a name="1101"
+      > </a
+      ><a name="1102" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1103"
+      > </a
+      ><a name="1104" href="AddingProbeAxiom.Space.Space.html#1037" class="Bound"
+      >t</a
+      ><a name="1105"
+      > </a
+      ><a name="1106" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1107"
+      > </a
+      ><a name="1108" href="AddingProbeAxiom.Space.Space.html#850" class="Function"
+      >Probe</a
+      ><a name="1113"
+      > </a
+      ><a name="1114" href="AddingProbeAxiom.Space.Space.html#1014" class="Bound"
+      >X</a
+      ><a name="1115"
+      >
+</a
+      ><a name="1116" href="AddingProbeAxiom.Space.Space.html#1005" class="Function"
+      >cond&#8321;</a
+      ><a name="1121"
+      > </a
+      ><a name="1122" class="Symbol"
+      >(_</a
+      ><a name="1124"
+      > </a
+      ><a name="1125" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1126"
+      > </a
+      ><a name="1127" class="Symbol"
+      >_</a
+      ><a name="1128"
+      > </a
+      ><a name="1129" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1130"
+      > </a
+      ><a name="1131" class="Symbol"
+      >_</a
+      ><a name="1132"
+      > </a
+      ><a name="1133" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1134"
+      > </a
+      ><a name="1135" href="AddingProbeAxiom.Space.Space.html#1135" class="Bound"
+      >c&#8321;</a
+      ><a name="1137"
+      > </a
+      ><a name="1138" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1139"
+      > </a
+      ><a name="1140" class="Symbol"
+      >_)</a
+      ><a name="1142"
+      > </a
+      ><a name="1143" class="Symbol"
+      >=</a
+      ><a name="1144"
+      > </a
+      ><a name="1145" href="AddingProbeAxiom.Space.Space.html#1135" class="Bound"
+      >c&#8321;</a
+      ><a name="1147"
+      >
+
+</a
+      ><a name="1149" href="AddingProbeAxiom.Space.Space.html#1149" class="Function"
+      >cond&#8322;</a
+      ><a name="1154"
+      > </a
+      ><a name="1155" class="Symbol"
+      >:</a
+      ><a name="1156"
+      > </a
+      ><a name="1157" class="Symbol"
+      >(</a
+      ><a name="1158" href="AddingProbeAxiom.Space.Space.html#1158" class="Bound"
+      >X</a
+      ><a name="1159"
+      > </a
+      ><a name="1160" class="Symbol"
+      >:</a
+      ><a name="1161"
+      > </a
+      ><a name="1162" href="AddingProbeAxiom.Space.Space.html#775" class="Function"
+      >Space</a
+      ><a name="1167" class="Symbol"
+      >)</a
+      ><a name="1168"
+      > </a
+      ><a name="1169" class="Symbol"
+      >&#8594;</a
+      ><a name="1170"
+      >
+        </a
+      ><a name="1179" class="Symbol"
+      >&#8704;(</a
+      ><a name="1181" href="AddingProbeAxiom.Space.Space.html#1181" class="Bound"
+      >p</a
+      ><a name="1182"
+      > </a
+      ><a name="1183" class="Symbol"
+      >:</a
+      ><a name="1184"
+      > </a
+      ><a name="1185" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1187"
+      > </a
+      ><a name="1188" class="Symbol"
+      >&#8594;</a
+      ><a name="1189"
+      > </a
+      ><a name="1190" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="1191"
+      > </a
+      ><a name="1192" href="AddingProbeAxiom.Space.Space.html#1158" class="Bound"
+      >X</a
+      ><a name="1193" class="Symbol"
+      >)</a
+      ><a name="1194"
+      > </a
+      ><a name="1195" class="Symbol"
+      >&#8594;</a
+      ><a name="1196"
+      > </a
+      ><a name="1197" class="Symbol"
+      >(</a
+      ><a name="1198" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="1199"
+      > </a
+      ><a name="1200" class="Symbol"
+      >\(</a
+      ><a name="1202" href="AddingProbeAxiom.Space.Space.html#1202" class="Bound"
+      >n</a
+      ><a name="1203"
+      > </a
+      ><a name="1204" class="Symbol"
+      >:</a
+      ><a name="1205"
+      > </a
+      ><a name="1206" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1207" class="Symbol"
+      >)</a
+      ><a name="1208"
+      > </a
+      ><a name="1209" class="Symbol"
+      >&#8594;</a
+      ><a name="1210"
+      > </a
+      ><a name="1211" class="Symbol"
+      >&#8704;(</a
+      ><a name="1213" href="AddingProbeAxiom.Space.Space.html#1213" class="Bound"
+      >s</a
+      ><a name="1214"
+      > </a
+      ><a name="1215" class="Symbol"
+      >:</a
+      ><a name="1216"
+      > </a
+      ><a name="1217" href="Preliminaries.Sequence.html#507" class="Datatype"
+      >&#8322;Fin</a
+      ><a name="1221"
+      > </a
+      ><a name="1222" href="AddingProbeAxiom.Space.Space.html#1202" class="Bound"
+      >n</a
+      ><a name="1223" class="Symbol"
+      >)</a
+      ><a name="1224"
+      > </a
+      ><a name="1225" class="Symbol"
+      >&#8594;</a
+      ><a name="1226"
+      > </a
+      ><a name="1227" href="AddingProbeAxiom.Space.Space.html#1181" class="Bound"
+      >p</a
+      ><a name="1228"
+      > </a
+      ><a name="1229" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1230"
+      > </a
+      ><a name="1231" class="Symbol"
+      >(</a
+      ><a name="1232" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1236"
+      > </a
+      ><a name="1237" href="AddingProbeAxiom.Space.Space.html#1213" class="Bound"
+      >s</a
+      ><a name="1238" class="Symbol"
+      >)</a
+      ><a name="1239"
+      > </a
+      ><a name="1240" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1241"
+      > </a
+      ><a name="1242" href="AddingProbeAxiom.Space.Space.html#850" class="Function"
+      >Probe</a
+      ><a name="1247"
+      > </a
+      ><a name="1248" href="AddingProbeAxiom.Space.Space.html#1158" class="Bound"
+      >X</a
+      ><a name="1249" class="Symbol"
+      >)</a
+      ><a name="1250"
+      > </a
+      ><a name="1251" class="Symbol"
+      >&#8594;</a
+      ><a name="1252"
+      >
+        </a
+      ><a name="1261" href="AddingProbeAxiom.Space.Space.html#1181" class="Bound"
+      >p</a
+      ><a name="1262"
+      > </a
+      ><a name="1263" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1264"
+      > </a
+      ><a name="1265" href="AddingProbeAxiom.Space.Space.html#850" class="Function"
+      >Probe</a
+      ><a name="1270"
+      > </a
+      ><a name="1271" href="AddingProbeAxiom.Space.Space.html#1158" class="Bound"
+      >X</a
+      ><a name="1272"
+      >
+</a
+      ><a name="1273" href="AddingProbeAxiom.Space.Space.html#1149" class="Function"
+      >cond&#8322;</a
+      ><a name="1278"
+      > </a
+      ><a name="1279" class="Symbol"
+      >(_</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1283"
+      > </a
+      ><a name="1284" class="Symbol"
+      >_</a
+      ><a name="1285"
+      > </a
+      ><a name="1286" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1287"
+      > </a
+      ><a name="1288" class="Symbol"
+      >_</a
+      ><a name="1289"
+      > </a
+      ><a name="1290" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1291"
+      > </a
+      ><a name="1292" class="Symbol"
+      >_</a
+      ><a name="1293"
+      > </a
+      ><a name="1294" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1295"
+      > </a
+      ><a name="1296" href="AddingProbeAxiom.Space.Space.html#1296" class="Bound"
+      >c&#8322;</a
+      ><a name="1298"
+      > </a
+      ><a name="1299" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1300"
+      > </a
+      ><a name="1301" class="Symbol"
+      >_)</a
+      ><a name="1303"
+      > </a
+      ><a name="1304" class="Symbol"
+      >=</a
+      ><a name="1305"
+      > </a
+      ><a name="1306" href="AddingProbeAxiom.Space.Space.html#1296" class="Bound"
+      >c&#8322;</a
+      ><a name="1308"
+      >
+
+</a
+      ><a name="1310" href="AddingProbeAxiom.Space.Space.html#1310" class="Function"
+      >cond&#8323;</a
+      ><a name="1315"
+      > </a
+      ><a name="1316" class="Symbol"
+      >:</a
+      ><a name="1317"
+      > </a
+      ><a name="1318" class="Symbol"
+      >(</a
+      ><a name="1319" href="AddingProbeAxiom.Space.Space.html#1319" class="Bound"
+      >X</a
+      ><a name="1320"
+      > </a
+      ><a name="1321" class="Symbol"
+      >:</a
+      ><a name="1322"
+      > </a
+      ><a name="1323" href="AddingProbeAxiom.Space.Space.html#775" class="Function"
+      >Space</a
+      ><a name="1328" class="Symbol"
+      >)</a
+      ><a name="1329"
+      > </a
+      ><a name="1330" class="Symbol"
+      >&#8594;</a
+      ><a name="1331"
+      >
+        </a
+      ><a name="1340" class="Symbol"
+      >&#8704;(</a
+      ><a name="1342" href="AddingProbeAxiom.Space.Space.html#1342" class="Bound"
+      >p</a
+      ><a name="1343"
+      > </a
+      ><a name="1344" href="AddingProbeAxiom.Space.Space.html#1344" class="Bound"
+      >q</a
+      ><a name="1345"
+      > </a
+      ><a name="1346" class="Symbol"
+      >:</a
+      ><a name="1347"
+      > </a
+      ><a name="1348" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1350"
+      > </a
+      ><a name="1351" class="Symbol"
+      >&#8594;</a
+      ><a name="1352"
+      > </a
+      ><a name="1353" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="1354"
+      > </a
+      ><a name="1355" href="AddingProbeAxiom.Space.Space.html#1319" class="Bound"
+      >X</a
+      ><a name="1356" class="Symbol"
+      >)</a
+      ><a name="1357"
+      > </a
+      ><a name="1358" class="Symbol"
+      >&#8594;</a
+      ><a name="1359"
+      > </a
+      ><a name="1360" href="AddingProbeAxiom.Space.Space.html#1342" class="Bound"
+      >p</a
+      ><a name="1361"
+      > </a
+      ><a name="1362" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1363"
+      > </a
+      ><a name="1364" href="AddingProbeAxiom.Space.Space.html#850" class="Function"
+      >Probe</a
+      ><a name="1369"
+      > </a
+      ><a name="1370" href="AddingProbeAxiom.Space.Space.html#1319" class="Bound"
+      >X</a
+      ><a name="1371"
+      > </a
+      ><a name="1372" class="Symbol"
+      >&#8594;</a
+      ><a name="1373"
+      > </a
+      ><a name="1374" class="Symbol"
+      >(&#8704;</a
+      ><a name="1376"
+      > </a
+      ><a name="1377" href="AddingProbeAxiom.Space.Space.html#1377" class="Bound"
+      >&#945;</a
+      ><a name="1378"
+      > </a
+      ><a name="1379" class="Symbol"
+      >&#8594;</a
+      ><a name="1380"
+      > </a
+      ><a name="1381" href="AddingProbeAxiom.Space.Space.html#1342" class="Bound"
+      >p</a
+      ><a name="1382"
+      > </a
+      ><a name="1383" href="AddingProbeAxiom.Space.Space.html#1377" class="Bound"
+      >&#945;</a
+      ><a name="1384"
+      > </a
+      ><a name="1385" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1386"
+      > </a
+      ><a name="1387" href="AddingProbeAxiom.Space.Space.html#1344" class="Bound"
+      >q</a
+      ><a name="1388"
+      > </a
+      ><a name="1389" href="AddingProbeAxiom.Space.Space.html#1377" class="Bound"
+      >&#945;</a
+      ><a name="1390" class="Symbol"
+      >)</a
+      ><a name="1391"
+      > </a
+      ><a name="1392" class="Symbol"
+      >&#8594;</a
+      ><a name="1393"
+      >
+        </a
+      ><a name="1402" href="AddingProbeAxiom.Space.Space.html#1344" class="Bound"
+      >q</a
+      ><a name="1403"
+      > </a
+      ><a name="1404" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1405"
+      > </a
+      ><a name="1406" href="AddingProbeAxiom.Space.Space.html#850" class="Function"
+      >Probe</a
+      ><a name="1411"
+      > </a
+      ><a name="1412" href="AddingProbeAxiom.Space.Space.html#1319" class="Bound"
+      >X</a
+      ><a name="1413"
+      >
+</a
+      ><a name="1414" href="AddingProbeAxiom.Space.Space.html#1310" class="Function"
+      >cond&#8323;</a
+      ><a name="1419"
+      > </a
+      ><a name="1420" class="Symbol"
+      >(_</a
+      ><a name="1422"
+      > </a
+      ><a name="1423" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1424"
+      > </a
+      ><a name="1425" class="Symbol"
+      >_</a
+      ><a name="1426"
+      > </a
+      ><a name="1427" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1428"
+      > </a
+      ><a name="1429" class="Symbol"
+      >_</a
+      ><a name="1430"
+      > </a
+      ><a name="1431" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1432"
+      > </a
+      ><a name="1433" class="Symbol"
+      >_</a
+      ><a name="1434"
+      > </a
+      ><a name="1435" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1436"
+      > </a
+      ><a name="1437" class="Symbol"
+      >_</a
+      ><a name="1438"
+      > </a
+      ><a name="1439" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1440"
+      > </a
+      ><a name="1441" href="AddingProbeAxiom.Space.Space.html#1441" class="Bound"
+      >c&#8323;</a
+      ><a name="1443" class="Symbol"
+      >)</a
+      ><a name="1444"
+      > </a
+      ><a name="1445" class="Symbol"
+      >=</a
+      ><a name="1446"
+      > </a
+      ><a name="1447" href="AddingProbeAxiom.Space.Space.html#1441" class="Bound"
+      >c&#8323;</a
+      ><a name="1449"
+      >
+
+\end{code}
+
+</a
+      ><a name="1463" class="Comment"
+      >Continuous maps</a
+      ><a name="1478"
+      >
+
+\begin{code}
+
+</a
+      ><a name="1494" href="AddingProbeAxiom.Space.Space.html#1494" class="Function"
+      >continuous</a
+      ><a name="1504"
+      > </a
+      ><a name="1505" class="Symbol"
+      >:</a
+      ><a name="1506"
+      > </a
+      ><a name="1507" class="Symbol"
+      >(</a
+      ><a name="1508" href="AddingProbeAxiom.Space.Space.html#1508" class="Bound"
+      >X</a
+      ><a name="1509"
+      > </a
+      ><a name="1510" href="AddingProbeAxiom.Space.Space.html#1510" class="Bound"
+      >Y</a
+      ><a name="1511"
+      > </a
+      ><a name="1512" class="Symbol"
+      >:</a
+      ><a name="1513"
+      > </a
+      ><a name="1514" href="AddingProbeAxiom.Space.Space.html#775" class="Function"
+      >Space</a
+      ><a name="1519" class="Symbol"
+      >)</a
+      ><a name="1520"
+      > </a
+      ><a name="1521" class="Symbol"
+      >&#8594;</a
+      ><a name="1522"
+      > </a
+      ><a name="1523" class="Symbol"
+      >(</a
+      ><a name="1524" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="1525"
+      > </a
+      ><a name="1526" href="AddingProbeAxiom.Space.Space.html#1508" class="Bound"
+      >X</a
+      ><a name="1527"
+      > </a
+      ><a name="1528" class="Symbol"
+      >&#8594;</a
+      ><a name="1529"
+      > </a
+      ><a name="1530" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="1531"
+      > </a
+      ><a name="1532" href="AddingProbeAxiom.Space.Space.html#1510" class="Bound"
+      >Y</a
+      ><a name="1533" class="Symbol"
+      >)</a
+      ><a name="1534"
+      > </a
+      ><a name="1535" class="Symbol"
+      >&#8594;</a
+      ><a name="1536"
+      > </a
+      ><a name="1537" class="PrimitiveType"
+      >Set</a
+      ><a name="1540"
+      >
+</a
+      ><a name="1541" href="AddingProbeAxiom.Space.Space.html#1494" class="Function"
+      >continuous</a
+      ><a name="1551"
+      > </a
+      ><a name="1552" href="AddingProbeAxiom.Space.Space.html#1552" class="Bound"
+      >X</a
+      ><a name="1553"
+      > </a
+      ><a name="1554" href="AddingProbeAxiom.Space.Space.html#1554" class="Bound"
+      >Y</a
+      ><a name="1555"
+      > </a
+      ><a name="1556" href="AddingProbeAxiom.Space.Space.html#1556" class="Bound"
+      >f</a
+      ><a name="1557"
+      > </a
+      ><a name="1558" class="Symbol"
+      >=</a
+      ><a name="1559"
+      > </a
+      ><a name="1560" class="Symbol"
+      >&#8704;</a
+      ><a name="1561"
+      > </a
+      ><a name="1562" href="AddingProbeAxiom.Space.Space.html#1562" class="Bound"
+      >p</a
+      ><a name="1563"
+      > </a
+      ><a name="1564" class="Symbol"
+      >&#8594;</a
+      ><a name="1565"
+      > </a
+      ><a name="1566" href="AddingProbeAxiom.Space.Space.html#1562" class="Bound"
+      >p</a
+      ><a name="1567"
+      > </a
+      ><a name="1568" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1569"
+      > </a
+      ><a name="1570" href="AddingProbeAxiom.Space.Space.html#850" class="Function"
+      >Probe</a
+      ><a name="1575"
+      > </a
+      ><a name="1576" href="AddingProbeAxiom.Space.Space.html#1552" class="Bound"
+      >X</a
+      ><a name="1577"
+      > </a
+      ><a name="1578" class="Symbol"
+      >&#8594;</a
+      ><a name="1579"
+      > </a
+      ><a name="1580" href="AddingProbeAxiom.Space.Space.html#1556" class="Bound"
+      >f</a
+      ><a name="1581"
+      > </a
+      ><a name="1582" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1583"
+      > </a
+      ><a name="1584" href="AddingProbeAxiom.Space.Space.html#1562" class="Bound"
+      >p</a
+      ><a name="1585"
+      > </a
+      ><a name="1586" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1587"
+      > </a
+      ><a name="1588" href="AddingProbeAxiom.Space.Space.html#850" class="Function"
+      >Probe</a
+      ><a name="1593"
+      > </a
+      ><a name="1594" href="AddingProbeAxiom.Space.Space.html#1554" class="Bound"
+      >Y</a
+      ><a name="1595"
+      >
+
+</a
+      ><a name="1597" href="AddingProbeAxiom.Space.Space.html#1597" class="Function"
+      >Map</a
+      ><a name="1600"
+      > </a
+      ><a name="1601" class="Symbol"
+      >:</a
+      ><a name="1602"
+      > </a
+      ><a name="1603" href="AddingProbeAxiom.Space.Space.html#775" class="Function"
+      >Space</a
+      ><a name="1608"
+      > </a
+      ><a name="1609" class="Symbol"
+      >&#8594;</a
+      ><a name="1610"
+      > </a
+      ><a name="1611" href="AddingProbeAxiom.Space.Space.html#775" class="Function"
+      >Space</a
+      ><a name="1616"
+      > </a
+      ><a name="1617" class="Symbol"
+      >&#8594;</a
+      ><a name="1618"
+      > </a
+      ><a name="1619" class="PrimitiveType"
+      >Set</a
+      ><a name="1622"
+      >
+</a
+      ><a name="1623" href="AddingProbeAxiom.Space.Space.html#1597" class="Function"
+      >Map</a
+      ><a name="1626"
+      > </a
+      ><a name="1627" href="AddingProbeAxiom.Space.Space.html#1627" class="Bound"
+      >X</a
+      ><a name="1628"
+      > </a
+      ><a name="1629" href="AddingProbeAxiom.Space.Space.html#1629" class="Bound"
+      >Y</a
+      ><a name="1630"
+      > </a
+      ><a name="1631" class="Symbol"
+      >=</a
+      ><a name="1632"
+      > </a
+      ><a name="1633" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="1634"
+      > </a
+      ><a name="1635" class="Symbol"
+      >\(</a
+      ><a name="1637" href="AddingProbeAxiom.Space.Space.html#1637" class="Bound"
+      >f</a
+      ><a name="1638"
+      > </a
+      ><a name="1639" class="Symbol"
+      >:</a
+      ><a name="1640"
+      > </a
+      ><a name="1641" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="1642"
+      > </a
+      ><a name="1643" href="AddingProbeAxiom.Space.Space.html#1627" class="Bound"
+      >X</a
+      ><a name="1644"
+      > </a
+      ><a name="1645" class="Symbol"
+      >&#8594;</a
+      ><a name="1646"
+      > </a
+      ><a name="1647" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="1648"
+      > </a
+      ><a name="1649" href="AddingProbeAxiom.Space.Space.html#1629" class="Bound"
+      >Y</a
+      ><a name="1650" class="Symbol"
+      >)</a
+      ><a name="1651"
+      > </a
+      ><a name="1652" class="Symbol"
+      >&#8594;</a
+      ><a name="1653"
+      > </a
+      ><a name="1654" href="AddingProbeAxiom.Space.Space.html#1494" class="Function"
+      >continuous</a
+      ><a name="1664"
+      > </a
+      ><a name="1665" href="AddingProbeAxiom.Space.Space.html#1627" class="Bound"
+      >X</a
+      ><a name="1666"
+      > </a
+      ><a name="1667" href="AddingProbeAxiom.Space.Space.html#1629" class="Bound"
+      >Y</a
+      ><a name="1668"
+      > </a
+      ><a name="1669" href="AddingProbeAxiom.Space.Space.html#1637" class="Bound"
+      >f</a
+      ><a name="1670"
+      >
+
+</a
+      ><a name="1672" href="AddingProbeAxiom.Space.Space.html#1672" class="Function"
+      >id-is-continuous</a
+      ><a name="1688"
+      > </a
+      ><a name="1689" class="Symbol"
+      >:</a
+      ><a name="1690"
+      > </a
+      ><a name="1691" class="Symbol"
+      >&#8704;{</a
+      ><a name="1693" href="AddingProbeAxiom.Space.Space.html#1693" class="Bound"
+      >X</a
+      ><a name="1694"
+      > </a
+      ><a name="1695" class="Symbol"
+      >:</a
+      ><a name="1696"
+      > </a
+      ><a name="1697" href="AddingProbeAxiom.Space.Space.html#775" class="Function"
+      >Space</a
+      ><a name="1702" class="Symbol"
+      >}</a
+      ><a name="1703"
+      > </a
+      ><a name="1704" class="Symbol"
+      >&#8594;</a
+      ><a name="1705"
+      > </a
+      ><a name="1706" href="AddingProbeAxiom.Space.Space.html#1494" class="Function"
+      >continuous</a
+      ><a name="1716"
+      > </a
+      ><a name="1717" href="AddingProbeAxiom.Space.Space.html#1693" class="Bound"
+      >X</a
+      ><a name="1718"
+      > </a
+      ><a name="1719" href="AddingProbeAxiom.Space.Space.html#1693" class="Bound"
+      >X</a
+      ><a name="1720"
+      > </a
+      ><a name="1721" href="Preliminaries.SetsAndFunctions.html#241" class="Function"
+      >id</a
+      ><a name="1723"
+      >
+</a
+      ><a name="1724" href="AddingProbeAxiom.Space.Space.html#1672" class="Function"
+      >id-is-continuous</a
+      ><a name="1740"
+      > </a
+      ><a name="1741" href="AddingProbeAxiom.Space.Space.html#1741" class="Bound"
+      >p</a
+      ><a name="1742"
+      > </a
+      ><a name="1743" href="AddingProbeAxiom.Space.Space.html#1743" class="Bound"
+      >pinP</a
+      ><a name="1747"
+      > </a
+      ><a name="1748" class="Symbol"
+      >=</a
+      ><a name="1749"
+      > </a
+      ><a name="1750" href="AddingProbeAxiom.Space.Space.html#1743" class="Bound"
+      >pinP</a
+      ><a name="1754"
+      >
+
+</a
+      ><a name="1756" href="AddingProbeAxiom.Space.Space.html#1756" class="Function"
+      >&#8728;-preserves-continuity</a
+      ><a name="1778"
+      > </a
+      ><a name="1779" class="Symbol"
+      >:</a
+      ><a name="1780"
+      > </a
+      ><a name="1781" class="Symbol"
+      >(</a
+      ><a name="1782" href="AddingProbeAxiom.Space.Space.html#1782" class="Bound"
+      >X</a
+      ><a name="1783"
+      > </a
+      ><a name="1784" href="AddingProbeAxiom.Space.Space.html#1784" class="Bound"
+      >Y</a
+      ><a name="1785"
+      > </a
+      ><a name="1786" href="AddingProbeAxiom.Space.Space.html#1786" class="Bound"
+      >Z</a
+      ><a name="1787"
+      > </a
+      ><a name="1788" class="Symbol"
+      >:</a
+      ><a name="1789"
+      > </a
+      ><a name="1790" href="AddingProbeAxiom.Space.Space.html#775" class="Function"
+      >Space</a
+      ><a name="1795" class="Symbol"
+      >)</a
+      ><a name="1796"
+      > </a
+      ><a name="1797" class="Symbol"
+      >&#8594;</a
+      ><a name="1798"
+      >
+    </a
+      ><a name="1803" class="Symbol"
+      >&#8704;(</a
+      ><a name="1805" href="AddingProbeAxiom.Space.Space.html#1805" class="Bound"
+      >f</a
+      ><a name="1806"
+      > </a
+      ><a name="1807" class="Symbol"
+      >:</a
+      ><a name="1808"
+      > </a
+      ><a name="1809" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="1810"
+      > </a
+      ><a name="1811" href="AddingProbeAxiom.Space.Space.html#1782" class="Bound"
+      >X</a
+      ><a name="1812"
+      > </a
+      ><a name="1813" class="Symbol"
+      >&#8594;</a
+      ><a name="1814"
+      > </a
+      ><a name="1815" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="1816"
+      > </a
+      ><a name="1817" href="AddingProbeAxiom.Space.Space.html#1784" class="Bound"
+      >Y</a
+      ><a name="1818" class="Symbol"
+      >)</a
+      ><a name="1819"
+      > </a
+      ><a name="1820" class="Symbol"
+      >&#8594;</a
+      ><a name="1821"
+      > </a
+      ><a name="1822" href="AddingProbeAxiom.Space.Space.html#1494" class="Function"
+      >continuous</a
+      ><a name="1832"
+      > </a
+      ><a name="1833" href="AddingProbeAxiom.Space.Space.html#1782" class="Bound"
+      >X</a
+      ><a name="1834"
+      > </a
+      ><a name="1835" href="AddingProbeAxiom.Space.Space.html#1784" class="Bound"
+      >Y</a
+      ><a name="1836"
+      > </a
+      ><a name="1837" href="AddingProbeAxiom.Space.Space.html#1805" class="Bound"
+      >f</a
+      ><a name="1838"
+      > </a
+      ><a name="1839" class="Symbol"
+      >&#8594;</a
+      ><a name="1840"
+      >
+    </a
+      ><a name="1845" class="Symbol"
+      >&#8704;(</a
+      ><a name="1847" href="AddingProbeAxiom.Space.Space.html#1847" class="Bound"
+      >g</a
+      ><a name="1848"
+      > </a
+      ><a name="1849" class="Symbol"
+      >:</a
+      ><a name="1850"
+      > </a
+      ><a name="1851" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="1852"
+      > </a
+      ><a name="1853" href="AddingProbeAxiom.Space.Space.html#1784" class="Bound"
+      >Y</a
+      ><a name="1854"
+      > </a
+      ><a name="1855" class="Symbol"
+      >&#8594;</a
+      ><a name="1856"
+      > </a
+      ><a name="1857" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="1858"
+      > </a
+      ><a name="1859" href="AddingProbeAxiom.Space.Space.html#1786" class="Bound"
+      >Z</a
+      ><a name="1860" class="Symbol"
+      >)</a
+      ><a name="1861"
+      > </a
+      ><a name="1862" class="Symbol"
+      >&#8594;</a
+      ><a name="1863"
+      > </a
+      ><a name="1864" href="AddingProbeAxiom.Space.Space.html#1494" class="Function"
+      >continuous</a
+      ><a name="1874"
+      > </a
+      ><a name="1875" href="AddingProbeAxiom.Space.Space.html#1784" class="Bound"
+      >Y</a
+      ><a name="1876"
+      > </a
+      ><a name="1877" href="AddingProbeAxiom.Space.Space.html#1786" class="Bound"
+      >Z</a
+      ><a name="1878"
+      > </a
+      ><a name="1879" href="AddingProbeAxiom.Space.Space.html#1847" class="Bound"
+      >g</a
+      ><a name="1880"
+      > </a
+      ><a name="1881" class="Symbol"
+      >&#8594;</a
+      ><a name="1882"
+      >
+    </a
+      ><a name="1887" href="AddingProbeAxiom.Space.Space.html#1494" class="Function"
+      >continuous</a
+      ><a name="1897"
+      > </a
+      ><a name="1898" href="AddingProbeAxiom.Space.Space.html#1782" class="Bound"
+      >X</a
+      ><a name="1899"
+      > </a
+      ><a name="1900" href="AddingProbeAxiom.Space.Space.html#1786" class="Bound"
+      >Z</a
+      ><a name="1901"
+      > </a
+      ><a name="1902" class="Symbol"
+      >(</a
+      ><a name="1903" href="AddingProbeAxiom.Space.Space.html#1847" class="Bound"
+      >g</a
+      ><a name="1904"
+      > </a
+      ><a name="1905" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1906"
+      > </a
+      ><a name="1907" href="AddingProbeAxiom.Space.Space.html#1805" class="Bound"
+      >f</a
+      ><a name="1908" class="Symbol"
+      >)</a
+      ><a name="1909"
+      >
+</a
+      ><a name="1910" href="AddingProbeAxiom.Space.Space.html#1756" class="Function"
+      >&#8728;-preserves-continuity</a
+      ><a name="1932"
+      > </a
+      ><a name="1933" href="AddingProbeAxiom.Space.Space.html#1933" class="Bound"
+      >X</a
+      ><a name="1934"
+      > </a
+      ><a name="1935" href="AddingProbeAxiom.Space.Space.html#1935" class="Bound"
+      >Y</a
+      ><a name="1936"
+      > </a
+      ><a name="1937" href="AddingProbeAxiom.Space.Space.html#1937" class="Bound"
+      >Z</a
+      ><a name="1938"
+      > </a
+      ><a name="1939" href="AddingProbeAxiom.Space.Space.html#1939" class="Bound"
+      >f</a
+      ><a name="1940"
+      > </a
+      ><a name="1941" href="AddingProbeAxiom.Space.Space.html#1941" class="Bound"
+      >cf</a
+      ><a name="1943"
+      > </a
+      ><a name="1944" href="AddingProbeAxiom.Space.Space.html#1944" class="Bound"
+      >g</a
+      ><a name="1945"
+      > </a
+      ><a name="1946" href="AddingProbeAxiom.Space.Space.html#1946" class="Bound"
+      >cg</a
+      ><a name="1948"
+      > </a
+      ><a name="1949" href="AddingProbeAxiom.Space.Space.html#1949" class="Bound"
+      >p</a
+      ><a name="1950"
+      > </a
+      ><a name="1951" href="AddingProbeAxiom.Space.Space.html#1951" class="Bound"
+      >pP</a
+      ><a name="1953"
+      > </a
+      ><a name="1954" class="Symbol"
+      >=</a
+      ><a name="1955"
+      > </a
+      ><a name="1956" href="AddingProbeAxiom.Space.Space.html#1946" class="Bound"
+      >cg</a
+      ><a name="1958"
+      > </a
+      ><a name="1959" class="Symbol"
+      >(</a
+      ><a name="1960" href="AddingProbeAxiom.Space.Space.html#1939" class="Bound"
+      >f</a
+      ><a name="1961"
+      > </a
+      ><a name="1962" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1963"
+      > </a
+      ><a name="1964" href="AddingProbeAxiom.Space.Space.html#1949" class="Bound"
+      >p</a
+      ><a name="1965" class="Symbol"
+      >)</a
+      ><a name="1966"
+      > </a
+      ><a name="1967" class="Symbol"
+      >(</a
+      ><a name="1968" href="AddingProbeAxiom.Space.Space.html#1941" class="Bound"
+      >cf</a
+      ><a name="1970"
+      > </a
+      ><a name="1971" href="AddingProbeAxiom.Space.Space.html#1949" class="Bound"
+      >p</a
+      ><a name="1972"
+      > </a
+      ><a name="1973" href="AddingProbeAxiom.Space.Space.html#1951" class="Bound"
+      >pP</a
+      ><a name="1975" class="Symbol"
+      >)</a
+      ><a name="1976"
+      >
+
+</a
+      ><a name="1978" href="AddingProbeAxiom.Space.Space.html#1978" class="Function"
+      >continuous-constant</a
+      ><a name="1997"
+      > </a
+      ><a name="1998" class="Symbol"
+      >:</a
+      ><a name="1999"
+      > </a
+      ><a name="2000" class="Symbol"
+      >(</a
+      ><a name="2001" href="AddingProbeAxiom.Space.Space.html#2001" class="Bound"
+      >X</a
+      ><a name="2002"
+      > </a
+      ><a name="2003" href="AddingProbeAxiom.Space.Space.html#2003" class="Bound"
+      >Y</a
+      ><a name="2004"
+      > </a
+      ><a name="2005" class="Symbol"
+      >:</a
+      ><a name="2006"
+      > </a
+      ><a name="2007" href="AddingProbeAxiom.Space.Space.html#775" class="Function"
+      >Space</a
+      ><a name="2012" class="Symbol"
+      >)</a
+      ><a name="2013"
+      > </a
+      ><a name="2014" class="Symbol"
+      >&#8594;</a
+      ><a name="2015"
+      > </a
+      ><a name="2016" href="AddingProbeAxiom.Space.Space.html#825" class="Function"
+      >U</a
+      ><a name="2017"
+      > </a
+      ><a name="2018" href="AddingProbeAxiom.Space.Space.html#2003" class="Bound"
+      >Y</a
+      ><a name="2019"
+      > </a
+      ><a name="2020" class="Symbol"
+      >&#8594;</a
+      ><a name="2021"
+      > </a
+      ><a name="2022" href="AddingProbeAxiom.Space.Space.html#1597" class="Function"
+      >Map</a
+      ><a name="2025"
+      > </a
+      ><a name="2026" href="AddingProbeAxiom.Space.Space.html#2001" class="Bound"
+      >X</a
+      ><a name="2027"
+      > </a
+      ><a name="2028" href="AddingProbeAxiom.Space.Space.html#2003" class="Bound"
+      >Y</a
+      ><a name="2029"
+      >
+</a
+      ><a name="2030" href="AddingProbeAxiom.Space.Space.html#1978" class="Function"
+      >continuous-constant</a
+      ><a name="2049"
+      > </a
+      ><a name="2050" href="AddingProbeAxiom.Space.Space.html#2050" class="Bound"
+      >X</a
+      ><a name="2051"
+      > </a
+      ><a name="2052" href="AddingProbeAxiom.Space.Space.html#2052" class="Bound"
+      >Y</a
+      ><a name="2053"
+      > </a
+      ><a name="2054" href="AddingProbeAxiom.Space.Space.html#2054" class="Bound"
+      >y</a
+      ><a name="2055"
+      > </a
+      ><a name="2056" class="Symbol"
+      >=</a
+      ><a name="2057"
+      > </a
+      ><a name="2058" class="Symbol"
+      >(&#955;</a
+      ><a name="2060"
+      > </a
+      ><a name="2061" href="AddingProbeAxiom.Space.Space.html#2061" class="Bound"
+      >_</a
+      ><a name="2062"
+      > </a
+      ><a name="2063" class="Symbol"
+      >&#8594;</a
+      ><a name="2064"
+      > </a
+      ><a name="2065" href="AddingProbeAxiom.Space.Space.html#2054" class="Bound"
+      >y</a
+      ><a name="2066" class="Symbol"
+      >)</a
+      ><a name="2067"
+      > </a
+      ><a name="2068" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2069"
+      > </a
+      ><a name="2070" class="Symbol"
+      >(&#955;</a
+      ><a name="2072"
+      > </a
+      ><a name="2073" href="AddingProbeAxiom.Space.Space.html#2073" class="Bound"
+      >_</a
+      ><a name="2074"
+      > </a
+      ><a name="2075" href="AddingProbeAxiom.Space.Space.html#2075" class="Bound"
+      >_</a
+      ><a name="2076"
+      > </a
+      ><a name="2077" class="Symbol"
+      >&#8594;</a
+      ><a name="2078"
+      > </a
+      ><a name="2079" href="AddingProbeAxiom.Space.Space.html#913" class="Function"
+      >cond&#8320;</a
+      ><a name="2084"
+      > </a
+      ><a name="2085" href="AddingProbeAxiom.Space.Space.html#2052" class="Bound"
+      >Y</a
+      ><a name="2086"
+      > </a
+      ><a name="2087" href="AddingProbeAxiom.Space.Space.html#2054" class="Bound"
+      >y</a
+      ><a name="2088" class="Symbol"
+      >)</a
+      ><a name="2089"
+      >
+
+\end{code}
+</a
+      ></pre
+    ></body
+  ></html
+>

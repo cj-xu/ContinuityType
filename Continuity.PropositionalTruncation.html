@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >Continuity.PropositionalTruncation</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Comment"
+      >Martin Escardo &amp; Chuangjie Xu, 2015.</a
+      ><a name="37"
+      >
+
+</a
+      ><a name="39" class="Comment"
+      >We postulate the propositional truncation.</a
+      ><a name="81"
+      >
+
+\begin{code}
+
+</a
+      ><a name="97" class="Keyword"
+      >module</a
+      ><a name="103"
+      > </a
+      ><a name="104" href="Continuity.PropositionalTruncation.html#1" class="Module"
+      >Continuity.PropositionalTruncation</a
+      ><a name="138"
+      > </a
+      ><a name="139" class="Keyword"
+      >where</a
+      ><a name="144"
+      >
+
+</a
+      ><a name="146" class="Keyword"
+      >open</a
+      ><a name="150"
+      > </a
+      ><a name="151" class="Keyword"
+      >import</a
+      ><a name="157"
+      > </a
+      ><a name="158" href="Preliminaries.SetsAndFunctions.html#1" class="Module"
+      >Preliminaries.SetsAndFunctions</a
+      ><a name="188"
+      >
+
+</a
+      ><a name="190" class="Keyword"
+      >postulate</a
+      ><a name="199"
+      >
+  </a
+      ><a name="202" href="Continuity.PropositionalTruncation.html#202" class="Postulate Operator"
+      >&#8741;_&#8741;</a
+      ><a name="205"
+      >       </a
+      ><a name="212" class="Symbol"
+      >:</a
+      ><a name="213"
+      > </a
+      ><a name="214" class="PrimitiveType"
+      >Set</a
+      ><a name="217"
+      > </a
+      ><a name="218" class="Symbol"
+      >&#8594;</a
+      ><a name="219"
+      > </a
+      ><a name="220" class="PrimitiveType"
+      >Set</a
+      ><a name="223"
+      >
+  </a
+      ><a name="226" href="Continuity.PropositionalTruncation.html#226" class="Postulate"
+      >&#8741;-&#8741;-hprop</a
+      ><a name="235"
+      > </a
+      ><a name="236" class="Symbol"
+      >:</a
+      ><a name="237"
+      > </a
+      ><a name="238" class="Symbol"
+      >&#8704;{</a
+      ><a name="240" href="Continuity.PropositionalTruncation.html#240" class="Bound"
+      >X</a
+      ><a name="241"
+      > </a
+      ><a name="242" class="Symbol"
+      >:</a
+      ><a name="243"
+      > </a
+      ><a name="244" class="PrimitiveType"
+      >Set</a
+      ><a name="247" class="Symbol"
+      >}</a
+      ><a name="248"
+      > </a
+      ><a name="249" class="Symbol"
+      >&#8594;</a
+      ><a name="250"
+      > </a
+      ><a name="251" href="Preliminaries.SetsAndFunctions.html#4925" class="Function"
+      >hprop</a
+      ><a name="256"
+      > </a
+      ><a name="257" href="Continuity.PropositionalTruncation.html#202" class="Postulate Operator"
+      >&#8741;</a
+      ><a name="258"
+      > </a
+      ><a name="259" href="Continuity.PropositionalTruncation.html#240" class="Bound"
+      >X</a
+      ><a name="260"
+      > </a
+      ><a name="261" href="Continuity.PropositionalTruncation.html#202" class="Postulate Operator"
+      >&#8741;</a
+      ><a name="262"
+      >
+  </a
+      ><a name="265" href="Continuity.PropositionalTruncation.html#265" class="Postulate Operator"
+      >&#8739;_&#8739;</a
+      ><a name="268"
+      >       </a
+      ><a name="275" class="Symbol"
+      >:</a
+      ><a name="276"
+      > </a
+      ><a name="277" class="Symbol"
+      >{</a
+      ><a name="278" href="Continuity.PropositionalTruncation.html#278" class="Bound"
+      >X</a
+      ><a name="279"
+      > </a
+      ><a name="280" class="Symbol"
+      >:</a
+      ><a name="281"
+      > </a
+      ><a name="282" class="PrimitiveType"
+      >Set</a
+      ><a name="285" class="Symbol"
+      >}</a
+      ><a name="286"
+      > </a
+      ><a name="287" class="Symbol"
+      >&#8594;</a
+      ><a name="288"
+      > </a
+      ><a name="289" href="Continuity.PropositionalTruncation.html#278" class="Bound"
+      >X</a
+      ><a name="290"
+      > </a
+      ><a name="291" class="Symbol"
+      >&#8594;</a
+      ><a name="292"
+      > </a
+      ><a name="293" href="Continuity.PropositionalTruncation.html#202" class="Postulate Operator"
+      >&#8741;</a
+      ><a name="294"
+      > </a
+      ><a name="295" href="Continuity.PropositionalTruncation.html#278" class="Bound"
+      >X</a
+      ><a name="296"
+      > </a
+      ><a name="297" href="Continuity.PropositionalTruncation.html#202" class="Postulate Operator"
+      >&#8741;</a
+      ><a name="298"
+      >
+  </a
+      ><a name="301" href="Continuity.PropositionalTruncation.html#301" class="Postulate"
+      >&#8741;-&#8741;-elim</a
+      ><a name="309"
+      >  </a
+      ><a name="311" class="Symbol"
+      >:</a
+      ><a name="312"
+      > </a
+      ><a name="313" class="Symbol"
+      >&#8704;{</a
+      ><a name="315" href="Continuity.PropositionalTruncation.html#315" class="Bound"
+      >X</a
+      ><a name="316"
+      > </a
+      ><a name="317" href="Continuity.PropositionalTruncation.html#317" class="Bound"
+      >P</a
+      ><a name="318"
+      > </a
+      ><a name="319" class="Symbol"
+      >:</a
+      ><a name="320"
+      > </a
+      ><a name="321" class="PrimitiveType"
+      >Set</a
+      ><a name="324" class="Symbol"
+      >}</a
+      ><a name="325"
+      > </a
+      ><a name="326" class="Symbol"
+      >&#8594;</a
+      ><a name="327"
+      > </a
+      ><a name="328" href="Preliminaries.SetsAndFunctions.html#4925" class="Function"
+      >hprop</a
+      ><a name="333"
+      > </a
+      ><a name="334" href="Continuity.PropositionalTruncation.html#317" class="Bound"
+      >P</a
+      ><a name="335"
+      > </a
+      ><a name="336" class="Symbol"
+      >&#8594;</a
+      ><a name="337"
+      > </a
+      ><a name="338" class="Symbol"
+      >(</a
+      ><a name="339" href="Continuity.PropositionalTruncation.html#315" class="Bound"
+      >X</a
+      ><a name="340"
+      > </a
+      ><a name="341" class="Symbol"
+      >&#8594;</a
+      ><a name="342"
+      > </a
+      ><a name="343" href="Continuity.PropositionalTruncation.html#317" class="Bound"
+      >P</a
+      ><a name="344" class="Symbol"
+      >)</a
+      ><a name="345"
+      > </a
+      ><a name="346" class="Symbol"
+      >&#8594;</a
+      ><a name="347"
+      > </a
+      ><a name="348" href="Continuity.PropositionalTruncation.html#202" class="Postulate Operator"
+      >&#8741;</a
+      ><a name="349"
+      > </a
+      ><a name="350" href="Continuity.PropositionalTruncation.html#315" class="Bound"
+      >X</a
+      ><a name="351"
+      > </a
+      ><a name="352" href="Continuity.PropositionalTruncation.html#202" class="Postulate Operator"
+      >&#8741;</a
+      ><a name="353"
+      > </a
+      ><a name="354" class="Symbol"
+      >&#8594;</a
+      ><a name="355"
+      > </a
+      ><a name="356" href="Continuity.PropositionalTruncation.html#317" class="Bound"
+      >P</a
+      ><a name="357"
+      >
+
+\end{code}
+
+</a
+      ><a name="371" class="Comment"
+      >Notice that this is a weaker form of truncation than that of the HoTT</a
+      ><a name="440"
+      >
+</a
+      ><a name="441" class="Comment"
+      >book, because we don't assume f' &#8739; x &#8739; = f x definitionally. </a
+      ><a name="502"
+      >
+
+</a
+      ><a name="504" class="Comment"
+      >   &#8739;-&#8739;</a
+      ><a name="510"
+      >
+</a
+      ><a name="511" class="Comment"
+      >X ----&gt; &#8741; X &#8741;</a
+      ><a name="524"
+      >
+</a
+      ><a name="525" class="Comment"
+      > \        | </a
+      ><a name="537"
+      >
+</a
+      ><a name="538" class="Comment"
+      >  \       |</a
+      ><a name="549"
+      >
+</a
+      ><a name="550" class="Comment"
+      >   \      |</a
+      ><a name="561"
+      >
+</a
+      ><a name="562" class="Comment"
+      >    \     | </a
+      ><a name="574"
+      >
+</a
+      ><a name="575" class="Comment"
+      >  f  \    | f'  defined using elim and f</a
+      ><a name="615"
+      >
+</a
+      ><a name="616" class="Comment"
+      >      \   |</a
+      ><a name="627"
+      >
+</a
+      ><a name="628" class="Comment"
+      >       \  |</a
+      ><a name="639"
+      >
+</a
+      ><a name="640" class="Comment"
+      >        v v</a
+      ><a name="651"
+      >
+</a
+      ><a name="652" class="Comment"
+      >          P     a proposition</a
+      ><a name="681"
+      >
+
+</a
+      ><a name="683" class="Comment"
+      >With the stronger version of the HoTT book, one gets function</a
+      ><a name="744"
+      >
+</a
+      ><a name="745" class="Comment"
+      >extensionality, but this is not expected with the weaker version</a
+      ><a name="809"
+      >
+</a
+      ><a name="810" class="Comment"
+      >considered here (although this is open at the time of writing).</a
+      ><a name="873"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

@@ -1,0 +1,4850 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >Continuity.TheoremKECA</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Comment"
+      >Chuangjie Xu 2014</a
+      ><a name="18"
+      >
+
+</a
+      ><a name="20" class="Comment"
+      >We recall the proof of the fact that</a
+      ><a name="56"
+      >
+
+</a
+      ><a name="58" class="Comment"
+      >  If a type A has a constant endo-function, then &#8741; A &#8741; &#8594; A</a
+      ><a name="116"
+      >
+
+</a
+      ><a name="118" class="Comment"
+      >whose original proof is from</a
+      ><a name="146"
+      >
+
+</a
+      ><a name="148" class="Comment"
+      >  http://www.cs.bham.ac.uk/~mhe/GeneralizedHedberg/html/GeneralizedHedberg.html</a
+      ><a name="227"
+      >
+
+</a
+      ><a name="229" class="Comment"
+      >to make our Agda formalization self-contained.</a
+      ><a name="275"
+      >
+
+\begin{code}
+
+</a
+      ><a name="291" class="Symbol"
+      >{-#</a
+      ><a name="294"
+      > </a
+      ><a name="295" class="Keyword"
+      >OPTIONS</a
+      ><a name="302"
+      > --without-K </a
+      ><a name="315" class="Symbol"
+      >#-}</a
+      ><a name="318"
+      >
+
+</a
+      ><a name="320" class="Keyword"
+      >module</a
+      ><a name="326"
+      > </a
+      ><a name="327" href="Continuity.TheoremKECA.html#1" class="Module"
+      >Continuity.TheoremKECA</a
+      ><a name="349"
+      > </a
+      ><a name="350" class="Keyword"
+      >where</a
+      ><a name="355"
+      >
+
+</a
+      ><a name="357" class="Keyword"
+      >open</a
+      ><a name="361"
+      > </a
+      ><a name="362" class="Keyword"
+      >import</a
+      ><a name="368"
+      > </a
+      ><a name="369" href="Preliminaries.SetsAndFunctions.html#1" class="Module"
+      >Preliminaries.SetsAndFunctions</a
+      ><a name="399"
+      >
+</a
+      ><a name="400" class="Keyword"
+      >open</a
+      ><a name="404"
+      > </a
+      ><a name="405" class="Keyword"
+      >import</a
+      ><a name="411"
+      > </a
+      ><a name="412" href="Preliminaries.NaturalNumber.html#1" class="Module"
+      >Preliminaries.NaturalNumber</a
+      ><a name="439"
+      > </a
+      ><a name="440" class="Keyword"
+      >hiding</a
+      ><a name="446"
+      > </a
+      ><a name="447" class="Symbol"
+      >(</a
+      ><a name="448"
+      >_+_</a
+      ><a name="451" class="Symbol"
+      >)</a
+      ><a name="452"
+      >
+</a
+      ><a name="453" class="Keyword"
+      >open</a
+      ><a name="457"
+      > </a
+      ><a name="458" class="Keyword"
+      >import</a
+      ><a name="464"
+      > </a
+      ><a name="465" href="Continuity.PropositionalTruncation.html#1" class="Module"
+      >Continuity.PropositionalTruncation</a
+      ><a name="499"
+      >
+
+\end{code}
+
+</a
+      ><a name="513" class="Comment"
+      >Some lemmas of identity types</a
+      ><a name="542"
+      >
+
+\begin{code}
+
+</a
+      ><a name="558" class="Keyword"
+      >infix</a
+      ><a name="563"
+      >  </a
+      ><a name="565" class="Number"
+      >0</a
+      ><a name="566"
+      > finally
+</a
+      ><a name="575" class="Keyword"
+      >infixr</a
+      ><a name="581"
+      > </a
+      ><a name="582" class="Number"
+      >0</a
+      ><a name="583"
+      > _&#8801;&#10216;_&#10217;_
+
+</a
+      ><a name="592" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >_&#8801;&#10216;_&#10217;_</a
+      ><a name="598"
+      > </a
+      ><a name="599" class="Symbol"
+      >:</a
+      ><a name="600"
+      > </a
+      ><a name="601" class="Symbol"
+      >{</a
+      ><a name="602" href="Continuity.TheoremKECA.html#602" class="Bound"
+      >A</a
+      ><a name="603"
+      > </a
+      ><a name="604" class="Symbol"
+      >:</a
+      ><a name="605"
+      > </a
+      ><a name="606" class="PrimitiveType"
+      >Set</a
+      ><a name="609" class="Symbol"
+      >}</a
+      ><a name="610"
+      > </a
+      ><a name="611" class="Symbol"
+      >(</a
+      ><a name="612" href="Continuity.TheoremKECA.html#612" class="Bound"
+      >x</a
+      ><a name="613"
+      > </a
+      ><a name="614" class="Symbol"
+      >:</a
+      ><a name="615"
+      > </a
+      ><a name="616" href="Continuity.TheoremKECA.html#602" class="Bound"
+      >A</a
+      ><a name="617" class="Symbol"
+      >)</a
+      ><a name="618"
+      > </a
+      ><a name="619" class="Symbol"
+      >{</a
+      ><a name="620" href="Continuity.TheoremKECA.html#620" class="Bound"
+      >y</a
+      ><a name="621"
+      > </a
+      ><a name="622" href="Continuity.TheoremKECA.html#622" class="Bound"
+      >z</a
+      ><a name="623"
+      > </a
+      ><a name="624" class="Symbol"
+      >:</a
+      ><a name="625"
+      > </a
+      ><a name="626" href="Continuity.TheoremKECA.html#602" class="Bound"
+      >A</a
+      ><a name="627" class="Symbol"
+      >}</a
+      ><a name="628"
+      > </a
+      ><a name="629" class="Symbol"
+      >&#8594;</a
+      ><a name="630"
+      > </a
+      ><a name="631" href="Continuity.TheoremKECA.html#612" class="Bound"
+      >x</a
+      ><a name="632"
+      > </a
+      ><a name="633" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="634"
+      > </a
+      ><a name="635" href="Continuity.TheoremKECA.html#620" class="Bound"
+      >y</a
+      ><a name="636"
+      > </a
+      ><a name="637" class="Symbol"
+      >&#8594;</a
+      ><a name="638"
+      > </a
+      ><a name="639" href="Continuity.TheoremKECA.html#620" class="Bound"
+      >y</a
+      ><a name="640"
+      > </a
+      ><a name="641" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="642"
+      > </a
+      ><a name="643" href="Continuity.TheoremKECA.html#622" class="Bound"
+      >z</a
+      ><a name="644"
+      > </a
+      ><a name="645" class="Symbol"
+      >&#8594;</a
+      ><a name="646"
+      > </a
+      ><a name="647" href="Continuity.TheoremKECA.html#612" class="Bound"
+      >x</a
+      ><a name="648"
+      > </a
+      ><a name="649" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="650"
+      > </a
+      ><a name="651" href="Continuity.TheoremKECA.html#622" class="Bound"
+      >z</a
+      ><a name="652"
+      >
+</a
+      ><a name="653" class="Symbol"
+      >_</a
+      ><a name="654"
+      > </a
+      ><a name="655" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="657"
+      > </a
+      ><a name="658" href="Continuity.TheoremKECA.html#658" class="Bound"
+      >p</a
+      ><a name="659"
+      > </a
+      ><a name="660" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#10217;</a
+      ><a name="661"
+      > </a
+      ><a name="662" href="Continuity.TheoremKECA.html#662" class="Bound"
+      >q</a
+      ><a name="663"
+      > </a
+      ><a name="664" class="Symbol"
+      >=</a
+      ><a name="665"
+      > </a
+      ><a name="666" href="Continuity.TheoremKECA.html#658" class="Bound"
+      >p</a
+      ><a name="667"
+      > </a
+      ><a name="668" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="669"
+      > </a
+      ><a name="670" href="Continuity.TheoremKECA.html#662" class="Bound"
+      >q</a
+      ><a name="671"
+      >
+
+</a
+      ><a name="673" href="Continuity.TheoremKECA.html#673" class="Function"
+      >finally</a
+      ><a name="680"
+      > </a
+      ><a name="681" class="Symbol"
+      >:</a
+      ><a name="682"
+      > </a
+      ><a name="683" class="Symbol"
+      >{</a
+      ><a name="684" href="Continuity.TheoremKECA.html#684" class="Bound"
+      >A</a
+      ><a name="685"
+      > </a
+      ><a name="686" class="Symbol"
+      >:</a
+      ><a name="687"
+      > </a
+      ><a name="688" class="PrimitiveType"
+      >Set</a
+      ><a name="691" class="Symbol"
+      >}</a
+      ><a name="692"
+      > </a
+      ><a name="693" class="Symbol"
+      >(</a
+      ><a name="694" href="Continuity.TheoremKECA.html#694" class="Bound"
+      >x</a
+      ><a name="695"
+      > </a
+      ><a name="696" href="Continuity.TheoremKECA.html#696" class="Bound"
+      >y</a
+      ><a name="697"
+      > </a
+      ><a name="698" class="Symbol"
+      >:</a
+      ><a name="699"
+      > </a
+      ><a name="700" href="Continuity.TheoremKECA.html#684" class="Bound"
+      >A</a
+      ><a name="701" class="Symbol"
+      >)</a
+      ><a name="702"
+      > </a
+      ><a name="703" class="Symbol"
+      >&#8594;</a
+      ><a name="704"
+      > </a
+      ><a name="705" href="Continuity.TheoremKECA.html#694" class="Bound"
+      >x</a
+      ><a name="706"
+      > </a
+      ><a name="707" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="708"
+      > </a
+      ><a name="709" href="Continuity.TheoremKECA.html#696" class="Bound"
+      >y</a
+      ><a name="710"
+      > </a
+      ><a name="711" class="Symbol"
+      >&#8594;</a
+      ><a name="712"
+      > </a
+      ><a name="713" href="Continuity.TheoremKECA.html#694" class="Bound"
+      >x</a
+      ><a name="714"
+      > </a
+      ><a name="715" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="716"
+      > </a
+      ><a name="717" href="Continuity.TheoremKECA.html#696" class="Bound"
+      >y</a
+      ><a name="718"
+      >
+</a
+      ><a name="719" href="Continuity.TheoremKECA.html#673" class="Function"
+      >finally</a
+      ><a name="726"
+      > </a
+      ><a name="727" class="Symbol"
+      >_</a
+      ><a name="728"
+      > </a
+      ><a name="729" class="Symbol"
+      >_</a
+      ><a name="730"
+      > </a
+      ><a name="731" href="Continuity.TheoremKECA.html#731" class="Bound"
+      >p</a
+      ><a name="732"
+      > </a
+      ><a name="733" class="Symbol"
+      >=</a
+      ><a name="734"
+      > </a
+      ><a name="735" href="Continuity.TheoremKECA.html#731" class="Bound"
+      >p</a
+      ><a name="736"
+      >
+
+</a
+      ><a name="738" class="Keyword"
+      >syntax</a
+      ><a name="744"
+      > finally x y p </a
+      ><a name="759" class="Symbol"
+      >=</a
+      ><a name="760"
+      > x &#8801;&#10216; p &#10217;&#8718; y &#8718;
+
+</a
+      ><a name="776" href="Continuity.TheoremKECA.html#776" class="Function"
+      >refl-is-left-id</a
+      ><a name="791"
+      > </a
+      ><a name="792" class="Symbol"
+      >:</a
+      ><a name="793"
+      > </a
+      ><a name="794" class="Symbol"
+      >{</a
+      ><a name="795" href="Continuity.TheoremKECA.html#795" class="Bound"
+      >X</a
+      ><a name="796"
+      > </a
+      ><a name="797" class="Symbol"
+      >:</a
+      ><a name="798"
+      > </a
+      ><a name="799" class="PrimitiveType"
+      >Set</a
+      ><a name="802" class="Symbol"
+      >}</a
+      ><a name="803"
+      > </a
+      ><a name="804" class="Symbol"
+      >{</a
+      ><a name="805" href="Continuity.TheoremKECA.html#805" class="Bound"
+      >x</a
+      ><a name="806"
+      > </a
+      ><a name="807" href="Continuity.TheoremKECA.html#807" class="Bound"
+      >y</a
+      ><a name="808"
+      > </a
+      ><a name="809" class="Symbol"
+      >:</a
+      ><a name="810"
+      > </a
+      ><a name="811" href="Continuity.TheoremKECA.html#795" class="Bound"
+      >X</a
+      ><a name="812" class="Symbol"
+      >}</a
+      ><a name="813"
+      > </a
+      ><a name="814" class="Symbol"
+      >(</a
+      ><a name="815" href="Continuity.TheoremKECA.html#815" class="Bound"
+      >p</a
+      ><a name="816"
+      > </a
+      ><a name="817" class="Symbol"
+      >:</a
+      ><a name="818"
+      > </a
+      ><a name="819" href="Continuity.TheoremKECA.html#805" class="Bound"
+      >x</a
+      ><a name="820"
+      > </a
+      ><a name="821" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="822"
+      > </a
+      ><a name="823" href="Continuity.TheoremKECA.html#807" class="Bound"
+      >y</a
+      ><a name="824" class="Symbol"
+      >)</a
+      ><a name="825"
+      > </a
+      ><a name="826" class="Symbol"
+      >&#8594;</a
+      ><a name="827"
+      > </a
+      ><a name="828" href="Continuity.TheoremKECA.html#815" class="Bound"
+      >p</a
+      ><a name="829"
+      > </a
+      ><a name="830" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="831"
+      > </a
+      ><a name="832" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="836"
+      > </a
+      ><a name="837" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="838"
+      > </a
+      ><a name="839" href="Continuity.TheoremKECA.html#815" class="Bound"
+      >p</a
+      ><a name="840"
+      >
+</a
+      ><a name="841" href="Continuity.TheoremKECA.html#776" class="Function"
+      >refl-is-left-id</a
+      ><a name="856"
+      > </a
+      ><a name="857" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="861"
+      > </a
+      ><a name="862" class="Symbol"
+      >=</a
+      ><a name="863"
+      > </a
+      ><a name="864" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="868"
+      >
+
+</a
+      ><a name="870" href="Continuity.TheoremKECA.html#870" class="Function"
+      >refl-is-right-id</a
+      ><a name="886"
+      > </a
+      ><a name="887" class="Symbol"
+      >:</a
+      ><a name="888"
+      > </a
+      ><a name="889" class="Symbol"
+      >{</a
+      ><a name="890" href="Continuity.TheoremKECA.html#890" class="Bound"
+      >X</a
+      ><a name="891"
+      > </a
+      ><a name="892" class="Symbol"
+      >:</a
+      ><a name="893"
+      > </a
+      ><a name="894" class="PrimitiveType"
+      >Set</a
+      ><a name="897" class="Symbol"
+      >}</a
+      ><a name="898"
+      > </a
+      ><a name="899" class="Symbol"
+      >{</a
+      ><a name="900" href="Continuity.TheoremKECA.html#900" class="Bound"
+      >x</a
+      ><a name="901"
+      > </a
+      ><a name="902" href="Continuity.TheoremKECA.html#902" class="Bound"
+      >y</a
+      ><a name="903"
+      > </a
+      ><a name="904" class="Symbol"
+      >:</a
+      ><a name="905"
+      > </a
+      ><a name="906" href="Continuity.TheoremKECA.html#890" class="Bound"
+      >X</a
+      ><a name="907" class="Symbol"
+      >}</a
+      ><a name="908"
+      > </a
+      ><a name="909" class="Symbol"
+      >(</a
+      ><a name="910" href="Continuity.TheoremKECA.html#910" class="Bound"
+      >p</a
+      ><a name="911"
+      > </a
+      ><a name="912" class="Symbol"
+      >:</a
+      ><a name="913"
+      > </a
+      ><a name="914" href="Continuity.TheoremKECA.html#900" class="Bound"
+      >x</a
+      ><a name="915"
+      > </a
+      ><a name="916" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="917"
+      > </a
+      ><a name="918" href="Continuity.TheoremKECA.html#902" class="Bound"
+      >y</a
+      ><a name="919" class="Symbol"
+      >)</a
+      ><a name="920"
+      > </a
+      ><a name="921" class="Symbol"
+      >&#8594;</a
+      ><a name="922"
+      > </a
+      ><a name="923" href="Continuity.TheoremKECA.html#910" class="Bound"
+      >p</a
+      ><a name="924"
+      > </a
+      ><a name="925" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="926"
+      > </a
+      ><a name="927" href="Continuity.TheoremKECA.html#910" class="Bound"
+      >p</a
+      ><a name="928"
+      > </a
+      ><a name="929" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="930"
+      > </a
+      ><a name="931" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="935"
+      >
+</a
+      ><a name="936" href="Continuity.TheoremKECA.html#870" class="Function"
+      >refl-is-right-id</a
+      ><a name="952"
+      > </a
+      ><a name="953" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="957"
+      > </a
+      ><a name="958" class="Symbol"
+      >=</a
+      ><a name="959"
+      > </a
+      ><a name="960" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="964"
+      >
+
+</a
+      ><a name="966" href="Continuity.TheoremKECA.html#966" class="Function"
+      >sym-trans</a
+      ><a name="975"
+      > </a
+      ><a name="976" class="Symbol"
+      >:</a
+      ><a name="977"
+      > </a
+      ><a name="978" class="Symbol"
+      >{</a
+      ><a name="979" href="Continuity.TheoremKECA.html#979" class="Bound"
+      >X</a
+      ><a name="980"
+      > </a
+      ><a name="981" class="Symbol"
+      >:</a
+      ><a name="982"
+      > </a
+      ><a name="983" class="PrimitiveType"
+      >Set</a
+      ><a name="986" class="Symbol"
+      >}</a
+      ><a name="987"
+      > </a
+      ><a name="988" class="Symbol"
+      >{</a
+      ><a name="989" href="Continuity.TheoremKECA.html#989" class="Bound"
+      >x</a
+      ><a name="990"
+      > </a
+      ><a name="991" href="Continuity.TheoremKECA.html#991" class="Bound"
+      >y</a
+      ><a name="992"
+      > </a
+      ><a name="993" href="Continuity.TheoremKECA.html#993" class="Bound"
+      >z</a
+      ><a name="994"
+      > </a
+      ><a name="995" class="Symbol"
+      >:</a
+      ><a name="996"
+      > </a
+      ><a name="997" href="Continuity.TheoremKECA.html#979" class="Bound"
+      >X</a
+      ><a name="998" class="Symbol"
+      >}</a
+      ><a name="999"
+      > </a
+      ><a name="1000" class="Symbol"
+      >(</a
+      ><a name="1001" href="Continuity.TheoremKECA.html#1001" class="Bound"
+      >p</a
+      ><a name="1002"
+      > </a
+      ><a name="1003" class="Symbol"
+      >:</a
+      ><a name="1004"
+      > </a
+      ><a name="1005" href="Continuity.TheoremKECA.html#989" class="Bound"
+      >x</a
+      ><a name="1006"
+      > </a
+      ><a name="1007" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1008"
+      > </a
+      ><a name="1009" href="Continuity.TheoremKECA.html#991" class="Bound"
+      >y</a
+      ><a name="1010" class="Symbol"
+      >)</a
+      ><a name="1011"
+      > </a
+      ><a name="1012" class="Symbol"
+      >(</a
+      ><a name="1013" href="Continuity.TheoremKECA.html#1013" class="Bound"
+      >q</a
+      ><a name="1014"
+      > </a
+      ><a name="1015" class="Symbol"
+      >:</a
+      ><a name="1016"
+      > </a
+      ><a name="1017" href="Continuity.TheoremKECA.html#991" class="Bound"
+      >y</a
+      ><a name="1018"
+      > </a
+      ><a name="1019" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1020"
+      > </a
+      ><a name="1021" href="Continuity.TheoremKECA.html#993" class="Bound"
+      >z</a
+      ><a name="1022" class="Symbol"
+      >)</a
+      ><a name="1023"
+      > </a
+      ><a name="1024" class="Symbol"
+      >&#8594;</a
+      ><a name="1025"
+      > </a
+      ><a name="1026" class="Symbol"
+      >(</a
+      ><a name="1027" href="Continuity.TheoremKECA.html#1013" class="Bound"
+      >q</a
+      ><a name="1028"
+      > </a
+      ><a name="1029" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="1031" class="Symbol"
+      >)</a
+      ><a name="1032"
+      > </a
+      ><a name="1033" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="1034"
+      > </a
+      ><a name="1035" class="Symbol"
+      >(</a
+      ><a name="1036" href="Continuity.TheoremKECA.html#1001" class="Bound"
+      >p</a
+      ><a name="1037"
+      > </a
+      ><a name="1038" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="1040" class="Symbol"
+      >)</a
+      ><a name="1041"
+      > </a
+      ><a name="1042" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1043"
+      > </a
+      ><a name="1044" class="Symbol"
+      >(</a
+      ><a name="1045" href="Continuity.TheoremKECA.html#1001" class="Bound"
+      >p</a
+      ><a name="1046"
+      > </a
+      ><a name="1047" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="1048"
+      > </a
+      ><a name="1049" href="Continuity.TheoremKECA.html#1013" class="Bound"
+      >q</a
+      ><a name="1050" class="Symbol"
+      >)</a
+      ><a name="1051" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="1053"
+      >
+</a
+      ><a name="1054" href="Continuity.TheoremKECA.html#966" class="Function"
+      >sym-trans</a
+      ><a name="1063"
+      > </a
+      ><a name="1064" class="Symbol"
+      >{</a
+      ><a name="1065" href="Continuity.TheoremKECA.html#1065" class="Bound"
+      >X</a
+      ><a name="1066" class="Symbol"
+      >}</a
+      ><a name="1067"
+      > </a
+      ><a name="1068" class="Symbol"
+      >{</a
+      ><a name="1069" href="Continuity.TheoremKECA.html#1069" class="Bound"
+      >x</a
+      ><a name="1070" class="Symbol"
+      >}</a
+      ><a name="1071"
+      > </a
+      ><a name="1072" class="Symbol"
+      >{</a
+      ><a name="1073" class="DottedPattern Symbol"
+      >.</a
+      ><a name="1074" href="Continuity.TheoremKECA.html#1069" class="DottedPattern Bound"
+      >x</a
+      ><a name="1075" class="Symbol"
+      >}</a
+      ><a name="1076"
+      > </a
+      ><a name="1077" class="Symbol"
+      >{</a
+      ><a name="1078" class="DottedPattern Symbol"
+      >.</a
+      ><a name="1079" href="Continuity.TheoremKECA.html#1069" class="DottedPattern Bound"
+      >x</a
+      ><a name="1080" class="Symbol"
+      >}</a
+      ><a name="1081"
+      > </a
+      ><a name="1082" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1086"
+      > </a
+      ><a name="1087" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1091"
+      > </a
+      ><a name="1092" class="Symbol"
+      >=</a
+      ><a name="1093"
+      > </a
+      ><a name="1094" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1098"
+      >
+
+</a
+      ><a name="1100" href="Continuity.TheoremKECA.html#1100" class="Function"
+      >sym-sym-trivial</a
+      ><a name="1115"
+      > </a
+      ><a name="1116" class="Symbol"
+      >:</a
+      ><a name="1117"
+      > </a
+      ><a name="1118" class="Symbol"
+      >{</a
+      ><a name="1119" href="Continuity.TheoremKECA.html#1119" class="Bound"
+      >X</a
+      ><a name="1120"
+      > </a
+      ><a name="1121" class="Symbol"
+      >:</a
+      ><a name="1122"
+      > </a
+      ><a name="1123" class="PrimitiveType"
+      >Set</a
+      ><a name="1126" class="Symbol"
+      >}</a
+      ><a name="1127"
+      > </a
+      ><a name="1128" class="Symbol"
+      >{</a
+      ><a name="1129" href="Continuity.TheoremKECA.html#1129" class="Bound"
+      >x</a
+      ><a name="1130"
+      > </a
+      ><a name="1131" href="Continuity.TheoremKECA.html#1131" class="Bound"
+      >y</a
+      ><a name="1132"
+      > </a
+      ><a name="1133" class="Symbol"
+      >:</a
+      ><a name="1134"
+      > </a
+      ><a name="1135" href="Continuity.TheoremKECA.html#1119" class="Bound"
+      >X</a
+      ><a name="1136" class="Symbol"
+      >}</a
+      ><a name="1137"
+      > </a
+      ><a name="1138" class="Symbol"
+      >(</a
+      ><a name="1139" href="Continuity.TheoremKECA.html#1139" class="Bound"
+      >p</a
+      ><a name="1140"
+      > </a
+      ><a name="1141" class="Symbol"
+      >:</a
+      ><a name="1142"
+      > </a
+      ><a name="1143" href="Continuity.TheoremKECA.html#1129" class="Bound"
+      >x</a
+      ><a name="1144"
+      > </a
+      ><a name="1145" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1146"
+      > </a
+      ><a name="1147" href="Continuity.TheoremKECA.html#1131" class="Bound"
+      >y</a
+      ><a name="1148" class="Symbol"
+      >)</a
+      ><a name="1149"
+      > </a
+      ><a name="1150" class="Symbol"
+      >&#8594;</a
+      ><a name="1151"
+      > </a
+      ><a name="1152" href="Continuity.TheoremKECA.html#1139" class="Bound"
+      >p</a
+      ><a name="1153"
+      > </a
+      ><a name="1154" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1155"
+      > </a
+      ><a name="1156" class="Symbol"
+      >(</a
+      ><a name="1157" href="Continuity.TheoremKECA.html#1139" class="Bound"
+      >p</a
+      ><a name="1158"
+      > </a
+      ><a name="1159" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="1161" class="Symbol"
+      >)</a
+      ><a name="1162" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="1164"
+      >
+</a
+      ><a name="1165" href="Continuity.TheoremKECA.html#1100" class="Function"
+      >sym-sym-trivial</a
+      ><a name="1180"
+      > </a
+      ><a name="1181" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1185"
+      > </a
+      ><a name="1186" class="Symbol"
+      >=</a
+      ><a name="1187"
+      > </a
+      ><a name="1188" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1192"
+      >
+
+</a
+      ><a name="1194" href="Continuity.TheoremKECA.html#1194" class="Function"
+      >trans&#8320;</a
+      ><a name="1200"
+      > </a
+      ><a name="1201" class="Symbol"
+      >:</a
+      ><a name="1202"
+      > </a
+      ><a name="1203" class="Symbol"
+      >{</a
+      ><a name="1204" href="Continuity.TheoremKECA.html#1204" class="Bound"
+      >X</a
+      ><a name="1205"
+      > </a
+      ><a name="1206" class="Symbol"
+      >:</a
+      ><a name="1207"
+      > </a
+      ><a name="1208" class="PrimitiveType"
+      >Set</a
+      ><a name="1211" class="Symbol"
+      >}{</a
+      ><a name="1213" href="Continuity.TheoremKECA.html#1213" class="Bound"
+      >x&#8320;</a
+      ><a name="1215"
+      > </a
+      ><a name="1216" href="Continuity.TheoremKECA.html#1216" class="Bound"
+      >x&#8321;</a
+      ><a name="1218"
+      > </a
+      ><a name="1219" href="Continuity.TheoremKECA.html#1219" class="Bound"
+      >x&#8322;</a
+      ><a name="1221"
+      > </a
+      ><a name="1222" class="Symbol"
+      >:</a
+      ><a name="1223"
+      > </a
+      ><a name="1224" href="Continuity.TheoremKECA.html#1204" class="Bound"
+      >X</a
+      ><a name="1225" class="Symbol"
+      >}</a
+      ><a name="1226"
+      > </a
+      ><a name="1227" class="Symbol"
+      >&#8594;</a
+      ><a name="1228"
+      > </a
+      ><a name="1229" class="Symbol"
+      >(</a
+      ><a name="1230" href="Continuity.TheoremKECA.html#1230" class="Bound"
+      >p</a
+      ><a name="1231"
+      > </a
+      ><a name="1232" class="Symbol"
+      >:</a
+      ><a name="1233"
+      > </a
+      ><a name="1234" href="Continuity.TheoremKECA.html#1216" class="Bound"
+      >x&#8321;</a
+      ><a name="1236"
+      > </a
+      ><a name="1237" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1238"
+      > </a
+      ><a name="1239" href="Continuity.TheoremKECA.html#1219" class="Bound"
+      >x&#8322;</a
+      ><a name="1241" class="Symbol"
+      >)</a
+      ><a name="1242"
+      > </a
+      ><a name="1243" class="Symbol"
+      >&#8594;</a
+      ><a name="1244"
+      > </a
+      ><a name="1245" href="Continuity.TheoremKECA.html#1230" class="Bound"
+      >p</a
+      ><a name="1246"
+      > </a
+      ><a name="1247" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1248"
+      > </a
+      ><a name="1249" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1253"
+      > </a
+      ><a name="1254" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="1255"
+      > </a
+      ><a name="1256" href="Continuity.TheoremKECA.html#1230" class="Bound"
+      >p</a
+      ><a name="1257"
+      >
+</a
+      ><a name="1258" href="Continuity.TheoremKECA.html#1194" class="Function"
+      >trans&#8320;</a
+      ><a name="1264"
+      > </a
+      ><a name="1265" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1269"
+      > </a
+      ><a name="1270" class="Symbol"
+      >=</a
+      ><a name="1271"
+      > </a
+      ><a name="1272" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1276"
+      >
+
+</a
+      ><a name="1278" href="Continuity.TheoremKECA.html#1278" class="Function"
+      >trans&#8321;</a
+      ><a name="1284"
+      > </a
+      ><a name="1285" class="Symbol"
+      >:</a
+      ><a name="1286"
+      > </a
+      ><a name="1287" class="Symbol"
+      >{</a
+      ><a name="1288" href="Continuity.TheoremKECA.html#1288" class="Bound"
+      >X</a
+      ><a name="1289"
+      > </a
+      ><a name="1290" class="Symbol"
+      >:</a
+      ><a name="1291"
+      > </a
+      ><a name="1292" class="PrimitiveType"
+      >Set</a
+      ><a name="1295" class="Symbol"
+      >}{</a
+      ><a name="1297" href="Continuity.TheoremKECA.html#1297" class="Bound"
+      >x&#8320;</a
+      ><a name="1299"
+      > </a
+      ><a name="1300" href="Continuity.TheoremKECA.html#1300" class="Bound"
+      >x&#8321;</a
+      ><a name="1302"
+      > </a
+      ><a name="1303" href="Continuity.TheoremKECA.html#1303" class="Bound"
+      >x&#8322;</a
+      ><a name="1305"
+      > </a
+      ><a name="1306" class="Symbol"
+      >:</a
+      ><a name="1307"
+      > </a
+      ><a name="1308" href="Continuity.TheoremKECA.html#1288" class="Bound"
+      >X</a
+      ><a name="1309" class="Symbol"
+      >}</a
+      ><a name="1310"
+      > </a
+      ><a name="1311" class="Symbol"
+      >&#8594;</a
+      ><a name="1312"
+      > </a
+      ><a name="1313" class="Symbol"
+      >(</a
+      ><a name="1314" href="Continuity.TheoremKECA.html#1314" class="Bound"
+      >p</a
+      ><a name="1315"
+      > </a
+      ><a name="1316" class="Symbol"
+      >:</a
+      ><a name="1317"
+      > </a
+      ><a name="1318" href="Continuity.TheoremKECA.html#1297" class="Bound"
+      >x&#8320;</a
+      ><a name="1320"
+      > </a
+      ><a name="1321" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1322"
+      > </a
+      ><a name="1323" href="Continuity.TheoremKECA.html#1300" class="Bound"
+      >x&#8321;</a
+      ><a name="1325" class="Symbol"
+      >)</a
+      ><a name="1326"
+      > </a
+      ><a name="1327" class="Symbol"
+      >&#8594;</a
+      ><a name="1328"
+      > </a
+      ><a name="1329" href="Continuity.TheoremKECA.html#1314" class="Bound"
+      >p</a
+      ><a name="1330"
+      > </a
+      ><a name="1331" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1332"
+      > </a
+      ><a name="1333" href="Continuity.TheoremKECA.html#1314" class="Bound"
+      >p</a
+      ><a name="1334"
+      > </a
+      ><a name="1335" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="1336"
+      > </a
+      ><a name="1337" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1341"
+      >
+</a
+      ><a name="1342" href="Continuity.TheoremKECA.html#1278" class="Function"
+      >trans&#8321;</a
+      ><a name="1348"
+      > </a
+      ><a name="1349" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1353"
+      > </a
+      ><a name="1354" class="Symbol"
+      >=</a
+      ><a name="1355"
+      > </a
+      ><a name="1356" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1360"
+      >
+
+</a
+      ><a name="1362" href="Continuity.TheoremKECA.html#1362" class="Function"
+      >trans-assoc</a
+      ><a name="1373"
+      > </a
+      ><a name="1374" class="Symbol"
+      >:</a
+      ><a name="1375"
+      > </a
+      ><a name="1376" class="Symbol"
+      >{</a
+      ><a name="1377" href="Continuity.TheoremKECA.html#1377" class="Bound"
+      >X</a
+      ><a name="1378"
+      > </a
+      ><a name="1379" class="Symbol"
+      >:</a
+      ><a name="1380"
+      > </a
+      ><a name="1381" class="PrimitiveType"
+      >Set</a
+      ><a name="1384" class="Symbol"
+      >}</a
+      ><a name="1385"
+      > </a
+      ><a name="1386" class="Symbol"
+      >{</a
+      ><a name="1387" href="Continuity.TheoremKECA.html#1387" class="Bound"
+      >x</a
+      ><a name="1388"
+      > </a
+      ><a name="1389" href="Continuity.TheoremKECA.html#1389" class="Bound"
+      >y</a
+      ><a name="1390"
+      > </a
+      ><a name="1391" href="Continuity.TheoremKECA.html#1391" class="Bound"
+      >z</a
+      ><a name="1392"
+      > </a
+      ><a name="1393" href="Continuity.TheoremKECA.html#1393" class="Bound"
+      >w</a
+      ><a name="1394"
+      > </a
+      ><a name="1395" class="Symbol"
+      >:</a
+      ><a name="1396"
+      > </a
+      ><a name="1397" href="Continuity.TheoremKECA.html#1377" class="Bound"
+      >X</a
+      ><a name="1398" class="Symbol"
+      >}</a
+      ><a name="1399"
+      > </a
+      ><a name="1400" class="Symbol"
+      >(</a
+      ><a name="1401" href="Continuity.TheoremKECA.html#1401" class="Bound"
+      >p</a
+      ><a name="1402"
+      > </a
+      ><a name="1403" class="Symbol"
+      >:</a
+      ><a name="1404"
+      > </a
+      ><a name="1405" href="Continuity.TheoremKECA.html#1387" class="Bound"
+      >x</a
+      ><a name="1406"
+      > </a
+      ><a name="1407" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1408"
+      > </a
+      ><a name="1409" href="Continuity.TheoremKECA.html#1389" class="Bound"
+      >y</a
+      ><a name="1410" class="Symbol"
+      >)</a
+      ><a name="1411"
+      > </a
+      ><a name="1412" class="Symbol"
+      >(</a
+      ><a name="1413" href="Continuity.TheoremKECA.html#1413" class="Bound"
+      >q</a
+      ><a name="1414"
+      > </a
+      ><a name="1415" class="Symbol"
+      >:</a
+      ><a name="1416"
+      > </a
+      ><a name="1417" href="Continuity.TheoremKECA.html#1389" class="Bound"
+      >y</a
+      ><a name="1418"
+      > </a
+      ><a name="1419" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1420"
+      > </a
+      ><a name="1421" href="Continuity.TheoremKECA.html#1391" class="Bound"
+      >z</a
+      ><a name="1422" class="Symbol"
+      >)</a
+      ><a name="1423"
+      > </a
+      ><a name="1424" class="Symbol"
+      >(</a
+      ><a name="1425" href="Continuity.TheoremKECA.html#1425" class="Bound"
+      >r</a
+      ><a name="1426"
+      > </a
+      ><a name="1427" class="Symbol"
+      >:</a
+      ><a name="1428"
+      > </a
+      ><a name="1429" href="Continuity.TheoremKECA.html#1391" class="Bound"
+      >z</a
+      ><a name="1430"
+      > </a
+      ><a name="1431" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1432"
+      > </a
+      ><a name="1433" href="Continuity.TheoremKECA.html#1393" class="Bound"
+      >w</a
+      ><a name="1434" class="Symbol"
+      >)</a
+      ><a name="1435"
+      > </a
+      ><a name="1436" class="Symbol"
+      >&#8594;</a
+      ><a name="1437"
+      >
+              </a
+      ><a name="1452" class="Symbol"
+      >(</a
+      ><a name="1453" href="Continuity.TheoremKECA.html#1401" class="Bound"
+      >p</a
+      ><a name="1454"
+      > </a
+      ><a name="1455" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="1456"
+      > </a
+      ><a name="1457" href="Continuity.TheoremKECA.html#1413" class="Bound"
+      >q</a
+      ><a name="1458" class="Symbol"
+      >)</a
+      ><a name="1459"
+      > </a
+      ><a name="1460" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="1461"
+      > </a
+      ><a name="1462" href="Continuity.TheoremKECA.html#1425" class="Bound"
+      >r</a
+      ><a name="1463"
+      > </a
+      ><a name="1464" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1465"
+      > </a
+      ><a name="1466" href="Continuity.TheoremKECA.html#1401" class="Bound"
+      >p</a
+      ><a name="1467"
+      > </a
+      ><a name="1468" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="1469"
+      > </a
+      ><a name="1470" class="Symbol"
+      >(</a
+      ><a name="1471" href="Continuity.TheoremKECA.html#1413" class="Bound"
+      >q</a
+      ><a name="1472"
+      > </a
+      ><a name="1473" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="1474"
+      > </a
+      ><a name="1475" href="Continuity.TheoremKECA.html#1425" class="Bound"
+      >r</a
+      ><a name="1476" class="Symbol"
+      >)</a
+      ><a name="1477"
+      >
+</a
+      ><a name="1478" href="Continuity.TheoremKECA.html#1362" class="Function"
+      >trans-assoc</a
+      ><a name="1489"
+      > </a
+      ><a name="1490" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1494"
+      > </a
+      ><a name="1495" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1499"
+      > </a
+      ><a name="1500" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1504"
+      > </a
+      ><a name="1505" class="Symbol"
+      >=</a
+      ><a name="1506"
+      > </a
+      ><a name="1507" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1511"
+      >
+
+</a
+      ><a name="1513" href="Continuity.TheoremKECA.html#1513" class="Function"
+      >ap-id-is-id</a
+      ><a name="1524"
+      > </a
+      ><a name="1525" class="Symbol"
+      >:</a
+      ><a name="1526"
+      > </a
+      ><a name="1527" class="Symbol"
+      >{</a
+      ><a name="1528" href="Continuity.TheoremKECA.html#1528" class="Bound"
+      >X</a
+      ><a name="1529"
+      > </a
+      ><a name="1530" class="Symbol"
+      >:</a
+      ><a name="1531"
+      > </a
+      ><a name="1532" class="PrimitiveType"
+      >Set</a
+      ><a name="1535" class="Symbol"
+      >}</a
+      ><a name="1536"
+      > </a
+      ><a name="1537" class="Symbol"
+      >{</a
+      ><a name="1538" href="Continuity.TheoremKECA.html#1538" class="Bound"
+      >x</a
+      ><a name="1539"
+      > </a
+      ><a name="1540" href="Continuity.TheoremKECA.html#1540" class="Bound"
+      >y</a
+      ><a name="1541"
+      > </a
+      ><a name="1542" class="Symbol"
+      >:</a
+      ><a name="1543"
+      > </a
+      ><a name="1544" href="Continuity.TheoremKECA.html#1528" class="Bound"
+      >X</a
+      ><a name="1545" class="Symbol"
+      >}</a
+      ><a name="1546"
+      > </a
+      ><a name="1547" class="Symbol"
+      >(</a
+      ><a name="1548" href="Continuity.TheoremKECA.html#1548" class="Bound"
+      >p</a
+      ><a name="1549"
+      > </a
+      ><a name="1550" class="Symbol"
+      >:</a
+      ><a name="1551"
+      > </a
+      ><a name="1552" href="Continuity.TheoremKECA.html#1538" class="Bound"
+      >x</a
+      ><a name="1553"
+      > </a
+      ><a name="1554" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1555"
+      > </a
+      ><a name="1556" href="Continuity.TheoremKECA.html#1540" class="Bound"
+      >y</a
+      ><a name="1557" class="Symbol"
+      >)</a
+      ><a name="1558"
+      > </a
+      ><a name="1559" class="Symbol"
+      >&#8594;</a
+      ><a name="1560"
+      > </a
+      ><a name="1561" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="1563"
+      > </a
+      ><a name="1564" href="Preliminaries.SetsAndFunctions.html#241" class="Function"
+      >id</a
+      ><a name="1566"
+      > </a
+      ><a name="1567" href="Continuity.TheoremKECA.html#1548" class="Bound"
+      >p</a
+      ><a name="1568"
+      > </a
+      ><a name="1569" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1570"
+      > </a
+      ><a name="1571" href="Continuity.TheoremKECA.html#1548" class="Bound"
+      >p</a
+      ><a name="1572"
+      >
+</a
+      ><a name="1573" href="Continuity.TheoremKECA.html#1513" class="Function"
+      >ap-id-is-id</a
+      ><a name="1584"
+      > </a
+      ><a name="1585" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1589"
+      > </a
+      ><a name="1590" class="Symbol"
+      >=</a
+      ><a name="1591"
+      > </a
+      ><a name="1592" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1596"
+      >
+
+\end{code}
+
+</a
+      ><a name="1610" class="Comment"
+      >The fix point lemma:</a
+      ><a name="1630"
+      >
+
+\begin{code}
+
+</a
+      ><a name="1646" href="Continuity.TheoremKECA.html#1646" class="Function"
+      >Kraus-Lemma&#8320;</a
+      ><a name="1658"
+      > </a
+      ><a name="1659" class="Symbol"
+      >:</a
+      ><a name="1660"
+      > </a
+      ><a name="1661" class="Symbol"
+      >{</a
+      ><a name="1662" href="Continuity.TheoremKECA.html#1662" class="Bound"
+      >X</a
+      ><a name="1663"
+      > </a
+      ><a name="1664" href="Continuity.TheoremKECA.html#1664" class="Bound"
+      >Y</a
+      ><a name="1665"
+      > </a
+      ><a name="1666" class="Symbol"
+      >:</a
+      ><a name="1667"
+      > </a
+      ><a name="1668" class="PrimitiveType"
+      >Set</a
+      ><a name="1671" class="Symbol"
+      >}</a
+      ><a name="1672"
+      > </a
+      ><a name="1673" class="Symbol"
+      >(</a
+      ><a name="1674" href="Continuity.TheoremKECA.html#1674" class="Bound"
+      >f</a
+      ><a name="1675"
+      > </a
+      ><a name="1676" class="Symbol"
+      >:</a
+      ><a name="1677"
+      > </a
+      ><a name="1678" href="Continuity.TheoremKECA.html#1662" class="Bound"
+      >X</a
+      ><a name="1679"
+      > </a
+      ><a name="1680" class="Symbol"
+      >&#8594;</a
+      ><a name="1681"
+      > </a
+      ><a name="1682" href="Continuity.TheoremKECA.html#1664" class="Bound"
+      >Y</a
+      ><a name="1683" class="Symbol"
+      >)</a
+      ><a name="1684"
+      > </a
+      ><a name="1685" class="Symbol"
+      >(</a
+      ><a name="1686" href="Continuity.TheoremKECA.html#1686" class="Bound"
+      >cf</a
+      ><a name="1688"
+      > </a
+      ><a name="1689" class="Symbol"
+      >:</a
+      ><a name="1690"
+      > </a
+      ><a name="1691" href="Preliminaries.SetsAndFunctions.html#3284" class="Function"
+      >constant</a
+      ><a name="1699"
+      > </a
+      ><a name="1700" href="Continuity.TheoremKECA.html#1674" class="Bound"
+      >f</a
+      ><a name="1701" class="Symbol"
+      >)</a
+      ><a name="1702"
+      > </a
+      ><a name="1703" class="Symbol"
+      >{</a
+      ><a name="1704" href="Continuity.TheoremKECA.html#1704" class="Bound"
+      >x</a
+      ><a name="1705"
+      > </a
+      ><a name="1706" href="Continuity.TheoremKECA.html#1706" class="Bound"
+      >y</a
+      ><a name="1707"
+      > </a
+      ><a name="1708" class="Symbol"
+      >:</a
+      ><a name="1709"
+      > </a
+      ><a name="1710" href="Continuity.TheoremKECA.html#1662" class="Bound"
+      >X</a
+      ><a name="1711" class="Symbol"
+      >}</a
+      ><a name="1712"
+      > </a
+      ><a name="1713" class="Symbol"
+      >(</a
+      ><a name="1714" href="Continuity.TheoremKECA.html#1714" class="Bound"
+      >p</a
+      ><a name="1715"
+      > </a
+      ><a name="1716" class="Symbol"
+      >:</a
+      ><a name="1717"
+      > </a
+      ><a name="1718" href="Continuity.TheoremKECA.html#1704" class="Bound"
+      >x</a
+      ><a name="1719"
+      > </a
+      ><a name="1720" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1721"
+      > </a
+      ><a name="1722" href="Continuity.TheoremKECA.html#1706" class="Bound"
+      >y</a
+      ><a name="1723" class="Symbol"
+      >)</a
+      ><a name="1724"
+      >
+             </a
+      ><a name="1738" class="Symbol"
+      >&#8594;</a
+      ><a name="1739"
+      > </a
+      ><a name="1740" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="1742"
+      > </a
+      ><a name="1743" href="Continuity.TheoremKECA.html#1674" class="Bound"
+      >f</a
+      ><a name="1744"
+      > </a
+      ><a name="1745" href="Continuity.TheoremKECA.html#1714" class="Bound"
+      >p</a
+      ><a name="1746"
+      > </a
+      ><a name="1747" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1748"
+      > </a
+      ><a name="1749" class="Symbol"
+      >(</a
+      ><a name="1750" href="Continuity.TheoremKECA.html#1686" class="Bound"
+      >cf</a
+      ><a name="1752"
+      > </a
+      ><a name="1753" href="Continuity.TheoremKECA.html#1704" class="Bound"
+      >x</a
+      ><a name="1754"
+      > </a
+      ><a name="1755" href="Continuity.TheoremKECA.html#1704" class="Bound"
+      >x</a
+      ><a name="1756" class="Symbol"
+      >)</a
+      ><a name="1757" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="1759"
+      > </a
+      ><a name="1760" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="1761"
+      > </a
+      ><a name="1762" class="Symbol"
+      >(</a
+      ><a name="1763" href="Continuity.TheoremKECA.html#1686" class="Bound"
+      >cf</a
+      ><a name="1765"
+      > </a
+      ><a name="1766" href="Continuity.TheoremKECA.html#1704" class="Bound"
+      >x</a
+      ><a name="1767"
+      > </a
+      ><a name="1768" href="Continuity.TheoremKECA.html#1706" class="Bound"
+      >y</a
+      ><a name="1769" class="Symbol"
+      >)</a
+      ><a name="1770"
+      > 
+</a
+      ><a name="1772" href="Continuity.TheoremKECA.html#1646" class="Function"
+      >Kraus-Lemma&#8320;</a
+      ><a name="1784"
+      > </a
+      ><a name="1785" class="Symbol"
+      >{</a
+      ><a name="1786" href="Continuity.TheoremKECA.html#1786" class="Bound"
+      >X</a
+      ><a name="1787" class="Symbol"
+      >}</a
+      ><a name="1788"
+      > </a
+      ><a name="1789" class="Symbol"
+      >{</a
+      ><a name="1790" href="Continuity.TheoremKECA.html#1790" class="Bound"
+      >Y</a
+      ><a name="1791" class="Symbol"
+      >}</a
+      ><a name="1792"
+      > </a
+      ><a name="1793" href="Continuity.TheoremKECA.html#1793" class="Bound"
+      >f</a
+      ><a name="1794"
+      > </a
+      ><a name="1795" href="Continuity.TheoremKECA.html#1795" class="Bound"
+      >cf</a
+      ><a name="1797"
+      > </a
+      ><a name="1798" class="Symbol"
+      >{</a
+      ><a name="1799" href="Continuity.TheoremKECA.html#1799" class="Bound"
+      >x</a
+      ><a name="1800" class="Symbol"
+      >}</a
+      ><a name="1801"
+      > </a
+      ><a name="1802" class="Symbol"
+      >{</a
+      ><a name="1803" class="DottedPattern Symbol"
+      >.</a
+      ><a name="1804" href="Continuity.TheoremKECA.html#1799" class="DottedPattern Bound"
+      >x</a
+      ><a name="1805" class="Symbol"
+      >}</a
+      ><a name="1806"
+      > </a
+      ><a name="1807" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1811"
+      > </a
+      ><a name="1812" class="Symbol"
+      >=</a
+      ><a name="1813"
+      > </a
+      ><a name="1814" href="Preliminaries.SetsAndFunctions.html#2328" class="Function"
+      >sym-is-inverse</a
+      ><a name="1828"
+      > </a
+      ><a name="1829" class="Symbol"
+      >(</a
+      ><a name="1830" href="Continuity.TheoremKECA.html#1795" class="Bound"
+      >cf</a
+      ><a name="1832"
+      > </a
+      ><a name="1833" href="Continuity.TheoremKECA.html#1799" class="Bound"
+      >x</a
+      ><a name="1834"
+      > </a
+      ><a name="1835" href="Continuity.TheoremKECA.html#1799" class="Bound"
+      >x</a
+      ><a name="1836" class="Symbol"
+      >)</a
+      ><a name="1837"
+      >
+
+</a
+      ><a name="1839" href="Continuity.TheoremKECA.html#1839" class="Function"
+      >Kraus-Lemma&#8321;</a
+      ><a name="1851"
+      > </a
+      ><a name="1852" class="Symbol"
+      >:</a
+      ><a name="1853"
+      > </a
+      ><a name="1854" class="Symbol"
+      >{</a
+      ><a name="1855" href="Continuity.TheoremKECA.html#1855" class="Bound"
+      >X</a
+      ><a name="1856"
+      > </a
+      ><a name="1857" href="Continuity.TheoremKECA.html#1857" class="Bound"
+      >Y</a
+      ><a name="1858"
+      > </a
+      ><a name="1859" class="Symbol"
+      >:</a
+      ><a name="1860"
+      > </a
+      ><a name="1861" class="PrimitiveType"
+      >Set</a
+      ><a name="1864" class="Symbol"
+      >}</a
+      ><a name="1865"
+      > </a
+      ><a name="1866" class="Symbol"
+      >(</a
+      ><a name="1867" href="Continuity.TheoremKECA.html#1867" class="Bound"
+      >f</a
+      ><a name="1868"
+      > </a
+      ><a name="1869" class="Symbol"
+      >:</a
+      ><a name="1870"
+      > </a
+      ><a name="1871" href="Continuity.TheoremKECA.html#1855" class="Bound"
+      >X</a
+      ><a name="1872"
+      > </a
+      ><a name="1873" class="Symbol"
+      >&#8594;</a
+      ><a name="1874"
+      > </a
+      ><a name="1875" href="Continuity.TheoremKECA.html#1857" class="Bound"
+      >Y</a
+      ><a name="1876" class="Symbol"
+      >)</a
+      ><a name="1877"
+      > </a
+      ><a name="1878" class="Symbol"
+      >&#8594;</a
+      ><a name="1879"
+      > </a
+      ><a name="1880" href="Preliminaries.SetsAndFunctions.html#3284" class="Function"
+      >constant</a
+      ><a name="1888"
+      > </a
+      ><a name="1889" href="Continuity.TheoremKECA.html#1867" class="Bound"
+      >f</a
+      ><a name="1890"
+      > </a
+      ><a name="1891" class="Symbol"
+      >&#8594;</a
+      ><a name="1892"
+      > </a
+      ><a name="1893" class="Symbol"
+      >{</a
+      ><a name="1894" href="Continuity.TheoremKECA.html#1894" class="Bound"
+      >x</a
+      ><a name="1895"
+      > </a
+      ><a name="1896" class="Symbol"
+      >:</a
+      ><a name="1897"
+      > </a
+      ><a name="1898" href="Continuity.TheoremKECA.html#1855" class="Bound"
+      >X</a
+      ><a name="1899" class="Symbol"
+      >}</a
+      ><a name="1900"
+      > </a
+      ><a name="1901" class="Symbol"
+      >(</a
+      ><a name="1902" href="Continuity.TheoremKECA.html#1902" class="Bound"
+      >p</a
+      ><a name="1903"
+      > </a
+      ><a name="1904" class="Symbol"
+      >:</a
+      ><a name="1905"
+      > </a
+      ><a name="1906" href="Continuity.TheoremKECA.html#1894" class="Bound"
+      >x</a
+      ><a name="1907"
+      > </a
+      ><a name="1908" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1909"
+      > </a
+      ><a name="1910" href="Continuity.TheoremKECA.html#1894" class="Bound"
+      >x</a
+      ><a name="1911" class="Symbol"
+      >)</a
+      ><a name="1912"
+      >
+             </a
+      ><a name="1926" class="Symbol"
+      >&#8594;</a
+      ><a name="1927"
+      > </a
+      ><a name="1928" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="1930"
+      > </a
+      ><a name="1931" href="Continuity.TheoremKECA.html#1867" class="Bound"
+      >f</a
+      ><a name="1932"
+      > </a
+      ><a name="1933" href="Continuity.TheoremKECA.html#1902" class="Bound"
+      >p</a
+      ><a name="1934"
+      > </a
+      ><a name="1935" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1936"
+      > </a
+      ><a name="1937" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1941"
+      >
+</a
+      ><a name="1942" href="Continuity.TheoremKECA.html#1839" class="Function"
+      >Kraus-Lemma&#8321;</a
+      ><a name="1954"
+      > </a
+      ><a name="1955" class="Symbol"
+      >{</a
+      ><a name="1956" href="Continuity.TheoremKECA.html#1956" class="Bound"
+      >X</a
+      ><a name="1957" class="Symbol"
+      >}</a
+      ><a name="1958"
+      > </a
+      ><a name="1959" class="Symbol"
+      >{</a
+      ><a name="1960" href="Continuity.TheoremKECA.html#1960" class="Bound"
+      >Y</a
+      ><a name="1961" class="Symbol"
+      >}</a
+      ><a name="1962"
+      > </a
+      ><a name="1963" href="Continuity.TheoremKECA.html#1963" class="Bound"
+      >f</a
+      ><a name="1964"
+      > </a
+      ><a name="1965" href="Continuity.TheoremKECA.html#1965" class="Bound"
+      >cf</a
+      ><a name="1967"
+      > </a
+      ><a name="1968" class="Symbol"
+      >{</a
+      ><a name="1969" href="Continuity.TheoremKECA.html#1969" class="Bound"
+      >x</a
+      ><a name="1970" class="Symbol"
+      >}</a
+      ><a name="1971"
+      > </a
+      ><a name="1972" href="Continuity.TheoremKECA.html#1972" class="Bound"
+      >p</a
+      ><a name="1973"
+      > </a
+      ><a name="1974" class="Symbol"
+      >=</a
+      ><a name="1975"
+      > </a
+      ><a name="1976" class="Symbol"
+      >(</a
+      ><a name="1977" href="Continuity.TheoremKECA.html#1646" class="Function"
+      >Kraus-Lemma&#8320;</a
+      ><a name="1989"
+      > </a
+      ><a name="1990" href="Continuity.TheoremKECA.html#1963" class="Bound"
+      >f</a
+      ><a name="1991"
+      > </a
+      ><a name="1992" href="Continuity.TheoremKECA.html#1965" class="Bound"
+      >cf</a
+      ><a name="1994"
+      > </a
+      ><a name="1995" href="Continuity.TheoremKECA.html#1972" class="Bound"
+      >p</a
+      ><a name="1996" class="Symbol"
+      >)</a
+      ><a name="1997"
+      > </a
+      ><a name="1998" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="1999"
+      > </a
+      ><a name="2000" class="Symbol"
+      >(</a
+      ><a name="2001" href="Preliminaries.SetsAndFunctions.html#2328" class="Function"
+      >sym-is-inverse</a
+      ><a name="2015"
+      > </a
+      ><a name="2016" class="Symbol"
+      >(</a
+      ><a name="2017" href="Continuity.TheoremKECA.html#1965" class="Bound"
+      >cf</a
+      ><a name="2019"
+      > </a
+      ><a name="2020" href="Continuity.TheoremKECA.html#1969" class="Bound"
+      >x</a
+      ><a name="2021"
+      > </a
+      ><a name="2022" href="Continuity.TheoremKECA.html#1969" class="Bound"
+      >x</a
+      ><a name="2023" class="Symbol"
+      >))</a
+      ><a name="2025" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="2027"
+      >
+
+</a
+      ><a name="2029" href="Continuity.TheoremKECA.html#2029" class="Function"
+      >transport-paths-along-paths</a
+      ><a name="2056"
+      > </a
+      ><a name="2057" class="Symbol"
+      >:</a
+      ><a name="2058"
+      > </a
+      ><a name="2059" class="Symbol"
+      >{</a
+      ><a name="2060" href="Continuity.TheoremKECA.html#2060" class="Bound"
+      >X</a
+      ><a name="2061"
+      > </a
+      ><a name="2062" href="Continuity.TheoremKECA.html#2062" class="Bound"
+      >Y</a
+      ><a name="2063"
+      > </a
+      ><a name="2064" class="Symbol"
+      >:</a
+      ><a name="2065"
+      > </a
+      ><a name="2066" class="PrimitiveType"
+      >Set</a
+      ><a name="2069" class="Symbol"
+      >}</a
+      ><a name="2070"
+      > </a
+      ><a name="2071" class="Symbol"
+      >{</a
+      ><a name="2072" href="Continuity.TheoremKECA.html#2072" class="Bound"
+      >x</a
+      ><a name="2073"
+      > </a
+      ><a name="2074" href="Continuity.TheoremKECA.html#2074" class="Bound"
+      >y</a
+      ><a name="2075"
+      > </a
+      ><a name="2076" class="Symbol"
+      >:</a
+      ><a name="2077"
+      > </a
+      ><a name="2078" href="Continuity.TheoremKECA.html#2060" class="Bound"
+      >X</a
+      ><a name="2079" class="Symbol"
+      >}</a
+      ><a name="2080"
+      > </a
+      ><a name="2081" class="Symbol"
+      >(</a
+      ><a name="2082" href="Continuity.TheoremKECA.html#2082" class="Bound"
+      >p</a
+      ><a name="2083"
+      > </a
+      ><a name="2084" class="Symbol"
+      >:</a
+      ><a name="2085"
+      > </a
+      ><a name="2086" href="Continuity.TheoremKECA.html#2072" class="Bound"
+      >x</a
+      ><a name="2087"
+      > </a
+      ><a name="2088" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2089"
+      > </a
+      ><a name="2090" href="Continuity.TheoremKECA.html#2074" class="Bound"
+      >y</a
+      ><a name="2091" class="Symbol"
+      >)</a
+      ><a name="2092"
+      > </a
+      ><a name="2093" class="Symbol"
+      >(</a
+      ><a name="2094" href="Continuity.TheoremKECA.html#2094" class="Bound"
+      >h</a
+      ><a name="2095"
+      > </a
+      ><a name="2096" href="Continuity.TheoremKECA.html#2096" class="Bound"
+      >k</a
+      ><a name="2097"
+      > </a
+      ><a name="2098" class="Symbol"
+      >:</a
+      ><a name="2099"
+      > </a
+      ><a name="2100" href="Continuity.TheoremKECA.html#2060" class="Bound"
+      >X</a
+      ><a name="2101"
+      > </a
+      ><a name="2102" class="Symbol"
+      >&#8594;</a
+      ><a name="2103"
+      > </a
+      ><a name="2104" href="Continuity.TheoremKECA.html#2062" class="Bound"
+      >Y</a
+      ><a name="2105" class="Symbol"
+      >)</a
+      ><a name="2106"
+      > </a
+      ><a name="2107" class="Symbol"
+      >(</a
+      ><a name="2108" href="Continuity.TheoremKECA.html#2108" class="Bound"
+      >q</a
+      ><a name="2109"
+      > </a
+      ><a name="2110" class="Symbol"
+      >:</a
+      ><a name="2111"
+      > </a
+      ><a name="2112" href="Continuity.TheoremKECA.html#2094" class="Bound"
+      >h</a
+      ><a name="2113"
+      > </a
+      ><a name="2114" href="Continuity.TheoremKECA.html#2072" class="Bound"
+      >x</a
+      ><a name="2115"
+      > </a
+      ><a name="2116" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2117"
+      > </a
+      ><a name="2118" href="Continuity.TheoremKECA.html#2096" class="Bound"
+      >k</a
+      ><a name="2119"
+      > </a
+      ><a name="2120" href="Continuity.TheoremKECA.html#2072" class="Bound"
+      >x</a
+      ><a name="2121" class="Symbol"
+      >)</a
+      ><a name="2122"
+      > 
+                            </a
+      ><a name="2152" class="Symbol"
+      >&#8594;</a
+      ><a name="2153"
+      > </a
+      ><a name="2154" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="2163"
+      > </a
+      ><a name="2164" class="Symbol"
+      >(&#955;</a
+      ><a name="2166"
+      > </a
+      ><a name="2167" href="Continuity.TheoremKECA.html#2167" class="Bound"
+      >z</a
+      ><a name="2168"
+      > </a
+      ><a name="2169" class="Symbol"
+      >&#8594;</a
+      ><a name="2170"
+      > </a
+      ><a name="2171" href="Continuity.TheoremKECA.html#2094" class="Bound"
+      >h</a
+      ><a name="2172"
+      > </a
+      ><a name="2173" href="Continuity.TheoremKECA.html#2167" class="Bound"
+      >z</a
+      ><a name="2174"
+      > </a
+      ><a name="2175" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2176"
+      > </a
+      ><a name="2177" href="Continuity.TheoremKECA.html#2096" class="Bound"
+      >k</a
+      ><a name="2178"
+      > </a
+      ><a name="2179" href="Continuity.TheoremKECA.html#2167" class="Bound"
+      >z</a
+      ><a name="2180" class="Symbol"
+      >)</a
+      ><a name="2181"
+      > </a
+      ><a name="2182" href="Continuity.TheoremKECA.html#2082" class="Bound"
+      >p</a
+      ><a name="2183"
+      > </a
+      ><a name="2184" href="Continuity.TheoremKECA.html#2108" class="Bound"
+      >q</a
+      ><a name="2185"
+      > </a
+      ><a name="2186" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2187"
+      > </a
+      ><a name="2188" class="Symbol"
+      >(</a
+      ><a name="2189" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="2191"
+      > </a
+      ><a name="2192" href="Continuity.TheoremKECA.html#2094" class="Bound"
+      >h</a
+      ><a name="2193"
+      > </a
+      ><a name="2194" href="Continuity.TheoremKECA.html#2082" class="Bound"
+      >p</a
+      ><a name="2195" class="Symbol"
+      >)</a
+      ><a name="2196" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="2198"
+      > </a
+      ><a name="2199" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2200"
+      > </a
+      ><a name="2201" href="Continuity.TheoremKECA.html#2108" class="Bound"
+      >q</a
+      ><a name="2202"
+      > </a
+      ><a name="2203" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2204"
+      > </a
+      ><a name="2205" class="Symbol"
+      >(</a
+      ><a name="2206" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="2208"
+      > </a
+      ><a name="2209" href="Continuity.TheoremKECA.html#2096" class="Bound"
+      >k</a
+      ><a name="2210"
+      > </a
+      ><a name="2211" href="Continuity.TheoremKECA.html#2082" class="Bound"
+      >p</a
+      ><a name="2212" class="Symbol"
+      >)</a
+      ><a name="2213"
+      >
+</a
+      ><a name="2214" href="Continuity.TheoremKECA.html#2029" class="Function"
+      >transport-paths-along-paths</a
+      ><a name="2241"
+      > </a
+      ><a name="2242" class="Symbol"
+      >{</a
+      ><a name="2243" href="Continuity.TheoremKECA.html#2243" class="Bound"
+      >X</a
+      ><a name="2244" class="Symbol"
+      >}</a
+      ><a name="2245"
+      > </a
+      ><a name="2246" class="Symbol"
+      >{</a
+      ><a name="2247" href="Continuity.TheoremKECA.html#2247" class="Bound"
+      >Y</a
+      ><a name="2248" class="Symbol"
+      >}</a
+      ><a name="2249"
+      > </a
+      ><a name="2250" class="Symbol"
+      >{</a
+      ><a name="2251" href="Continuity.TheoremKECA.html#2251" class="Bound"
+      >x</a
+      ><a name="2252" class="Symbol"
+      >}</a
+      ><a name="2253"
+      > </a
+      ><a name="2254" class="Symbol"
+      >{</a
+      ><a name="2255" class="DottedPattern Symbol"
+      >.</a
+      ><a name="2256" href="Continuity.TheoremKECA.html#2251" class="DottedPattern Bound"
+      >x</a
+      ><a name="2257" class="Symbol"
+      >}</a
+      ><a name="2258"
+      > </a
+      ><a name="2259" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="2263"
+      > </a
+      ><a name="2264" href="Continuity.TheoremKECA.html#2264" class="Bound"
+      >h</a
+      ><a name="2265"
+      > </a
+      ><a name="2266" href="Continuity.TheoremKECA.html#2266" class="Bound"
+      >k</a
+      ><a name="2267"
+      > </a
+      ><a name="2268" href="Continuity.TheoremKECA.html#2268" class="Bound"
+      >q</a
+      ><a name="2269"
+      > </a
+      ><a name="2270" class="Symbol"
+      >=</a
+      ><a name="2271"
+      > </a
+      ><a name="2272" href="Continuity.TheoremKECA.html#2297" class="Function"
+      >claim&#8320;</a
+      ><a name="2278"
+      > </a
+      ><a name="2279" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2280"
+      > </a
+      ><a name="2281" href="Continuity.TheoremKECA.html#2363" class="Function"
+      >claim&#8321;</a
+      ><a name="2287"
+      >
+ </a
+      ><a name="2289" class="Keyword"
+      >where</a
+      ><a name="2294"
+      >
+  </a
+      ><a name="2297" href="Continuity.TheoremKECA.html#2297" class="Function"
+      >claim&#8320;</a
+      ><a name="2303"
+      > </a
+      ><a name="2304" class="Symbol"
+      >:</a
+      ><a name="2305"
+      > </a
+      ><a name="2306" href="Continuity.TheoremKECA.html#2268" class="Bound"
+      >q</a
+      ><a name="2307"
+      > </a
+      ><a name="2308" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2309"
+      > </a
+      ><a name="2310" href="Continuity.TheoremKECA.html#2268" class="Bound"
+      >q</a
+      ><a name="2311"
+      > </a
+      ><a name="2312" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2313"
+      > </a
+      ><a name="2314" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="2318"
+      >
+  </a
+      ><a name="2321" href="Continuity.TheoremKECA.html#2297" class="Function"
+      >claim&#8320;</a
+      ><a name="2327"
+      > </a
+      ><a name="2328" class="Symbol"
+      >=</a
+      ><a name="2329"
+      > </a
+      ><a name="2330" href="Continuity.TheoremKECA.html#1278" class="Function"
+      >trans&#8321;</a
+      ><a name="2336"
+      > </a
+      ><a name="2337" class="Symbol"
+      >{</a
+      ><a name="2338" href="Continuity.TheoremKECA.html#2247" class="Bound"
+      >Y</a
+      ><a name="2339" class="Symbol"
+      >}</a
+      ><a name="2340"
+      > </a
+      ><a name="2341" class="Symbol"
+      >{</a
+      ><a name="2342" href="Continuity.TheoremKECA.html#2264" class="Bound"
+      >h</a
+      ><a name="2343"
+      > </a
+      ><a name="2344" href="Continuity.TheoremKECA.html#2251" class="Bound"
+      >x</a
+      ><a name="2345" class="Symbol"
+      >}</a
+      ><a name="2346"
+      > </a
+      ><a name="2347" class="Symbol"
+      >{</a
+      ><a name="2348" href="Continuity.TheoremKECA.html#2266" class="Bound"
+      >k</a
+      ><a name="2349"
+      > </a
+      ><a name="2350" href="Continuity.TheoremKECA.html#2251" class="Bound"
+      >x</a
+      ><a name="2351" class="Symbol"
+      >}</a
+      ><a name="2352"
+      > </a
+      ><a name="2353" class="Symbol"
+      >{</a
+      ><a name="2354" href="Continuity.TheoremKECA.html#2266" class="Bound"
+      >k</a
+      ><a name="2355"
+      > </a
+      ><a name="2356" href="Continuity.TheoremKECA.html#2251" class="Bound"
+      >x</a
+      ><a name="2357" class="Symbol"
+      >}</a
+      ><a name="2358"
+      > </a
+      ><a name="2359" href="Continuity.TheoremKECA.html#2268" class="Bound"
+      >q</a
+      ><a name="2360"
+      >
+  </a
+      ><a name="2363" href="Continuity.TheoremKECA.html#2363" class="Function"
+      >claim&#8321;</a
+      ><a name="2369"
+      > </a
+      ><a name="2370" class="Symbol"
+      >:</a
+      ><a name="2371"
+      > </a
+      ><a name="2372" href="Continuity.TheoremKECA.html#2268" class="Bound"
+      >q</a
+      ><a name="2373"
+      > </a
+      ><a name="2374" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2375"
+      > </a
+      ><a name="2376" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="2380"
+      > </a
+      ><a name="2381" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2382"
+      > </a
+      ><a name="2383" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="2387"
+      > </a
+      ><a name="2388" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2389"
+      > </a
+      ><a name="2390" href="Continuity.TheoremKECA.html#2268" class="Bound"
+      >q</a
+      ><a name="2391"
+      > </a
+      ><a name="2392" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2393"
+      > </a
+      ><a name="2394" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="2398"
+      >
+  </a
+      ><a name="2401" href="Continuity.TheoremKECA.html#2363" class="Function"
+      >claim&#8321;</a
+      ><a name="2407"
+      > </a
+      ><a name="2408" class="Symbol"
+      >=</a
+      ><a name="2409"
+      > </a
+      ><a name="2410" href="Continuity.TheoremKECA.html#1194" class="Function"
+      >trans&#8320;</a
+      ><a name="2416"
+      > </a
+      ><a name="2417" class="Symbol"
+      >{</a
+      ><a name="2418" href="Continuity.TheoremKECA.html#2247" class="Bound"
+      >Y</a
+      ><a name="2419" class="Symbol"
+      >}</a
+      ><a name="2420"
+      > </a
+      ><a name="2421" class="Symbol"
+      >{</a
+      ><a name="2422" href="Continuity.TheoremKECA.html#2264" class="Bound"
+      >h</a
+      ><a name="2423"
+      > </a
+      ><a name="2424" href="Continuity.TheoremKECA.html#2251" class="Bound"
+      >x</a
+      ><a name="2425" class="Symbol"
+      >}</a
+      ><a name="2426"
+      > </a
+      ><a name="2427" class="Symbol"
+      >{</a
+      ><a name="2428" href="Continuity.TheoremKECA.html#2264" class="Bound"
+      >h</a
+      ><a name="2429"
+      > </a
+      ><a name="2430" href="Continuity.TheoremKECA.html#2251" class="Bound"
+      >x</a
+      ><a name="2431" class="Symbol"
+      >}</a
+      ><a name="2432"
+      > </a
+      ><a name="2433" class="Symbol"
+      >{</a
+      ><a name="2434" href="Continuity.TheoremKECA.html#2266" class="Bound"
+      >k</a
+      ><a name="2435"
+      > </a
+      ><a name="2436" href="Continuity.TheoremKECA.html#2251" class="Bound"
+      >x</a
+      ><a name="2437" class="Symbol"
+      >}</a
+      ><a name="2438"
+      > </a
+      ><a name="2439" class="Symbol"
+      >(</a
+      ><a name="2440" href="Continuity.TheoremKECA.html#2268" class="Bound"
+      >q</a
+      ><a name="2441"
+      > </a
+      ><a name="2442" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2443"
+      > </a
+      ><a name="2444" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="2448" class="Symbol"
+      >)</a
+      ><a name="2449"
+      >
+
+</a
+      ><a name="2451" href="Continuity.TheoremKECA.html#2451" class="Function"
+      >transport-paths-along-paths'</a
+      ><a name="2479"
+      > </a
+      ><a name="2480" class="Symbol"
+      >:</a
+      ><a name="2481"
+      > </a
+      ><a name="2482" class="Symbol"
+      >{</a
+      ><a name="2483" href="Continuity.TheoremKECA.html#2483" class="Bound"
+      >X</a
+      ><a name="2484"
+      > </a
+      ><a name="2485" class="Symbol"
+      >:</a
+      ><a name="2486"
+      > </a
+      ><a name="2487" class="PrimitiveType"
+      >Set</a
+      ><a name="2490" class="Symbol"
+      >}</a
+      ><a name="2491"
+      > </a
+      ><a name="2492" class="Symbol"
+      >{</a
+      ><a name="2493" href="Continuity.TheoremKECA.html#2493" class="Bound"
+      >x</a
+      ><a name="2494"
+      > </a
+      ><a name="2495" class="Symbol"
+      >:</a
+      ><a name="2496"
+      > </a
+      ><a name="2497" href="Continuity.TheoremKECA.html#2483" class="Bound"
+      >X</a
+      ><a name="2498" class="Symbol"
+      >}</a
+      ><a name="2499"
+      > </a
+      ><a name="2500" class="Symbol"
+      >(</a
+      ><a name="2501" href="Continuity.TheoremKECA.html#2501" class="Bound"
+      >p</a
+      ><a name="2502"
+      > </a
+      ><a name="2503" class="Symbol"
+      >:</a
+      ><a name="2504"
+      > </a
+      ><a name="2505" href="Continuity.TheoremKECA.html#2493" class="Bound"
+      >x</a
+      ><a name="2506"
+      > </a
+      ><a name="2507" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2508"
+      > </a
+      ><a name="2509" href="Continuity.TheoremKECA.html#2493" class="Bound"
+      >x</a
+      ><a name="2510" class="Symbol"
+      >)</a
+      ><a name="2511"
+      > </a
+      ><a name="2512" class="Symbol"
+      >(</a
+      ><a name="2513" href="Continuity.TheoremKECA.html#2513" class="Bound"
+      >f</a
+      ><a name="2514"
+      > </a
+      ><a name="2515" class="Symbol"
+      >:</a
+      ><a name="2516"
+      > </a
+      ><a name="2517" href="Continuity.TheoremKECA.html#2483" class="Bound"
+      >X</a
+      ><a name="2518"
+      > </a
+      ><a name="2519" class="Symbol"
+      >&#8594;</a
+      ><a name="2520"
+      > </a
+      ><a name="2521" href="Continuity.TheoremKECA.html#2483" class="Bound"
+      >X</a
+      ><a name="2522" class="Symbol"
+      >)</a
+      ><a name="2523"
+      > </a
+      ><a name="2524" class="Symbol"
+      >(</a
+      ><a name="2525" href="Continuity.TheoremKECA.html#2525" class="Bound"
+      >q</a
+      ><a name="2526"
+      > </a
+      ><a name="2527" class="Symbol"
+      >:</a
+      ><a name="2528"
+      > </a
+      ><a name="2529" href="Continuity.TheoremKECA.html#2493" class="Bound"
+      >x</a
+      ><a name="2530"
+      > </a
+      ><a name="2531" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2532"
+      > </a
+      ><a name="2533" href="Continuity.TheoremKECA.html#2513" class="Bound"
+      >f</a
+      ><a name="2534"
+      > </a
+      ><a name="2535" href="Continuity.TheoremKECA.html#2493" class="Bound"
+      >x</a
+      ><a name="2536" class="Symbol"
+      >)</a
+      ><a name="2537"
+      > 
+                             </a
+      ><a name="2568" class="Symbol"
+      >&#8594;</a
+      ><a name="2569"
+      > </a
+      ><a name="2570" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="2579"
+      > </a
+      ><a name="2580" class="Symbol"
+      >(&#955;</a
+      ><a name="2582"
+      > </a
+      ><a name="2583" href="Continuity.TheoremKECA.html#2583" class="Bound"
+      >z</a
+      ><a name="2584"
+      > </a
+      ><a name="2585" class="Symbol"
+      >&#8594;</a
+      ><a name="2586"
+      > </a
+      ><a name="2587" href="Continuity.TheoremKECA.html#2583" class="Bound"
+      >z</a
+      ><a name="2588"
+      > </a
+      ><a name="2589" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2590"
+      > </a
+      ><a name="2591" href="Continuity.TheoremKECA.html#2513" class="Bound"
+      >f</a
+      ><a name="2592"
+      > </a
+      ><a name="2593" href="Continuity.TheoremKECA.html#2583" class="Bound"
+      >z</a
+      ><a name="2594" class="Symbol"
+      >)</a
+      ><a name="2595"
+      > </a
+      ><a name="2596" href="Continuity.TheoremKECA.html#2501" class="Bound"
+      >p</a
+      ><a name="2597"
+      > </a
+      ><a name="2598" href="Continuity.TheoremKECA.html#2525" class="Bound"
+      >q</a
+      ><a name="2599"
+      > </a
+      ><a name="2600" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2601"
+      > </a
+      ><a name="2602" href="Continuity.TheoremKECA.html#2501" class="Bound"
+      >p</a
+      ><a name="2603"
+      > </a
+      ><a name="2604" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="2606"
+      > </a
+      ><a name="2607" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2608"
+      > </a
+      ><a name="2609" href="Continuity.TheoremKECA.html#2525" class="Bound"
+      >q</a
+      ><a name="2610"
+      > </a
+      ><a name="2611" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2612"
+      > </a
+      ><a name="2613" class="Symbol"
+      >(</a
+      ><a name="2614" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="2616"
+      > </a
+      ><a name="2617" href="Continuity.TheoremKECA.html#2513" class="Bound"
+      >f</a
+      ><a name="2618"
+      > </a
+      ><a name="2619" href="Continuity.TheoremKECA.html#2501" class="Bound"
+      >p</a
+      ><a name="2620" class="Symbol"
+      >)</a
+      ><a name="2621"
+      >
+</a
+      ><a name="2622" href="Continuity.TheoremKECA.html#2451" class="Function"
+      >transport-paths-along-paths'</a
+      ><a name="2650"
+      > </a
+      ><a name="2651" class="Symbol"
+      >{</a
+      ><a name="2652" href="Continuity.TheoremKECA.html#2652" class="Bound"
+      >X</a
+      ><a name="2653" class="Symbol"
+      >}</a
+      ><a name="2654"
+      > </a
+      ><a name="2655" class="Symbol"
+      >{</a
+      ><a name="2656" href="Continuity.TheoremKECA.html#2656" class="Bound"
+      >x</a
+      ><a name="2657" class="Symbol"
+      >}</a
+      ><a name="2658"
+      > </a
+      ><a name="2659" href="Continuity.TheoremKECA.html#2659" class="Bound"
+      >p</a
+      ><a name="2660"
+      > </a
+      ><a name="2661" href="Continuity.TheoremKECA.html#2661" class="Bound"
+      >f</a
+      ><a name="2662"
+      > </a
+      ><a name="2663" href="Continuity.TheoremKECA.html#2663" class="Bound"
+      >q</a
+      ><a name="2664"
+      > </a
+      ><a name="2665" class="Symbol"
+      >=</a
+      ><a name="2666"
+      > </a
+      ><a name="2667" href="Continuity.TheoremKECA.html#2692" class="Function"
+      >claim&#8320;</a
+      ><a name="2673"
+      > </a
+      ><a name="2674" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2675"
+      > </a
+      ><a name="2676" href="Continuity.TheoremKECA.html#2818" class="Function"
+      >claim&#8321;</a
+      ><a name="2682"
+      >
+ </a
+      ><a name="2684" class="Keyword"
+      >where</a
+      ><a name="2689"
+      >
+  </a
+      ><a name="2692" href="Continuity.TheoremKECA.html#2692" class="Function"
+      >claim&#8320;</a
+      ><a name="2698"
+      > </a
+      ><a name="2699" class="Symbol"
+      >:</a
+      ><a name="2700"
+      > </a
+      ><a name="2701" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="2710"
+      > </a
+      ><a name="2711" class="Symbol"
+      >(&#955;</a
+      ><a name="2713"
+      > </a
+      ><a name="2714" href="Continuity.TheoremKECA.html#2714" class="Bound"
+      >z</a
+      ><a name="2715"
+      > </a
+      ><a name="2716" class="Symbol"
+      >&#8594;</a
+      ><a name="2717"
+      > </a
+      ><a name="2718" href="Continuity.TheoremKECA.html#2714" class="Bound"
+      >z</a
+      ><a name="2719"
+      > </a
+      ><a name="2720" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2721"
+      > </a
+      ><a name="2722" href="Continuity.TheoremKECA.html#2661" class="Bound"
+      >f</a
+      ><a name="2723"
+      > </a
+      ><a name="2724" href="Continuity.TheoremKECA.html#2714" class="Bound"
+      >z</a
+      ><a name="2725" class="Symbol"
+      >)</a
+      ><a name="2726"
+      > </a
+      ><a name="2727" href="Continuity.TheoremKECA.html#2659" class="Bound"
+      >p</a
+      ><a name="2728"
+      > </a
+      ><a name="2729" href="Continuity.TheoremKECA.html#2663" class="Bound"
+      >q</a
+      ><a name="2730"
+      > </a
+      ><a name="2731" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2732"
+      > </a
+      ><a name="2733" class="Symbol"
+      >(</a
+      ><a name="2734" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="2736"
+      > </a
+      ><a name="2737" href="Preliminaries.SetsAndFunctions.html#241" class="Function"
+      >id</a
+      ><a name="2739"
+      > </a
+      ><a name="2740" href="Continuity.TheoremKECA.html#2659" class="Bound"
+      >p</a
+      ><a name="2741" class="Symbol"
+      >)</a
+      ><a name="2742"
+      > </a
+      ><a name="2743" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="2745"
+      > </a
+      ><a name="2746" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2747"
+      > </a
+      ><a name="2748" href="Continuity.TheoremKECA.html#2663" class="Bound"
+      >q</a
+      ><a name="2749"
+      > </a
+      ><a name="2750" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2751"
+      > </a
+      ><a name="2752" class="Symbol"
+      >(</a
+      ><a name="2753" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="2755"
+      > </a
+      ><a name="2756" href="Continuity.TheoremKECA.html#2661" class="Bound"
+      >f</a
+      ><a name="2757"
+      > </a
+      ><a name="2758" href="Continuity.TheoremKECA.html#2659" class="Bound"
+      >p</a
+      ><a name="2759" class="Symbol"
+      >)</a
+      ><a name="2760"
+      >
+  </a
+      ><a name="2763" href="Continuity.TheoremKECA.html#2692" class="Function"
+      >claim&#8320;</a
+      ><a name="2769"
+      > </a
+      ><a name="2770" class="Symbol"
+      >=</a
+      ><a name="2771"
+      > </a
+      ><a name="2772" href="Continuity.TheoremKECA.html#2029" class="Function"
+      >transport-paths-along-paths</a
+      ><a name="2799"
+      > </a
+      ><a name="2800" href="Continuity.TheoremKECA.html#2659" class="Bound"
+      >p</a
+      ><a name="2801"
+      > </a
+      ><a name="2802" class="Symbol"
+      >(&#955;</a
+      ><a name="2804"
+      > </a
+      ><a name="2805" href="Continuity.TheoremKECA.html#2805" class="Bound"
+      >z</a
+      ><a name="2806"
+      > </a
+      ><a name="2807" class="Symbol"
+      >&#8594;</a
+      ><a name="2808"
+      > </a
+      ><a name="2809" href="Continuity.TheoremKECA.html#2805" class="Bound"
+      >z</a
+      ><a name="2810" class="Symbol"
+      >)</a
+      ><a name="2811"
+      > </a
+      ><a name="2812" href="Continuity.TheoremKECA.html#2661" class="Bound"
+      >f</a
+      ><a name="2813"
+      > </a
+      ><a name="2814" href="Continuity.TheoremKECA.html#2663" class="Bound"
+      >q</a
+      ><a name="2815"
+      >
+  </a
+      ><a name="2818" href="Continuity.TheoremKECA.html#2818" class="Function"
+      >claim&#8321;</a
+      ><a name="2824"
+      > </a
+      ><a name="2825" class="Symbol"
+      >:</a
+      ><a name="2826"
+      > </a
+      ><a name="2827" class="Symbol"
+      >(</a
+      ><a name="2828" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="2830"
+      > </a
+      ><a name="2831" href="Preliminaries.SetsAndFunctions.html#241" class="Function"
+      >id</a
+      ><a name="2833"
+      > </a
+      ><a name="2834" href="Continuity.TheoremKECA.html#2659" class="Bound"
+      >p</a
+      ><a name="2835" class="Symbol"
+      >)</a
+      ><a name="2836"
+      > </a
+      ><a name="2837" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="2839"
+      > </a
+      ><a name="2840" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2841"
+      > </a
+      ><a name="2842" href="Continuity.TheoremKECA.html#2663" class="Bound"
+      >q</a
+      ><a name="2843"
+      > </a
+      ><a name="2844" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2845"
+      > </a
+      ><a name="2846" class="Symbol"
+      >(</a
+      ><a name="2847" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="2849"
+      > </a
+      ><a name="2850" href="Continuity.TheoremKECA.html#2661" class="Bound"
+      >f</a
+      ><a name="2851"
+      > </a
+      ><a name="2852" href="Continuity.TheoremKECA.html#2659" class="Bound"
+      >p</a
+      ><a name="2853" class="Symbol"
+      >)</a
+      ><a name="2854"
+      > </a
+      ><a name="2855" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2856"
+      > </a
+      ><a name="2857" href="Continuity.TheoremKECA.html#2659" class="Bound"
+      >p</a
+      ><a name="2858"
+      > </a
+      ><a name="2859" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="2861"
+      > </a
+      ><a name="2862" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2863"
+      > </a
+      ><a name="2864" href="Continuity.TheoremKECA.html#2663" class="Bound"
+      >q</a
+      ><a name="2865"
+      > </a
+      ><a name="2866" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2867"
+      > </a
+      ><a name="2868" class="Symbol"
+      >(</a
+      ><a name="2869" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="2871"
+      > </a
+      ><a name="2872" href="Continuity.TheoremKECA.html#2661" class="Bound"
+      >f</a
+      ><a name="2873"
+      > </a
+      ><a name="2874" href="Continuity.TheoremKECA.html#2659" class="Bound"
+      >p</a
+      ><a name="2875" class="Symbol"
+      >)</a
+      ><a name="2876"
+      >
+  </a
+      ><a name="2879" href="Continuity.TheoremKECA.html#2818" class="Function"
+      >claim&#8321;</a
+      ><a name="2885"
+      > </a
+      ><a name="2886" class="Symbol"
+      >=</a
+      ><a name="2887"
+      > </a
+      ><a name="2888" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="2890"
+      > </a
+      ><a name="2891" class="Symbol"
+      >(&#955;</a
+      ><a name="2893"
+      > </a
+      ><a name="2894" href="Continuity.TheoremKECA.html#2894" class="Bound"
+      >r</a
+      ><a name="2895"
+      > </a
+      ><a name="2896" class="Symbol"
+      >&#8594;</a
+      ><a name="2897"
+      > </a
+      ><a name="2898" href="Continuity.TheoremKECA.html#2894" class="Bound"
+      >r</a
+      ><a name="2899"
+      > </a
+      ><a name="2900" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="2902"
+      > </a
+      ><a name="2903" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2904"
+      > </a
+      ><a name="2905" href="Continuity.TheoremKECA.html#2663" class="Bound"
+      >q</a
+      ><a name="2906"
+      > </a
+      ><a name="2907" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="2908"
+      > </a
+      ><a name="2909" class="Symbol"
+      >(</a
+      ><a name="2910" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="2912"
+      > </a
+      ><a name="2913" href="Continuity.TheoremKECA.html#2661" class="Bound"
+      >f</a
+      ><a name="2914"
+      > </a
+      ><a name="2915" href="Continuity.TheoremKECA.html#2659" class="Bound"
+      >p</a
+      ><a name="2916" class="Symbol"
+      >))</a
+      ><a name="2918"
+      > </a
+      ><a name="2919" class="Symbol"
+      >(</a
+      ><a name="2920" href="Continuity.TheoremKECA.html#1513" class="Function"
+      >ap-id-is-id</a
+      ><a name="2931"
+      > </a
+      ><a name="2932" href="Continuity.TheoremKECA.html#2659" class="Bound"
+      >p</a
+      ><a name="2933" class="Symbol"
+      >)</a
+      ><a name="2934"
+      >
+
+</a
+      ><a name="2936" href="Continuity.TheoremKECA.html#2936" class="Function"
+      >fix</a
+      ><a name="2939"
+      > </a
+      ><a name="2940" class="Symbol"
+      >:</a
+      ><a name="2941"
+      > </a
+      ><a name="2942" class="Symbol"
+      >{</a
+      ><a name="2943" href="Continuity.TheoremKECA.html#2943" class="Bound"
+      >X</a
+      ><a name="2944"
+      > </a
+      ><a name="2945" class="Symbol"
+      >:</a
+      ><a name="2946"
+      > </a
+      ><a name="2947" class="PrimitiveType"
+      >Set</a
+      ><a name="2950" class="Symbol"
+      >}</a
+      ><a name="2951"
+      > </a
+      ><a name="2952" class="Symbol"
+      >&#8594;</a
+      ><a name="2953"
+      > </a
+      ><a name="2954" class="Symbol"
+      >(</a
+      ><a name="2955" href="Continuity.TheoremKECA.html#2943" class="Bound"
+      >X</a
+      ><a name="2956"
+      > </a
+      ><a name="2957" class="Symbol"
+      >&#8594;</a
+      ><a name="2958"
+      > </a
+      ><a name="2959" href="Continuity.TheoremKECA.html#2943" class="Bound"
+      >X</a
+      ><a name="2960" class="Symbol"
+      >)</a
+      ><a name="2961"
+      > </a
+      ><a name="2962" class="Symbol"
+      >&#8594;</a
+      ><a name="2963"
+      > </a
+      ><a name="2964" class="PrimitiveType"
+      >Set</a
+      ><a name="2967"
+      >
+</a
+      ><a name="2968" href="Continuity.TheoremKECA.html#2936" class="Function"
+      >fix</a
+      ><a name="2971"
+      > </a
+      ><a name="2972" class="Symbol"
+      >{</a
+      ><a name="2973" href="Continuity.TheoremKECA.html#2973" class="Bound"
+      >X</a
+      ><a name="2974" class="Symbol"
+      >}</a
+      ><a name="2975"
+      > </a
+      ><a name="2976" href="Continuity.TheoremKECA.html#2976" class="Bound"
+      >f</a
+      ><a name="2977"
+      > </a
+      ><a name="2978" class="Symbol"
+      >=</a
+      ><a name="2979"
+      > </a
+      ><a name="2980" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="2981"
+      > </a
+      ><a name="2982" class="Symbol"
+      >\(</a
+      ><a name="2984" href="Continuity.TheoremKECA.html#2984" class="Bound"
+      >x</a
+      ><a name="2985"
+      > </a
+      ><a name="2986" class="Symbol"
+      >:</a
+      ><a name="2987"
+      > </a
+      ><a name="2988" href="Continuity.TheoremKECA.html#2973" class="Bound"
+      >X</a
+      ><a name="2989" class="Symbol"
+      >)</a
+      ><a name="2990"
+      > </a
+      ><a name="2991" class="Symbol"
+      >&#8594;</a
+      ><a name="2992"
+      > </a
+      ><a name="2993" href="Continuity.TheoremKECA.html#2984" class="Bound"
+      >x</a
+      ><a name="2994"
+      > </a
+      ><a name="2995" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2996"
+      > </a
+      ><a name="2997" href="Continuity.TheoremKECA.html#2976" class="Bound"
+      >f</a
+      ><a name="2998"
+      > </a
+      ><a name="2999" href="Continuity.TheoremKECA.html#2984" class="Bound"
+      >x</a
+      ><a name="3000"
+      >
+
+</a
+      ><a name="3002" href="Continuity.TheoremKECA.html#3002" class="Function"
+      >Kraus-Lemma</a
+      ><a name="3013"
+      > </a
+      ><a name="3014" class="Symbol"
+      >:</a
+      ><a name="3015"
+      > </a
+      ><a name="3016" class="Symbol"
+      >{</a
+      ><a name="3017" href="Continuity.TheoremKECA.html#3017" class="Bound"
+      >X</a
+      ><a name="3018"
+      > </a
+      ><a name="3019" class="Symbol"
+      >:</a
+      ><a name="3020"
+      > </a
+      ><a name="3021" class="PrimitiveType"
+      >Set</a
+      ><a name="3024" class="Symbol"
+      >}</a
+      ><a name="3025"
+      > </a
+      ><a name="3026" class="Symbol"
+      >&#8594;</a
+      ><a name="3027"
+      > </a
+      ><a name="3028" class="Symbol"
+      >(</a
+      ><a name="3029" href="Continuity.TheoremKECA.html#3029" class="Bound"
+      >f</a
+      ><a name="3030"
+      > </a
+      ><a name="3031" class="Symbol"
+      >:</a
+      ><a name="3032"
+      > </a
+      ><a name="3033" href="Continuity.TheoremKECA.html#3017" class="Bound"
+      >X</a
+      ><a name="3034"
+      > </a
+      ><a name="3035" class="Symbol"
+      >&#8594;</a
+      ><a name="3036"
+      > </a
+      ><a name="3037" href="Continuity.TheoremKECA.html#3017" class="Bound"
+      >X</a
+      ><a name="3038" class="Symbol"
+      >)</a
+      ><a name="3039"
+      > </a
+      ><a name="3040" class="Symbol"
+      >&#8594;</a
+      ><a name="3041"
+      > </a
+      ><a name="3042" href="Preliminaries.SetsAndFunctions.html#3284" class="Function"
+      >constant</a
+      ><a name="3050"
+      > </a
+      ><a name="3051" href="Continuity.TheoremKECA.html#3029" class="Bound"
+      >f</a
+      ><a name="3052"
+      > </a
+      ><a name="3053" class="Symbol"
+      >&#8594;</a
+      ><a name="3054"
+      > </a
+      ><a name="3055" href="Preliminaries.SetsAndFunctions.html#4925" class="Function"
+      >hprop</a
+      ><a name="3060" class="Symbol"
+      >(</a
+      ><a name="3061" href="Continuity.TheoremKECA.html#2936" class="Function"
+      >fix</a
+      ><a name="3064"
+      > </a
+      ><a name="3065" href="Continuity.TheoremKECA.html#3029" class="Bound"
+      >f</a
+      ><a name="3066" class="Symbol"
+      >)</a
+      ><a name="3067"
+      >
+</a
+      ><a name="3068" href="Continuity.TheoremKECA.html#3002" class="Function"
+      >Kraus-Lemma</a
+      ><a name="3079"
+      > </a
+      ><a name="3080" class="Symbol"
+      >{</a
+      ><a name="3081" href="Continuity.TheoremKECA.html#3081" class="Bound"
+      >X</a
+      ><a name="3082" class="Symbol"
+      >}</a
+      ><a name="3083"
+      > </a
+      ><a name="3084" href="Continuity.TheoremKECA.html#3084" class="Bound"
+      >f</a
+      ><a name="3085"
+      > </a
+      ><a name="3086" href="Continuity.TheoremKECA.html#3086" class="Bound"
+      >g</a
+      ><a name="3087"
+      > </a
+      ><a name="3088" class="Symbol"
+      >(</a
+      ><a name="3089" href="Continuity.TheoremKECA.html#3089" class="Bound"
+      >x</a
+      ><a name="3090"
+      > </a
+      ><a name="3091" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3092"
+      > </a
+      ><a name="3093" href="Continuity.TheoremKECA.html#3093" class="Bound"
+      >p</a
+      ><a name="3094" class="Symbol"
+      >)</a
+      ><a name="3095"
+      > </a
+      ><a name="3096" class="Symbol"
+      >(</a
+      ><a name="3097" href="Continuity.TheoremKECA.html#3097" class="Bound"
+      >y</a
+      ><a name="3098"
+      > </a
+      ><a name="3099" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3100"
+      > </a
+      ><a name="3101" href="Continuity.TheoremKECA.html#3101" class="Bound"
+      >q</a
+      ><a name="3102" class="Symbol"
+      >)</a
+      ><a name="3103"
+      > </a
+      ><a name="3104" class="Symbol"
+      >=</a
+      ><a name="3105"
+      >
+  </a
+      ><a name="3108" class="Comment"
+      >-- p : x &#8801; f x</a
+      ><a name="3122"
+      >
+  </a
+      ><a name="3125" class="Comment"
+      >-- q : y &#8801; f y</a
+      ><a name="3139"
+      >
+  </a
+      ><a name="3142" class="Symbol"
+      >(</a
+      ><a name="3143" href="Continuity.TheoremKECA.html#3089" class="Bound"
+      >x</a
+      ><a name="3144"
+      > </a
+      ><a name="3145" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3146"
+      > </a
+      ><a name="3147" href="Continuity.TheoremKECA.html#3093" class="Bound"
+      >p</a
+      ><a name="3148" class="Symbol"
+      >)</a
+      ><a name="3149"
+      >        </a
+      ><a name="3157" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="3159"
+      > </a
+      ><a name="3160" href="Preliminaries.SetsAndFunctions.html#2423" class="Function"
+      >pair&#8316;</a
+      ><a name="3165"
+      > </a
+      ><a name="3166" href="Continuity.TheoremKECA.html#3246" class="Function"
+      >r</a
+      ><a name="3167"
+      > </a
+      ><a name="3168" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="3172"
+      > </a
+      ><a name="3173" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#10217;</a
+      ><a name="3174"
+      >
+  </a
+      ><a name="3177" class="Symbol"
+      >(</a
+      ><a name="3178" href="Continuity.TheoremKECA.html#3097" class="Bound"
+      >y</a
+      ><a name="3179"
+      > </a
+      ><a name="3180" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3181"
+      > </a
+      ><a name="3182" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="3184" class="Symbol"
+      >)</a
+      ><a name="3185"
+      >       </a
+      ><a name="3192" href="Continuity.TheoremKECA.html#673" class="Function"
+      >&#8801;&#10216;</a
+      ><a name="3194"
+      > </a
+      ><a name="3195" href="Preliminaries.SetsAndFunctions.html#2423" class="Function"
+      >pair&#8316;</a
+      ><a name="3200"
+      > </a
+      ><a name="3201" href="Continuity.TheoremKECA.html#3394" class="Function"
+      >s</a
+      ><a name="3202"
+      > </a
+      ><a name="3203" href="Continuity.TheoremKECA.html#3528" class="Function"
+      >t</a
+      ><a name="3204"
+      > </a
+      ><a name="3205" href="Continuity.TheoremKECA.html#673" class="Function"
+      >&#10217;&#8718;</a
+      ><a name="3207"
+      >           
+  </a
+      ><a name="3221" class="Symbol"
+      >(</a
+      ><a name="3222" href="Continuity.TheoremKECA.html#3097" class="Bound"
+      >y</a
+      ><a name="3223"
+      > </a
+      ><a name="3224" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3225"
+      > </a
+      ><a name="3226" href="Continuity.TheoremKECA.html#3101" class="Bound"
+      >q</a
+      ><a name="3227" class="Symbol"
+      >)</a
+      ><a name="3228"
+      > </a
+      ><a name="3229" href="Continuity.TheoremKECA.html#673" class="Function"
+      >&#8718;</a
+      ><a name="3230"
+      >
+    </a
+      ><a name="3235" class="Keyword"
+      >where</a
+      ><a name="3240"
+      >
+     </a
+      ><a name="3246" href="Continuity.TheoremKECA.html#3246" class="Function"
+      >r</a
+      ><a name="3247"
+      > </a
+      ><a name="3248" class="Symbol"
+      >:</a
+      ><a name="3249"
+      > </a
+      ><a name="3250" href="Continuity.TheoremKECA.html#3089" class="Bound"
+      >x</a
+      ><a name="3251"
+      > </a
+      ><a name="3252" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3253"
+      > </a
+      ><a name="3254" href="Continuity.TheoremKECA.html#3097" class="Bound"
+      >y</a
+      ><a name="3255"
+      >
+     </a
+      ><a name="3261" href="Continuity.TheoremKECA.html#3246" class="Function"
+      >r</a
+      ><a name="3262"
+      > </a
+      ><a name="3263" class="Symbol"
+      >=</a
+      ><a name="3264"
+      > </a
+      ><a name="3265" href="Continuity.TheoremKECA.html#3089" class="Bound"
+      >x</a
+      ><a name="3266"
+      > </a
+      ><a name="3267" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="3269"
+      > </a
+      ><a name="3270" href="Continuity.TheoremKECA.html#3093" class="Bound"
+      >p</a
+      ><a name="3271"
+      > </a
+      ><a name="3272" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#10217;</a
+      ><a name="3273"
+      >
+       </a
+      ><a name="3281" href="Continuity.TheoremKECA.html#3084" class="Bound"
+      >f</a
+      ><a name="3282"
+      > </a
+      ><a name="3283" href="Continuity.TheoremKECA.html#3089" class="Bound"
+      >x</a
+      ><a name="3284"
+      > </a
+      ><a name="3285" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="3287"
+      > </a
+      ><a name="3288" href="Continuity.TheoremKECA.html#3086" class="Bound"
+      >g</a
+      ><a name="3289"
+      > </a
+      ><a name="3290" href="Continuity.TheoremKECA.html#3089" class="Bound"
+      >x</a
+      ><a name="3291"
+      > </a
+      ><a name="3292" href="Continuity.TheoremKECA.html#3097" class="Bound"
+      >y</a
+      ><a name="3293"
+      > </a
+      ><a name="3294" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#10217;</a
+      ><a name="3295"
+      >
+       </a
+      ><a name="3303" href="Continuity.TheoremKECA.html#3084" class="Bound"
+      >f</a
+      ><a name="3304"
+      > </a
+      ><a name="3305" href="Continuity.TheoremKECA.html#3097" class="Bound"
+      >y</a
+      ><a name="3306"
+      > </a
+      ><a name="3307" href="Continuity.TheoremKECA.html#673" class="Function"
+      >&#8801;&#10216;</a
+      ><a name="3309"
+      > </a
+      ><a name="3310" href="Continuity.TheoremKECA.html#3101" class="Bound"
+      >q</a
+      ><a name="3311"
+      > </a
+      ><a name="3312" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="3314"
+      > </a
+      ><a name="3315" href="Continuity.TheoremKECA.html#673" class="Function"
+      >&#10217;&#8718;</a
+      ><a name="3317"
+      >
+         </a
+      ><a name="3327" href="Continuity.TheoremKECA.html#3097" class="Bound"
+      >y</a
+      ><a name="3328"
+      > </a
+      ><a name="3329" href="Continuity.TheoremKECA.html#673" class="Function"
+      >&#8718;</a
+      ><a name="3330"
+      >
+     </a
+      ><a name="3336" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="3338"
+      > </a
+      ><a name="3339" class="Symbol"
+      >:</a
+      ><a name="3340"
+      > </a
+      ><a name="3341" href="Continuity.TheoremKECA.html#3097" class="Bound"
+      >y</a
+      ><a name="3342"
+      > </a
+      ><a name="3343" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3344"
+      > </a
+      ><a name="3345" href="Continuity.TheoremKECA.html#3084" class="Bound"
+      >f</a
+      ><a name="3346"
+      > </a
+      ><a name="3347" href="Continuity.TheoremKECA.html#3097" class="Bound"
+      >y</a
+      ><a name="3348"
+      >
+     </a
+      ><a name="3354" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="3356"
+      > </a
+      ><a name="3357" class="Symbol"
+      >=</a
+      ><a name="3358"
+      > </a
+      ><a name="3359" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="3368"
+      > </a
+      ><a name="3369" class="Symbol"
+      >(&#955;</a
+      ><a name="3371"
+      > </a
+      ><a name="3372" href="Continuity.TheoremKECA.html#3372" class="Bound"
+      >z</a
+      ><a name="3373"
+      > </a
+      ><a name="3374" class="Symbol"
+      >&#8594;</a
+      ><a name="3375"
+      > </a
+      ><a name="3376" href="Continuity.TheoremKECA.html#3372" class="Bound"
+      >z</a
+      ><a name="3377"
+      > </a
+      ><a name="3378" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3379"
+      > </a
+      ><a name="3380" href="Continuity.TheoremKECA.html#3084" class="Bound"
+      >f</a
+      ><a name="3381"
+      > </a
+      ><a name="3382" href="Continuity.TheoremKECA.html#3372" class="Bound"
+      >z</a
+      ><a name="3383" class="Symbol"
+      >)</a
+      ><a name="3384"
+      > </a
+      ><a name="3385" href="Continuity.TheoremKECA.html#3246" class="Function"
+      >r</a
+      ><a name="3386"
+      > </a
+      ><a name="3387" href="Continuity.TheoremKECA.html#3093" class="Bound"
+      >p</a
+      ><a name="3388"
+      >
+     </a
+      ><a name="3394" href="Continuity.TheoremKECA.html#3394" class="Function"
+      >s</a
+      ><a name="3395"
+      > </a
+      ><a name="3396" class="Symbol"
+      >:</a
+      ><a name="3397"
+      > </a
+      ><a name="3398" href="Continuity.TheoremKECA.html#3097" class="Bound"
+      >y</a
+      ><a name="3399"
+      > </a
+      ><a name="3400" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3401"
+      > </a
+      ><a name="3402" href="Continuity.TheoremKECA.html#3097" class="Bound"
+      >y</a
+      ><a name="3403"
+      >
+     </a
+      ><a name="3409" href="Continuity.TheoremKECA.html#3394" class="Function"
+      >s</a
+      ><a name="3410"
+      > </a
+      ><a name="3411" class="Symbol"
+      >=</a
+      ><a name="3412"
+      > </a
+      ><a name="3413" href="Continuity.TheoremKECA.html#3097" class="Bound"
+      >y</a
+      ><a name="3414"
+      >   </a
+      ><a name="3417" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="3419"
+      > </a
+      ><a name="3420" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="3422"
+      > </a
+      ><a name="3423" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#10217;</a
+      ><a name="3424"
+      >
+         </a
+      ><a name="3434" href="Continuity.TheoremKECA.html#3084" class="Bound"
+      >f</a
+      ><a name="3435"
+      > </a
+      ><a name="3436" href="Continuity.TheoremKECA.html#3097" class="Bound"
+      >y</a
+      ><a name="3437"
+      > </a
+      ><a name="3438" href="Continuity.TheoremKECA.html#673" class="Function"
+      >&#8801;&#10216;</a
+      ><a name="3440"
+      > </a
+      ><a name="3441" href="Continuity.TheoremKECA.html#3101" class="Bound"
+      >q</a
+      ><a name="3442"
+      > </a
+      ><a name="3443" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="3445"
+      > </a
+      ><a name="3446" href="Continuity.TheoremKECA.html#673" class="Function"
+      >&#10217;&#8718;</a
+      ><a name="3448"
+      >
+         </a
+      ><a name="3458" href="Continuity.TheoremKECA.html#3097" class="Bound"
+      >y</a
+      ><a name="3459"
+      >   </a
+      ><a name="3462" href="Continuity.TheoremKECA.html#673" class="Function"
+      >&#8718;</a
+      ><a name="3463"
+      >
+     </a
+      ><a name="3469" href="Continuity.TheoremKECA.html#3469" class="Function"
+      >q'</a
+      ><a name="3471"
+      > </a
+      ><a name="3472" class="Symbol"
+      >:</a
+      ><a name="3473"
+      > </a
+      ><a name="3474" href="Continuity.TheoremKECA.html#3097" class="Bound"
+      >y</a
+      ><a name="3475"
+      > </a
+      ><a name="3476" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3477"
+      > </a
+      ><a name="3478" href="Continuity.TheoremKECA.html#3084" class="Bound"
+      >f</a
+      ><a name="3479"
+      > </a
+      ><a name="3480" href="Continuity.TheoremKECA.html#3097" class="Bound"
+      >y</a
+      ><a name="3481"
+      >
+     </a
+      ><a name="3487" href="Continuity.TheoremKECA.html#3469" class="Function"
+      >q'</a
+      ><a name="3489"
+      > </a
+      ><a name="3490" class="Symbol"
+      >=</a
+      ><a name="3491"
+      > </a
+      ><a name="3492" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="3501"
+      > </a
+      ><a name="3502" class="Symbol"
+      >(&#955;</a
+      ><a name="3504"
+      > </a
+      ><a name="3505" href="Continuity.TheoremKECA.html#3505" class="Bound"
+      >z</a
+      ><a name="3506"
+      > </a
+      ><a name="3507" class="Symbol"
+      >&#8594;</a
+      ><a name="3508"
+      > </a
+      ><a name="3509" href="Continuity.TheoremKECA.html#3505" class="Bound"
+      >z</a
+      ><a name="3510"
+      > </a
+      ><a name="3511" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3512"
+      > </a
+      ><a name="3513" href="Continuity.TheoremKECA.html#3084" class="Bound"
+      >f</a
+      ><a name="3514"
+      > </a
+      ><a name="3515" href="Continuity.TheoremKECA.html#3505" class="Bound"
+      >z</a
+      ><a name="3516" class="Symbol"
+      >)</a
+      ><a name="3517"
+      > </a
+      ><a name="3518" href="Continuity.TheoremKECA.html#3394" class="Function"
+      >s</a
+      ><a name="3519"
+      > </a
+      ><a name="3520" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="3522"
+      >
+     </a
+      ><a name="3528" href="Continuity.TheoremKECA.html#3528" class="Function"
+      >t</a
+      ><a name="3529"
+      > </a
+      ><a name="3530" class="Symbol"
+      >:</a
+      ><a name="3531"
+      > </a
+      ><a name="3532" href="Continuity.TheoremKECA.html#3469" class="Function"
+      >q'</a
+      ><a name="3534"
+      > </a
+      ><a name="3535" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3536"
+      > </a
+      ><a name="3537" href="Continuity.TheoremKECA.html#3101" class="Bound"
+      >q</a
+      ><a name="3538"
+      >
+     </a
+      ><a name="3544" href="Continuity.TheoremKECA.html#3528" class="Function"
+      >t</a
+      ><a name="3545"
+      > </a
+      ><a name="3546" class="Symbol"
+      >=</a
+      ><a name="3547"
+      > </a
+      ><a name="3548" href="Continuity.TheoremKECA.html#3469" class="Function"
+      >q'</a
+      ><a name="3550"
+      >                         </a
+      ><a name="3575" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="3577"
+      > </a
+      ><a name="3578" href="Continuity.TheoremKECA.html#2451" class="Function"
+      >transport-paths-along-paths'</a
+      ><a name="3606"
+      > </a
+      ><a name="3607" href="Continuity.TheoremKECA.html#3394" class="Function"
+      >s</a
+      ><a name="3608"
+      > </a
+      ><a name="3609" href="Continuity.TheoremKECA.html#3084" class="Bound"
+      >f</a
+      ><a name="3610"
+      > </a
+      ><a name="3611" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="3613"
+      > </a
+      ><a name="3614" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#10217;</a
+      ><a name="3615"
+      >
+         </a
+      ><a name="3625" href="Continuity.TheoremKECA.html#3394" class="Function"
+      >s</a
+      ><a name="3626"
+      > </a
+      ><a name="3627" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="3629"
+      > </a
+      ><a name="3630" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="3631"
+      > </a
+      ><a name="3632" class="Symbol"
+      >(</a
+      ><a name="3633" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="3635"
+      > </a
+      ><a name="3636" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="3637"
+      > </a
+      ><a name="3638" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="3640"
+      > </a
+      ><a name="3641" href="Continuity.TheoremKECA.html#3084" class="Bound"
+      >f</a
+      ><a name="3642"
+      > </a
+      ><a name="3643" href="Continuity.TheoremKECA.html#3394" class="Function"
+      >s</a
+      ><a name="3644" class="Symbol"
+      >)</a
+      ><a name="3645"
+      >       </a
+      ><a name="3652" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="3654"
+      > </a
+      ><a name="3655" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="3657"
+      > </a
+      ><a name="3658" class="Symbol"
+      >(&#955;</a
+      ><a name="3660"
+      > </a
+      ><a name="3661" href="Continuity.TheoremKECA.html#3661" class="Bound"
+      >pr</a
+      ><a name="3663"
+      > </a
+      ><a name="3664" class="Symbol"
+      >&#8594;</a
+      ><a name="3665"
+      > </a
+      ><a name="3666" href="Continuity.TheoremKECA.html#3394" class="Function"
+      >s</a
+      ><a name="3667"
+      > </a
+      ><a name="3668" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="3670"
+      > </a
+      ><a name="3671" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="3672"
+      > </a
+      ><a name="3673" class="Symbol"
+      >(</a
+      ><a name="3674" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="3676"
+      > </a
+      ><a name="3677" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="3678"
+      > </a
+      ><a name="3679" href="Continuity.TheoremKECA.html#3661" class="Bound"
+      >pr</a
+      ><a name="3681" class="Symbol"
+      >))</a
+      ><a name="3683"
+      > </a
+      ><a name="3684" class="Symbol"
+      >(</a
+      ><a name="3685" href="Continuity.TheoremKECA.html#1839" class="Function"
+      >Kraus-Lemma&#8321;</a
+      ><a name="3697"
+      > </a
+      ><a name="3698" href="Continuity.TheoremKECA.html#3084" class="Bound"
+      >f</a
+      ><a name="3699"
+      > </a
+      ><a name="3700" href="Continuity.TheoremKECA.html#3086" class="Bound"
+      >g</a
+      ><a name="3701"
+      > </a
+      ><a name="3702" href="Continuity.TheoremKECA.html#3394" class="Function"
+      >s</a
+      ><a name="3703" class="Symbol"
+      >)</a
+      ><a name="3704"
+      > </a
+      ><a name="3705" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#10217;</a
+      ><a name="3706"
+      >
+         </a
+      ><a name="3716" href="Continuity.TheoremKECA.html#3394" class="Function"
+      >s</a
+      ><a name="3717"
+      > </a
+      ><a name="3718" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="3720"
+      > </a
+      ><a name="3721" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="3722"
+      > </a
+      ><a name="3723" class="Symbol"
+      >(</a
+      ><a name="3724" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="3726"
+      > </a
+      ><a name="3727" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="3728"
+      > </a
+      ><a name="3729" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="3733" class="Symbol"
+      >)</a
+      ><a name="3734"
+      >         </a
+      ><a name="3743" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="3745"
+      > </a
+      ><a name="3746" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="3748"
+      > </a
+      ><a name="3749" class="Symbol"
+      >(&#955;</a
+      ><a name="3751"
+      > </a
+      ><a name="3752" href="Continuity.TheoremKECA.html#3752" class="Bound"
+      >pr</a
+      ><a name="3754"
+      > </a
+      ><a name="3755" class="Symbol"
+      >&#8594;</a
+      ><a name="3756"
+      > </a
+      ><a name="3757" href="Continuity.TheoremKECA.html#3394" class="Function"
+      >s</a
+      ><a name="3758"
+      > </a
+      ><a name="3759" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="3761"
+      > </a
+      ><a name="3762" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="3763"
+      > </a
+      ><a name="3764" href="Continuity.TheoremKECA.html#3752" class="Bound"
+      >pr</a
+      ><a name="3766" class="Symbol"
+      >)</a
+      ><a name="3767"
+      > </a
+      ><a name="3768" class="Symbol"
+      >((</a
+      ><a name="3770" href="Continuity.TheoremKECA.html#870" class="Function"
+      >refl-is-right-id</a
+      ><a name="3786"
+      > </a
+      ><a name="3787" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="3789" class="Symbol"
+      >)</a
+      ><a name="3790" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="3792" class="Symbol"
+      >)</a
+      ><a name="3793"
+      >  </a
+      ><a name="3795" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#10217;</a
+      ><a name="3796"
+      >
+         </a
+      ><a name="3806" href="Continuity.TheoremKECA.html#3394" class="Function"
+      >s</a
+      ><a name="3807"
+      > </a
+      ><a name="3808" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="3810"
+      > </a
+      ><a name="3811" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="3812"
+      > </a
+      ><a name="3813" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="3815"
+      >                  </a
+      ><a name="3833" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="3835"
+      > </a
+      ><a name="3836" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="3840"
+      >  </a
+      ><a name="3842" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#10217;</a
+      ><a name="3843"
+      >
+         </a
+      ><a name="3853" class="Symbol"
+      >(</a
+      ><a name="3854" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="3856"
+      > </a
+      ><a name="3857" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="3858"
+      > </a
+      ><a name="3859" class="Symbol"
+      >(</a
+      ><a name="3860" href="Continuity.TheoremKECA.html#3101" class="Bound"
+      >q</a
+      ><a name="3861"
+      > </a
+      ><a name="3862" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="3864" class="Symbol"
+      >))</a
+      ><a name="3866" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="3868"
+      > </a
+      ><a name="3869" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="3870"
+      > </a
+      ><a name="3871" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="3873"
+      >       </a
+      ><a name="3880" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="3882"
+      > </a
+      ><a name="3883" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="3885"
+      > </a
+      ><a name="3886" class="Symbol"
+      >(&#955;</a
+      ><a name="3888"
+      > </a
+      ><a name="3889" href="Continuity.TheoremKECA.html#3889" class="Bound"
+      >pr</a
+      ><a name="3891"
+      > </a
+      ><a name="3892" class="Symbol"
+      >&#8594;</a
+      ><a name="3893"
+      > </a
+      ><a name="3894" href="Continuity.TheoremKECA.html#3889" class="Bound"
+      >pr</a
+      ><a name="3896"
+      > </a
+      ><a name="3897" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="3898"
+      > </a
+      ><a name="3899" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="3901" class="Symbol"
+      >)</a
+      ><a name="3902"
+      > </a
+      ><a name="3903" class="Symbol"
+      >((</a
+      ><a name="3905" href="Continuity.TheoremKECA.html#966" class="Function"
+      >sym-trans</a
+      ><a name="3914"
+      > </a
+      ><a name="3915" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="3917"
+      > </a
+      ><a name="3918" class="Symbol"
+      >(</a
+      ><a name="3919" href="Continuity.TheoremKECA.html#3101" class="Bound"
+      >q</a
+      ><a name="3920"
+      > </a
+      ><a name="3921" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="3923" class="Symbol"
+      >))</a
+      ><a name="3925" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="3927" class="Symbol"
+      >)</a
+      ><a name="3928"
+      >  </a
+      ><a name="3930" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#10217;</a
+      ><a name="3931"
+      >
+         </a
+      ><a name="3941" class="Symbol"
+      >((</a
+      ><a name="3943" href="Continuity.TheoremKECA.html#3101" class="Bound"
+      >q</a
+      ><a name="3944"
+      > </a
+      ><a name="3945" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="3947" class="Symbol"
+      >)</a
+      ><a name="3948" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="3950"
+      > </a
+      ><a name="3951" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="3952"
+      > </a
+      ><a name="3953" class="Symbol"
+      >(</a
+      ><a name="3954" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="3956"
+      > </a
+      ><a name="3957" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="3959" class="Symbol"
+      >))</a
+      ><a name="3961"
+      > </a
+      ><a name="3962" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="3963"
+      > </a
+      ><a name="3964" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="3966"
+      >  </a
+      ><a name="3968" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="3970"
+      > </a
+      ><a name="3971" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="3973"
+      > </a
+      ><a name="3974" class="Symbol"
+      >(&#955;</a
+      ><a name="3976"
+      > </a
+      ><a name="3977" href="Continuity.TheoremKECA.html#3977" class="Bound"
+      >pr</a
+      ><a name="3979"
+      > </a
+      ><a name="3980" class="Symbol"
+      >&#8594;</a
+      ><a name="3981"
+      > </a
+      ><a name="3982" class="Symbol"
+      >(</a
+      ><a name="3983" href="Continuity.TheoremKECA.html#3977" class="Bound"
+      >pr</a
+      ><a name="3985"
+      > </a
+      ><a name="3986" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="3987"
+      > </a
+      ><a name="3988" class="Symbol"
+      >(</a
+      ><a name="3989" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="3991"
+      > </a
+      ><a name="3992" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="3994" class="Symbol"
+      >))</a
+      ><a name="3996"
+      > </a
+      ><a name="3997" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="3998"
+      > </a
+      ><a name="3999" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="4001" class="Symbol"
+      >)</a
+      ><a name="4002"
+      > </a
+      ><a name="4003" class="Symbol"
+      >((</a
+      ><a name="4005" href="Continuity.TheoremKECA.html#1100" class="Function"
+      >sym-sym-trivial</a
+      ><a name="4020"
+      > </a
+      ><a name="4021" href="Continuity.TheoremKECA.html#3101" class="Bound"
+      >q</a
+      ><a name="4022" class="Symbol"
+      >)</a
+      ><a name="4023" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="4025" class="Symbol"
+      >)</a
+      ><a name="4026"
+      > </a
+      ><a name="4027" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#10217;</a
+      ><a name="4028"
+      >
+         </a
+      ><a name="4038" class="Symbol"
+      >(</a
+      ><a name="4039" href="Continuity.TheoremKECA.html#3101" class="Bound"
+      >q</a
+      ><a name="4040"
+      > </a
+      ><a name="4041" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="4042"
+      > </a
+      ><a name="4043" class="Symbol"
+      >(</a
+      ><a name="4044" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="4046"
+      > </a
+      ><a name="4047" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="4049" class="Symbol"
+      >))</a
+      ><a name="4051"
+      > </a
+      ><a name="4052" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="4053"
+      > </a
+      ><a name="4054" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="4056"
+      >         </a
+      ><a name="4065" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="4067"
+      > </a
+      ><a name="4068" href="Continuity.TheoremKECA.html#1362" class="Function"
+      >trans-assoc</a
+      ><a name="4079"
+      > </a
+      ><a name="4080" href="Continuity.TheoremKECA.html#3101" class="Bound"
+      >q</a
+      ><a name="4081"
+      > </a
+      ><a name="4082" class="Symbol"
+      >(</a
+      ><a name="4083" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="4085"
+      > </a
+      ><a name="4086" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="4088" class="Symbol"
+      >)</a
+      ><a name="4089"
+      > </a
+      ><a name="4090" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="4092"
+      >  </a
+      ><a name="4094" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#10217;</a
+      ><a name="4095"
+      >
+         </a
+      ><a name="4105" href="Continuity.TheoremKECA.html#3101" class="Bound"
+      >q</a
+      ><a name="4106"
+      > </a
+      ><a name="4107" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="4108"
+      > </a
+      ><a name="4109" class="Symbol"
+      >((</a
+      ><a name="4111" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="4113"
+      > </a
+      ><a name="4114" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="4116" class="Symbol"
+      >)</a
+      ><a name="4117"
+      > </a
+      ><a name="4118" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="4119"
+      > </a
+      ><a name="4120" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="4122" class="Symbol"
+      >)</a
+      ><a name="4123"
+      >         </a
+      ><a name="4132" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="4134"
+      > </a
+      ><a name="4135" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="4137"
+      > </a
+      ><a name="4138" class="Symbol"
+      >(&#955;</a
+      ><a name="4140"
+      > </a
+      ><a name="4141" href="Continuity.TheoremKECA.html#4141" class="Bound"
+      >pr</a
+      ><a name="4143"
+      > </a
+      ><a name="4144" class="Symbol"
+      >&#8594;</a
+      ><a name="4145"
+      > </a
+      ><a name="4146" href="Continuity.TheoremKECA.html#3101" class="Bound"
+      >q</a
+      ><a name="4147"
+      > </a
+      ><a name="4148" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="4149"
+      > </a
+      ><a name="4150" href="Continuity.TheoremKECA.html#4141" class="Bound"
+      >pr</a
+      ><a name="4152" class="Symbol"
+      >)</a
+      ><a name="4153"
+      > </a
+      ><a name="4154" class="Symbol"
+      >((</a
+      ><a name="4156" href="Preliminaries.SetsAndFunctions.html#2328" class="Function"
+      >sym-is-inverse</a
+      ><a name="4170"
+      > </a
+      ><a name="4171" href="Continuity.TheoremKECA.html#3336" class="Function"
+      >p'</a
+      ><a name="4173" class="Symbol"
+      >)</a
+      ><a name="4174" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="4176" class="Symbol"
+      >)</a
+      ><a name="4177"
+      > </a
+      ><a name="4178" href="Continuity.TheoremKECA.html#592" class="Function Operator"
+      >&#10217;</a
+      ><a name="4179"
+      >
+         </a
+      ><a name="4189" href="Continuity.TheoremKECA.html#3101" class="Bound"
+      >q</a
+      ><a name="4190"
+      > </a
+      ><a name="4191" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >&#183;</a
+      ><a name="4192"
+      > </a
+      ><a name="4193" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="4197"
+      >                   </a
+      ><a name="4216" href="Continuity.TheoremKECA.html#673" class="Function"
+      >&#8801;&#10216;</a
+      ><a name="4218"
+      > </a
+      ><a name="4219" class="Symbol"
+      >(</a
+      ><a name="4220" href="Continuity.TheoremKECA.html#870" class="Function"
+      >refl-is-right-id</a
+      ><a name="4236"
+      > </a
+      ><a name="4237" href="Continuity.TheoremKECA.html#3101" class="Bound"
+      >q</a
+      ><a name="4238" class="Symbol"
+      >)</a
+      ><a name="4239" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="4241"
+      >  </a
+      ><a name="4243" href="Continuity.TheoremKECA.html#673" class="Function"
+      >&#10217;&#8718;</a
+      ><a name="4245"
+      >
+         </a
+      ><a name="4255" href="Continuity.TheoremKECA.html#3101" class="Bound"
+      >q</a
+      ><a name="4256"
+      >  </a
+      ><a name="4258" href="Continuity.TheoremKECA.html#673" class="Function"
+      >&#8718;</a
+      ><a name="4259"
+      >
+
+\end{code}
+
+</a
+      ><a name="4273" class="Comment"
+      >If a type A has a constant endo-function, then &#8741; A &#8741; &#8594; A.</a
+      ><a name="4330"
+      >
+
+\begin{code}
+
+</a
+      ><a name="4346" href="Continuity.TheoremKECA.html#4346" class="Function"
+      >Theorem[KECA-TLCA'2013]</a
+      ><a name="4369"
+      > </a
+      ><a name="4370" class="Symbol"
+      >:</a
+      ><a name="4371"
+      > </a
+      ><a name="4372" class="Symbol"
+      >&#8704;{</a
+      ><a name="4374" href="Continuity.TheoremKECA.html#4374" class="Bound"
+      >A</a
+      ><a name="4375"
+      > </a
+      ><a name="4376" class="Symbol"
+      >:</a
+      ><a name="4377"
+      > </a
+      ><a name="4378" class="PrimitiveType"
+      >Set</a
+      ><a name="4381" class="Symbol"
+      >}</a
+      ><a name="4382"
+      > </a
+      ><a name="4383" class="Symbol"
+      >&#8594;</a
+      ><a name="4384"
+      > </a
+      ><a name="4385" class="Symbol"
+      >(</a
+      ><a name="4386" href="Continuity.TheoremKECA.html#4386" class="Bound"
+      >f</a
+      ><a name="4387"
+      > </a
+      ><a name="4388" class="Symbol"
+      >:</a
+      ><a name="4389"
+      > </a
+      ><a name="4390" href="Continuity.TheoremKECA.html#4374" class="Bound"
+      >A</a
+      ><a name="4391"
+      > </a
+      ><a name="4392" class="Symbol"
+      >&#8594;</a
+      ><a name="4393"
+      > </a
+      ><a name="4394" href="Continuity.TheoremKECA.html#4374" class="Bound"
+      >A</a
+      ><a name="4395" class="Symbol"
+      >)</a
+      ><a name="4396"
+      > </a
+      ><a name="4397" class="Symbol"
+      >&#8594;</a
+      ><a name="4398"
+      > </a
+      ><a name="4399" href="Preliminaries.SetsAndFunctions.html#3284" class="Function"
+      >constant</a
+      ><a name="4407"
+      > </a
+      ><a name="4408" href="Continuity.TheoremKECA.html#4386" class="Bound"
+      >f</a
+      ><a name="4409"
+      > </a
+      ><a name="4410" class="Symbol"
+      >&#8594;</a
+      ><a name="4411"
+      > </a
+      ><a name="4412" href="Continuity.PropositionalTruncation.html#202" class="Postulate Operator"
+      >&#8741;</a
+      ><a name="4413"
+      > </a
+      ><a name="4414" href="Continuity.TheoremKECA.html#4374" class="Bound"
+      >A</a
+      ><a name="4415"
+      > </a
+      ><a name="4416" href="Continuity.PropositionalTruncation.html#202" class="Postulate Operator"
+      >&#8741;</a
+      ><a name="4417"
+      > </a
+      ><a name="4418" class="Symbol"
+      >&#8594;</a
+      ><a name="4419"
+      > </a
+      ><a name="4420" href="Continuity.TheoremKECA.html#4374" class="Bound"
+      >A</a
+      ><a name="4421"
+      >
+</a
+      ><a name="4422" href="Continuity.TheoremKECA.html#4346" class="Function"
+      >Theorem[KECA-TLCA'2013]</a
+      ><a name="4445"
+      > </a
+      ><a name="4446" class="Symbol"
+      >{</a
+      ><a name="4447" href="Continuity.TheoremKECA.html#4447" class="Bound"
+      >A</a
+      ><a name="4448" class="Symbol"
+      >}</a
+      ><a name="4449"
+      > </a
+      ><a name="4450" href="Continuity.TheoremKECA.html#4450" class="Bound"
+      >f</a
+      ><a name="4451"
+      > </a
+      ><a name="4452" href="Continuity.TheoremKECA.html#4452" class="Bound"
+      >cf</a
+      ><a name="4454"
+      > </a
+      ><a name="4455" class="Symbol"
+      >=</a
+      ><a name="4456"
+      > </a
+      ><a name="4457" href="Continuity.TheoremKECA.html#4623" class="Function"
+      >F2A</a
+      ><a name="4460"
+      > </a
+      ><a name="4461" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="4462"
+      > </a
+      ><a name="4463" href="Continuity.TheoremKECA.html#4579" class="Function"
+      >hA2F</a
+      ><a name="4467"
+      >
+ </a
+      ><a name="4469" class="Keyword"
+      >where</a
+      ><a name="4474"
+      >
+  </a
+      ><a name="4477" href="Continuity.TheoremKECA.html#4477" class="Function"
+      >F</a
+      ><a name="4478"
+      > </a
+      ><a name="4479" class="Symbol"
+      >:</a
+      ><a name="4480"
+      > </a
+      ><a name="4481" class="PrimitiveType"
+      >Set</a
+      ><a name="4484"
+      >
+  </a
+      ><a name="4487" href="Continuity.TheoremKECA.html#4477" class="Function"
+      >F</a
+      ><a name="4488"
+      > </a
+      ><a name="4489" class="Symbol"
+      >=</a
+      ><a name="4490"
+      > </a
+      ><a name="4491" href="Continuity.TheoremKECA.html#2936" class="Function"
+      >fix</a
+      ><a name="4494"
+      > </a
+      ><a name="4495" href="Continuity.TheoremKECA.html#4450" class="Bound"
+      >f</a
+      ><a name="4496"
+      >
+  </a
+      ><a name="4499" href="Continuity.TheoremKECA.html#4499" class="Function"
+      >hF</a
+      ><a name="4501"
+      > </a
+      ><a name="4502" class="Symbol"
+      >:</a
+      ><a name="4503"
+      > </a
+      ><a name="4504" href="Preliminaries.SetsAndFunctions.html#4925" class="Function"
+      >hprop</a
+      ><a name="4509"
+      > </a
+      ><a name="4510" href="Continuity.TheoremKECA.html#4477" class="Function"
+      >F</a
+      ><a name="4511"
+      >
+  </a
+      ><a name="4514" href="Continuity.TheoremKECA.html#4499" class="Function"
+      >hF</a
+      ><a name="4516"
+      > </a
+      ><a name="4517" class="Symbol"
+      >=</a
+      ><a name="4518"
+      > </a
+      ><a name="4519" href="Continuity.TheoremKECA.html#3002" class="Function"
+      >Kraus-Lemma</a
+      ><a name="4530"
+      > </a
+      ><a name="4531" href="Continuity.TheoremKECA.html#4450" class="Bound"
+      >f</a
+      ><a name="4532"
+      > </a
+      ><a name="4533" href="Continuity.TheoremKECA.html#4452" class="Bound"
+      >cf</a
+      ><a name="4535"
+      >
+  </a
+      ><a name="4538" href="Continuity.TheoremKECA.html#4538" class="Function"
+      >A2F</a
+      ><a name="4541"
+      > </a
+      ><a name="4542" class="Symbol"
+      >:</a
+      ><a name="4543"
+      > </a
+      ><a name="4544" href="Continuity.TheoremKECA.html#4447" class="Bound"
+      >A</a
+      ><a name="4545"
+      > </a
+      ><a name="4546" class="Symbol"
+      >&#8594;</a
+      ><a name="4547"
+      > </a
+      ><a name="4548" href="Continuity.TheoremKECA.html#4477" class="Function"
+      >F</a
+      ><a name="4549"
+      >
+  </a
+      ><a name="4552" href="Continuity.TheoremKECA.html#4538" class="Function"
+      >A2F</a
+      ><a name="4555"
+      > </a
+      ><a name="4556" href="Continuity.TheoremKECA.html#4556" class="Bound"
+      >a</a
+      ><a name="4557"
+      > </a
+      ><a name="4558" class="Symbol"
+      >=</a
+      ><a name="4559"
+      > </a
+      ><a name="4560" href="Continuity.TheoremKECA.html#4450" class="Bound"
+      >f</a
+      ><a name="4561"
+      > </a
+      ><a name="4562" href="Continuity.TheoremKECA.html#4556" class="Bound"
+      >a</a
+      ><a name="4563"
+      > </a
+      ><a name="4564" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4565"
+      > </a
+      ><a name="4566" href="Continuity.TheoremKECA.html#4452" class="Bound"
+      >cf</a
+      ><a name="4568"
+      > </a
+      ><a name="4569" href="Continuity.TheoremKECA.html#4556" class="Bound"
+      >a</a
+      ><a name="4570"
+      > </a
+      ><a name="4571" class="Symbol"
+      >(</a
+      ><a name="4572" href="Continuity.TheoremKECA.html#4450" class="Bound"
+      >f</a
+      ><a name="4573"
+      > </a
+      ><a name="4574" href="Continuity.TheoremKECA.html#4556" class="Bound"
+      >a</a
+      ><a name="4575" class="Symbol"
+      >)</a
+      ><a name="4576"
+      >
+  </a
+      ><a name="4579" href="Continuity.TheoremKECA.html#4579" class="Function"
+      >hA2F</a
+      ><a name="4583"
+      > </a
+      ><a name="4584" class="Symbol"
+      >:</a
+      ><a name="4585"
+      > </a
+      ><a name="4586" href="Continuity.PropositionalTruncation.html#202" class="Postulate Operator"
+      >&#8741;</a
+      ><a name="4587"
+      > </a
+      ><a name="4588" href="Continuity.TheoremKECA.html#4447" class="Bound"
+      >A</a
+      ><a name="4589"
+      > </a
+      ><a name="4590" href="Continuity.PropositionalTruncation.html#202" class="Postulate Operator"
+      >&#8741;</a
+      ><a name="4591"
+      > </a
+      ><a name="4592" class="Symbol"
+      >&#8594;</a
+      ><a name="4593"
+      > </a
+      ><a name="4594" href="Continuity.TheoremKECA.html#4477" class="Function"
+      >F</a
+      ><a name="4595"
+      >
+  </a
+      ><a name="4598" href="Continuity.TheoremKECA.html#4579" class="Function"
+      >hA2F</a
+      ><a name="4602"
+      > </a
+      ><a name="4603" class="Symbol"
+      >=</a
+      ><a name="4604"
+      > </a
+      ><a name="4605" href="Continuity.PropositionalTruncation.html#301" class="Postulate"
+      >&#8741;-&#8741;-elim</a
+      ><a name="4613"
+      > </a
+      ><a name="4614" href="Continuity.TheoremKECA.html#4499" class="Function"
+      >hF</a
+      ><a name="4616"
+      > </a
+      ><a name="4617" href="Continuity.TheoremKECA.html#4538" class="Function"
+      >A2F</a
+      ><a name="4620"
+      >
+  </a
+      ><a name="4623" href="Continuity.TheoremKECA.html#4623" class="Function"
+      >F2A</a
+      ><a name="4626"
+      > </a
+      ><a name="4627" class="Symbol"
+      >:</a
+      ><a name="4628"
+      > </a
+      ><a name="4629" href="Continuity.TheoremKECA.html#4477" class="Function"
+      >F</a
+      ><a name="4630"
+      > </a
+      ><a name="4631" class="Symbol"
+      >&#8594;</a
+      ><a name="4632"
+      > </a
+      ><a name="4633" href="Continuity.TheoremKECA.html#4447" class="Bound"
+      >A</a
+      ><a name="4634"
+      >
+  </a
+      ><a name="4637" href="Continuity.TheoremKECA.html#4623" class="Function"
+      >F2A</a
+      ><a name="4640"
+      > </a
+      ><a name="4641" class="Symbol"
+      >=</a
+      ><a name="4642"
+      > </a
+      ><a name="4643" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="4646"
+      >
+
+\end{code}
+</a
+      ></pre
+    ></body
+  ></html
+>

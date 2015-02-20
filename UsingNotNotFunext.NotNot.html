@@ -1,0 +1,2802 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >UsingNotNotFunext.NotNot</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Comment"
+      >Chuangjie Xu 2013 (updated in February 2015)</a
+      ><a name="45"
+      >
+
+</a
+      ><a name="47" class="Comment"
+      >This module discusses the double-negation monad.</a
+      ><a name="95"
+      >
+
+\begin{code}
+
+</a
+      ><a name="111" class="Symbol"
+      >{-#</a
+      ><a name="114"
+      > </a
+      ><a name="115" class="Keyword"
+      >OPTIONS</a
+      ><a name="122"
+      > --without-K </a
+      ><a name="135" class="Symbol"
+      >#-}</a
+      ><a name="138"
+      >
+
+</a
+      ><a name="140" class="Keyword"
+      >module</a
+      ><a name="146"
+      > </a
+      ><a name="147" href="UsingNotNotFunext.NotNot.html#1" class="Module"
+      >UsingNotNotFunext.NotNot</a
+      ><a name="171"
+      > </a
+      ><a name="172" class="Keyword"
+      >where</a
+      ><a name="177"
+      >
+
+</a
+      ><a name="179" class="Keyword"
+      >open</a
+      ><a name="183"
+      > </a
+      ><a name="184" class="Keyword"
+      >import</a
+      ><a name="190"
+      > </a
+      ><a name="191" href="Preliminaries.SetsAndFunctions.html#1" class="Module"
+      >Preliminaries.SetsAndFunctions</a
+      ><a name="221"
+      >
+</a
+      ><a name="222" class="Keyword"
+      >open</a
+      ><a name="226"
+      > </a
+      ><a name="227" class="Keyword"
+      >import</a
+      ><a name="233"
+      > </a
+      ><a name="234" href="Preliminaries.NaturalNumber.html#1" class="Module"
+      >Preliminaries.NaturalNumber</a
+      ><a name="261"
+      > </a
+      ><a name="262" class="Keyword"
+      >hiding</a
+      ><a name="268"
+      > </a
+      ><a name="269" class="Symbol"
+      >(</a
+      ><a name="270"
+      >_+_</a
+      ><a name="273" class="Symbol"
+      >)</a
+      ><a name="274"
+      >
+</a
+      ><a name="275" class="Keyword"
+      >open</a
+      ><a name="279"
+      > </a
+      ><a name="280" class="Keyword"
+      >import</a
+      ><a name="286"
+      > </a
+      ><a name="287" href="Preliminaries.Boolean.html#1" class="Module"
+      >Preliminaries.Boolean</a
+      ><a name="308"
+      >
+
+
+</a
+      ><a name="311" class="Keyword"
+      >infixl</a
+      ><a name="317"
+      > </a
+      ><a name="318" class="Number"
+      >10</a
+      ><a name="320"
+      > &#172;&#172;_
+
+</a
+      ><a name="326" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;_</a
+      ><a name="329"
+      > </a
+      ><a name="330" class="Symbol"
+      >:</a
+      ><a name="331"
+      > </a
+      ><a name="332" class="Symbol"
+      >&#8704;{</a
+      ><a name="334" href="UsingNotNotFunext.NotNot.html#334" class="Bound"
+      >&#8467;</a
+      ><a name="335" class="Symbol"
+      >}</a
+      ><a name="336"
+      > </a
+      ><a name="337" class="Symbol"
+      >&#8594;</a
+      ><a name="338"
+      > </a
+      ><a name="339" class="PrimitiveType"
+      >Set</a
+      ><a name="342"
+      > </a
+      ><a name="343" href="UsingNotNotFunext.NotNot.html#334" class="Bound"
+      >&#8467;</a
+      ><a name="344"
+      > </a
+      ><a name="345" class="Symbol"
+      >&#8594;</a
+      ><a name="346"
+      > </a
+      ><a name="347" class="PrimitiveType"
+      >Set</a
+      ><a name="350"
+      > </a
+      ><a name="351" href="UsingNotNotFunext.NotNot.html#334" class="Bound"
+      >&#8467;</a
+      ><a name="352"
+      >
+</a
+      ><a name="353" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;_</a
+      ><a name="356"
+      > </a
+      ><a name="357" href="UsingNotNotFunext.NotNot.html#357" class="Bound"
+      >X</a
+      ><a name="358"
+      > </a
+      ><a name="359" class="Symbol"
+      >=</a
+      ><a name="360"
+      > </a
+      ><a name="361" href="Preliminaries.SetsAndFunctions.html#3660" class="Function"
+      >&#172;</a
+      ><a name="362"
+      > </a
+      ><a name="363" class="Symbol"
+      >(</a
+      ><a name="364" href="Preliminaries.SetsAndFunctions.html#3660" class="Function"
+      >&#172;</a
+      ><a name="365"
+      > </a
+      ><a name="366" href="UsingNotNotFunext.NotNot.html#357" class="Bound"
+      >X</a
+      ><a name="367" class="Symbol"
+      >)</a
+      ><a name="368"
+      >
+
+</a
+      ><a name="370" href="UsingNotNotFunext.NotNot.html#370" class="Function"
+      >Theorem[&#172;&#172;-final]</a
+      ><a name="387"
+      > </a
+      ><a name="388" class="Symbol"
+      >:</a
+      ><a name="389"
+      >
+
+  </a
+      ><a name="393" class="Symbol"
+      >&#8704;(</a
+      ><a name="395" href="UsingNotNotFunext.NotNot.html#395" class="Bound"
+      >T</a
+      ><a name="396"
+      > </a
+      ><a name="397" class="Symbol"
+      >:</a
+      ><a name="398"
+      > </a
+      ><a name="399" class="PrimitiveType"
+      >Set</a
+      ><a name="402"
+      > </a
+      ><a name="403" class="Symbol"
+      >&#8594;</a
+      ><a name="404"
+      > </a
+      ><a name="405" class="PrimitiveType"
+      >Set</a
+      ><a name="408" class="Symbol"
+      >)</a
+      ><a name="409"
+      > </a
+      ><a name="410" class="Symbol"
+      >&#8594;</a
+      ><a name="411"
+      > </a
+      ><a name="412" class="Symbol"
+      >(&#8704;{</a
+      ><a name="415" href="UsingNotNotFunext.NotNot.html#415" class="Bound"
+      >A</a
+      ><a name="416"
+      > </a
+      ><a name="417" href="UsingNotNotFunext.NotNot.html#417" class="Bound"
+      >B</a
+      ><a name="418" class="Symbol"
+      >}</a
+      ><a name="419"
+      > </a
+      ><a name="420" class="Symbol"
+      >&#8594;</a
+      ><a name="421"
+      > </a
+      ><a name="422" class="Symbol"
+      >(</a
+      ><a name="423" href="UsingNotNotFunext.NotNot.html#415" class="Bound"
+      >A</a
+      ><a name="424"
+      > </a
+      ><a name="425" class="Symbol"
+      >&#8594;</a
+      ><a name="426"
+      > </a
+      ><a name="427" href="UsingNotNotFunext.NotNot.html#417" class="Bound"
+      >B</a
+      ><a name="428" class="Symbol"
+      >)</a
+      ><a name="429"
+      > </a
+      ><a name="430" class="Symbol"
+      >&#8594;</a
+      ><a name="431"
+      > </a
+      ><a name="432" href="UsingNotNotFunext.NotNot.html#395" class="Bound"
+      >T</a
+      ><a name="433"
+      > </a
+      ><a name="434" href="UsingNotNotFunext.NotNot.html#415" class="Bound"
+      >A</a
+      ><a name="435"
+      > </a
+      ><a name="436" class="Symbol"
+      >&#8594;</a
+      ><a name="437"
+      > </a
+      ><a name="438" href="UsingNotNotFunext.NotNot.html#395" class="Bound"
+      >T</a
+      ><a name="439"
+      > </a
+      ><a name="440" href="UsingNotNotFunext.NotNot.html#417" class="Bound"
+      >B</a
+      ><a name="441" class="Symbol"
+      >)</a
+      ><a name="442"
+      > </a
+      ><a name="443" class="Symbol"
+      >&#8594;</a
+      ><a name="444"
+      > </a
+      ><a name="445" class="Symbol"
+      >(</a
+      ><a name="446" href="UsingNotNotFunext.NotNot.html#395" class="Bound"
+      >T</a
+      ><a name="447"
+      > </a
+      ><a name="448" href="Preliminaries.SetsAndFunctions.html#3594" class="Datatype"
+      >&#8709;</a
+      ><a name="449"
+      > </a
+      ><a name="450" class="Symbol"
+      >&#8594;</a
+      ><a name="451"
+      > </a
+      ><a name="452" href="Preliminaries.SetsAndFunctions.html#3594" class="Datatype"
+      >&#8709;</a
+      ><a name="453" class="Symbol"
+      >)</a
+      ><a name="454"
+      > </a
+      ><a name="455" class="Symbol"
+      >&#8594;</a
+      ><a name="456"
+      >
+
+  </a
+      ><a name="460" class="Symbol"
+      >&#8704;{</a
+      ><a name="462" href="UsingNotNotFunext.NotNot.html#462" class="Bound"
+      >A</a
+      ><a name="463" class="Symbol"
+      >}</a
+      ><a name="464"
+      > </a
+      ><a name="465" class="Symbol"
+      >&#8594;</a
+      ><a name="466"
+      > </a
+      ><a name="467" href="UsingNotNotFunext.NotNot.html#395" class="Bound"
+      >T</a
+      ><a name="468"
+      > </a
+      ><a name="469" href="UsingNotNotFunext.NotNot.html#462" class="Bound"
+      >A</a
+      ><a name="470"
+      > </a
+      ><a name="471" class="Symbol"
+      >&#8594;</a
+      ><a name="472"
+      > </a
+      ><a name="473" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="475"
+      > </a
+      ><a name="476" href="UsingNotNotFunext.NotNot.html#462" class="Bound"
+      >A</a
+      ><a name="477"
+      >
+
+</a
+      ><a name="479" href="UsingNotNotFunext.NotNot.html#370" class="Function"
+      >Theorem[&#172;&#172;-final]</a
+      ><a name="496"
+      > </a
+      ><a name="497" href="UsingNotNotFunext.NotNot.html#497" class="Bound"
+      >T</a
+      ><a name="498"
+      > </a
+      ><a name="499" href="UsingNotNotFunext.NotNot.html#499" class="Bound"
+      >fT</a
+      ><a name="501"
+      > </a
+      ><a name="502" href="UsingNotNotFunext.NotNot.html#502" class="Bound"
+      >eT</a
+      ><a name="504"
+      > </a
+      ><a name="505" href="UsingNotNotFunext.NotNot.html#505" class="Bound"
+      >ta</a
+      ><a name="507"
+      > </a
+      ><a name="508" href="UsingNotNotFunext.NotNot.html#508" class="Bound"
+      >na</a
+      ><a name="510"
+      > </a
+      ><a name="511" class="Symbol"
+      >=</a
+      ><a name="512"
+      > </a
+      ><a name="513" href="UsingNotNotFunext.NotNot.html#502" class="Bound"
+      >eT</a
+      ><a name="515"
+      > </a
+      ><a name="516" class="Symbol"
+      >(</a
+      ><a name="517" href="UsingNotNotFunext.NotNot.html#499" class="Bound"
+      >fT</a
+      ><a name="519"
+      > </a
+      ><a name="520" href="UsingNotNotFunext.NotNot.html#508" class="Bound"
+      >na</a
+      ><a name="522"
+      > </a
+      ><a name="523" href="UsingNotNotFunext.NotNot.html#505" class="Bound"
+      >ta</a
+      ><a name="525" class="Symbol"
+      >)</a
+      ><a name="526"
+      >
+
+
+</a
+      ><a name="529" href="UsingNotNotFunext.NotNot.html#529" class="Function"
+      >hide</a
+      ><a name="533"
+      > </a
+      ><a name="534" class="Symbol"
+      >:</a
+      ><a name="535"
+      > </a
+      ><a name="536" class="Symbol"
+      >{</a
+      ><a name="537" href="UsingNotNotFunext.NotNot.html#537" class="Bound"
+      >X</a
+      ><a name="538"
+      > </a
+      ><a name="539" class="Symbol"
+      >:</a
+      ><a name="540"
+      > </a
+      ><a name="541" class="PrimitiveType"
+      >Set</a
+      ><a name="544" class="Symbol"
+      >}</a
+      ><a name="545"
+      > </a
+      ><a name="546" class="Symbol"
+      >&#8594;</a
+      ><a name="547"
+      > </a
+      ><a name="548" href="UsingNotNotFunext.NotNot.html#537" class="Bound"
+      >X</a
+      ><a name="549"
+      > </a
+      ><a name="550" class="Symbol"
+      >&#8594;</a
+      ><a name="551"
+      > </a
+      ><a name="552" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="554"
+      > </a
+      ><a name="555" href="UsingNotNotFunext.NotNot.html#537" class="Bound"
+      >X</a
+      ><a name="556"
+      >
+</a
+      ><a name="557" href="UsingNotNotFunext.NotNot.html#529" class="Function"
+      >hide</a
+      ><a name="561"
+      > </a
+      ><a name="562" href="UsingNotNotFunext.NotNot.html#562" class="Bound"
+      >x</a
+      ><a name="563"
+      > </a
+      ><a name="564" href="UsingNotNotFunext.NotNot.html#564" class="Bound"
+      >u</a
+      ><a name="565"
+      > </a
+      ><a name="566" class="Symbol"
+      >=</a
+      ><a name="567"
+      > </a
+      ><a name="568" href="UsingNotNotFunext.NotNot.html#564" class="Bound"
+      >u</a
+      ><a name="569"
+      > </a
+      ><a name="570" href="UsingNotNotFunext.NotNot.html#562" class="Bound"
+      >x</a
+      ><a name="571"
+      >
+
+</a
+      ><a name="573" href="UsingNotNotFunext.NotNot.html#573" class="Function"
+      >back-to-&#8709;</a
+      ><a name="582"
+      > </a
+      ><a name="583" class="Symbol"
+      >:</a
+      ><a name="584"
+      > </a
+      ><a name="585" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="587"
+      > </a
+      ><a name="588" href="Preliminaries.SetsAndFunctions.html#3594" class="Datatype"
+      >&#8709;</a
+      ><a name="589"
+      > </a
+      ><a name="590" class="Symbol"
+      >&#8594;</a
+      ><a name="591"
+      > </a
+      ><a name="592" href="Preliminaries.SetsAndFunctions.html#3594" class="Datatype"
+      >&#8709;</a
+      ><a name="593"
+      >
+</a
+      ><a name="594" href="UsingNotNotFunext.NotNot.html#573" class="Function"
+      >back-to-&#8709;</a
+      ><a name="603"
+      > </a
+      ><a name="604" href="UsingNotNotFunext.NotNot.html#604" class="Bound"
+      >&#966;</a
+      ><a name="605"
+      > </a
+      ><a name="606" class="Symbol"
+      >=</a
+      ><a name="607"
+      > </a
+      ><a name="608" href="UsingNotNotFunext.NotNot.html#604" class="Bound"
+      >&#966;</a
+      ><a name="609"
+      > </a
+      ><a name="610" href="Preliminaries.SetsAndFunctions.html#241" class="Function"
+      >id</a
+      ><a name="612"
+      >
+
+</a
+      ><a name="614" href="UsingNotNotFunext.NotNot.html#614" class="Function"
+      >extension</a
+      ><a name="623"
+      > </a
+      ><a name="624" class="Symbol"
+      >:</a
+      ><a name="625"
+      > </a
+      ><a name="626" class="Symbol"
+      >{</a
+      ><a name="627" href="UsingNotNotFunext.NotNot.html#627" class="Bound"
+      >X</a
+      ><a name="628"
+      > </a
+      ><a name="629" href="UsingNotNotFunext.NotNot.html#629" class="Bound"
+      >Y</a
+      ><a name="630"
+      > </a
+      ><a name="631" class="Symbol"
+      >:</a
+      ><a name="632"
+      > </a
+      ><a name="633" class="PrimitiveType"
+      >Set</a
+      ><a name="636" class="Symbol"
+      >}</a
+      ><a name="637"
+      > </a
+      ><a name="638" class="Symbol"
+      >&#8594;</a
+      ><a name="639"
+      > </a
+      ><a name="640" class="Symbol"
+      >(</a
+      ><a name="641" href="UsingNotNotFunext.NotNot.html#627" class="Bound"
+      >X</a
+      ><a name="642"
+      > </a
+      ><a name="643" class="Symbol"
+      >&#8594;</a
+      ><a name="644"
+      > </a
+      ><a name="645" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="647"
+      > </a
+      ><a name="648" href="UsingNotNotFunext.NotNot.html#629" class="Bound"
+      >Y</a
+      ><a name="649" class="Symbol"
+      >)</a
+      ><a name="650"
+      > </a
+      ><a name="651" class="Symbol"
+      >&#8594;</a
+      ><a name="652"
+      > </a
+      ><a name="653" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="655"
+      > </a
+      ><a name="656" href="UsingNotNotFunext.NotNot.html#627" class="Bound"
+      >X</a
+      ><a name="657"
+      > </a
+      ><a name="658" class="Symbol"
+      >&#8594;</a
+      ><a name="659"
+      > </a
+      ><a name="660" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="662"
+      > </a
+      ><a name="663" href="UsingNotNotFunext.NotNot.html#629" class="Bound"
+      >Y</a
+      ><a name="664"
+      >
+</a
+      ><a name="665" href="UsingNotNotFunext.NotNot.html#614" class="Function"
+      >extension</a
+      ><a name="674"
+      > </a
+      ><a name="675" href="UsingNotNotFunext.NotNot.html#675" class="Bound"
+      >f</a
+      ><a name="676"
+      > </a
+      ><a name="677" href="UsingNotNotFunext.NotNot.html#677" class="Bound"
+      >&#966;</a
+      ><a name="678"
+      > </a
+      ><a name="679" href="UsingNotNotFunext.NotNot.html#679" class="Bound"
+      >v</a
+      ><a name="680"
+      > </a
+      ><a name="681" class="Symbol"
+      >=</a
+      ><a name="682"
+      > </a
+      ><a name="683" href="UsingNotNotFunext.NotNot.html#677" class="Bound"
+      >&#966;</a
+      ><a name="684"
+      > </a
+      ><a name="685" class="Symbol"
+      >(&#955;</a
+      ><a name="687"
+      > </a
+      ><a name="688" href="UsingNotNotFunext.NotNot.html#688" class="Bound"
+      >x</a
+      ><a name="689"
+      > </a
+      ><a name="690" class="Symbol"
+      >&#8594;</a
+      ><a name="691"
+      > </a
+      ><a name="692" href="UsingNotNotFunext.NotNot.html#675" class="Bound"
+      >f</a
+      ><a name="693"
+      > </a
+      ><a name="694" href="UsingNotNotFunext.NotNot.html#688" class="Bound"
+      >x</a
+      ><a name="695"
+      > </a
+      ><a name="696" href="UsingNotNotFunext.NotNot.html#679" class="Bound"
+      >v</a
+      ><a name="697" class="Symbol"
+      >)</a
+      ><a name="698"
+      >
+
+</a
+      ><a name="700" href="UsingNotNotFunext.NotNot.html#700" class="Function"
+      >&#172;&#172;&#8709;-elim</a
+      ><a name="708"
+      > </a
+      ><a name="709" class="Symbol"
+      >:</a
+      ><a name="710"
+      > </a
+      ><a name="711" class="Symbol"
+      >{</a
+      ><a name="712" href="UsingNotNotFunext.NotNot.html#712" class="Bound"
+      >A</a
+      ><a name="713"
+      > </a
+      ><a name="714" class="Symbol"
+      >:</a
+      ><a name="715"
+      > </a
+      ><a name="716" class="PrimitiveType"
+      >Set</a
+      ><a name="719" class="Symbol"
+      >}</a
+      ><a name="720"
+      > </a
+      ><a name="721" class="Symbol"
+      >&#8594;</a
+      ><a name="722"
+      > </a
+      ><a name="723" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="725"
+      > </a
+      ><a name="726" href="Preliminaries.SetsAndFunctions.html#3594" class="Datatype"
+      >&#8709;</a
+      ><a name="727"
+      > </a
+      ><a name="728" class="Symbol"
+      >&#8594;</a
+      ><a name="729"
+      > </a
+      ><a name="730" href="UsingNotNotFunext.NotNot.html#712" class="Bound"
+      >A</a
+      ><a name="731"
+      >
+</a
+      ><a name="732" href="UsingNotNotFunext.NotNot.html#700" class="Function"
+      >&#172;&#172;&#8709;-elim</a
+      ><a name="740"
+      > </a
+      ><a name="741" class="Symbol"
+      >=</a
+      ><a name="742"
+      > </a
+      ><a name="743" href="Preliminaries.SetsAndFunctions.html#3609" class="Function"
+      >&#8709;-elim</a
+      ><a name="749"
+      > </a
+      ><a name="750" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="751"
+      > </a
+      ><a name="752" href="UsingNotNotFunext.NotNot.html#573" class="Function"
+      >back-to-&#8709;</a
+      ><a name="761"
+      >
+
+</a
+      ><a name="763" href="UsingNotNotFunext.NotNot.html#763" class="Function"
+      >functor</a
+      ><a name="770"
+      > </a
+      ><a name="771" class="Symbol"
+      >:</a
+      ><a name="772"
+      > </a
+      ><a name="773" class="Symbol"
+      >{</a
+      ><a name="774" href="UsingNotNotFunext.NotNot.html#774" class="Bound"
+      >X</a
+      ><a name="775"
+      > </a
+      ><a name="776" href="UsingNotNotFunext.NotNot.html#776" class="Bound"
+      >Y</a
+      ><a name="777"
+      > </a
+      ><a name="778" class="Symbol"
+      >:</a
+      ><a name="779"
+      > </a
+      ><a name="780" class="PrimitiveType"
+      >Set</a
+      ><a name="783" class="Symbol"
+      >}</a
+      ><a name="784"
+      > </a
+      ><a name="785" class="Symbol"
+      >&#8594;</a
+      ><a name="786"
+      > </a
+      ><a name="787" class="Symbol"
+      >(</a
+      ><a name="788" href="UsingNotNotFunext.NotNot.html#774" class="Bound"
+      >X</a
+      ><a name="789"
+      > </a
+      ><a name="790" class="Symbol"
+      >&#8594;</a
+      ><a name="791"
+      > </a
+      ><a name="792" href="UsingNotNotFunext.NotNot.html#776" class="Bound"
+      >Y</a
+      ><a name="793" class="Symbol"
+      >)</a
+      ><a name="794"
+      > </a
+      ><a name="795" class="Symbol"
+      >&#8594;</a
+      ><a name="796"
+      > </a
+      ><a name="797" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="799"
+      > </a
+      ><a name="800" href="UsingNotNotFunext.NotNot.html#774" class="Bound"
+      >X</a
+      ><a name="801"
+      > </a
+      ><a name="802" class="Symbol"
+      >&#8594;</a
+      ><a name="803"
+      > </a
+      ><a name="804" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="806"
+      > </a
+      ><a name="807" href="UsingNotNotFunext.NotNot.html#776" class="Bound"
+      >Y</a
+      ><a name="808"
+      >
+</a
+      ><a name="809" href="UsingNotNotFunext.NotNot.html#763" class="Function"
+      >functor</a
+      ><a name="816"
+      > </a
+      ><a name="817" href="UsingNotNotFunext.NotNot.html#817" class="Bound"
+      >f</a
+      ><a name="818"
+      > </a
+      ><a name="819" class="Symbol"
+      >=</a
+      ><a name="820"
+      > </a
+      ><a name="821" href="UsingNotNotFunext.NotNot.html#614" class="Function"
+      >extension</a
+      ><a name="830"
+      > </a
+      ><a name="831" class="Symbol"
+      >(</a
+      ><a name="832" href="UsingNotNotFunext.NotNot.html#529" class="Function"
+      >hide</a
+      ><a name="836"
+      > </a
+      ><a name="837" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="838"
+      > </a
+      ><a name="839" href="UsingNotNotFunext.NotNot.html#817" class="Bound"
+      >f</a
+      ><a name="840" class="Symbol"
+      >)</a
+      ><a name="841"
+      >
+
+</a
+      ><a name="843" href="UsingNotNotFunext.NotNot.html#843" class="Function"
+      >functor&#8322;</a
+      ><a name="851"
+      > </a
+      ><a name="852" class="Symbol"
+      >:</a
+      ><a name="853"
+      > </a
+      ><a name="854" class="Symbol"
+      >{</a
+      ><a name="855" href="UsingNotNotFunext.NotNot.html#855" class="Bound"
+      >X</a
+      ><a name="856"
+      > </a
+      ><a name="857" href="UsingNotNotFunext.NotNot.html#857" class="Bound"
+      >Y</a
+      ><a name="858"
+      > </a
+      ><a name="859" href="UsingNotNotFunext.NotNot.html#859" class="Bound"
+      >Z</a
+      ><a name="860"
+      > </a
+      ><a name="861" class="Symbol"
+      >:</a
+      ><a name="862"
+      > </a
+      ><a name="863" class="PrimitiveType"
+      >Set</a
+      ><a name="866" class="Symbol"
+      >}</a
+      ><a name="867"
+      > </a
+      ><a name="868" class="Symbol"
+      >&#8594;</a
+      ><a name="869"
+      > </a
+      ><a name="870" class="Symbol"
+      >(</a
+      ><a name="871" href="UsingNotNotFunext.NotNot.html#855" class="Bound"
+      >X</a
+      ><a name="872"
+      > </a
+      ><a name="873" class="Symbol"
+      >&#8594;</a
+      ><a name="874"
+      > </a
+      ><a name="875" href="UsingNotNotFunext.NotNot.html#857" class="Bound"
+      >Y</a
+      ><a name="876"
+      > </a
+      ><a name="877" class="Symbol"
+      >&#8594;</a
+      ><a name="878"
+      > </a
+      ><a name="879" href="UsingNotNotFunext.NotNot.html#859" class="Bound"
+      >Z</a
+      ><a name="880" class="Symbol"
+      >)</a
+      ><a name="881"
+      > </a
+      ><a name="882" class="Symbol"
+      >&#8594;</a
+      ><a name="883"
+      > </a
+      ><a name="884" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="886"
+      > </a
+      ><a name="887" href="UsingNotNotFunext.NotNot.html#855" class="Bound"
+      >X</a
+      ><a name="888"
+      > </a
+      ><a name="889" class="Symbol"
+      >&#8594;</a
+      ><a name="890"
+      > </a
+      ><a name="891" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="893"
+      > </a
+      ><a name="894" href="UsingNotNotFunext.NotNot.html#857" class="Bound"
+      >Y</a
+      ><a name="895"
+      > </a
+      ><a name="896" class="Symbol"
+      >&#8594;</a
+      ><a name="897"
+      > </a
+      ><a name="898" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="900"
+      > </a
+      ><a name="901" href="UsingNotNotFunext.NotNot.html#859" class="Bound"
+      >Z</a
+      ><a name="902"
+      >
+</a
+      ><a name="903" href="UsingNotNotFunext.NotNot.html#843" class="Function"
+      >functor&#8322;</a
+      ><a name="911"
+      > </a
+      ><a name="912" href="UsingNotNotFunext.NotNot.html#912" class="Bound"
+      >f</a
+      ><a name="913"
+      > </a
+      ><a name="914" href="UsingNotNotFunext.NotNot.html#914" class="Bound"
+      >xh</a
+      ><a name="916"
+      > </a
+      ><a name="917" href="UsingNotNotFunext.NotNot.html#917" class="Bound"
+      >yh</a
+      ><a name="919"
+      > </a
+      ><a name="920" class="Symbol"
+      >=</a
+      ><a name="921"
+      > </a
+      ><a name="922" href="UsingNotNotFunext.NotNot.html#614" class="Function"
+      >extension</a
+      ><a name="931" class="Symbol"
+      >(&#955;</a
+      ><a name="933"
+      > </a
+      ><a name="934" href="UsingNotNotFunext.NotNot.html#934" class="Bound"
+      >x</a
+      ><a name="935"
+      > </a
+      ><a name="936" class="Symbol"
+      >&#8594;</a
+      ><a name="937"
+      > </a
+      ><a name="938" href="UsingNotNotFunext.NotNot.html#763" class="Function"
+      >functor</a
+      ><a name="945"
+      > </a
+      ><a name="946" class="Symbol"
+      >(</a
+      ><a name="947" href="UsingNotNotFunext.NotNot.html#912" class="Bound"
+      >f</a
+      ><a name="948"
+      > </a
+      ><a name="949" href="UsingNotNotFunext.NotNot.html#934" class="Bound"
+      >x</a
+      ><a name="950" class="Symbol"
+      >)</a
+      ><a name="951"
+      > </a
+      ><a name="952" href="UsingNotNotFunext.NotNot.html#917" class="Bound"
+      >yh</a
+      ><a name="954" class="Symbol"
+      >)</a
+      ><a name="955"
+      > </a
+      ><a name="956" href="UsingNotNotFunext.NotNot.html#914" class="Bound"
+      >xh</a
+      ><a name="958"
+      >
+
+</a
+      ><a name="960" href="UsingNotNotFunext.NotNot.html#960" class="Function"
+      >Lemma[[X&#8594;Y]&#8658;X&#8594;[Y]]</a
+      ><a name="978"
+      > </a
+      ><a name="979" class="Symbol"
+      >:</a
+      ><a name="980"
+      > </a
+      ><a name="981" class="Symbol"
+      >{</a
+      ><a name="982" href="UsingNotNotFunext.NotNot.html#982" class="Bound"
+      >X</a
+      ><a name="983"
+      > </a
+      ><a name="984" class="Symbol"
+      >:</a
+      ><a name="985"
+      > </a
+      ><a name="986" class="PrimitiveType"
+      >Set</a
+      ><a name="989" class="Symbol"
+      >}{</a
+      ><a name="991" href="UsingNotNotFunext.NotNot.html#991" class="Bound"
+      >Y</a
+      ><a name="992"
+      > </a
+      ><a name="993" class="Symbol"
+      >:</a
+      ><a name="994"
+      > </a
+      ><a name="995" href="UsingNotNotFunext.NotNot.html#982" class="Bound"
+      >X</a
+      ><a name="996"
+      > </a
+      ><a name="997" class="Symbol"
+      >&#8594;</a
+      ><a name="998"
+      > </a
+      ><a name="999" class="PrimitiveType"
+      >Set</a
+      ><a name="1002" class="Symbol"
+      >}</a
+      ><a name="1003"
+      >
+                   </a
+      ><a name="1023" class="Symbol"
+      >&#8594;</a
+      ><a name="1024"
+      > </a
+      ><a name="1025" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="1027"
+      > </a
+      ><a name="1028" class="Symbol"
+      >((</a
+      ><a name="1030" href="UsingNotNotFunext.NotNot.html#1030" class="Bound"
+      >x</a
+      ><a name="1031"
+      > </a
+      ><a name="1032" class="Symbol"
+      >:</a
+      ><a name="1033"
+      > </a
+      ><a name="1034" href="UsingNotNotFunext.NotNot.html#982" class="Bound"
+      >X</a
+      ><a name="1035" class="Symbol"
+      >)</a
+      ><a name="1036"
+      > </a
+      ><a name="1037" class="Symbol"
+      >&#8594;</a
+      ><a name="1038"
+      > </a
+      ><a name="1039" href="UsingNotNotFunext.NotNot.html#991" class="Bound"
+      >Y</a
+      ><a name="1040"
+      > </a
+      ><a name="1041" href="UsingNotNotFunext.NotNot.html#1030" class="Bound"
+      >x</a
+      ><a name="1042" class="Symbol"
+      >)</a
+      ><a name="1043"
+      > </a
+      ><a name="1044" class="Symbol"
+      >&#8594;</a
+      ><a name="1045"
+      > </a
+      ><a name="1046" class="Symbol"
+      >(</a
+      ><a name="1047" href="UsingNotNotFunext.NotNot.html#1047" class="Bound"
+      >x</a
+      ><a name="1048"
+      > </a
+      ><a name="1049" class="Symbol"
+      >:</a
+      ><a name="1050"
+      > </a
+      ><a name="1051" href="UsingNotNotFunext.NotNot.html#982" class="Bound"
+      >X</a
+      ><a name="1052" class="Symbol"
+      >)</a
+      ><a name="1053"
+      > </a
+      ><a name="1054" class="Symbol"
+      >&#8594;</a
+      ><a name="1055"
+      > </a
+      ><a name="1056" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="1058"
+      > </a
+      ><a name="1059" class="Symbol"
+      >(</a
+      ><a name="1060" href="UsingNotNotFunext.NotNot.html#991" class="Bound"
+      >Y</a
+      ><a name="1061"
+      > </a
+      ><a name="1062" href="UsingNotNotFunext.NotNot.html#1047" class="Bound"
+      >x</a
+      ><a name="1063" class="Symbol"
+      >)</a
+      ><a name="1064"
+      >
+</a
+      ><a name="1065" href="UsingNotNotFunext.NotNot.html#960" class="Function"
+      >Lemma[[X&#8594;Y]&#8658;X&#8594;[Y]]</a
+      ><a name="1083"
+      > </a
+      ><a name="1084" href="UsingNotNotFunext.NotNot.html#1084" class="Bound"
+      >fh</a
+      ><a name="1086"
+      > </a
+      ><a name="1087" href="UsingNotNotFunext.NotNot.html#1087" class="Bound"
+      >x</a
+      ><a name="1088"
+      > </a
+      ><a name="1089" class="Symbol"
+      >=</a
+      ><a name="1090"
+      > </a
+      ><a name="1091" href="UsingNotNotFunext.NotNot.html#763" class="Function"
+      >functor</a
+      ><a name="1098" class="Symbol"
+      >(&#955;</a
+      ><a name="1100"
+      > </a
+      ><a name="1101" href="UsingNotNotFunext.NotNot.html#1101" class="Bound"
+      >f</a
+      ><a name="1102"
+      > </a
+      ><a name="1103" class="Symbol"
+      >&#8594;</a
+      ><a name="1104"
+      > </a
+      ><a name="1105" href="UsingNotNotFunext.NotNot.html#1101" class="Bound"
+      >f</a
+      ><a name="1106"
+      > </a
+      ><a name="1107" href="UsingNotNotFunext.NotNot.html#1087" class="Bound"
+      >x</a
+      ><a name="1108" class="Symbol"
+      >)</a
+      ><a name="1109"
+      > </a
+      ><a name="1110" href="UsingNotNotFunext.NotNot.html#1084" class="Bound"
+      >fh</a
+      ><a name="1112"
+      >
+
+</a
+      ><a name="1114" href="UsingNotNotFunext.NotNot.html#1114" class="Function"
+      >Lemma[[X&#8594;Y]&#8658;[X]&#8594;[Y]]</a
+      ><a name="1134"
+      > </a
+      ><a name="1135" class="Symbol"
+      >:</a
+      ><a name="1136"
+      > </a
+      ><a name="1137" class="Symbol"
+      >{</a
+      ><a name="1138" href="UsingNotNotFunext.NotNot.html#1138" class="Bound"
+      >X</a
+      ><a name="1139"
+      > </a
+      ><a name="1140" href="UsingNotNotFunext.NotNot.html#1140" class="Bound"
+      >Y</a
+      ><a name="1141"
+      > </a
+      ><a name="1142" class="Symbol"
+      >:</a
+      ><a name="1143"
+      > </a
+      ><a name="1144" class="PrimitiveType"
+      >Set</a
+      ><a name="1147" class="Symbol"
+      >}</a
+      ><a name="1148"
+      > </a
+      ><a name="1149" class="Symbol"
+      >&#8594;</a
+      ><a name="1150"
+      > </a
+      ><a name="1151" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="1153"
+      > </a
+      ><a name="1154" class="Symbol"
+      >(</a
+      ><a name="1155" href="UsingNotNotFunext.NotNot.html#1138" class="Bound"
+      >X</a
+      ><a name="1156"
+      > </a
+      ><a name="1157" class="Symbol"
+      >&#8594;</a
+      ><a name="1158"
+      > </a
+      ><a name="1159" href="UsingNotNotFunext.NotNot.html#1140" class="Bound"
+      >Y</a
+      ><a name="1160" class="Symbol"
+      >)</a
+      ><a name="1161"
+      > </a
+      ><a name="1162" class="Symbol"
+      >&#8594;</a
+      ><a name="1163"
+      > </a
+      ><a name="1164" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="1166"
+      > </a
+      ><a name="1167" href="UsingNotNotFunext.NotNot.html#1138" class="Bound"
+      >X</a
+      ><a name="1168"
+      > </a
+      ><a name="1169" class="Symbol"
+      >&#8594;</a
+      ><a name="1170"
+      > </a
+      ><a name="1171" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="1173"
+      > </a
+      ><a name="1174" href="UsingNotNotFunext.NotNot.html#1140" class="Bound"
+      >Y</a
+      ><a name="1175"
+      >
+</a
+      ><a name="1176" href="UsingNotNotFunext.NotNot.html#1114" class="Function"
+      >Lemma[[X&#8594;Y]&#8658;[X]&#8594;[Y]]</a
+      ><a name="1196"
+      > </a
+      ><a name="1197" href="UsingNotNotFunext.NotNot.html#1197" class="Bound"
+      >fh</a
+      ><a name="1199"
+      > </a
+      ><a name="1200" class="Symbol"
+      >=</a
+      ><a name="1201"
+      > </a
+      ><a name="1202" href="UsingNotNotFunext.NotNot.html#614" class="Function"
+      >extension</a
+      ><a name="1211" class="Symbol"
+      >(</a
+      ><a name="1212" href="UsingNotNotFunext.NotNot.html#960" class="Function"
+      >Lemma[[X&#8594;Y]&#8658;X&#8594;[Y]]</a
+      ><a name="1230"
+      > </a
+      ><a name="1231" href="UsingNotNotFunext.NotNot.html#1197" class="Bound"
+      >fh</a
+      ><a name="1233" class="Symbol"
+      >)</a
+      ><a name="1234"
+      >
+
+</a
+      ><a name="1236" href="UsingNotNotFunext.NotNot.html#1236" class="Function"
+      >decidable-structure</a
+      ><a name="1255"
+      > </a
+      ><a name="1256" class="Symbol"
+      >:</a
+      ><a name="1257"
+      > </a
+      ><a name="1258" class="Symbol"
+      >{</a
+      ><a name="1259" href="UsingNotNotFunext.NotNot.html#1259" class="Bound"
+      >X</a
+      ><a name="1260"
+      > </a
+      ><a name="1261" class="Symbol"
+      >:</a
+      ><a name="1262"
+      > </a
+      ><a name="1263" class="PrimitiveType"
+      >Set</a
+      ><a name="1266" class="Symbol"
+      >}</a
+      ><a name="1267"
+      > </a
+      ><a name="1268" class="Symbol"
+      >&#8594;</a
+      ><a name="1269"
+      > </a
+      ><a name="1270" href="Preliminaries.SetsAndFunctions.html#4812" class="Function"
+      >decidable</a
+      ><a name="1279"
+      > </a
+      ><a name="1280" href="UsingNotNotFunext.NotNot.html#1259" class="Bound"
+      >X</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" class="Symbol"
+      >&#8594;</a
+      ><a name="1283"
+      > </a
+      ><a name="1284" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="1286"
+      > </a
+      ><a name="1287" href="UsingNotNotFunext.NotNot.html#1259" class="Bound"
+      >X</a
+      ><a name="1288"
+      > </a
+      ><a name="1289" class="Symbol"
+      >&#8594;</a
+      ><a name="1290"
+      > </a
+      ><a name="1291" href="UsingNotNotFunext.NotNot.html#1259" class="Bound"
+      >X</a
+      ><a name="1292"
+      >
+</a
+      ><a name="1293" href="UsingNotNotFunext.NotNot.html#1236" class="Function"
+      >decidable-structure</a
+      ><a name="1312"
+      > </a
+      ><a name="1313" class="Symbol"
+      >(</a
+      ><a name="1314" href="Preliminaries.SetsAndFunctions.html#4041" class="InductiveConstructor"
+      >inl</a
+      ><a name="1317"
+      > </a
+      ><a name="1318" href="UsingNotNotFunext.NotNot.html#1318" class="Bound"
+      >x</a
+      ><a name="1319" class="Symbol"
+      >)</a
+      ><a name="1320"
+      > </a
+      ><a name="1321" href="UsingNotNotFunext.NotNot.html#1321" class="Bound"
+      >xh</a
+      ><a name="1323"
+      > </a
+      ><a name="1324" class="Symbol"
+      >=</a
+      ><a name="1325"
+      > </a
+      ><a name="1326" href="UsingNotNotFunext.NotNot.html#1318" class="Bound"
+      >x</a
+      ><a name="1327"
+      >
+</a
+      ><a name="1328" href="UsingNotNotFunext.NotNot.html#1236" class="Function"
+      >decidable-structure</a
+      ><a name="1347"
+      > </a
+      ><a name="1348" class="Symbol"
+      >(</a
+      ><a name="1349" href="Preliminaries.SetsAndFunctions.html#4062" class="InductiveConstructor"
+      >inr</a
+      ><a name="1352"
+      > </a
+      ><a name="1353" href="UsingNotNotFunext.NotNot.html#1353" class="Bound"
+      >u</a
+      ><a name="1354" class="Symbol"
+      >)</a
+      ><a name="1355"
+      > </a
+      ><a name="1356" href="UsingNotNotFunext.NotNot.html#1356" class="Bound"
+      >xh</a
+      ><a name="1358"
+      > </a
+      ><a name="1359" class="Symbol"
+      >=</a
+      ><a name="1360"
+      > </a
+      ><a name="1361" href="UsingNotNotFunext.NotNot.html#700" class="Function"
+      >&#172;&#172;&#8709;-elim</a
+      ><a name="1369"
+      > </a
+      ><a name="1370" class="Symbol"
+      >(</a
+      ><a name="1371" href="UsingNotNotFunext.NotNot.html#763" class="Function"
+      >functor</a
+      ><a name="1378"
+      > </a
+      ><a name="1379" href="UsingNotNotFunext.NotNot.html#1353" class="Bound"
+      >u</a
+      ><a name="1380"
+      > </a
+      ><a name="1381" href="UsingNotNotFunext.NotNot.html#1356" class="Bound"
+      >xh</a
+      ><a name="1383" class="Symbol"
+      >)</a
+      ><a name="1384"
+      >
+
+</a
+      ><a name="1386" href="UsingNotNotFunext.NotNot.html#1386" class="Function"
+      >Lemma[[&#8801;]&#8594;&#8801;]-&#8469;</a
+      ><a name="1400"
+      > </a
+      ><a name="1401" class="Symbol"
+      >:</a
+      ><a name="1402"
+      > </a
+      ><a name="1403" class="Symbol"
+      >{</a
+      ><a name="1404" href="UsingNotNotFunext.NotNot.html#1404" class="Bound"
+      >m</a
+      ><a name="1405"
+      > </a
+      ><a name="1406" href="UsingNotNotFunext.NotNot.html#1406" class="Bound"
+      >n</a
+      ><a name="1407"
+      > </a
+      ><a name="1408" class="Symbol"
+      >:</a
+      ><a name="1409"
+      > </a
+      ><a name="1410" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1411" class="Symbol"
+      >}</a
+      ><a name="1412"
+      > </a
+      ><a name="1413" class="Symbol"
+      >&#8594;</a
+      ><a name="1414"
+      > </a
+      ><a name="1415" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="1417"
+      > </a
+      ><a name="1418" href="UsingNotNotFunext.NotNot.html#1404" class="Bound"
+      >m</a
+      ><a name="1419"
+      > </a
+      ><a name="1420" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1421"
+      > </a
+      ><a name="1422" href="UsingNotNotFunext.NotNot.html#1406" class="Bound"
+      >n</a
+      ><a name="1423"
+      > </a
+      ><a name="1424" class="Symbol"
+      >&#8594;</a
+      ><a name="1425"
+      > </a
+      ><a name="1426" href="UsingNotNotFunext.NotNot.html#1404" class="Bound"
+      >m</a
+      ><a name="1427"
+      > </a
+      ><a name="1428" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1429"
+      > </a
+      ><a name="1430" href="UsingNotNotFunext.NotNot.html#1406" class="Bound"
+      >n</a
+      ><a name="1431"
+      >
+</a
+      ><a name="1432" href="UsingNotNotFunext.NotNot.html#1386" class="Function"
+      >Lemma[[&#8801;]&#8594;&#8801;]-&#8469;</a
+      ><a name="1446"
+      > </a
+      ><a name="1447" class="Symbol"
+      >{</a
+      ><a name="1448" href="UsingNotNotFunext.NotNot.html#1448" class="Bound"
+      >m</a
+      ><a name="1449" class="Symbol"
+      >}</a
+      ><a name="1450"
+      > </a
+      ><a name="1451" class="Symbol"
+      >{</a
+      ><a name="1452" href="UsingNotNotFunext.NotNot.html#1452" class="Bound"
+      >n</a
+      ><a name="1453" class="Symbol"
+      >}</a
+      ><a name="1454"
+      > </a
+      ><a name="1455" class="Symbol"
+      >=</a
+      ><a name="1456"
+      > </a
+      ><a name="1457" href="UsingNotNotFunext.NotNot.html#1236" class="Function"
+      >decidable-structure</a
+      ><a name="1476"
+      > </a
+      ><a name="1477" class="Symbol"
+      >(</a
+      ><a name="1478" href="Preliminaries.NaturalNumber.html#574" class="Function"
+      >&#8469;-discrete</a
+      ><a name="1488"
+      > </a
+      ><a name="1489" href="UsingNotNotFunext.NotNot.html#1448" class="Bound"
+      >m</a
+      ><a name="1490"
+      > </a
+      ><a name="1491" href="UsingNotNotFunext.NotNot.html#1452" class="Bound"
+      >n</a
+      ><a name="1492" class="Symbol"
+      >)</a
+      ><a name="1493"
+      >
+
+</a
+      ><a name="1495" href="UsingNotNotFunext.NotNot.html#1495" class="Function"
+      >Lemma[[&#8801;]&#8594;&#8801;]-&#8322;</a
+      ><a name="1509"
+      > </a
+      ><a name="1510" class="Symbol"
+      >:</a
+      ><a name="1511"
+      > </a
+      ><a name="1512" class="Symbol"
+      >{</a
+      ><a name="1513" href="UsingNotNotFunext.NotNot.html#1513" class="Bound"
+      >b</a
+      ><a name="1514"
+      > </a
+      ><a name="1515" href="UsingNotNotFunext.NotNot.html#1515" class="Bound"
+      >b'</a
+      ><a name="1517"
+      > </a
+      ><a name="1518" class="Symbol"
+      >:</a
+      ><a name="1519"
+      > </a
+      ><a name="1520" href="Preliminaries.Boolean.html#249" class="Datatype"
+      >&#8322;</a
+      ><a name="1521" class="Symbol"
+      >}</a
+      ><a name="1522"
+      > </a
+      ><a name="1523" class="Symbol"
+      >&#8594;</a
+      ><a name="1524"
+      > </a
+      ><a name="1525" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="1527"
+      > </a
+      ><a name="1528" href="UsingNotNotFunext.NotNot.html#1513" class="Bound"
+      >b</a
+      ><a name="1529"
+      > </a
+      ><a name="1530" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1531"
+      > </a
+      ><a name="1532" href="UsingNotNotFunext.NotNot.html#1515" class="Bound"
+      >b'</a
+      ><a name="1534"
+      > </a
+      ><a name="1535" class="Symbol"
+      >&#8594;</a
+      ><a name="1536"
+      > </a
+      ><a name="1537" href="UsingNotNotFunext.NotNot.html#1513" class="Bound"
+      >b</a
+      ><a name="1538"
+      > </a
+      ><a name="1539" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1540"
+      > </a
+      ><a name="1541" href="UsingNotNotFunext.NotNot.html#1515" class="Bound"
+      >b'</a
+      ><a name="1543"
+      >
+</a
+      ><a name="1544" href="UsingNotNotFunext.NotNot.html#1495" class="Function"
+      >Lemma[[&#8801;]&#8594;&#8801;]-&#8322;</a
+      ><a name="1558"
+      > </a
+      ><a name="1559" class="Symbol"
+      >{</a
+      ><a name="1560" href="UsingNotNotFunext.NotNot.html#1560" class="Bound"
+      >b</a
+      ><a name="1561" class="Symbol"
+      >}</a
+      ><a name="1562"
+      > </a
+      ><a name="1563" class="Symbol"
+      >{</a
+      ><a name="1564" href="UsingNotNotFunext.NotNot.html#1564" class="Bound"
+      >b'</a
+      ><a name="1566" class="Symbol"
+      >}</a
+      ><a name="1567"
+      > </a
+      ><a name="1568" class="Symbol"
+      >=</a
+      ><a name="1569"
+      > </a
+      ><a name="1570" href="UsingNotNotFunext.NotNot.html#1236" class="Function"
+      >decidable-structure</a
+      ><a name="1589"
+      > </a
+      ><a name="1590" class="Symbol"
+      >(</a
+      ><a name="1591" href="Preliminaries.Boolean.html#400" class="Function"
+      >&#8322;-discrete</a
+      ><a name="1601"
+      > </a
+      ><a name="1602" href="UsingNotNotFunext.NotNot.html#1560" class="Bound"
+      >b</a
+      ><a name="1603"
+      > </a
+      ><a name="1604" href="UsingNotNotFunext.NotNot.html#1564" class="Bound"
+      >b'</a
+      ><a name="1606" class="Symbol"
+      >)</a
+      ><a name="1607"
+      >
+
+\end{code}
+
+</a
+      ><a name="1621" class="Comment"
+      >The double negations of identity type and related properties:</a
+      ><a name="1682"
+      >
+
+\begin{code}
+
+</a
+      ><a name="1698" href="UsingNotNotFunext.NotNot.html#1698" class="Function"
+      >&#172;&#172;refl</a
+      ><a name="1704"
+      > </a
+      ><a name="1705" class="Symbol"
+      >:</a
+      ><a name="1706"
+      > </a
+      ><a name="1707" class="Symbol"
+      >{</a
+      ><a name="1708" href="UsingNotNotFunext.NotNot.html#1708" class="Bound"
+      >X</a
+      ><a name="1709"
+      > </a
+      ><a name="1710" class="Symbol"
+      >:</a
+      ><a name="1711"
+      > </a
+      ><a name="1712" class="PrimitiveType"
+      >Set</a
+      ><a name="1715" class="Symbol"
+      >}{</a
+      ><a name="1717" href="UsingNotNotFunext.NotNot.html#1717" class="Bound"
+      >x</a
+      ><a name="1718"
+      > </a
+      ><a name="1719" class="Symbol"
+      >:</a
+      ><a name="1720"
+      > </a
+      ><a name="1721" href="UsingNotNotFunext.NotNot.html#1708" class="Bound"
+      >X</a
+      ><a name="1722" class="Symbol"
+      >}</a
+      ><a name="1723"
+      > </a
+      ><a name="1724" class="Symbol"
+      >&#8594;</a
+      ><a name="1725"
+      > </a
+      ><a name="1726" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="1728"
+      > </a
+      ><a name="1729" href="UsingNotNotFunext.NotNot.html#1717" class="Bound"
+      >x</a
+      ><a name="1730"
+      > </a
+      ><a name="1731" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1732"
+      > </a
+      ><a name="1733" href="UsingNotNotFunext.NotNot.html#1717" class="Bound"
+      >x</a
+      ><a name="1734"
+      >
+</a
+      ><a name="1735" href="UsingNotNotFunext.NotNot.html#1698" class="Function"
+      >&#172;&#172;refl</a
+      ><a name="1741"
+      > </a
+      ><a name="1742" class="Symbol"
+      >=</a
+      ><a name="1743"
+      > </a
+      ><a name="1744" href="UsingNotNotFunext.NotNot.html#529" class="Function"
+      >hide</a
+      ><a name="1748"
+      > </a
+      ><a name="1749" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1753"
+      >
+
+</a
+      ><a name="1755" href="UsingNotNotFunext.NotNot.html#1755" class="Function"
+      >&#172;&#172;sym</a
+      ><a name="1760"
+      > </a
+      ><a name="1761" class="Symbol"
+      >:</a
+      ><a name="1762"
+      > </a
+      ><a name="1763" class="Symbol"
+      >{</a
+      ><a name="1764" href="UsingNotNotFunext.NotNot.html#1764" class="Bound"
+      >X</a
+      ><a name="1765"
+      > </a
+      ><a name="1766" class="Symbol"
+      >:</a
+      ><a name="1767"
+      > </a
+      ><a name="1768" class="PrimitiveType"
+      >Set</a
+      ><a name="1771" class="Symbol"
+      >}{</a
+      ><a name="1773" href="UsingNotNotFunext.NotNot.html#1773" class="Bound"
+      >x&#8320;</a
+      ><a name="1775"
+      > </a
+      ><a name="1776" href="UsingNotNotFunext.NotNot.html#1776" class="Bound"
+      >x&#8321;</a
+      ><a name="1778"
+      > </a
+      ><a name="1779" class="Symbol"
+      >:</a
+      ><a name="1780"
+      > </a
+      ><a name="1781" href="UsingNotNotFunext.NotNot.html#1764" class="Bound"
+      >X</a
+      ><a name="1782" class="Symbol"
+      >}</a
+      ><a name="1783"
+      > </a
+      ><a name="1784" class="Symbol"
+      >&#8594;</a
+      ><a name="1785"
+      > </a
+      ><a name="1786" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="1788"
+      > </a
+      ><a name="1789" href="UsingNotNotFunext.NotNot.html#1773" class="Bound"
+      >x&#8320;</a
+      ><a name="1791"
+      > </a
+      ><a name="1792" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1793"
+      > </a
+      ><a name="1794" href="UsingNotNotFunext.NotNot.html#1776" class="Bound"
+      >x&#8321;</a
+      ><a name="1796"
+      > </a
+      ><a name="1797" class="Symbol"
+      >&#8594;</a
+      ><a name="1798"
+      > </a
+      ><a name="1799" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="1801"
+      > </a
+      ><a name="1802" href="UsingNotNotFunext.NotNot.html#1776" class="Bound"
+      >x&#8321;</a
+      ><a name="1804"
+      > </a
+      ><a name="1805" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1806"
+      > </a
+      ><a name="1807" href="UsingNotNotFunext.NotNot.html#1773" class="Bound"
+      >x&#8320;</a
+      ><a name="1809"
+      >
+</a
+      ><a name="1810" href="UsingNotNotFunext.NotNot.html#1755" class="Function"
+      >&#172;&#172;sym</a
+      ><a name="1815"
+      > </a
+      ><a name="1816" class="Symbol"
+      >=</a
+      ><a name="1817"
+      > </a
+      ><a name="1818" href="UsingNotNotFunext.NotNot.html#763" class="Function"
+      >functor</a
+      ><a name="1825"
+      > </a
+      ><a name="1826" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >_&#8315;&#185;</a
+      ><a name="1829"
+      >
+
+</a
+      ><a name="1831" href="UsingNotNotFunext.NotNot.html#1831" class="Function"
+      >&#172;&#172;trans</a
+      ><a name="1838"
+      > </a
+      ><a name="1839" class="Symbol"
+      >:</a
+      ><a name="1840"
+      > </a
+      ><a name="1841" class="Symbol"
+      >{</a
+      ><a name="1842" href="UsingNotNotFunext.NotNot.html#1842" class="Bound"
+      >X</a
+      ><a name="1843"
+      > </a
+      ><a name="1844" class="Symbol"
+      >:</a
+      ><a name="1845"
+      > </a
+      ><a name="1846" class="PrimitiveType"
+      >Set</a
+      ><a name="1849" class="Symbol"
+      >}{</a
+      ><a name="1851" href="UsingNotNotFunext.NotNot.html#1851" class="Bound"
+      >x&#8320;</a
+      ><a name="1853"
+      > </a
+      ><a name="1854" href="UsingNotNotFunext.NotNot.html#1854" class="Bound"
+      >x&#8321;</a
+      ><a name="1856"
+      > </a
+      ><a name="1857" href="UsingNotNotFunext.NotNot.html#1857" class="Bound"
+      >x&#8322;</a
+      ><a name="1859"
+      > </a
+      ><a name="1860" class="Symbol"
+      >:</a
+      ><a name="1861"
+      > </a
+      ><a name="1862" href="UsingNotNotFunext.NotNot.html#1842" class="Bound"
+      >X</a
+      ><a name="1863" class="Symbol"
+      >}</a
+      ><a name="1864"
+      > </a
+      ><a name="1865" class="Symbol"
+      >&#8594;</a
+      ><a name="1866"
+      > </a
+      ><a name="1867" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="1869"
+      > </a
+      ><a name="1870" href="UsingNotNotFunext.NotNot.html#1851" class="Bound"
+      >x&#8320;</a
+      ><a name="1872"
+      > </a
+      ><a name="1873" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1874"
+      > </a
+      ><a name="1875" href="UsingNotNotFunext.NotNot.html#1854" class="Bound"
+      >x&#8321;</a
+      ><a name="1877"
+      > </a
+      ><a name="1878" class="Symbol"
+      >&#8594;</a
+      ><a name="1879"
+      > </a
+      ><a name="1880" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="1882"
+      > </a
+      ><a name="1883" href="UsingNotNotFunext.NotNot.html#1854" class="Bound"
+      >x&#8321;</a
+      ><a name="1885"
+      > </a
+      ><a name="1886" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1887"
+      > </a
+      ><a name="1888" href="UsingNotNotFunext.NotNot.html#1857" class="Bound"
+      >x&#8322;</a
+      ><a name="1890"
+      > </a
+      ><a name="1891" class="Symbol"
+      >&#8594;</a
+      ><a name="1892"
+      > </a
+      ><a name="1893" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="1895"
+      > </a
+      ><a name="1896" href="UsingNotNotFunext.NotNot.html#1851" class="Bound"
+      >x&#8320;</a
+      ><a name="1898"
+      > </a
+      ><a name="1899" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1900"
+      > </a
+      ><a name="1901" href="UsingNotNotFunext.NotNot.html#1857" class="Bound"
+      >x&#8322;</a
+      ><a name="1903"
+      >
+</a
+      ><a name="1904" href="UsingNotNotFunext.NotNot.html#1831" class="Function"
+      >&#172;&#172;trans</a
+      ><a name="1911"
+      > </a
+      ><a name="1912" class="Symbol"
+      >=</a
+      ><a name="1913"
+      > </a
+      ><a name="1914" href="UsingNotNotFunext.NotNot.html#843" class="Function"
+      >functor&#8322;</a
+      ><a name="1922"
+      > </a
+      ><a name="1923" href="Preliminaries.SetsAndFunctions.html#1463" class="Function Operator"
+      >_&#183;_</a
+      ><a name="1926"
+      >
+
+</a
+      ><a name="1928" href="UsingNotNotFunext.NotNot.html#1928" class="Function"
+      >&#172;&#172;transport</a
+      ><a name="1939"
+      > </a
+      ><a name="1940" class="Symbol"
+      >:</a
+      ><a name="1941"
+      > </a
+      ><a name="1942" class="Symbol"
+      >{</a
+      ><a name="1943" href="UsingNotNotFunext.NotNot.html#1943" class="Bound"
+      >X</a
+      ><a name="1944"
+      > </a
+      ><a name="1945" class="Symbol"
+      >:</a
+      ><a name="1946"
+      > </a
+      ><a name="1947" class="PrimitiveType"
+      >Set</a
+      ><a name="1950" class="Symbol"
+      >}{</a
+      ><a name="1952" href="UsingNotNotFunext.NotNot.html#1952" class="Bound"
+      >x</a
+      ><a name="1953"
+      > </a
+      ><a name="1954" href="UsingNotNotFunext.NotNot.html#1954" class="Bound"
+      >x'</a
+      ><a name="1956"
+      > </a
+      ><a name="1957" class="Symbol"
+      >:</a
+      ><a name="1958"
+      > </a
+      ><a name="1959" href="UsingNotNotFunext.NotNot.html#1943" class="Bound"
+      >X</a
+      ><a name="1960" class="Symbol"
+      >}(</a
+      ><a name="1962" href="UsingNotNotFunext.NotNot.html#1962" class="Bound"
+      >Y</a
+      ><a name="1963"
+      > </a
+      ><a name="1964" class="Symbol"
+      >:</a
+      ><a name="1965"
+      > </a
+      ><a name="1966" href="UsingNotNotFunext.NotNot.html#1943" class="Bound"
+      >X</a
+      ><a name="1967"
+      > </a
+      ><a name="1968" class="Symbol"
+      >&#8594;</a
+      ><a name="1969"
+      > </a
+      ><a name="1970" class="PrimitiveType"
+      >Set</a
+      ><a name="1973" class="Symbol"
+      >)</a
+      ><a name="1974"
+      >
+            </a
+      ><a name="1987" class="Symbol"
+      >&#8594;</a
+      ><a name="1988"
+      > </a
+      ><a name="1989" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="1991"
+      > </a
+      ><a name="1992" href="UsingNotNotFunext.NotNot.html#1952" class="Bound"
+      >x</a
+      ><a name="1993"
+      > </a
+      ><a name="1994" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1995"
+      > </a
+      ><a name="1996" href="UsingNotNotFunext.NotNot.html#1954" class="Bound"
+      >x'</a
+      ><a name="1998"
+      > </a
+      ><a name="1999" class="Symbol"
+      >&#8594;</a
+      ><a name="2000"
+      > </a
+      ><a name="2001" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="2003"
+      > </a
+      ><a name="2004" href="UsingNotNotFunext.NotNot.html#1962" class="Bound"
+      >Y</a
+      ><a name="2005"
+      > </a
+      ><a name="2006" href="UsingNotNotFunext.NotNot.html#1952" class="Bound"
+      >x</a
+      ><a name="2007"
+      > </a
+      ><a name="2008" class="Symbol"
+      >&#8594;</a
+      ><a name="2009"
+      > </a
+      ><a name="2010" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="2012"
+      > </a
+      ><a name="2013" href="UsingNotNotFunext.NotNot.html#1962" class="Bound"
+      >Y</a
+      ><a name="2014"
+      > </a
+      ><a name="2015" href="UsingNotNotFunext.NotNot.html#1954" class="Bound"
+      >x'</a
+      ><a name="2017"
+      >
+</a
+      ><a name="2018" href="UsingNotNotFunext.NotNot.html#1928" class="Function"
+      >&#172;&#172;transport</a
+      ><a name="2029"
+      > </a
+      ><a name="2030" href="UsingNotNotFunext.NotNot.html#2030" class="Bound"
+      >Y</a
+      ><a name="2031"
+      > </a
+      ><a name="2032" class="Symbol"
+      >=</a
+      ><a name="2033"
+      > </a
+      ><a name="2034" href="UsingNotNotFunext.NotNot.html#843" class="Function"
+      >functor&#8322;</a
+      ><a name="2042"
+      > </a
+      ><a name="2043" class="Symbol"
+      >(</a
+      ><a name="2044" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="2053"
+      > </a
+      ><a name="2054" href="UsingNotNotFunext.NotNot.html#2030" class="Bound"
+      >Y</a
+      ><a name="2055" class="Symbol"
+      >)</a
+      ><a name="2056"
+      >
+
+</a
+      ><a name="2058" href="UsingNotNotFunext.NotNot.html#2058" class="Function"
+      >&#172;&#172;ap</a
+      ><a name="2062"
+      > </a
+      ><a name="2063" class="Symbol"
+      >:</a
+      ><a name="2064"
+      > </a
+      ><a name="2065" class="Symbol"
+      >{</a
+      ><a name="2066" href="UsingNotNotFunext.NotNot.html#2066" class="Bound"
+      >X</a
+      ><a name="2067"
+      > </a
+      ><a name="2068" href="UsingNotNotFunext.NotNot.html#2068" class="Bound"
+      >Y</a
+      ><a name="2069"
+      > </a
+      ><a name="2070" class="Symbol"
+      >:</a
+      ><a name="2071"
+      > </a
+      ><a name="2072" class="PrimitiveType"
+      >Set</a
+      ><a name="2075" class="Symbol"
+      >}</a
+      ><a name="2076"
+      > </a
+      ><a name="2077" class="Symbol"
+      >&#8594;</a
+      ><a name="2078"
+      > </a
+      ><a name="2079" class="Symbol"
+      >(</a
+      ><a name="2080" href="UsingNotNotFunext.NotNot.html#2080" class="Bound"
+      >f</a
+      ><a name="2081"
+      > </a
+      ><a name="2082" class="Symbol"
+      >:</a
+      ><a name="2083"
+      > </a
+      ><a name="2084" href="UsingNotNotFunext.NotNot.html#2066" class="Bound"
+      >X</a
+      ><a name="2085"
+      > </a
+      ><a name="2086" class="Symbol"
+      >&#8594;</a
+      ><a name="2087"
+      > </a
+      ><a name="2088" href="UsingNotNotFunext.NotNot.html#2068" class="Bound"
+      >Y</a
+      ><a name="2089" class="Symbol"
+      >)</a
+      ><a name="2090"
+      > </a
+      ><a name="2091" class="Symbol"
+      >&#8594;</a
+      ><a name="2092"
+      > </a
+      ><a name="2093" class="Symbol"
+      >{</a
+      ><a name="2094" href="UsingNotNotFunext.NotNot.html#2094" class="Bound"
+      >x&#8320;</a
+      ><a name="2096"
+      > </a
+      ><a name="2097" href="UsingNotNotFunext.NotNot.html#2097" class="Bound"
+      >x&#8321;</a
+      ><a name="2099"
+      > </a
+      ><a name="2100" class="Symbol"
+      >:</a
+      ><a name="2101"
+      > </a
+      ><a name="2102" href="UsingNotNotFunext.NotNot.html#2066" class="Bound"
+      >X</a
+      ><a name="2103" class="Symbol"
+      >}</a
+      ><a name="2104"
+      > </a
+      ><a name="2105" class="Symbol"
+      >&#8594;</a
+      ><a name="2106"
+      > </a
+      ><a name="2107" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="2109"
+      > </a
+      ><a name="2110" href="UsingNotNotFunext.NotNot.html#2094" class="Bound"
+      >x&#8320;</a
+      ><a name="2112"
+      > </a
+      ><a name="2113" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2114"
+      > </a
+      ><a name="2115" href="UsingNotNotFunext.NotNot.html#2097" class="Bound"
+      >x&#8321;</a
+      ><a name="2117"
+      > </a
+      ><a name="2118" class="Symbol"
+      >&#8594;</a
+      ><a name="2119"
+      > </a
+      ><a name="2120" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="2122"
+      > </a
+      ><a name="2123" href="UsingNotNotFunext.NotNot.html#2080" class="Bound"
+      >f</a
+      ><a name="2124"
+      > </a
+      ><a name="2125" href="UsingNotNotFunext.NotNot.html#2094" class="Bound"
+      >x&#8320;</a
+      ><a name="2127"
+      > </a
+      ><a name="2128" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2129"
+      > </a
+      ><a name="2130" href="UsingNotNotFunext.NotNot.html#2080" class="Bound"
+      >f</a
+      ><a name="2131"
+      > </a
+      ><a name="2132" href="UsingNotNotFunext.NotNot.html#2097" class="Bound"
+      >x&#8321;</a
+      ><a name="2134"
+      >
+</a
+      ><a name="2135" href="UsingNotNotFunext.NotNot.html#2058" class="Function"
+      >&#172;&#172;ap</a
+      ><a name="2139"
+      > </a
+      ><a name="2140" href="UsingNotNotFunext.NotNot.html#2140" class="Bound"
+      >f</a
+      ><a name="2141"
+      > </a
+      ><a name="2142" class="Symbol"
+      >=</a
+      ><a name="2143"
+      > </a
+      ><a name="2144" href="UsingNotNotFunext.NotNot.html#763" class="Function"
+      >functor</a
+      ><a name="2151"
+      > </a
+      ><a name="2152" class="Symbol"
+      >(</a
+      ><a name="2153" href="Preliminaries.SetsAndFunctions.html#1853" class="Function"
+      >ap</a
+      ><a name="2155"
+      > </a
+      ><a name="2156" href="UsingNotNotFunext.NotNot.html#2140" class="Bound"
+      >f</a
+      ><a name="2157" class="Symbol"
+      >)</a
+      ><a name="2158"
+      >
+
+</a
+      ><a name="2160" href="UsingNotNotFunext.NotNot.html#2160" class="Function"
+      >&#172;&#172;fun-ap</a
+      ><a name="2168"
+      > </a
+      ><a name="2169" class="Symbol"
+      >:</a
+      ><a name="2170"
+      > </a
+      ><a name="2171" class="Symbol"
+      >{</a
+      ><a name="2172" href="UsingNotNotFunext.NotNot.html#2172" class="Bound"
+      >X</a
+      ><a name="2173"
+      > </a
+      ><a name="2174" href="UsingNotNotFunext.NotNot.html#2174" class="Bound"
+      >Y</a
+      ><a name="2175"
+      > </a
+      ><a name="2176" class="Symbol"
+      >:</a
+      ><a name="2177"
+      > </a
+      ><a name="2178" class="PrimitiveType"
+      >Set</a
+      ><a name="2181" class="Symbol"
+      >}</a
+      ><a name="2182"
+      > </a
+      ><a name="2183" class="Symbol"
+      >&#8594;</a
+      ><a name="2184"
+      > </a
+      ><a name="2185" class="Symbol"
+      >&#8704;{</a
+      ><a name="2187" href="UsingNotNotFunext.NotNot.html#2187" class="Bound"
+      >f</a
+      ><a name="2188"
+      > </a
+      ><a name="2189" href="UsingNotNotFunext.NotNot.html#2189" class="Bound"
+      >g</a
+      ><a name="2190"
+      > </a
+      ><a name="2191" class="Symbol"
+      >:</a
+      ><a name="2192"
+      > </a
+      ><a name="2193" href="UsingNotNotFunext.NotNot.html#2172" class="Bound"
+      >X</a
+      ><a name="2194"
+      > </a
+      ><a name="2195" class="Symbol"
+      >&#8594;</a
+      ><a name="2196"
+      > </a
+      ><a name="2197" href="UsingNotNotFunext.NotNot.html#2174" class="Bound"
+      >Y</a
+      ><a name="2198" class="Symbol"
+      >}</a
+      ><a name="2199"
+      > </a
+      ><a name="2200" class="Symbol"
+      >&#8594;</a
+      ><a name="2201"
+      > </a
+      ><a name="2202" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="2204"
+      > </a
+      ><a name="2205" href="UsingNotNotFunext.NotNot.html#2187" class="Bound"
+      >f</a
+      ><a name="2206"
+      > </a
+      ><a name="2207" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2208"
+      > </a
+      ><a name="2209" href="UsingNotNotFunext.NotNot.html#2189" class="Bound"
+      >g</a
+      ><a name="2210"
+      > </a
+      ><a name="2211" class="Symbol"
+      >&#8594;</a
+      ><a name="2212"
+      > </a
+      ><a name="2213" class="Symbol"
+      >&#8704;(</a
+      ><a name="2215" href="UsingNotNotFunext.NotNot.html#2215" class="Bound"
+      >x</a
+      ><a name="2216"
+      > </a
+      ><a name="2217" class="Symbol"
+      >:</a
+      ><a name="2218"
+      > </a
+      ><a name="2219" href="UsingNotNotFunext.NotNot.html#2172" class="Bound"
+      >X</a
+      ><a name="2220" class="Symbol"
+      >)</a
+      ><a name="2221"
+      > </a
+      ><a name="2222" class="Symbol"
+      >&#8594;</a
+      ><a name="2223"
+      > </a
+      ><a name="2224" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="2226"
+      > </a
+      ><a name="2227" href="UsingNotNotFunext.NotNot.html#2187" class="Bound"
+      >f</a
+      ><a name="2228"
+      > </a
+      ><a name="2229" href="UsingNotNotFunext.NotNot.html#2215" class="Bound"
+      >x</a
+      ><a name="2230"
+      > </a
+      ><a name="2231" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2232"
+      > </a
+      ><a name="2233" href="UsingNotNotFunext.NotNot.html#2189" class="Bound"
+      >g</a
+      ><a name="2234"
+      > </a
+      ><a name="2235" href="UsingNotNotFunext.NotNot.html#2215" class="Bound"
+      >x</a
+      ><a name="2236"
+      >
+</a
+      ><a name="2237" href="UsingNotNotFunext.NotNot.html#2160" class="Function"
+      >&#172;&#172;fun-ap</a
+      ><a name="2245"
+      > </a
+      ><a name="2246" href="UsingNotNotFunext.NotNot.html#2246" class="Bound"
+      >eh</a
+      ><a name="2248"
+      > </a
+      ><a name="2249" href="UsingNotNotFunext.NotNot.html#2249" class="Bound"
+      >x</a
+      ><a name="2250"
+      > </a
+      ><a name="2251" class="Symbol"
+      >=</a
+      ><a name="2252"
+      > </a
+      ><a name="2253" href="UsingNotNotFunext.NotNot.html#763" class="Function"
+      >functor</a
+      ><a name="2260" class="Symbol"
+      >(&#955;</a
+      ><a name="2262"
+      > </a
+      ><a name="2263" href="UsingNotNotFunext.NotNot.html#2263" class="Bound"
+      >e</a
+      ><a name="2264"
+      > </a
+      ><a name="2265" class="Symbol"
+      >&#8594;</a
+      ><a name="2266"
+      > </a
+      ><a name="2267" href="Preliminaries.SetsAndFunctions.html#1965" class="Function"
+      >fun-ap</a
+      ><a name="2273"
+      > </a
+      ><a name="2274" href="UsingNotNotFunext.NotNot.html#2263" class="Bound"
+      >e</a
+      ><a name="2275"
+      > </a
+      ><a name="2276" href="UsingNotNotFunext.NotNot.html#2249" class="Bound"
+      >x</a
+      ><a name="2277" class="Symbol"
+      >)</a
+      ><a name="2278"
+      > </a
+      ><a name="2279" href="UsingNotNotFunext.NotNot.html#2246" class="Bound"
+      >eh</a
+      ><a name="2281"
+      >
+
+</a
+      ><a name="2283" href="UsingNotNotFunext.NotNot.html#2283" class="Function"
+      >&#172;&#172;pair&#8316;</a
+      ><a name="2290"
+      > </a
+      ><a name="2291" class="Symbol"
+      >:</a
+      ><a name="2292"
+      > </a
+      ><a name="2293" class="Symbol"
+      >{</a
+      ><a name="2294" href="UsingNotNotFunext.NotNot.html#2294" class="Bound"
+      >X</a
+      ><a name="2295"
+      > </a
+      ><a name="2296" class="Symbol"
+      >:</a
+      ><a name="2297"
+      > </a
+      ><a name="2298" class="PrimitiveType"
+      >Set</a
+      ><a name="2301" class="Symbol"
+      >}{</a
+      ><a name="2303" href="UsingNotNotFunext.NotNot.html#2303" class="Bound"
+      >Y</a
+      ><a name="2304"
+      > </a
+      ><a name="2305" class="Symbol"
+      >:</a
+      ><a name="2306"
+      > </a
+      ><a name="2307" href="UsingNotNotFunext.NotNot.html#2294" class="Bound"
+      >X</a
+      ><a name="2308"
+      > </a
+      ><a name="2309" class="Symbol"
+      >&#8594;</a
+      ><a name="2310"
+      > </a
+      ><a name="2311" class="PrimitiveType"
+      >Set</a
+      ><a name="2314" class="Symbol"
+      >}{</a
+      ><a name="2316" href="UsingNotNotFunext.NotNot.html#2316" class="Bound"
+      >x</a
+      ><a name="2317"
+      > </a
+      ><a name="2318" href="UsingNotNotFunext.NotNot.html#2318" class="Bound"
+      >x'</a
+      ><a name="2320"
+      > </a
+      ><a name="2321" class="Symbol"
+      >:</a
+      ><a name="2322"
+      > </a
+      ><a name="2323" href="UsingNotNotFunext.NotNot.html#2294" class="Bound"
+      >X</a
+      ><a name="2324" class="Symbol"
+      >}{</a
+      ><a name="2326" href="UsingNotNotFunext.NotNot.html#2326" class="Bound"
+      >y</a
+      ><a name="2327"
+      > </a
+      ><a name="2328" class="Symbol"
+      >:</a
+      ><a name="2329"
+      > </a
+      ><a name="2330" href="UsingNotNotFunext.NotNot.html#2303" class="Bound"
+      >Y</a
+      ><a name="2331"
+      > </a
+      ><a name="2332" href="UsingNotNotFunext.NotNot.html#2316" class="Bound"
+      >x</a
+      ><a name="2333" class="Symbol"
+      >}{</a
+      ><a name="2335" href="UsingNotNotFunext.NotNot.html#2335" class="Bound"
+      >y'</a
+      ><a name="2337"
+      > </a
+      ><a name="2338" class="Symbol"
+      >:</a
+      ><a name="2339"
+      > </a
+      ><a name="2340" href="UsingNotNotFunext.NotNot.html#2303" class="Bound"
+      >Y</a
+      ><a name="2341"
+      > </a
+      ><a name="2342" href="UsingNotNotFunext.NotNot.html#2318" class="Bound"
+      >x'</a
+      ><a name="2344" class="Symbol"
+      >}</a
+      ><a name="2345"
+      >
+        </a
+      ><a name="2354" class="Symbol"
+      >&#8594;</a
+      ><a name="2355"
+      > </a
+      ><a name="2356" class="Symbol"
+      >(</a
+      ><a name="2357" href="UsingNotNotFunext.NotNot.html#2357" class="Bound"
+      >p</a
+      ><a name="2358"
+      > </a
+      ><a name="2359" class="Symbol"
+      >:</a
+      ><a name="2360"
+      > </a
+      ><a name="2361" href="UsingNotNotFunext.NotNot.html#2316" class="Bound"
+      >x</a
+      ><a name="2362"
+      > </a
+      ><a name="2363" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2364"
+      > </a
+      ><a name="2365" href="UsingNotNotFunext.NotNot.html#2318" class="Bound"
+      >x'</a
+      ><a name="2367" class="Symbol"
+      >)</a
+      ><a name="2368"
+      > </a
+      ><a name="2369" class="Symbol"
+      >&#8594;</a
+      ><a name="2370"
+      > </a
+      ><a name="2371" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="2373"
+      > </a
+      ><a name="2374" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="2383"
+      > </a
+      ><a name="2384" href="UsingNotNotFunext.NotNot.html#2303" class="Bound"
+      >Y</a
+      ><a name="2385"
+      > </a
+      ><a name="2386" href="UsingNotNotFunext.NotNot.html#2357" class="Bound"
+      >p</a
+      ><a name="2387"
+      > </a
+      ><a name="2388" href="UsingNotNotFunext.NotNot.html#2326" class="Bound"
+      >y</a
+      ><a name="2389"
+      > </a
+      ><a name="2390" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2391"
+      > </a
+      ><a name="2392" href="UsingNotNotFunext.NotNot.html#2335" class="Bound"
+      >y'</a
+      ><a name="2394"
+      > </a
+      ><a name="2395" class="Symbol"
+      >&#8594;</a
+      ><a name="2396"
+      > </a
+      ><a name="2397" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="2399"
+      > </a
+      ><a name="2400" class="Symbol"
+      >(</a
+      ><a name="2401" href="UsingNotNotFunext.NotNot.html#2316" class="Bound"
+      >x</a
+      ><a name="2402"
+      > </a
+      ><a name="2403" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2404"
+      > </a
+      ><a name="2405" href="UsingNotNotFunext.NotNot.html#2326" class="Bound"
+      >y</a
+      ><a name="2406" class="Symbol"
+      >)</a
+      ><a name="2407"
+      > </a
+      ><a name="2408" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2409"
+      > </a
+      ><a name="2410" class="Symbol"
+      >(</a
+      ><a name="2411" href="UsingNotNotFunext.NotNot.html#2318" class="Bound"
+      >x'</a
+      ><a name="2413"
+      > </a
+      ><a name="2414" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2415"
+      > </a
+      ><a name="2416" href="UsingNotNotFunext.NotNot.html#2335" class="Bound"
+      >y'</a
+      ><a name="2418" class="Symbol"
+      >)</a
+      ><a name="2419"
+      >
+</a
+      ><a name="2420" href="UsingNotNotFunext.NotNot.html#2283" class="Function"
+      >&#172;&#172;pair&#8316;</a
+      ><a name="2427"
+      > </a
+      ><a name="2428" href="UsingNotNotFunext.NotNot.html#2428" class="Bound"
+      >p</a
+      ><a name="2429"
+      > </a
+      ><a name="2430" class="Symbol"
+      >=</a
+      ><a name="2431"
+      > </a
+      ><a name="2432" href="UsingNotNotFunext.NotNot.html#763" class="Function"
+      >functor</a
+      ><a name="2439"
+      > </a
+      ><a name="2440" class="Symbol"
+      >(</a
+      ><a name="2441" href="Preliminaries.SetsAndFunctions.html#2423" class="Function"
+      >pair&#8316;</a
+      ><a name="2446"
+      > </a
+      ><a name="2447" href="UsingNotNotFunext.NotNot.html#2428" class="Bound"
+      >p</a
+      ><a name="2448" class="Symbol"
+      >)</a
+      ><a name="2449"
+      >
+
+</a
+      ><a name="2451" href="UsingNotNotFunext.NotNot.html#2451" class="Function"
+      >&#172;&#172;pair&#739;&#8316;</a
+      ><a name="2459"
+      > </a
+      ><a name="2460" class="Symbol"
+      >:</a
+      ><a name="2461"
+      > </a
+      ><a name="2462" class="Symbol"
+      >{</a
+      ><a name="2463" href="UsingNotNotFunext.NotNot.html#2463" class="Bound"
+      >X</a
+      ><a name="2464"
+      > </a
+      ><a name="2465" href="UsingNotNotFunext.NotNot.html#2465" class="Bound"
+      >Y</a
+      ><a name="2466"
+      > </a
+      ><a name="2467" class="Symbol"
+      >:</a
+      ><a name="2468"
+      > </a
+      ><a name="2469" class="PrimitiveType"
+      >Set</a
+      ><a name="2472" class="Symbol"
+      >}</a
+      ><a name="2473"
+      > </a
+      ><a name="2474" class="Symbol"
+      >{</a
+      ><a name="2475" href="UsingNotNotFunext.NotNot.html#2475" class="Bound"
+      >x</a
+      ><a name="2476"
+      > </a
+      ><a name="2477" href="UsingNotNotFunext.NotNot.html#2477" class="Bound"
+      >x'</a
+      ><a name="2479"
+      > </a
+      ><a name="2480" class="Symbol"
+      >:</a
+      ><a name="2481"
+      > </a
+      ><a name="2482" href="UsingNotNotFunext.NotNot.html#2463" class="Bound"
+      >X</a
+      ><a name="2483" class="Symbol"
+      >}</a
+      ><a name="2484"
+      > </a
+      ><a name="2485" class="Symbol"
+      >{</a
+      ><a name="2486" href="UsingNotNotFunext.NotNot.html#2486" class="Bound"
+      >y</a
+      ><a name="2487"
+      > </a
+      ><a name="2488" href="UsingNotNotFunext.NotNot.html#2488" class="Bound"
+      >y'</a
+      ><a name="2490"
+      > </a
+      ><a name="2491" class="Symbol"
+      >:</a
+      ><a name="2492"
+      > </a
+      ><a name="2493" href="UsingNotNotFunext.NotNot.html#2465" class="Bound"
+      >Y</a
+      ><a name="2494" class="Symbol"
+      >}</a
+      ><a name="2495"
+      >
+         </a
+      ><a name="2505" class="Symbol"
+      >&#8594;</a
+      ><a name="2506"
+      > </a
+      ><a name="2507" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="2509"
+      > </a
+      ><a name="2510" href="UsingNotNotFunext.NotNot.html#2475" class="Bound"
+      >x</a
+      ><a name="2511"
+      > </a
+      ><a name="2512" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2513"
+      > </a
+      ><a name="2514" href="UsingNotNotFunext.NotNot.html#2477" class="Bound"
+      >x'</a
+      ><a name="2516"
+      > </a
+      ><a name="2517" class="Symbol"
+      >&#8594;</a
+      ><a name="2518"
+      > </a
+      ><a name="2519" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="2521"
+      > </a
+      ><a name="2522" href="UsingNotNotFunext.NotNot.html#2486" class="Bound"
+      >y</a
+      ><a name="2523"
+      > </a
+      ><a name="2524" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2525"
+      > </a
+      ><a name="2526" href="UsingNotNotFunext.NotNot.html#2488" class="Bound"
+      >y'</a
+      ><a name="2528"
+      > </a
+      ><a name="2529" class="Symbol"
+      >&#8594;</a
+      ><a name="2530"
+      > </a
+      ><a name="2531" href="UsingNotNotFunext.NotNot.html#326" class="Function Operator"
+      >&#172;&#172;</a
+      ><a name="2533"
+      > </a
+      ><a name="2534" class="Symbol"
+      >(</a
+      ><a name="2535" href="UsingNotNotFunext.NotNot.html#2475" class="Bound"
+      >x</a
+      ><a name="2536"
+      > </a
+      ><a name="2537" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2538"
+      > </a
+      ><a name="2539" href="UsingNotNotFunext.NotNot.html#2486" class="Bound"
+      >y</a
+      ><a name="2540" class="Symbol"
+      >)</a
+      ><a name="2541"
+      > </a
+      ><a name="2542" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2543"
+      > </a
+      ><a name="2544" class="Symbol"
+      >(</a
+      ><a name="2545" href="UsingNotNotFunext.NotNot.html#2477" class="Bound"
+      >x'</a
+      ><a name="2547"
+      > </a
+      ><a name="2548" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2549"
+      > </a
+      ><a name="2550" href="UsingNotNotFunext.NotNot.html#2488" class="Bound"
+      >y'</a
+      ><a name="2552" class="Symbol"
+      >)</a
+      ><a name="2553"
+      >
+</a
+      ><a name="2554" href="UsingNotNotFunext.NotNot.html#2451" class="Function"
+      >&#172;&#172;pair&#739;&#8316;</a
+      ><a name="2562"
+      > </a
+      ><a name="2563" class="Symbol"
+      >=</a
+      ><a name="2564"
+      > </a
+      ><a name="2565" href="UsingNotNotFunext.NotNot.html#843" class="Function"
+      >functor&#8322;</a
+      ><a name="2573"
+      > </a
+      ><a name="2574" href="Preliminaries.SetsAndFunctions.html#2591" class="Function"
+      >pair&#739;&#8316;</a
+      ><a name="2580"
+      >
+
+\end{code}
+
+</a
+      ></pre
+    ></body
+  ></html
+>

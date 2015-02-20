@@ -1,0 +1,692 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >index</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Comment"
+      >This is the Agda implementation of the thesis</a
+      ><a name="46"
+      >
+
+</a
+      ><a name="48" class="Comment"
+      >  A CONTINUOUS COMPUTATIONAL INTERPRETATION OF TYPE THEORIES</a
+      ><a name="108"
+      >
+
+</a
+      ><a name="110" class="Comment"
+      >by</a
+      ><a name="112"
+      >
+
+</a
+      ><a name="114" class="Comment"
+      >  Chuangjie XU</a
+      ><a name="128"
+      >
+
+</a
+      ><a name="130" class="Comment"
+      >It type checks and runs with Agda 2.4.2 and is available for</a
+      ><a name="190"
+      >
+</a
+      ><a name="191" class="Comment"
+      >downloading at</a
+      ><a name="205"
+      >
+
+</a
+      ><a name="207" class="Comment"
+      >  http://cj-xu.github.io/ContinuityType/xu-thesis-agda.zip</a
+      ><a name="265"
+      >
+
+</a
+      ><a name="267" class="Comment"
+      >To navigate this set of files, click at module names, keywords or symbols.</a
+      ><a name="341"
+      >
+
+\begin{code}
+
+</a
+      ><a name="357" class="Keyword"
+      >module</a
+      ><a name="363"
+      > </a
+      ><a name="364" href="index.html#1" class="Module"
+      >index</a
+      ><a name="369"
+      > </a
+      ><a name="370" class="Keyword"
+      >where</a
+      ><a name="375"
+      >
+
+\end{code}
+
+</a
+      ><a name="389" class="Comment"
+      >Chapter 2 investigates the Curry-Howard formulations of the two fundamental</a
+      ><a name="464"
+      >
+</a
+      ><a name="465" class="Comment"
+      >continuity principles, (Cont) and (UC).  The latter, which is the one that we</a
+      ><a name="542"
+      >
+</a
+      ><a name="543" class="Comment"
+      >are working with in this thesis, is logically equivalent to the logical</a
+      ><a name="614"
+      >
+</a
+      ><a name="615" class="Comment"
+      >formulation.  For this, we need to extend the type theory with propositional</a
+      ><a name="691"
+      >
+</a
+      ><a name="692" class="Comment"
+      >truncation and the axiom of function extensionality.</a
+      ><a name="744"
+      >
+
+\begin{code}
+
+</a
+      ><a name="760" class="Comment"
+      >-- &#167; 2.3  The Curry-Howard interpretation of (UC)</a
+      ><a name="809"
+      >
+</a
+      ><a name="810" class="Keyword"
+      >import</a
+      ><a name="816"
+      > </a
+      ><a name="817" href="Continuity.EquivalentFormulationsOfUC.html#1" class="Module"
+      >Continuity.EquivalentFormulationsOfUC</a
+      ><a name="854"
+      >
+
+\end{code}
+
+</a
+      ><a name="868" class="Comment"
+      >Chapter 3 develops a variation of the topological topos, consisting of sheaves</a
+      ><a name="946"
+      >
+</a
+      ><a name="947" class="Comment"
+      >on a certain uniform-continuity site.  In particular, C-spaces, corresponding to</a
+      ><a name="1027"
+      >
+</a
+      ><a name="1028" class="Comment"
+      >concrete sheaves, form a (locally) cartesian closed category with a natural</a
+      ><a name="1103"
+      >
+</a
+      ><a name="1104" class="Comment"
+      >numbers object.  Moreover, there is a fan functional, in the category of</a
+      ><a name="1176"
+      >
+</a
+      ><a name="1177" class="Comment"
+      >C-spaces, that continuously calculates least moduli of uniform continuity of</a
+      ><a name="1253"
+      >
+</a
+      ><a name="1254" class="Comment"
+      >maps &#8322;&#8469; &#8594; &#8469;.</a
+      ><a name="1266"
+      >
+
+\begin{code}
+
+</a
+      ><a name="1282" class="Comment"
+      >-- &#167; 3.2.1  The uniform-continuity site</a
+      ><a name="1321"
+      >
+</a
+      ><a name="1322" class="Keyword"
+      >import</a
+      ><a name="1328"
+      > </a
+      ><a name="1329" href="UsingFunext.Space.Coverage.html#1" class="Module"
+      >UsingFunext.Space.Coverage</a
+      ><a name="1355"
+      >
+
+</a
+      ><a name="1357" class="Comment"
+      >-- &#167; 3.3.1  Concrete sheaves as a variation of quasi-topological spaces</a
+      ><a name="1428"
+      >
+</a
+      ><a name="1429" class="Keyword"
+      >import</a
+      ><a name="1435"
+      > </a
+      ><a name="1436" href="UsingFunext.Space.Space.html#1" class="Module"
+      >UsingFunext.Space.Space</a
+      ><a name="1459"
+      >
+
+</a
+      ><a name="1461" class="Comment"
+      >-- &#167; 3.3.2  The (local) cartesian closed structure of C-Space</a
+      ><a name="1522"
+      >
+</a
+      ><a name="1523" class="Keyword"
+      >import</a
+      ><a name="1529"
+      > </a
+      ><a name="1530" href="UsingFunext.Space.CartesianClosedness.html#1" class="Module"
+      >UsingFunext.Space.CartesianClosedness</a
+      ><a name="1567"
+      >
+</a
+      ><a name="1568" class="Keyword"
+      >import</a
+      ><a name="1574"
+      > </a
+      ><a name="1575" href="UsingFunext.Space.Coproduct.html#1" class="Module"
+      >UsingFunext.Space.Coproduct</a
+      ><a name="1602"
+      >
+</a
+      ><a name="1603" class="Keyword"
+      >import</a
+      ><a name="1609"
+      > </a
+      ><a name="1610" href="UsingFunext.Space.LocalCartesianClosedness.html#1" class="Module"
+      >UsingFunext.Space.LocalCartesianClosedness</a
+      ><a name="1652"
+      >
+
+</a
+      ><a name="1654" class="Comment"
+      >-- &#167; 3.3.3  Discrete C-spaces and natural numbers object</a
+      ><a name="1710"
+      >
+</a
+      ><a name="1711" class="Keyword"
+      >import</a
+      ><a name="1717"
+      > </a
+      ><a name="1718" href="UsingFunext.Space.DiscreteSpace.html#1" class="Module"
+      >UsingFunext.Space.DiscreteSpace</a
+      ><a name="1749"
+      >
+
+</a
+      ><a name="1751" class="Comment"
+      >-- &#167; 3.4  The representable sheaf is the Cantor space</a
+      ><a name="1804"
+      >
+</a
+      ><a name="1805" class="Keyword"
+      >import</a
+      ><a name="1811"
+      > </a
+      ><a name="1812" href="UsingFunext.Space.YonedaLemma.html#1" class="Module"
+      >UsingFunext.Space.YonedaLemma</a
+      ><a name="1841"
+      >
+
+</a
+      ><a name="1843" class="Comment"
+      >-- &#167; 3.5  The fan functional in the category of C-spaces</a
+      ><a name="1899"
+      >
+</a
+      ><a name="1900" class="Keyword"
+      >import</a
+      ><a name="1906"
+      > </a
+      ><a name="1907" href="UsingFunext.Space.Fan.html#1" class="Module"
+      >UsingFunext.Space.Fan</a
+      ><a name="1928"
+      >
+
+\end{code}
+
+</a
+      ><a name="1942" class="Comment"
+      >Chapter 4 shows how the Kleene-Kreisel continuous functionals can be calculated</a
+      ><a name="2021"
+      >
+</a
+      ><a name="2022" class="Comment"
+      >within C-spaces.  When assuming the Brouwerian axiom that all set-theoretic</a
+      ><a name="2097"
+      >
+</a
+      ><a name="2098" class="Comment"
+      >functions &#8322;&#8469; &#8594; &#8469; are uniformly continuous, the full type hierarchy is equivalent</a
+      ><a name="2178"
+      >
+</a
+      ><a name="2179" class="Comment"
+      >to the Kleene--Kreisel continuous hierarchy within C-spaces.</a
+      ><a name="2239"
+      >
+
+\begin{code}
+
+</a
+      ><a name="2255" class="Comment"
+      >-- &#167; 4.3  The Kleene-Kreisel and full-type hierarchies</a
+      ><a name="2309"
+      >
+</a
+      ><a name="2310" class="Keyword"
+      >import</a
+      ><a name="2316"
+      > </a
+      ><a name="2317" href="UsingFunext.Space.IndiscreteSpace.html#1" class="Module"
+      >UsingFunext.Space.IndiscreteSpace</a
+      ><a name="2350"
+      >
+</a
+      ><a name="2351" class="Keyword"
+      >import</a
+      ><a name="2357"
+      > </a
+      ><a name="2358" href="UsingFunext.ModellingUC.Hierarchy.html#1" class="Module"
+      >UsingFunext.ModellingUC.Hierarchy</a
+      ><a name="2391"
+      >
+
+\end{code}
+
+</a
+      ><a name="2405" class="Comment"
+      >Chapter 5 employs C-spaces to model G&#246;del's system T with a skolemization of</a
+      ><a name="2481"
+      >
+</a
+      ><a name="2482" class="Comment"
+      >(UC), and to realizes (UC) in the intuitionistic arithmetic HA&#969; of finite types,</a
+      ><a name="2562"
+      >
+</a
+      ><a name="2563" class="Comment"
+      >with the aid of the fan functional.</a
+      ><a name="2598"
+      >
+
+\begin{code}
+
+</a
+      ><a name="2614" class="Comment"
+      >-- &#167; 5.1  A continuous model of G&#246;del's System T</a
+      ><a name="2662"
+      >
+</a
+      ><a name="2663" class="Keyword"
+      >import</a
+      ><a name="2669"
+      > </a
+      ><a name="2670" href="UsingFunext.ModellingUC.TdefinableFunctionsAreUC.html#1" class="Module"
+      >UsingFunext.ModellingUC.TdefinableFunctionsAreUC</a
+      ><a name="2718"
+      >
+</a
+      ><a name="2719" class="Keyword"
+      >import</a
+      ><a name="2725"
+      > </a
+      ><a name="2726" href="UsingFunext.ModellingUC.UCinT.html#1" class="Module"
+      >UsingFunext.ModellingUC.UCinT</a
+      ><a name="2755"
+      >
+
+</a
+      ><a name="2757" class="Comment"
+      >-- &#167; 5.2  A continuous realizability semantics of HA&#969;</a
+      ><a name="2810"
+      >
+</a
+      ><a name="2811" class="Keyword"
+      >import</a
+      ><a name="2817"
+      > </a
+      ><a name="2818" href="UsingFunext.ModellingUC.UCinHAo.html#1" class="Module"
+      >UsingFunext.ModellingUC.UCinHAo</a
+      ><a name="2849"
+      >
+
+\end{code}
+
+</a
+      ><a name="2863" class="Comment"
+      >Chapter 6 validates the Curry-Howard interpretation of (UC) in the locally</a
+      ><a name="2937"
+      >
+</a
+      ><a name="2938" class="Comment"
+      >cartesian closed category of C-spaces using the fan functional, and demonstrates</a
+      ><a name="3018"
+      >
+</a
+      ><a name="3019" class="Comment"
+      >how C-spaces and sheaves form models of dependent types, without the coherence</a
+      ><a name="3097"
+      >
+</a
+      ><a name="3098" class="Comment"
+      >problem, via the notion of category with families (CwF).</a
+      ><a name="3154"
+      >
+
+\begin{code}
+
+</a
+      ><a name="3170" class="Comment"
+      >-- &#167; 6.2  Modelling UC via the LCCC of C-spaces</a
+      ><a name="3217"
+      >
+</a
+      ><a name="3218" class="Keyword"
+      >import</a
+      ><a name="3224"
+      > </a
+      ><a name="3225" href="UsingFunext.ModellingUC.ValidatingUCviaLCCC.html#1" class="Module"
+      >UsingFunext.ModellingUC.ValidatingUCviaLCCC</a
+      ><a name="3268"
+      >
+
+</a
+      ><a name="3270" class="Comment"
+      >-- &#167; 6.3  Categories with families</a
+      ><a name="3304"
+      >
+</a
+      ><a name="3305" class="Keyword"
+      >import</a
+      ><a name="3311"
+      > </a
+      ><a name="3312" href="CwF.Sets.Base.html#1" class="Module"
+      >CwF.Sets.Base</a
+      ><a name="3325"
+      >
+</a
+      ><a name="3326" class="Keyword"
+      >import</a
+      ><a name="3332"
+      > </a
+      ><a name="3333" href="CwF.Sets.TypesAndTerms.html#1" class="Module"
+      >CwF.Sets.TypesAndTerms</a
+      ><a name="3355"
+      >
+</a
+      ><a name="3356" class="Keyword"
+      >import</a
+      ><a name="3362"
+      > </a
+      ><a name="3363" href="CwF.Sets.ContextComprehension.html#1" class="Module"
+      >CwF.Sets.ContextComprehension</a
+      ><a name="3392"
+      >
+</a
+      ><a name="3393" class="Keyword"
+      >import</a
+      ><a name="3399"
+      > </a
+      ><a name="3400" href="CwF.Sets.SigmaType.html#1" class="Module"
+      >CwF.Sets.SigmaType</a
+      ><a name="3418"
+      >
+</a
+      ><a name="3419" class="Keyword"
+      >import</a
+      ><a name="3425"
+      > </a
+      ><a name="3426" href="CwF.Sets.PiType.html#1" class="Module"
+      >CwF.Sets.PiType</a
+      ><a name="3441"
+      >
+</a
+      ><a name="3442" class="Keyword"
+      >import</a
+      ><a name="3448"
+      > </a
+      ><a name="3449" href="CwF.Sets.IdentityType.html#1" class="Module"
+      >CwF.Sets.IdentityType</a
+      ><a name="3470"
+      >
+
+</a
+      ><a name="3472" class="Comment"
+      >-- &#167; 6.4  A continuous model of dependent types</a
+      ><a name="3519"
+      >
+</a
+      ><a name="3520" class="Keyword"
+      >import</a
+      ><a name="3526"
+      > </a
+      ><a name="3527" href="CwF.Space.Base.html#1" class="Module"
+      >CwF.Space.Base</a
+      ><a name="3541"
+      >
+</a
+      ><a name="3542" class="Keyword"
+      >import</a
+      ><a name="3548"
+      > </a
+      ><a name="3549" href="CwF.Space.TypesAndTerms.html#1" class="Module"
+      >CwF.Space.TypesAndTerms</a
+      ><a name="3572"
+      >
+</a
+      ><a name="3573" class="Keyword"
+      >import</a
+      ><a name="3579"
+      > </a
+      ><a name="3580" href="CwF.Space.ContextComprehension.html#1" class="Module"
+      >CwF.Space.ContextComprehension</a
+      ><a name="3610"
+      >
+
+</a
+      ><a name="3612" class="Comment"
+      >-- &#167; 6.5  A sheaf model of dependent types</a
+      ><a name="3654"
+      >
+</a
+      ><a name="3655" class="Keyword"
+      >import</a
+      ><a name="3661"
+      > </a
+      ><a name="3662" href="CwF.Sheaf.Base.html#1" class="Module"
+      >CwF.Sheaf.Base</a
+      ><a name="3676"
+      >
+</a
+      ><a name="3677" class="Keyword"
+      >import</a
+      ><a name="3683"
+      > </a
+      ><a name="3684" href="CwF.Sheaf.TypesAndTerms.html#1" class="Module"
+      >CwF.Sheaf.TypesAndTerms</a
+      ><a name="3707"
+      >
+</a
+      ><a name="3708" class="Keyword"
+      >import</a
+      ><a name="3714"
+      > </a
+      ><a name="3715" href="CwF.Sheaf.ContextComprehension.html#1" class="Module"
+      >CwF.Sheaf.ContextComprehension</a
+      ><a name="3745"
+      >
+
+\end{code}
+
+</a
+      ><a name="3759" class="Comment"
+      >Other versions of implementation, in which the computational content</a
+      ><a name="3827"
+      >
+</a
+      ><a name="3828" class="Comment"
+      >of the development is not destroyed.</a
+      ><a name="3864"
+      >
+
+\begin{code}
+
+</a
+      ><a name="3880" class="Comment"
+      >-- &#167; 7.2.2  Construction by using setoids</a
+      ><a name="3921"
+      >
+</a
+      ><a name="3922" class="Keyword"
+      >import</a
+      ><a name="3928"
+      > </a
+      ><a name="3929" href="UsingSetoid.Space.Space.html#1" class="Module"
+      >UsingSetoid.Space.Space</a
+      ><a name="3952"
+      >
+</a
+      ><a name="3953" class="Keyword"
+      >import</a
+      ><a name="3959"
+      > </a
+      ><a name="3960" href="UsingSetoid.ModellingUC.UCinT.html#1" class="Module"
+      >UsingSetoid.ModellingUC.UCinT</a
+      ><a name="3989"
+      >
+</a
+      ><a name="3990" class="Keyword"
+      >import</a
+      ><a name="3996"
+      > </a
+      ><a name="3997" href="UsingSetoid.ModellingUC.ComputationExperiments.html#1" class="Module"
+      >UsingSetoid.ModellingUC.ComputationExperiments</a
+      ><a name="4043"
+      >
+
+</a
+      ><a name="4045" class="Comment"
+      >-- &#167; 7.2.3  Construction by adding an probe axiom</a
+      ><a name="4094"
+      >
+</a
+      ><a name="4095" class="Keyword"
+      >import</a
+      ><a name="4101"
+      > </a
+      ><a name="4102" href="AddingProbeAxiom.Space.Space.html#1" class="Module"
+      >AddingProbeAxiom.Space.Space</a
+      ><a name="4130"
+      >
+</a
+      ><a name="4131" class="Keyword"
+      >import</a
+      ><a name="4137"
+      > </a
+      ><a name="4138" href="AddingProbeAxiom.ModellingUC.UCinT.html#1" class="Module"
+      >AddingProbeAxiom.ModellingUC.UCinT</a
+      ><a name="4172"
+      >
+</a
+      ><a name="4173" class="Keyword"
+      >import</a
+      ><a name="4179"
+      > </a
+      ><a name="4180" href="AddingProbeAxiom.ModellingUC.ComputationExperiments.html#1" class="Module"
+      >AddingProbeAxiom.ModellingUC.ComputationExperiments</a
+      ><a name="4231"
+      >
+
+</a
+      ><a name="4233" class="Comment"
+      >-- &#167; 7.2.4  Construction by postulating &#172;&#172;(funext)</a
+      ><a name="4283"
+      >
+</a
+      ><a name="4284" class="Comment"
+      >-- Construction by postulating (funext) in an irrelevant field</a
+      ><a name="4346"
+      >
+</a
+      ><a name="4347" class="Keyword"
+      >import</a
+      ><a name="4353"
+      > </a
+      ><a name="4354" href="UsingIrrelevantFunext.Space.Space.html#1" class="Module"
+      >UsingIrrelevantFunext.Space.Space</a
+      ><a name="4387"
+      >
+</a
+      ><a name="4388" class="Keyword"
+      >import</a
+      ><a name="4394"
+      > </a
+      ><a name="4395" href="UsingIrrelevantFunext.ModellingUC.UCinT.html#1" class="Module"
+      >UsingIrrelevantFunext.ModellingUC.UCinT</a
+      ><a name="4434"
+      >
+</a
+      ><a name="4435" class="Keyword"
+      >import</a
+      ><a name="4441"
+      > </a
+      ><a name="4442" href="UsingIrrelevantFunext.ModellingUC.ComputationExperiments.html#1" class="Module"
+      >UsingIrrelevantFunext.ModellingUC.ComputationExperiments</a
+      ><a name="4498"
+      >
+</a
+      ><a name="4499" class="Comment"
+      >-- Construction by postulating the double negation of (funext)</a
+      ><a name="4561"
+      >
+</a
+      ><a name="4562" class="Keyword"
+      >import</a
+      ><a name="4568"
+      > </a
+      ><a name="4569" href="UsingNotNotFunext.Space.Space.html#1" class="Module"
+      >UsingNotNotFunext.Space.Space</a
+      ><a name="4598"
+      >
+</a
+      ><a name="4599" class="Keyword"
+      >import</a
+      ><a name="4605"
+      > </a
+      ><a name="4606" href="UsingNotNotFunext.ModellingUC.UCinT.html#1" class="Module"
+      >UsingNotNotFunext.ModellingUC.UCinT</a
+      ><a name="4641"
+      >
+</a
+      ><a name="4642" class="Keyword"
+      >import</a
+      ><a name="4648"
+      > </a
+      ><a name="4649" href="UsingNotNotFunext.ModellingUC.ComputationExperiments.html#1" class="Module"
+      >UsingNotNotFunext.ModellingUC.ComputationExperiments</a
+      ><a name="4701"
+      >
+
+\end{code}
+</a
+      ></pre
+    ></body
+  ></html
+>

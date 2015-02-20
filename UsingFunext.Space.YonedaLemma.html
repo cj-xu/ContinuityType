@@ -1,0 +1,2491 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >UsingFunext.Space.YonedaLemma</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Comment"
+      >Chuangjie Xu 2012</a
+      ><a name="18"
+      >
+
+\begin{code}
+
+</a
+      ><a name="34" class="Symbol"
+      >{-#</a
+      ><a name="37"
+      > </a
+      ><a name="38" class="Keyword"
+      >OPTIONS</a
+      ><a name="45"
+      > --without-K </a
+      ><a name="58" class="Symbol"
+      >#-}</a
+      ><a name="61"
+      >
+
+</a
+      ><a name="63" class="Keyword"
+      >module</a
+      ><a name="69"
+      > </a
+      ><a name="70" href="UsingFunext.Space.YonedaLemma.html#1" class="Module"
+      >UsingFunext.Space.YonedaLemma</a
+      ><a name="99"
+      > </a
+      ><a name="100" class="Keyword"
+      >where</a
+      ><a name="105"
+      >
+
+</a
+      ><a name="107" class="Keyword"
+      >open</a
+      ><a name="111"
+      > </a
+      ><a name="112" class="Keyword"
+      >import</a
+      ><a name="118"
+      > </a
+      ><a name="119" href="Preliminaries.SetsAndFunctions.html#1" class="Module"
+      >Preliminaries.SetsAndFunctions</a
+      ><a name="149"
+      > </a
+      ><a name="150" class="Keyword"
+      >hiding</a
+      ><a name="156"
+      > </a
+      ><a name="157" class="Symbol"
+      >(</a
+      ><a name="158"
+      >_+_</a
+      ><a name="161" class="Symbol"
+      >)</a
+      ><a name="162"
+      >
+</a
+      ><a name="163" class="Keyword"
+      >open</a
+      ><a name="167"
+      > </a
+      ><a name="168" class="Keyword"
+      >import</a
+      ><a name="174"
+      > </a
+      ><a name="175" href="Preliminaries.NaturalNumber.html#1" class="Module"
+      >Preliminaries.NaturalNumber</a
+      ><a name="202"
+      >
+</a
+      ><a name="203" class="Keyword"
+      >open</a
+      ><a name="207"
+      > </a
+      ><a name="208" class="Keyword"
+      >import</a
+      ><a name="214"
+      > </a
+      ><a name="215" href="Preliminaries.Boolean.html#1" class="Module"
+      >Preliminaries.Boolean</a
+      ><a name="236"
+      >
+</a
+      ><a name="237" class="Keyword"
+      >open</a
+      ><a name="241"
+      > </a
+      ><a name="242" class="Keyword"
+      >import</a
+      ><a name="248"
+      > </a
+      ><a name="249" href="Preliminaries.Sequence.html#1" class="Module"
+      >Preliminaries.Sequence</a
+      ><a name="271"
+      >
+</a
+      ><a name="272" class="Keyword"
+      >open</a
+      ><a name="276"
+      > </a
+      ><a name="277" class="Keyword"
+      >import</a
+      ><a name="283"
+      > </a
+      ><a name="284" href="Continuity.UniformContinuity.html#1" class="Module"
+      >Continuity.UniformContinuity</a
+      ><a name="312"
+      >
+</a
+      ><a name="313" class="Keyword"
+      >open</a
+      ><a name="317"
+      > </a
+      ><a name="318" class="Keyword"
+      >import</a
+      ><a name="324"
+      > </a
+      ><a name="325" href="UsingFunext.Space.Coverage.html#1" class="Module"
+      >UsingFunext.Space.Coverage</a
+      ><a name="351"
+      >
+</a
+      ><a name="352" class="Keyword"
+      >open</a
+      ><a name="356"
+      > </a
+      ><a name="357" class="Keyword"
+      >import</a
+      ><a name="363"
+      > </a
+      ><a name="364" href="UsingFunext.Space.Space.html#1" class="Module"
+      >UsingFunext.Space.Space</a
+      ><a name="387"
+      >
+</a
+      ><a name="388" class="Keyword"
+      >open</a
+      ><a name="392"
+      > </a
+      ><a name="393" class="Keyword"
+      >import</a
+      ><a name="399"
+      > </a
+      ><a name="400" href="UsingFunext.Space.CartesianClosedness.html#1" class="Module"
+      >UsingFunext.Space.CartesianClosedness</a
+      ><a name="437"
+      >
+</a
+      ><a name="438" class="Keyword"
+      >open</a
+      ><a name="442"
+      > </a
+      ><a name="443" class="Keyword"
+      >import</a
+      ><a name="449"
+      > </a
+      ><a name="450" href="UsingFunext.Space.DiscreteSpace.html#1" class="Module"
+      >UsingFunext.Space.DiscreteSpace</a
+      ><a name="481"
+      >
+
+\end{code}
+
+</a
+      ><a name="495" class="Comment"
+      >Because our site is a one-object category, there is only one representable</a
+      ><a name="569"
+      >
+</a
+      ><a name="570" class="Comment"
+      >sheaf, which is concrete and hence can be regarded as a C-space.  This concrete</a
+      ><a name="649"
+      >
+</a
+      ><a name="650" class="Comment"
+      >sheaf, seen as a C-space, is the set &#8322;&#8469; equipped with all uniformly continuous</a
+      ><a name="728"
+      >
+</a
+      ><a name="729" class="Comment"
+      >maps &#8322;&#8469; &#8594; &#8322;&#8469; as probes.  Moreover, it is (isomorphic to) the exponential of the</a
+      ><a name="808"
+      >
+</a
+      ><a name="809" class="Comment"
+      >discrete spaces &#8322;Space and &#8469;Space in the category of C-spaces.  The following</a
+      ><a name="886"
+      >
+</a
+      ><a name="887" class="Comment"
+      >lemma is one direction of this fact, which assigns each probe on &#8322;&#8469;, i.e. a</a
+      ><a name="962"
+      >
+</a
+      ><a name="963" class="Comment"
+      >uniformly continuous map, to a probe on the exponential &#8469;Space &#8658; &#8322;Space.</a
+      ><a name="1035"
+      >
+
+\begin{code}
+
+</a
+      ><a name="1051" href="UsingFunext.Space.YonedaLemma.html#1051" class="Function"
+      >Lemma[&#8322;&#8469;&#8594;&#8322;&#8469;-to-&#8322;&#8469;&#8594;&#8469;&#8658;&#8322;]</a
+      ><a name="1073"
+      > </a
+      ><a name="1074" class="Symbol"
+      >:</a
+      ><a name="1075"
+      > </a
+      ><a name="1076" class="Symbol"
+      >(</a
+      ><a name="1077" href="UsingFunext.Space.YonedaLemma.html#1077" class="Bound"
+      >r</a
+      ><a name="1078"
+      > </a
+      ><a name="1079" class="Symbol"
+      >:</a
+      ><a name="1080"
+      > </a
+      ><a name="1081" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1083"
+      > </a
+      ><a name="1084" class="Symbol"
+      >&#8594;</a
+      ><a name="1085"
+      > </a
+      ><a name="1086" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1088" class="Symbol"
+      >)</a
+      ><a name="1089"
+      > </a
+      ><a name="1090" class="Symbol"
+      >&#8594;</a
+      ><a name="1091"
+      > </a
+      ><a name="1092" href="UsingFunext.Space.YonedaLemma.html#1077" class="Bound"
+      >r</a
+      ><a name="1093"
+      > </a
+      ><a name="1094" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1095"
+      > </a
+      ><a name="1096" href="UsingFunext.Space.Coverage.html#667" class="Function"
+      >C</a
+      ><a name="1097"
+      > </a
+      ><a name="1098" class="Symbol"
+      >&#8594;</a
+      ><a name="1099"
+      >
+     </a
+      ><a name="1105" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="1106"
+      > </a
+      ><a name="1107" class="Symbol"
+      >\(</a
+      ><a name="1109" href="UsingFunext.Space.YonedaLemma.html#1109" class="Bound"
+      >&#966;</a
+      ><a name="1110"
+      > </a
+      ><a name="1111" class="Symbol"
+      >:</a
+      ><a name="1112"
+      > </a
+      ><a name="1113" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1115"
+      > </a
+      ><a name="1116" class="Symbol"
+      >&#8594;</a
+      ><a name="1117"
+      > </a
+      ><a name="1118" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="1119"
+      > </a
+      ><a name="1120" class="Symbol"
+      >(</a
+      ><a name="1121" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="1127"
+      > </a
+      ><a name="1128" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="1129"
+      > </a
+      ><a name="1130" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="1136" class="Symbol"
+      >))</a
+      ><a name="1138"
+      > </a
+      ><a name="1139" class="Symbol"
+      >&#8594;</a
+      ><a name="1140"
+      > </a
+      ><a name="1141" href="UsingFunext.Space.YonedaLemma.html#1109" class="Bound"
+      >&#966;</a
+      ><a name="1142"
+      > </a
+      ><a name="1143" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1144"
+      > </a
+      ><a name="1145" href="UsingFunext.Space.Space.html#1150" class="Function"
+      >Probe</a
+      ><a name="1150"
+      > </a
+      ><a name="1151" class="Symbol"
+      >(</a
+      ><a name="1152" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="1158"
+      > </a
+      ><a name="1159" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="1160"
+      > </a
+      ><a name="1161" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="1167" class="Symbol"
+      >)</a
+      ><a name="1168"
+      >
+</a
+      ><a name="1169" href="UsingFunext.Space.YonedaLemma.html#1051" class="Function"
+      >Lemma[&#8322;&#8469;&#8594;&#8322;&#8469;-to-&#8322;&#8469;&#8594;&#8469;&#8658;&#8322;]</a
+      ><a name="1191"
+      > </a
+      ><a name="1192" href="UsingFunext.Space.YonedaLemma.html#1192" class="Bound"
+      >r</a
+      ><a name="1193"
+      > </a
+      ><a name="1194" href="UsingFunext.Space.YonedaLemma.html#1194" class="Bound"
+      >ucr</a
+      ><a name="1197"
+      > </a
+      ><a name="1198" class="Symbol"
+      >=</a
+      ><a name="1199"
+      > </a
+      ><a name="1200" href="UsingFunext.Space.YonedaLemma.html#1217" class="Function"
+      >&#966;</a
+      ><a name="1201"
+      > </a
+      ><a name="1202" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1203"
+      > </a
+      ><a name="1204" href="UsingFunext.Space.YonedaLemma.html#1298" class="Function"
+      >prf</a
+      ><a name="1207"
+      >
+ </a
+      ><a name="1209" class="Keyword"
+      >where</a
+      ><a name="1214"
+      >
+  </a
+      ><a name="1217" href="UsingFunext.Space.YonedaLemma.html#1217" class="Function"
+      >&#966;</a
+      ><a name="1218"
+      > </a
+      ><a name="1219" class="Symbol"
+      >:</a
+      ><a name="1220"
+      > </a
+      ><a name="1221" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1223"
+      > </a
+      ><a name="1224" class="Symbol"
+      >&#8594;</a
+      ><a name="1225"
+      > </a
+      ><a name="1226" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="1227"
+      > </a
+      ><a name="1228" class="Symbol"
+      >(</a
+      ><a name="1229" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="1235"
+      > </a
+      ><a name="1236" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="1237"
+      > </a
+      ><a name="1238" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="1244" class="Symbol"
+      >)</a
+      ><a name="1245"
+      >
+  </a
+      ><a name="1248" href="UsingFunext.Space.YonedaLemma.html#1217" class="Function"
+      >&#966;</a
+      ><a name="1249"
+      > </a
+      ><a name="1250" href="UsingFunext.Space.YonedaLemma.html#1250" class="Bound"
+      >&#945;</a
+      ><a name="1251"
+      > </a
+      ><a name="1252" class="Symbol"
+      >=</a
+      ><a name="1253"
+      > </a
+      ><a name="1254" href="UsingFunext.Space.YonedaLemma.html#1192" class="Bound"
+      >r</a
+      ><a name="1255"
+      > </a
+      ><a name="1256" href="UsingFunext.Space.YonedaLemma.html#1250" class="Bound"
+      >&#945;</a
+      ><a name="1257"
+      > </a
+      ><a name="1258" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1259"
+      > </a
+      ><a name="1260" href="UsingFunext.Space.DiscreteSpace.html#5410" class="Function"
+      >Lemma[discrete-&#8469;Space]</a
+      ><a name="1282"
+      > </a
+      ><a name="1283" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="1289"
+      > </a
+      ><a name="1290" class="Symbol"
+      >(</a
+      ><a name="1291" href="UsingFunext.Space.YonedaLemma.html#1192" class="Bound"
+      >r</a
+      ><a name="1292"
+      > </a
+      ><a name="1293" href="UsingFunext.Space.YonedaLemma.html#1250" class="Bound"
+      >&#945;</a
+      ><a name="1294" class="Symbol"
+      >)</a
+      ><a name="1295"
+      >
+  </a
+      ><a name="1298" href="UsingFunext.Space.YonedaLemma.html#1298" class="Function"
+      >prf</a
+      ><a name="1301"
+      > </a
+      ><a name="1302" class="Symbol"
+      >:</a
+      ><a name="1303"
+      > </a
+      ><a name="1304" class="Symbol"
+      >&#8704;(</a
+      ><a name="1306" href="UsingFunext.Space.YonedaLemma.html#1306" class="Bound"
+      >p</a
+      ><a name="1307"
+      > </a
+      ><a name="1308" class="Symbol"
+      >:</a
+      ><a name="1309"
+      > </a
+      ><a name="1310" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1312"
+      > </a
+      ><a name="1313" class="Symbol"
+      >&#8594;</a
+      ><a name="1314"
+      > </a
+      ><a name="1315" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1316" class="Symbol"
+      >)</a
+      ><a name="1317"
+      > </a
+      ><a name="1318" class="Symbol"
+      >&#8594;</a
+      ><a name="1319"
+      > </a
+      ><a name="1320" href="UsingFunext.Space.YonedaLemma.html#1306" class="Bound"
+      >p</a
+      ><a name="1321"
+      > </a
+      ><a name="1322" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1323"
+      > </a
+      ><a name="1324" href="UsingFunext.Space.DiscreteSpace.html#676" class="Function"
+      >LC</a
+      ><a name="1326"
+      > </a
+      ><a name="1327" class="Symbol"
+      >&#8594;</a
+      ><a name="1328"
+      > </a
+      ><a name="1329" class="Symbol"
+      >&#8704;(</a
+      ><a name="1331" href="UsingFunext.Space.YonedaLemma.html#1331" class="Bound"
+      >t</a
+      ><a name="1332"
+      > </a
+      ><a name="1333" class="Symbol"
+      >:</a
+      ><a name="1334"
+      > </a
+      ><a name="1335" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1337"
+      > </a
+      ><a name="1338" class="Symbol"
+      >&#8594;</a
+      ><a name="1339"
+      > </a
+      ><a name="1340" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1342" class="Symbol"
+      >)</a
+      ><a name="1343"
+      > </a
+      ><a name="1344" class="Symbol"
+      >&#8594;</a
+      ><a name="1345"
+      > </a
+      ><a name="1346" href="UsingFunext.Space.YonedaLemma.html#1331" class="Bound"
+      >t</a
+      ><a name="1347"
+      > </a
+      ><a name="1348" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1349"
+      > </a
+      ><a name="1350" href="UsingFunext.Space.Coverage.html#667" class="Function"
+      >C</a
+      ><a name="1351"
+      > </a
+      ><a name="1352" class="Symbol"
+      >&#8594;</a
+      ><a name="1353"
+      >
+         </a
+      ><a name="1363" class="Symbol"
+      >(&#955;</a
+      ><a name="1365"
+      > </a
+      ><a name="1366" href="UsingFunext.Space.YonedaLemma.html#1366" class="Bound"
+      >&#945;</a
+      ><a name="1367"
+      > </a
+      ><a name="1368" class="Symbol"
+      >&#8594;</a
+      ><a name="1369"
+      > </a
+      ><a name="1370" class="Symbol"
+      >(</a
+      ><a name="1371" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1374"
+      > </a
+      ><a name="1375" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1376"
+      > </a
+      ><a name="1377" href="UsingFunext.Space.YonedaLemma.html#1217" class="Function"
+      >&#966;</a
+      ><a name="1378" class="Symbol"
+      >)(</a
+      ><a name="1380" href="UsingFunext.Space.YonedaLemma.html#1331" class="Bound"
+      >t</a
+      ><a name="1381"
+      > </a
+      ><a name="1382" href="UsingFunext.Space.YonedaLemma.html#1366" class="Bound"
+      >&#945;</a
+      ><a name="1383" class="Symbol"
+      >)(</a
+      ><a name="1385" href="UsingFunext.Space.YonedaLemma.html#1306" class="Bound"
+      >p</a
+      ><a name="1386"
+      > </a
+      ><a name="1387" href="UsingFunext.Space.YonedaLemma.html#1366" class="Bound"
+      >&#945;</a
+      ><a name="1388" class="Symbol"
+      >))</a
+      ><a name="1390"
+      > </a
+      ><a name="1391" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="1392"
+      > </a
+      ><a name="1393" href="UsingFunext.Space.DiscreteSpace.html#676" class="Function"
+      >LC</a
+      ><a name="1395"
+      >
+  </a
+      ><a name="1398" href="UsingFunext.Space.YonedaLemma.html#1298" class="Function"
+      >prf</a
+      ><a name="1401"
+      > </a
+      ><a name="1402" href="UsingFunext.Space.YonedaLemma.html#1402" class="Bound"
+      >p</a
+      ><a name="1403"
+      > </a
+      ><a name="1404" href="UsingFunext.Space.YonedaLemma.html#1404" class="Bound"
+      >ucp</a
+      ><a name="1407"
+      > </a
+      ><a name="1408" href="UsingFunext.Space.YonedaLemma.html#1408" class="Bound"
+      >t</a
+      ><a name="1409"
+      > </a
+      ><a name="1410" href="UsingFunext.Space.YonedaLemma.html#1410" class="Bound"
+      >uct</a
+      ><a name="1413"
+      > </a
+      ><a name="1414" class="Symbol"
+      >=</a
+      ><a name="1415"
+      > </a
+      ><a name="1416" href="Continuity.UniformContinuity.html#9243" class="Function"
+      >Lemma[LM-&#8322;-least-modulus]</a
+      ><a name="1441"
+      > </a
+      ><a name="1442" href="UsingFunext.Space.YonedaLemma.html#1462" class="Function"
+      >q</a
+      ><a name="1443"
+      > </a
+      ><a name="1444" href="UsingFunext.Space.YonedaLemma.html#2044" class="Function"
+      >l</a
+      ><a name="1445"
+      > </a
+      ><a name="1446" href="UsingFunext.Space.YonedaLemma.html#2150" class="Function"
+      >pr</a
+      ><a name="1448"
+      >
+   </a
+      ><a name="1452" class="Keyword"
+      >where</a
+      ><a name="1457"
+      >
+    </a
+      ><a name="1462" href="UsingFunext.Space.YonedaLemma.html#1462" class="Function"
+      >q</a
+      ><a name="1463"
+      > </a
+      ><a name="1464" class="Symbol"
+      >:</a
+      ><a name="1465"
+      > </a
+      ><a name="1466" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1468"
+      > </a
+      ><a name="1469" class="Symbol"
+      >&#8594;</a
+      ><a name="1470"
+      > </a
+      ><a name="1471" href="Preliminaries.Boolean.html#249" class="Datatype"
+      >&#8322;</a
+      ><a name="1472"
+      >
+    </a
+      ><a name="1477" href="UsingFunext.Space.YonedaLemma.html#1462" class="Function"
+      >q</a
+      ><a name="1478"
+      > </a
+      ><a name="1479" href="UsingFunext.Space.YonedaLemma.html#1479" class="Bound"
+      >&#945;</a
+      ><a name="1480"
+      > </a
+      ><a name="1481" class="Symbol"
+      >=</a
+      ><a name="1482"
+      > </a
+      ><a name="1483" class="Symbol"
+      >(</a
+      ><a name="1484" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1487"
+      > </a
+      ><a name="1488" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1489"
+      > </a
+      ><a name="1490" href="UsingFunext.Space.YonedaLemma.html#1217" class="Function"
+      >&#966;</a
+      ><a name="1491" class="Symbol"
+      >)(</a
+      ><a name="1493" href="UsingFunext.Space.YonedaLemma.html#1408" class="Bound"
+      >t</a
+      ><a name="1494"
+      > </a
+      ><a name="1495" href="UsingFunext.Space.YonedaLemma.html#1479" class="Bound"
+      >&#945;</a
+      ><a name="1496" class="Symbol"
+      >)(</a
+      ><a name="1498" href="UsingFunext.Space.YonedaLemma.html#1402" class="Bound"
+      >p</a
+      ><a name="1499"
+      > </a
+      ><a name="1500" href="UsingFunext.Space.YonedaLemma.html#1479" class="Bound"
+      >&#945;</a
+      ><a name="1501" class="Symbol"
+      >)</a
+      ><a name="1502"
+      >
+    </a
+      ><a name="1507" href="UsingFunext.Space.YonedaLemma.html#1507" class="Function"
+      >m</a
+      ><a name="1508"
+      > </a
+      ><a name="1509" class="Symbol"
+      >:</a
+      ><a name="1510"
+      > </a
+      ><a name="1511" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1512"
+      >
+    </a
+      ><a name="1517" href="UsingFunext.Space.YonedaLemma.html#1507" class="Function"
+      >m</a
+      ><a name="1518"
+      > </a
+      ><a name="1519" class="Symbol"
+      >=</a
+      ><a name="1520"
+      > </a
+      ><a name="1521" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1524"
+      > </a
+      ><a name="1525" href="UsingFunext.Space.YonedaLemma.html#1404" class="Bound"
+      >ucp</a
+      ><a name="1528"
+      >
+    </a
+      ><a name="1533" href="UsingFunext.Space.YonedaLemma.html#1533" class="Function"
+      >f</a
+      ><a name="1534"
+      > </a
+      ><a name="1535" class="Symbol"
+      >:</a
+      ><a name="1536"
+      > </a
+      ><a name="1537" href="Preliminaries.Sequence.html#507" class="Datatype"
+      >&#8322;Fin</a
+      ><a name="1541"
+      > </a
+      ><a name="1542" href="UsingFunext.Space.YonedaLemma.html#1507" class="Function"
+      >m</a
+      ><a name="1543"
+      > </a
+      ><a name="1544" class="Symbol"
+      >&#8594;</a
+      ><a name="1545"
+      > </a
+      ><a name="1546" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1547"
+      >
+    </a
+      ><a name="1552" href="UsingFunext.Space.YonedaLemma.html#1533" class="Function"
+      >f</a
+      ><a name="1553"
+      > </a
+      ><a name="1554" href="UsingFunext.Space.YonedaLemma.html#1554" class="Bound"
+      >s</a
+      ><a name="1555"
+      > </a
+      ><a name="1556" class="Symbol"
+      >=</a
+      ><a name="1557"
+      > </a
+      ><a name="1558" href="UsingFunext.Space.YonedaLemma.html#1402" class="Bound"
+      >p</a
+      ><a name="1559"
+      > </a
+      ><a name="1560" class="Symbol"
+      >(</a
+      ><a name="1561" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1565"
+      > </a
+      ><a name="1566" href="UsingFunext.Space.YonedaLemma.html#1554" class="Bound"
+      >s</a
+      ><a name="1567"
+      > </a
+      ><a name="1568" href="Preliminaries.Sequence.html#384" class="Function"
+      >0&#772;</a
+      ><a name="1570" class="Symbol"
+      >)</a
+      ><a name="1571"
+      >
+    </a
+      ><a name="1576" href="UsingFunext.Space.YonedaLemma.html#1576" class="Function"
+      >eq</a
+      ><a name="1578"
+      > </a
+      ><a name="1579" class="Symbol"
+      >:</a
+      ><a name="1580"
+      > </a
+      ><a name="1581" class="Symbol"
+      >&#8704;(</a
+      ><a name="1583" href="UsingFunext.Space.YonedaLemma.html#1583" class="Bound"
+      >&#945;</a
+      ><a name="1584"
+      > </a
+      ><a name="1585" class="Symbol"
+      >:</a
+      ><a name="1586"
+      > </a
+      ><a name="1587" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1589" class="Symbol"
+      >)</a
+      ><a name="1590"
+      > </a
+      ><a name="1591" class="Symbol"
+      >&#8594;</a
+      ><a name="1592"
+      > </a
+      ><a name="1593" href="UsingFunext.Space.YonedaLemma.html#1402" class="Bound"
+      >p</a
+      ><a name="1594"
+      > </a
+      ><a name="1595" href="UsingFunext.Space.YonedaLemma.html#1583" class="Bound"
+      >&#945;</a
+      ><a name="1596"
+      > </a
+      ><a name="1597" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1598"
+      > </a
+      ><a name="1599" href="UsingFunext.Space.YonedaLemma.html#1533" class="Function"
+      >f</a
+      ><a name="1600"
+      > </a
+      ><a name="1601" class="Symbol"
+      >(</a
+      ><a name="1602" href="Preliminaries.Sequence.html#1121" class="Function"
+      >take</a
+      ><a name="1606"
+      > </a
+      ><a name="1607" href="UsingFunext.Space.YonedaLemma.html#1507" class="Function"
+      >m</a
+      ><a name="1608"
+      > </a
+      ><a name="1609" href="UsingFunext.Space.YonedaLemma.html#1583" class="Bound"
+      >&#945;</a
+      ><a name="1610" class="Symbol"
+      >)</a
+      ><a name="1611"
+      >
+    </a
+      ><a name="1616" href="UsingFunext.Space.YonedaLemma.html#1576" class="Function"
+      >eq</a
+      ><a name="1618"
+      > </a
+      ><a name="1619" href="UsingFunext.Space.YonedaLemma.html#1619" class="Bound"
+      >&#945;</a
+      ><a name="1620"
+      > </a
+      ><a name="1621" class="Symbol"
+      >=</a
+      ><a name="1622"
+      > </a
+      ><a name="1623" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1626"
+      > </a
+      ><a name="1627" class="Symbol"
+      >(</a
+      ><a name="1628" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="1631"
+      > </a
+      ><a name="1632" href="UsingFunext.Space.YonedaLemma.html#1404" class="Bound"
+      >ucp</a
+      ><a name="1635" class="Symbol"
+      >)</a
+      ><a name="1636"
+      > </a
+      ><a name="1637" href="UsingFunext.Space.YonedaLemma.html#1619" class="Bound"
+      >&#945;</a
+      ><a name="1638"
+      > </a
+      ><a name="1639" class="Symbol"
+      >(</a
+      ><a name="1640" href="Preliminaries.Sequence.html#7016" class="Function"
+      >cons</a
+      ><a name="1644"
+      > </a
+      ><a name="1645" class="Symbol"
+      >(</a
+      ><a name="1646" href="Preliminaries.Sequence.html#1121" class="Function"
+      >take</a
+      ><a name="1650"
+      > </a
+      ><a name="1651" href="UsingFunext.Space.YonedaLemma.html#1507" class="Function"
+      >m</a
+      ><a name="1652"
+      > </a
+      ><a name="1653" href="UsingFunext.Space.YonedaLemma.html#1619" class="Bound"
+      >&#945;</a
+      ><a name="1654" class="Symbol"
+      >)</a
+      ><a name="1655"
+      > </a
+      ><a name="1656" href="Preliminaries.Sequence.html#384" class="Function"
+      >0&#772;</a
+      ><a name="1658" class="Symbol"
+      >)</a
+      ><a name="1659"
+      > </a
+      ><a name="1660" class="Symbol"
+      >(</a
+      ><a name="1661" href="Preliminaries.Sequence.html#8142" class="Function"
+      >Lemma[cons-take-&#8801;[]]</a
+      ><a name="1681"
+      > </a
+      ><a name="1682" href="UsingFunext.Space.YonedaLemma.html#1507" class="Function"
+      >m</a
+      ><a name="1683"
+      > </a
+      ><a name="1684" href="UsingFunext.Space.YonedaLemma.html#1619" class="Bound"
+      >&#945;</a
+      ><a name="1685"
+      > </a
+      ><a name="1686" href="Preliminaries.Sequence.html#384" class="Function"
+      >0&#772;</a
+      ><a name="1688" class="Symbol"
+      >)</a
+      ><a name="1689"
+      >
+    </a
+      ><a name="1694" href="UsingFunext.Space.YonedaLemma.html#1694" class="Function"
+      >k'</a
+      ><a name="1696"
+      > </a
+      ><a name="1697" class="Symbol"
+      >:</a
+      ><a name="1698"
+      > </a
+      ><a name="1699" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1700"
+      >
+    </a
+      ><a name="1705" href="UsingFunext.Space.YonedaLemma.html#1694" class="Function"
+      >k'</a
+      ><a name="1707"
+      > </a
+      ><a name="1708" class="Symbol"
+      >=</a
+      ><a name="1709"
+      > </a
+      ><a name="1710" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="1713"
+      > </a
+      ><a name="1714" class="Symbol"
+      >(</a
+      ><a name="1715" href="Preliminaries.Sequence.html#1783" class="Function"
+      >max-fin</a
+      ><a name="1722"
+      > </a
+      ><a name="1723" href="UsingFunext.Space.YonedaLemma.html#1533" class="Function"
+      >f</a
+      ><a name="1724" class="Symbol"
+      >)</a
+      ><a name="1725"
+      >
+    </a
+      ><a name="1730" href="UsingFunext.Space.YonedaLemma.html#1730" class="Function"
+      >k'-max</a
+      ><a name="1736"
+      > </a
+      ><a name="1737" class="Symbol"
+      >:</a
+      ><a name="1738"
+      > </a
+      ><a name="1739" class="Symbol"
+      >&#8704;(</a
+      ><a name="1741" href="UsingFunext.Space.YonedaLemma.html#1741" class="Bound"
+      >&#945;</a
+      ><a name="1742"
+      > </a
+      ><a name="1743" class="Symbol"
+      >:</a
+      ><a name="1744"
+      > </a
+      ><a name="1745" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1747" class="Symbol"
+      >)</a
+      ><a name="1748"
+      > </a
+      ><a name="1749" class="Symbol"
+      >&#8594;</a
+      ><a name="1750"
+      > </a
+      ><a name="1751" href="UsingFunext.Space.YonedaLemma.html#1402" class="Bound"
+      >p</a
+      ><a name="1752"
+      > </a
+      ><a name="1753" href="UsingFunext.Space.YonedaLemma.html#1741" class="Bound"
+      >&#945;</a
+      ><a name="1754"
+      > </a
+      ><a name="1755" href="Preliminaries.NaturalNumber.html#1766" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="1756"
+      > </a
+      ><a name="1757" href="UsingFunext.Space.YonedaLemma.html#1694" class="Function"
+      >k'</a
+      ><a name="1759"
+      >
+    </a
+      ><a name="1764" href="UsingFunext.Space.YonedaLemma.html#1730" class="Function"
+      >k'-max</a
+      ><a name="1770"
+      > </a
+      ><a name="1771" href="UsingFunext.Space.YonedaLemma.html#1771" class="Bound"
+      >&#945;</a
+      ><a name="1772"
+      > </a
+      ><a name="1773" class="Symbol"
+      >=</a
+      ><a name="1774"
+      > </a
+      ><a name="1775" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="1784"
+      > </a
+      ><a name="1785" class="Symbol"
+      >(&#955;</a
+      ><a name="1787"
+      > </a
+      ><a name="1788" href="UsingFunext.Space.YonedaLemma.html#1788" class="Bound"
+      >i</a
+      ><a name="1789"
+      > </a
+      ><a name="1790" class="Symbol"
+      >&#8594;</a
+      ><a name="1791"
+      > </a
+      ><a name="1792" href="UsingFunext.Space.YonedaLemma.html#1788" class="Bound"
+      >i</a
+      ><a name="1793"
+      > </a
+      ><a name="1794" href="Preliminaries.NaturalNumber.html#1766" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="1795"
+      > </a
+      ><a name="1796" href="UsingFunext.Space.YonedaLemma.html#1694" class="Function"
+      >k'</a
+      ><a name="1798" class="Symbol"
+      >)</a
+      ><a name="1799"
+      > </a
+      ><a name="1800" class="Symbol"
+      >((</a
+      ><a name="1802" href="UsingFunext.Space.YonedaLemma.html#1576" class="Function"
+      >eq</a
+      ><a name="1804"
+      > </a
+      ><a name="1805" href="UsingFunext.Space.YonedaLemma.html#1771" class="Bound"
+      >&#945;</a
+      ><a name="1806" class="Symbol"
+      >)</a
+      ><a name="1807"
+      > </a
+      ><a name="1808" href="Preliminaries.SetsAndFunctions.html#1390" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="1810" class="Symbol"
+      >)</a
+      ><a name="1811"
+      > </a
+      ><a name="1812" class="Symbol"
+      >(</a
+      ><a name="1813" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="1816"
+      > </a
+      ><a name="1817" class="Symbol"
+      >(</a
+      ><a name="1818" href="Preliminaries.Sequence.html#1783" class="Function"
+      >max-fin</a
+      ><a name="1825"
+      > </a
+      ><a name="1826" href="UsingFunext.Space.YonedaLemma.html#1533" class="Function"
+      >f</a
+      ><a name="1827" class="Symbol"
+      >)</a
+      ><a name="1828"
+      > </a
+      ><a name="1829" class="Symbol"
+      >(</a
+      ><a name="1830" href="Preliminaries.Sequence.html#1121" class="Function"
+      >take</a
+      ><a name="1834"
+      > </a
+      ><a name="1835" href="UsingFunext.Space.YonedaLemma.html#1507" class="Function"
+      >m</a
+      ><a name="1836"
+      > </a
+      ><a name="1837" href="UsingFunext.Space.YonedaLemma.html#1771" class="Bound"
+      >&#945;</a
+      ><a name="1838" class="Symbol"
+      >))</a
+      ><a name="1840"
+      >
+    </a
+      ><a name="1845" href="UsingFunext.Space.YonedaLemma.html#1845" class="Function"
+      >k</a
+      ><a name="1846"
+      > </a
+      ><a name="1847" class="Symbol"
+      >:</a
+      ><a name="1848"
+      > </a
+      ><a name="1849" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="1850"
+      >
+    </a
+      ><a name="1855" href="UsingFunext.Space.YonedaLemma.html#1845" class="Function"
+      >k</a
+      ><a name="1856"
+      > </a
+      ><a name="1857" class="Symbol"
+      >=</a
+      ><a name="1858"
+      > </a
+      ><a name="1859" href="Preliminaries.NaturalNumber.html#311" class="InductiveConstructor"
+      >succ</a
+      ><a name="1863"
+      > </a
+      ><a name="1864" href="UsingFunext.Space.YonedaLemma.html#1694" class="Function"
+      >k'</a
+      ><a name="1866"
+      >
+    </a
+      ><a name="1871" href="UsingFunext.Space.YonedaLemma.html#1871" class="Function"
+      >k-max</a
+      ><a name="1876"
+      > </a
+      ><a name="1877" class="Symbol"
+      >:</a
+      ><a name="1878"
+      > </a
+      ><a name="1879" class="Symbol"
+      >&#8704;(</a
+      ><a name="1881" href="UsingFunext.Space.YonedaLemma.html#1881" class="Bound"
+      >&#945;</a
+      ><a name="1882"
+      > </a
+      ><a name="1883" class="Symbol"
+      >:</a
+      ><a name="1884"
+      > </a
+      ><a name="1885" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="1887" class="Symbol"
+      >)</a
+      ><a name="1888"
+      > </a
+      ><a name="1889" class="Symbol"
+      >&#8594;</a
+      ><a name="1890"
+      > </a
+      ><a name="1891" href="UsingFunext.Space.YonedaLemma.html#1402" class="Bound"
+      >p</a
+      ><a name="1892"
+      > </a
+      ><a name="1893" href="UsingFunext.Space.YonedaLemma.html#1881" class="Bound"
+      >&#945;</a
+      ><a name="1894"
+      > </a
+      ><a name="1895" href="Preliminaries.NaturalNumber.html#1865" class="Function Operator"
+      >&lt;</a
+      ><a name="1896"
+      > </a
+      ><a name="1897" href="UsingFunext.Space.YonedaLemma.html#1845" class="Function"
+      >k</a
+      ><a name="1898"
+      >
+    </a
+      ><a name="1903" href="UsingFunext.Space.YonedaLemma.html#1871" class="Function"
+      >k-max</a
+      ><a name="1908"
+      > </a
+      ><a name="1909" href="UsingFunext.Space.YonedaLemma.html#1909" class="Bound"
+      >&#945;</a
+      ><a name="1910"
+      > </a
+      ><a name="1911" class="Symbol"
+      >=</a
+      ><a name="1912"
+      > </a
+      ><a name="1913" href="Preliminaries.NaturalNumber.html#1818" class="InductiveConstructor"
+      >&#8804;-succ</a
+      ><a name="1919"
+      > </a
+      ><a name="1920" class="Symbol"
+      >(</a
+      ><a name="1921" href="UsingFunext.Space.YonedaLemma.html#1730" class="Function"
+      >k'-max</a
+      ><a name="1927"
+      > </a
+      ><a name="1928" href="UsingFunext.Space.YonedaLemma.html#1909" class="Bound"
+      >&#945;</a
+      ><a name="1929" class="Symbol"
+      >)</a
+      ><a name="1930"
+      >
+    </a
+      ><a name="1935" href="UsingFunext.Space.YonedaLemma.html#1935" class="Function"
+      >ucrt</a
+      ><a name="1939"
+      > </a
+      ><a name="1940" class="Symbol"
+      >:</a
+      ><a name="1941"
+      > </a
+      ><a name="1942" href="Continuity.UniformContinuity.html#592" class="Function"
+      >uniformly-continuous-&#8322;&#8469;</a
+      ><a name="1965"
+      > </a
+      ><a name="1966" class="Symbol"
+      >(</a
+      ><a name="1967" href="UsingFunext.Space.YonedaLemma.html#1192" class="Bound"
+      >r</a
+      ><a name="1968"
+      > </a
+      ><a name="1969" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1970"
+      > </a
+      ><a name="1971" href="UsingFunext.Space.YonedaLemma.html#1408" class="Bound"
+      >t</a
+      ><a name="1972" class="Symbol"
+      >)</a
+      ><a name="1973"
+      >
+    </a
+      ><a name="1978" href="UsingFunext.Space.YonedaLemma.html#1935" class="Function"
+      >ucrt</a
+      ><a name="1982"
+      > </a
+      ><a name="1983" class="Symbol"
+      >=</a
+      ><a name="1984"
+      > </a
+      ><a name="1985" href="Continuity.UniformContinuity.html#10300" class="Function"
+      >Lemma[&#8728;-UC]</a
+      ><a name="1996"
+      > </a
+      ><a name="1997" href="UsingFunext.Space.YonedaLemma.html#1192" class="Bound"
+      >r</a
+      ><a name="1998"
+      > </a
+      ><a name="1999" href="UsingFunext.Space.YonedaLemma.html#1194" class="Bound"
+      >ucr</a
+      ><a name="2002"
+      > </a
+      ><a name="2003" href="UsingFunext.Space.YonedaLemma.html#1408" class="Bound"
+      >t</a
+      ><a name="2004"
+      > </a
+      ><a name="2005" href="UsingFunext.Space.YonedaLemma.html#1410" class="Bound"
+      >uct</a
+      ><a name="2008"
+      >
+    </a
+      ><a name="2013" href="UsingFunext.Space.YonedaLemma.html#2013" class="Function"
+      >n</a
+      ><a name="2014"
+      > </a
+      ><a name="2015" class="Symbol"
+      >:</a
+      ><a name="2016"
+      > </a
+      ><a name="2017" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="2018"
+      >
+    </a
+      ><a name="2023" href="UsingFunext.Space.YonedaLemma.html#2013" class="Function"
+      >n</a
+      ><a name="2024"
+      > </a
+      ><a name="2025" class="Symbol"
+      >=</a
+      ><a name="2026"
+      > </a
+      ><a name="2027" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="2030"
+      > </a
+      ><a name="2031" class="Symbol"
+      >(</a
+      ><a name="2032" href="UsingFunext.Space.YonedaLemma.html#1935" class="Function"
+      >ucrt</a
+      ><a name="2036"
+      > </a
+      ><a name="2037" href="UsingFunext.Space.YonedaLemma.html#1845" class="Function"
+      >k</a
+      ><a name="2038" class="Symbol"
+      >)</a
+      ><a name="2039"
+      >
+    </a
+      ><a name="2044" href="UsingFunext.Space.YonedaLemma.html#2044" class="Function"
+      >l</a
+      ><a name="2045"
+      > </a
+      ><a name="2046" class="Symbol"
+      >:</a
+      ><a name="2047"
+      > </a
+      ><a name="2048" href="Preliminaries.NaturalNumber.html#283" class="Datatype"
+      >&#8469;</a
+      ><a name="2049"
+      >
+    </a
+      ><a name="2054" href="UsingFunext.Space.YonedaLemma.html#2044" class="Function"
+      >l</a
+      ><a name="2055"
+      > </a
+      ><a name="2056" class="Symbol"
+      >=</a
+      ><a name="2057"
+      > </a
+      ><a name="2058" href="Preliminaries.NaturalNumber.html#5761" class="Function"
+      >max</a
+      ><a name="2061"
+      > </a
+      ><a name="2062" href="UsingFunext.Space.YonedaLemma.html#1507" class="Function"
+      >m</a
+      ><a name="2063"
+      > </a
+      ><a name="2064" href="UsingFunext.Space.YonedaLemma.html#2013" class="Function"
+      >n</a
+      ><a name="2065"
+      >
+    </a
+      ><a name="2070" href="UsingFunext.Space.YonedaLemma.html#2070" class="Function"
+      >m&#8804;l</a
+      ><a name="2073"
+      > </a
+      ><a name="2074" class="Symbol"
+      >:</a
+      ><a name="2075"
+      > </a
+      ><a name="2076" href="UsingFunext.Space.YonedaLemma.html#1507" class="Function"
+      >m</a
+      ><a name="2077"
+      > </a
+      ><a name="2078" href="Preliminaries.NaturalNumber.html#1766" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="2079"
+      > </a
+      ><a name="2080" href="UsingFunext.Space.YonedaLemma.html#2044" class="Function"
+      >l</a
+      ><a name="2081"
+      >
+    </a
+      ><a name="2086" href="UsingFunext.Space.YonedaLemma.html#2070" class="Function"
+      >m&#8804;l</a
+      ><a name="2089"
+      > </a
+      ><a name="2090" class="Symbol"
+      >=</a
+      ><a name="2091"
+      > </a
+      ><a name="2092" href="Preliminaries.NaturalNumber.html#5841" class="Function"
+      >max-spec&#8320;</a
+      ><a name="2101"
+      > </a
+      ><a name="2102" href="UsingFunext.Space.YonedaLemma.html#1507" class="Function"
+      >m</a
+      ><a name="2103"
+      > </a
+      ><a name="2104" href="UsingFunext.Space.YonedaLemma.html#2013" class="Function"
+      >n</a
+      ><a name="2105"
+      >
+    </a
+      ><a name="2110" href="UsingFunext.Space.YonedaLemma.html#2110" class="Function"
+      >n&#8804;l</a
+      ><a name="2113"
+      > </a
+      ><a name="2114" class="Symbol"
+      >:</a
+      ><a name="2115"
+      > </a
+      ><a name="2116" href="UsingFunext.Space.YonedaLemma.html#2013" class="Function"
+      >n</a
+      ><a name="2117"
+      > </a
+      ><a name="2118" href="Preliminaries.NaturalNumber.html#1766" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="2119"
+      > </a
+      ><a name="2120" href="UsingFunext.Space.YonedaLemma.html#2044" class="Function"
+      >l</a
+      ><a name="2121"
+      >
+    </a
+      ><a name="2126" href="UsingFunext.Space.YonedaLemma.html#2110" class="Function"
+      >n&#8804;l</a
+      ><a name="2129"
+      > </a
+      ><a name="2130" class="Symbol"
+      >=</a
+      ><a name="2131"
+      > </a
+      ><a name="2132" href="Preliminaries.NaturalNumber.html#6005" class="Function"
+      >max-spec&#8321;</a
+      ><a name="2141"
+      > </a
+      ><a name="2142" href="UsingFunext.Space.YonedaLemma.html#1507" class="Function"
+      >m</a
+      ><a name="2143"
+      > </a
+      ><a name="2144" href="UsingFunext.Space.YonedaLemma.html#2013" class="Function"
+      >n</a
+      ><a name="2145"
+      >
+    </a
+      ><a name="2150" href="UsingFunext.Space.YonedaLemma.html#2150" class="Function"
+      >pr</a
+      ><a name="2152"
+      > </a
+      ><a name="2153" class="Symbol"
+      >:</a
+      ><a name="2154"
+      > </a
+      ><a name="2155" class="Symbol"
+      >&#8704;(</a
+      ><a name="2157" href="UsingFunext.Space.YonedaLemma.html#2157" class="Bound"
+      >&#945;</a
+      ><a name="2158"
+      > </a
+      ><a name="2159" href="UsingFunext.Space.YonedaLemma.html#2159" class="Bound"
+      >&#946;</a
+      ><a name="2160"
+      > </a
+      ><a name="2161" class="Symbol"
+      >:</a
+      ><a name="2162"
+      > </a
+      ><a name="2163" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="2165" class="Symbol"
+      >)</a
+      ><a name="2166"
+      > </a
+      ><a name="2167" class="Symbol"
+      >&#8594;</a
+      ><a name="2168"
+      > </a
+      ><a name="2169" href="UsingFunext.Space.YonedaLemma.html#2157" class="Bound"
+      >&#945;</a
+      ><a name="2170"
+      > </a
+      ><a name="2171" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="2173"
+      > </a
+      ><a name="2174" href="UsingFunext.Space.YonedaLemma.html#2044" class="Function"
+      >l</a
+      ><a name="2175"
+      > </a
+      ><a name="2176" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="2177"
+      > </a
+      ><a name="2178" href="UsingFunext.Space.YonedaLemma.html#2159" class="Bound"
+      >&#946;</a
+      ><a name="2179"
+      > </a
+      ><a name="2180" class="Symbol"
+      >&#8594;</a
+      ><a name="2181"
+      > </a
+      ><a name="2182" href="UsingFunext.Space.YonedaLemma.html#1192" class="Bound"
+      >r</a
+      ><a name="2183" class="Symbol"
+      >(</a
+      ><a name="2184" href="UsingFunext.Space.YonedaLemma.html#1408" class="Bound"
+      >t</a
+      ><a name="2185"
+      > </a
+      ><a name="2186" href="UsingFunext.Space.YonedaLemma.html#2157" class="Bound"
+      >&#945;</a
+      ><a name="2187" class="Symbol"
+      >)(</a
+      ><a name="2189" href="UsingFunext.Space.YonedaLemma.html#1402" class="Bound"
+      >p</a
+      ><a name="2190"
+      > </a
+      ><a name="2191" href="UsingFunext.Space.YonedaLemma.html#2157" class="Bound"
+      >&#945;</a
+      ><a name="2192" class="Symbol"
+      >)</a
+      ><a name="2193"
+      > </a
+      ><a name="2194" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2195"
+      > </a
+      ><a name="2196" href="UsingFunext.Space.YonedaLemma.html#1192" class="Bound"
+      >r</a
+      ><a name="2197" class="Symbol"
+      >(</a
+      ><a name="2198" href="UsingFunext.Space.YonedaLemma.html#1408" class="Bound"
+      >t</a
+      ><a name="2199"
+      > </a
+      ><a name="2200" href="UsingFunext.Space.YonedaLemma.html#2159" class="Bound"
+      >&#946;</a
+      ><a name="2201" class="Symbol"
+      >)(</a
+      ><a name="2203" href="UsingFunext.Space.YonedaLemma.html#1402" class="Bound"
+      >p</a
+      ><a name="2204"
+      > </a
+      ><a name="2205" href="UsingFunext.Space.YonedaLemma.html#2159" class="Bound"
+      >&#946;</a
+      ><a name="2206" class="Symbol"
+      >)</a
+      ><a name="2207"
+      >
+    </a
+      ><a name="2212" href="UsingFunext.Space.YonedaLemma.html#2150" class="Function"
+      >pr</a
+      ><a name="2214"
+      > </a
+      ><a name="2215" href="UsingFunext.Space.YonedaLemma.html#2215" class="Bound"
+      >&#945;</a
+      ><a name="2216"
+      > </a
+      ><a name="2217" href="UsingFunext.Space.YonedaLemma.html#2217" class="Bound"
+      >&#946;</a
+      ><a name="2218"
+      > </a
+      ><a name="2219" href="UsingFunext.Space.YonedaLemma.html#2219" class="Bound"
+      >awl</a
+      ><a name="2222"
+      > </a
+      ><a name="2223" class="Symbol"
+      >=</a
+      ><a name="2224"
+      > </a
+      ><a name="2225" href="Preliminaries.SetsAndFunctions.html#1550" class="Function"
+      >transport</a
+      ><a name="2234"
+      > </a
+      ><a name="2235" class="Symbol"
+      >(&#955;</a
+      ><a name="2237"
+      > </a
+      ><a name="2238" href="UsingFunext.Space.YonedaLemma.html#2238" class="Bound"
+      >i</a
+      ><a name="2239"
+      > </a
+      ><a name="2240" class="Symbol"
+      >&#8594;</a
+      ><a name="2241"
+      > </a
+      ><a name="2242" href="UsingFunext.Space.YonedaLemma.html#1192" class="Bound"
+      >r</a
+      ><a name="2243" class="Symbol"
+      >(</a
+      ><a name="2244" href="UsingFunext.Space.YonedaLemma.html#1408" class="Bound"
+      >t</a
+      ><a name="2245"
+      > </a
+      ><a name="2246" href="UsingFunext.Space.YonedaLemma.html#2215" class="Bound"
+      >&#945;</a
+      ><a name="2247" class="Symbol"
+      >)(</a
+      ><a name="2249" href="UsingFunext.Space.YonedaLemma.html#1402" class="Bound"
+      >p</a
+      ><a name="2250"
+      > </a
+      ><a name="2251" href="UsingFunext.Space.YonedaLemma.html#2215" class="Bound"
+      >&#945;</a
+      ><a name="2252" class="Symbol"
+      >)</a
+      ><a name="2253"
+      > </a
+      ><a name="2254" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2255"
+      > </a
+      ><a name="2256" href="UsingFunext.Space.YonedaLemma.html#1192" class="Bound"
+      >r</a
+      ><a name="2257" class="Symbol"
+      >(</a
+      ><a name="2258" href="UsingFunext.Space.YonedaLemma.html#1408" class="Bound"
+      >t</a
+      ><a name="2259"
+      > </a
+      ><a name="2260" href="UsingFunext.Space.YonedaLemma.html#2217" class="Bound"
+      >&#946;</a
+      ><a name="2261" class="Symbol"
+      >)</a
+      ><a name="2262"
+      > </a
+      ><a name="2263" href="UsingFunext.Space.YonedaLemma.html#2238" class="Bound"
+      >i</a
+      ><a name="2264" class="Symbol"
+      >)</a
+      ><a name="2265"
+      > </a
+      ><a name="2266" href="UsingFunext.Space.YonedaLemma.html#2351" class="Function"
+      >eqp</a
+      ><a name="2269"
+      > </a
+      ><a name="2270" href="UsingFunext.Space.YonedaLemma.html#2537" class="Function"
+      >subgoal</a
+      ><a name="2277"
+      >
+     </a
+      ><a name="2283" class="Keyword"
+      >where</a
+      ><a name="2288"
+      >
+      </a
+      ><a name="2295" href="UsingFunext.Space.YonedaLemma.html#2295" class="Function"
+      >awm</a
+      ><a name="2298"
+      > </a
+      ><a name="2299" class="Symbol"
+      >:</a
+      ><a name="2300"
+      > </a
+      ><a name="2301" href="UsingFunext.Space.YonedaLemma.html#2215" class="Bound"
+      >&#945;</a
+      ><a name="2302"
+      > </a
+      ><a name="2303" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="2305"
+      > </a
+      ><a name="2306" href="UsingFunext.Space.YonedaLemma.html#1507" class="Function"
+      >m</a
+      ><a name="2307"
+      > </a
+      ><a name="2308" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="2309"
+      > </a
+      ><a name="2310" href="UsingFunext.Space.YonedaLemma.html#2217" class="Bound"
+      >&#946;</a
+      ><a name="2311"
+      >
+      </a
+      ><a name="2318" href="UsingFunext.Space.YonedaLemma.html#2295" class="Function"
+      >awm</a
+      ><a name="2321"
+      > </a
+      ><a name="2322" class="Symbol"
+      >=</a
+      ><a name="2323"
+      > </a
+      ><a name="2324" href="Preliminaries.Sequence.html#5781" class="Function"
+      >Lemma[&#8801;[]-&#8804;]</a
+      ><a name="2336"
+      > </a
+      ><a name="2337" href="UsingFunext.Space.YonedaLemma.html#2219" class="Bound"
+      >awl</a
+      ><a name="2340"
+      > </a
+      ><a name="2341" href="UsingFunext.Space.YonedaLemma.html#2070" class="Function"
+      >m&#8804;l</a
+      ><a name="2344"
+      >
+      </a
+      ><a name="2351" href="UsingFunext.Space.YonedaLemma.html#2351" class="Function"
+      >eqp</a
+      ><a name="2354"
+      > </a
+      ><a name="2355" class="Symbol"
+      >:</a
+      ><a name="2356"
+      > </a
+      ><a name="2357" href="UsingFunext.Space.YonedaLemma.html#1402" class="Bound"
+      >p</a
+      ><a name="2358"
+      > </a
+      ><a name="2359" href="UsingFunext.Space.YonedaLemma.html#2215" class="Bound"
+      >&#945;</a
+      ><a name="2360"
+      > </a
+      ><a name="2361" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2362"
+      > </a
+      ><a name="2363" href="UsingFunext.Space.YonedaLemma.html#1402" class="Bound"
+      >p</a
+      ><a name="2364"
+      > </a
+      ><a name="2365" href="UsingFunext.Space.YonedaLemma.html#2217" class="Bound"
+      >&#946;</a
+      ><a name="2366"
+      >
+      </a
+      ><a name="2373" href="UsingFunext.Space.YonedaLemma.html#2351" class="Function"
+      >eqp</a
+      ><a name="2376"
+      > </a
+      ><a name="2377" class="Symbol"
+      >=</a
+      ><a name="2378"
+      > </a
+      ><a name="2379" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="2382"
+      > </a
+      ><a name="2383" class="Symbol"
+      >(</a
+      ><a name="2384" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="2387"
+      > </a
+      ><a name="2388" href="UsingFunext.Space.YonedaLemma.html#1404" class="Bound"
+      >ucp</a
+      ><a name="2391" class="Symbol"
+      >)</a
+      ><a name="2392"
+      > </a
+      ><a name="2393" href="UsingFunext.Space.YonedaLemma.html#2215" class="Bound"
+      >&#945;</a
+      ><a name="2394"
+      > </a
+      ><a name="2395" href="UsingFunext.Space.YonedaLemma.html#2217" class="Bound"
+      >&#946;</a
+      ><a name="2396"
+      > </a
+      ><a name="2397" href="UsingFunext.Space.YonedaLemma.html#2295" class="Function"
+      >awm</a
+      ><a name="2400"
+      >
+      </a
+      ><a name="2407" href="UsingFunext.Space.YonedaLemma.html#2407" class="Function"
+      >awn</a
+      ><a name="2410"
+      > </a
+      ><a name="2411" class="Symbol"
+      >:</a
+      ><a name="2412"
+      > </a
+      ><a name="2413" href="UsingFunext.Space.YonedaLemma.html#2215" class="Bound"
+      >&#945;</a
+      ><a name="2414"
+      > </a
+      ><a name="2415" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="2417"
+      > </a
+      ><a name="2418" href="UsingFunext.Space.YonedaLemma.html#2013" class="Function"
+      >n</a
+      ><a name="2419"
+      > </a
+      ><a name="2420" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="2421"
+      > </a
+      ><a name="2422" href="UsingFunext.Space.YonedaLemma.html#2217" class="Bound"
+      >&#946;</a
+      ><a name="2423"
+      >
+      </a
+      ><a name="2430" href="UsingFunext.Space.YonedaLemma.html#2407" class="Function"
+      >awn</a
+      ><a name="2433"
+      > </a
+      ><a name="2434" class="Symbol"
+      >=</a
+      ><a name="2435"
+      > </a
+      ><a name="2436" href="Preliminaries.Sequence.html#5781" class="Function"
+      >Lemma[&#8801;[]-&#8804;]</a
+      ><a name="2448"
+      > </a
+      ><a name="2449" href="UsingFunext.Space.YonedaLemma.html#2219" class="Bound"
+      >awl</a
+      ><a name="2452"
+      > </a
+      ><a name="2453" href="UsingFunext.Space.YonedaLemma.html#2110" class="Function"
+      >n&#8804;l</a
+      ><a name="2456"
+      >
+      </a
+      ><a name="2463" href="UsingFunext.Space.YonedaLemma.html#2463" class="Function"
+      >awk</a
+      ><a name="2466"
+      > </a
+      ><a name="2467" class="Symbol"
+      >:</a
+      ><a name="2468"
+      > </a
+      ><a name="2469" href="UsingFunext.Space.YonedaLemma.html#1192" class="Bound"
+      >r</a
+      ><a name="2470"
+      > </a
+      ><a name="2471" class="Symbol"
+      >(</a
+      ><a name="2472" href="UsingFunext.Space.YonedaLemma.html#1408" class="Bound"
+      >t</a
+      ><a name="2473"
+      > </a
+      ><a name="2474" href="UsingFunext.Space.YonedaLemma.html#2215" class="Bound"
+      >&#945;</a
+      ><a name="2475" class="Symbol"
+      >)</a
+      ><a name="2476"
+      > </a
+      ><a name="2477" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >&#8801;[</a
+      ><a name="2479"
+      > </a
+      ><a name="2480" href="UsingFunext.Space.YonedaLemma.html#1845" class="Function"
+      >k</a
+      ><a name="2481"
+      > </a
+      ><a name="2482" href="Preliminaries.Sequence.html#3106" class="Datatype Operator"
+      >]</a
+      ><a name="2483"
+      > </a
+      ><a name="2484" href="UsingFunext.Space.YonedaLemma.html#1192" class="Bound"
+      >r</a
+      ><a name="2485"
+      > </a
+      ><a name="2486" class="Symbol"
+      >(</a
+      ><a name="2487" href="UsingFunext.Space.YonedaLemma.html#1408" class="Bound"
+      >t</a
+      ><a name="2488"
+      > </a
+      ><a name="2489" href="UsingFunext.Space.YonedaLemma.html#2217" class="Bound"
+      >&#946;</a
+      ><a name="2490" class="Symbol"
+      >)</a
+      ><a name="2491"
+      >
+      </a
+      ><a name="2498" href="UsingFunext.Space.YonedaLemma.html#2463" class="Function"
+      >awk</a
+      ><a name="2501"
+      > </a
+      ><a name="2502" class="Symbol"
+      >=</a
+      ><a name="2503"
+      > </a
+      ><a name="2504" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="2507"
+      > </a
+      ><a name="2508" class="Symbol"
+      >(</a
+      ><a name="2509" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="2512"
+      > </a
+      ><a name="2513" class="Symbol"
+      >(</a
+      ><a name="2514" href="UsingFunext.Space.YonedaLemma.html#1935" class="Function"
+      >ucrt</a
+      ><a name="2518"
+      > </a
+      ><a name="2519" href="UsingFunext.Space.YonedaLemma.html#1845" class="Function"
+      >k</a
+      ><a name="2520" class="Symbol"
+      >))</a
+      ><a name="2522"
+      > </a
+      ><a name="2523" href="UsingFunext.Space.YonedaLemma.html#2215" class="Bound"
+      >&#945;</a
+      ><a name="2524"
+      > </a
+      ><a name="2525" href="UsingFunext.Space.YonedaLemma.html#2217" class="Bound"
+      >&#946;</a
+      ><a name="2526"
+      > </a
+      ><a name="2527" href="UsingFunext.Space.YonedaLemma.html#2407" class="Function"
+      >awn</a
+      ><a name="2530"
+      >
+      </a
+      ><a name="2537" href="UsingFunext.Space.YonedaLemma.html#2537" class="Function"
+      >subgoal</a
+      ><a name="2544"
+      > </a
+      ><a name="2545" class="Symbol"
+      >:</a
+      ><a name="2546"
+      > </a
+      ><a name="2547" href="UsingFunext.Space.YonedaLemma.html#1192" class="Bound"
+      >r</a
+      ><a name="2548" class="Symbol"
+      >(</a
+      ><a name="2549" href="UsingFunext.Space.YonedaLemma.html#1408" class="Bound"
+      >t</a
+      ><a name="2550"
+      > </a
+      ><a name="2551" href="UsingFunext.Space.YonedaLemma.html#2215" class="Bound"
+      >&#945;</a
+      ><a name="2552" class="Symbol"
+      >)(</a
+      ><a name="2554" href="UsingFunext.Space.YonedaLemma.html#1402" class="Bound"
+      >p</a
+      ><a name="2555"
+      > </a
+      ><a name="2556" href="UsingFunext.Space.YonedaLemma.html#2215" class="Bound"
+      >&#945;</a
+      ><a name="2557" class="Symbol"
+      >)</a
+      ><a name="2558"
+      > </a
+      ><a name="2559" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2560"
+      > </a
+      ><a name="2561" href="UsingFunext.Space.YonedaLemma.html#1192" class="Bound"
+      >r</a
+      ><a name="2562" class="Symbol"
+      >(</a
+      ><a name="2563" href="UsingFunext.Space.YonedaLemma.html#1408" class="Bound"
+      >t</a
+      ><a name="2564"
+      > </a
+      ><a name="2565" href="UsingFunext.Space.YonedaLemma.html#2217" class="Bound"
+      >&#946;</a
+      ><a name="2566" class="Symbol"
+      >)(</a
+      ><a name="2568" href="UsingFunext.Space.YonedaLemma.html#1402" class="Bound"
+      >p</a
+      ><a name="2569"
+      > </a
+      ><a name="2570" href="UsingFunext.Space.YonedaLemma.html#2215" class="Bound"
+      >&#945;</a
+      ><a name="2571" class="Symbol"
+      >)</a
+      ><a name="2572"
+      >
+      </a
+      ><a name="2579" href="UsingFunext.Space.YonedaLemma.html#2537" class="Function"
+      >subgoal</a
+      ><a name="2586"
+      > </a
+      ><a name="2587" class="Symbol"
+      >=</a
+      ><a name="2588"
+      > </a
+      ><a name="2589" href="Preliminaries.Sequence.html#5459" class="Function"
+      >Lemma[&#8801;[]-&lt;]</a
+      ><a name="2601"
+      > </a
+      ><a name="2602" href="UsingFunext.Space.YonedaLemma.html#2463" class="Function"
+      >awk</a
+      ><a name="2605"
+      > </a
+      ><a name="2606" class="Symbol"
+      >(</a
+      ><a name="2607" href="UsingFunext.Space.YonedaLemma.html#1402" class="Bound"
+      >p</a
+      ><a name="2608"
+      > </a
+      ><a name="2609" href="UsingFunext.Space.YonedaLemma.html#2215" class="Bound"
+      >&#945;</a
+      ><a name="2610" class="Symbol"
+      >)</a
+      ><a name="2611"
+      > </a
+      ><a name="2612" class="Symbol"
+      >(</a
+      ><a name="2613" href="UsingFunext.Space.YonedaLemma.html#1871" class="Function"
+      >k-max</a
+      ><a name="2618"
+      > </a
+      ><a name="2619" href="UsingFunext.Space.YonedaLemma.html#2215" class="Bound"
+      >&#945;</a
+      ><a name="2620" class="Symbol"
+      >)</a
+      ><a name="2621"
+      >
+
+\end{code}
+
+</a
+      ><a name="2635" class="Comment"
+      >In particular, the &quot;identity&quot; map &#8322;&#8469; &#8594; U(&#8469;Space &#8658; &#8322;Space) is a probe on the</a
+      ><a name="2710"
+      >
+</a
+      ><a name="2711" class="Comment"
+      >exponential &#8469;Space &#8658; &#8322;Space.</a
+      ><a name="2739"
+      >
+
+\begin{code}
+
+</a
+      ><a name="2755" href="UsingFunext.Space.YonedaLemma.html#2755" class="Function"
+      >ID</a
+      ><a name="2757"
+      > </a
+      ><a name="2758" class="Symbol"
+      >:</a
+      ><a name="2759"
+      > </a
+      ><a name="2760" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="2762"
+      > </a
+      ><a name="2763" class="Symbol"
+      >&#8594;</a
+      ><a name="2764"
+      > </a
+      ><a name="2765" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="2766" class="Symbol"
+      >(</a
+      ><a name="2767" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="2773"
+      > </a
+      ><a name="2774" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="2775"
+      > </a
+      ><a name="2776" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="2782" class="Symbol"
+      >)</a
+      ><a name="2783"
+      >
+</a
+      ><a name="2784" href="UsingFunext.Space.YonedaLemma.html#2755" class="Function"
+      >ID</a
+      ><a name="2786"
+      > </a
+      ><a name="2787" class="Symbol"
+      >=</a
+      ><a name="2788"
+      > </a
+      ><a name="2789" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="2792"
+      > </a
+      ><a name="2793" class="Symbol"
+      >(</a
+      ><a name="2794" href="UsingFunext.Space.YonedaLemma.html#1051" class="Function"
+      >Lemma[&#8322;&#8469;&#8594;&#8322;&#8469;-to-&#8322;&#8469;&#8594;&#8469;&#8658;&#8322;]</a
+      ><a name="2816"
+      > </a
+      ><a name="2817" href="Preliminaries.SetsAndFunctions.html#241" class="Function"
+      >id</a
+      ><a name="2819"
+      > </a
+      ><a name="2820" href="Continuity.UniformContinuity.html#9641" class="Function"
+      >Lemma[id-UC]</a
+      ><a name="2832" class="Symbol"
+      >)</a
+      ><a name="2833"
+      >
+
+</a
+      ><a name="2835" href="UsingFunext.Space.YonedaLemma.html#2835" class="Function"
+      >Lemma[ID-&#8801;]</a
+      ><a name="2846"
+      > </a
+      ><a name="2847" class="Symbol"
+      >:</a
+      ><a name="2848"
+      > </a
+      ><a name="2849" class="Symbol"
+      >&#8704;(</a
+      ><a name="2851" href="UsingFunext.Space.YonedaLemma.html#2851" class="Bound"
+      >&#945;</a
+      ><a name="2852"
+      > </a
+      ><a name="2853" class="Symbol"
+      >:</a
+      ><a name="2854"
+      > </a
+      ><a name="2855" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="2856"
+      > </a
+      ><a name="2857" class="Symbol"
+      >(</a
+      ><a name="2858" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="2864"
+      > </a
+      ><a name="2865" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="2866"
+      > </a
+      ><a name="2867" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="2873" class="Symbol"
+      >))</a
+      ><a name="2875"
+      > </a
+      ><a name="2876" class="Symbol"
+      >&#8594;</a
+      ><a name="2877"
+      > </a
+      ><a name="2878" href="UsingFunext.Space.YonedaLemma.html#2851" class="Bound"
+      >&#945;</a
+      ><a name="2879"
+      > </a
+      ><a name="2880" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2881"
+      > </a
+      ><a name="2882" href="UsingFunext.Space.YonedaLemma.html#2755" class="Function"
+      >ID</a
+      ><a name="2884"
+      > </a
+      ><a name="2885" class="Symbol"
+      >(</a
+      ><a name="2886" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="2889"
+      > </a
+      ><a name="2890" href="UsingFunext.Space.YonedaLemma.html#2851" class="Bound"
+      >&#945;</a
+      ><a name="2891" class="Symbol"
+      >)</a
+      ><a name="2892"
+      >
+</a
+      ><a name="2893" href="UsingFunext.Space.YonedaLemma.html#2835" class="Function"
+      >Lemma[ID-&#8801;]</a
+      ><a name="2904"
+      > </a
+      ><a name="2905" href="UsingFunext.Space.YonedaLemma.html#2905" class="Bound"
+      >&#945;</a
+      ><a name="2906"
+      > </a
+      ><a name="2907" class="Symbol"
+      >=</a
+      ><a name="2908"
+      > </a
+      ><a name="2909" href="UsingFunext.Space.DiscreteSpace.html#13808" class="Function"
+      >Lemma[Map-&#8322;-&#8801;]</a
+      ><a name="2923"
+      > </a
+      ><a name="2924" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="2930"
+      > </a
+      ><a name="2931" href="UsingFunext.Space.YonedaLemma.html#2905" class="Bound"
+      >&#945;</a
+      ><a name="2932"
+      > </a
+      ><a name="2933" class="Symbol"
+      >(</a
+      ><a name="2934" href="UsingFunext.Space.YonedaLemma.html#2755" class="Function"
+      >ID</a
+      ><a name="2936"
+      > </a
+      ><a name="2937" class="Symbol"
+      >(</a
+      ><a name="2938" href="Preliminaries.SetsAndFunctions.html#838" class="Field"
+      >pr&#8321;</a
+      ><a name="2941"
+      > </a
+      ><a name="2942" href="UsingFunext.Space.YonedaLemma.html#2905" class="Bound"
+      >&#945;</a
+      ><a name="2943" class="Symbol"
+      >))</a
+      ><a name="2945"
+      > </a
+      ><a name="2946" class="Symbol"
+      >(&#955;</a
+      ><a name="2948"
+      > </a
+      ><a name="2949" href="UsingFunext.Space.YonedaLemma.html#2949" class="Bound"
+      >_</a
+      ><a name="2950"
+      > </a
+      ><a name="2951" class="Symbol"
+      >&#8594;</a
+      ><a name="2952"
+      > </a
+      ><a name="2953" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="2957" class="Symbol"
+      >)</a
+      ><a name="2958"
+      >
+
+</a
+      ><a name="2960" href="UsingFunext.Space.YonedaLemma.html#2960" class="Function"
+      >ID-is-a-probe</a
+      ><a name="2973"
+      > </a
+      ><a name="2974" class="Symbol"
+      >:</a
+      ><a name="2975"
+      > </a
+      ><a name="2976" href="UsingFunext.Space.YonedaLemma.html#2755" class="Function"
+      >ID</a
+      ><a name="2978"
+      > </a
+      ><a name="2979" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="2980"
+      > </a
+      ><a name="2981" href="UsingFunext.Space.Space.html#1150" class="Function"
+      >Probe</a
+      ><a name="2986" class="Symbol"
+      >(</a
+      ><a name="2987" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="2993"
+      > </a
+      ><a name="2994" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="2995"
+      > </a
+      ><a name="2996" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="3002" class="Symbol"
+      >)</a
+      ><a name="3003"
+      >
+</a
+      ><a name="3004" href="UsingFunext.Space.YonedaLemma.html#2960" class="Function"
+      >ID-is-a-probe</a
+      ><a name="3017"
+      > </a
+      ><a name="3018" class="Symbol"
+      >=</a
+      ><a name="3019"
+      > </a
+      ><a name="3020" href="Preliminaries.SetsAndFunctions.html#849" class="Field"
+      >pr&#8322;</a
+      ><a name="3023"
+      > </a
+      ><a name="3024" class="Symbol"
+      >(</a
+      ><a name="3025" href="UsingFunext.Space.YonedaLemma.html#1051" class="Function"
+      >Lemma[&#8322;&#8469;&#8594;&#8322;&#8469;-to-&#8322;&#8469;&#8594;&#8469;&#8658;&#8322;]</a
+      ><a name="3047"
+      > </a
+      ><a name="3048" href="Preliminaries.SetsAndFunctions.html#241" class="Function"
+      >id</a
+      ><a name="3050"
+      > </a
+      ><a name="3051" href="Continuity.UniformContinuity.html#9641" class="Function"
+      >Lemma[id-UC]</a
+      ><a name="3063" class="Symbol"
+      >)</a
+      ><a name="3064"
+      >
+
+\end{code}
+
+</a
+      ><a name="3078" class="Comment"
+      >Using the above facts, we conclude that the Yoneda Lemma amounts to saying that</a
+      ><a name="3157"
+      >
+</a
+      ><a name="3158" class="Comment"
+      >the set of continuous maps from the exponential &#8469;Space &#8658; &#8322;Space to any C-space X</a
+      ><a name="3238"
+      >
+</a
+      ><a name="3239" class="Comment"
+      >is isomorphic to the C-topology of X.  The following gives one direction of the</a
+      ><a name="3318"
+      >
+</a
+      ><a name="3319" class="Comment"
+      >Yoneda Lemma, which is sufficient to construct a fan functional.</a
+      ><a name="3383"
+      >
+
+\begin{code}
+
+</a
+      ><a name="3399" href="UsingFunext.Space.YonedaLemma.html#3399" class="Function"
+      >Lemma[Yoneda]</a
+      ><a name="3412"
+      > </a
+      ><a name="3413" class="Symbol"
+      >:</a
+      ><a name="3414"
+      > </a
+      ><a name="3415" class="Symbol"
+      >&#8704;(</a
+      ><a name="3417" href="UsingFunext.Space.YonedaLemma.html#3417" class="Bound"
+      >X</a
+      ><a name="3418"
+      > </a
+      ><a name="3419" class="Symbol"
+      >:</a
+      ><a name="3420"
+      > </a
+      ><a name="3421" href="UsingFunext.Space.Space.html#1075" class="Function"
+      >Space</a
+      ><a name="3426" class="Symbol"
+      >)</a
+      ><a name="3427"
+      > </a
+      ><a name="3428" class="Symbol"
+      >&#8594;</a
+      ><a name="3429"
+      > </a
+      ><a name="3430" href="UsingFunext.Space.Space.html#1826" class="Function"
+      >Map</a
+      ><a name="3433"
+      > </a
+      ><a name="3434" class="Symbol"
+      >(</a
+      ><a name="3435" href="UsingFunext.Space.DiscreteSpace.html#5358" class="Function"
+      >&#8469;Space</a
+      ><a name="3441"
+      > </a
+      ><a name="3442" href="UsingFunext.Space.CartesianClosedness.html#1831" class="Function Operator"
+      >&#8658;</a
+      ><a name="3443"
+      > </a
+      ><a name="3444" href="UsingFunext.Space.DiscreteSpace.html#4345" class="Function"
+      >&#8322;Space</a
+      ><a name="3450" class="Symbol"
+      >)</a
+      ><a name="3451"
+      > </a
+      ><a name="3452" href="UsingFunext.Space.YonedaLemma.html#3417" class="Bound"
+      >X</a
+      ><a name="3453"
+      > </a
+      ><a name="3454" class="Symbol"
+      >&#8594;</a
+      ><a name="3455"
+      >
+                 </a
+      ><a name="3473" href="Preliminaries.SetsAndFunctions.html#745" class="Record"
+      >&#931;</a
+      ><a name="3474"
+      > </a
+      ><a name="3475" class="Symbol"
+      >\(</a
+      ><a name="3477" href="UsingFunext.Space.YonedaLemma.html#3477" class="Bound"
+      >p</a
+      ><a name="3478"
+      > </a
+      ><a name="3479" class="Symbol"
+      >:</a
+      ><a name="3480"
+      > </a
+      ><a name="3481" href="Preliminaries.Sequence.html#363" class="Function"
+      >&#8322;&#8469;</a
+      ><a name="3483"
+      > </a
+      ><a name="3484" class="Symbol"
+      >&#8594;</a
+      ><a name="3485"
+      > </a
+      ><a name="3486" href="UsingFunext.Space.Space.html#1125" class="Function"
+      >U</a
+      ><a name="3487"
+      > </a
+      ><a name="3488" href="UsingFunext.Space.YonedaLemma.html#3417" class="Bound"
+      >X</a
+      ><a name="3489" class="Symbol"
+      >)</a
+      ><a name="3490"
+      > </a
+      ><a name="3491" class="Symbol"
+      >&#8594;</a
+      ><a name="3492"
+      > </a
+      ><a name="3493" href="UsingFunext.Space.YonedaLemma.html#3477" class="Bound"
+      >p</a
+      ><a name="3494"
+      > </a
+      ><a name="3495" href="Preliminaries.SetsAndFunctions.html#600" class="Function Operator"
+      >&#8712;</a
+      ><a name="3496"
+      > </a
+      ><a name="3497" href="UsingFunext.Space.Space.html#1150" class="Function"
+      >Probe</a
+      ><a name="3502"
+      > </a
+      ><a name="3503" href="UsingFunext.Space.YonedaLemma.html#3417" class="Bound"
+      >X</a
+      ><a name="3504"
+      >
+</a
+      ><a name="3505" href="UsingFunext.Space.YonedaLemma.html#3399" class="Function"
+      >Lemma[Yoneda]</a
+      ><a name="3518"
+      > </a
+      ><a name="3519" href="UsingFunext.Space.YonedaLemma.html#3519" class="Bound"
+      >X</a
+      ><a name="3520"
+      > </a
+      ><a name="3521" class="Symbol"
+      >(</a
+      ><a name="3522" href="UsingFunext.Space.YonedaLemma.html#3522" class="Bound"
+      >f</a
+      ><a name="3523"
+      > </a
+      ><a name="3524" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3525"
+      > </a
+      ><a name="3526" href="UsingFunext.Space.YonedaLemma.html#3526" class="Bound"
+      >cts</a
+      ><a name="3529" class="Symbol"
+      >)</a
+      ><a name="3530"
+      > </a
+      ><a name="3531" class="Symbol"
+      >=</a
+      ><a name="3532"
+      > </a
+      ><a name="3533" class="Symbol"
+      >(</a
+      ><a name="3534" href="UsingFunext.Space.YonedaLemma.html#3522" class="Bound"
+      >f</a
+      ><a name="3535"
+      > </a
+      ><a name="3536" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="3537"
+      > </a
+      ><a name="3538" href="UsingFunext.Space.YonedaLemma.html#2755" class="Function"
+      >ID</a
+      ><a name="3540" class="Symbol"
+      >)</a
+      ><a name="3541"
+      > </a
+      ><a name="3542" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3543"
+      > </a
+      ><a name="3544" class="Symbol"
+      >(</a
+      ><a name="3545" href="UsingFunext.Space.YonedaLemma.html#3526" class="Bound"
+      >cts</a
+      ><a name="3548"
+      > </a
+      ><a name="3549" href="UsingFunext.Space.YonedaLemma.html#2755" class="Function"
+      >ID</a
+      ><a name="3551"
+      > </a
+      ><a name="3552" href="UsingFunext.Space.YonedaLemma.html#2960" class="Function"
+      >ID-is-a-probe</a
+      ><a name="3565" class="Symbol"
+      >)</a
+      ><a name="3566"
+      >
+
+\end{code}
+</a
+      ></pre
+    ></body
+  ></html
+>

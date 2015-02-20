@@ -1,0 +1,2325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >CwF.Sets.IdentityType</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Comment"
+      >Chuangjie Xu, November 2014</a
+      ><a name="28"
+      >
+
+\begin{code}
+
+</a
+      ><a name="44" class="Symbol"
+      >{-#</a
+      ><a name="47"
+      > </a
+      ><a name="48" class="Keyword"
+      >OPTIONS</a
+      ><a name="55"
+      > --without-K </a
+      ><a name="68" class="Symbol"
+      >#-}</a
+      ><a name="71"
+      >
+
+</a
+      ><a name="73" class="Keyword"
+      >module</a
+      ><a name="79"
+      > </a
+      ><a name="80" href="CwF.Sets.IdentityType.html#1" class="Module"
+      >CwF.Sets.IdentityType</a
+      ><a name="101"
+      > </a
+      ><a name="102" class="Keyword"
+      >where</a
+      ><a name="107"
+      >
+
+</a
+      ><a name="109" class="Keyword"
+      >open</a
+      ><a name="113"
+      > </a
+      ><a name="114" class="Keyword"
+      >import</a
+      ><a name="120"
+      > </a
+      ><a name="121" href="Preliminaries.SetsAndFunctions.html#1" class="Module"
+      >Preliminaries.SetsAndFunctions</a
+      ><a name="151"
+      >
+</a
+      ><a name="152" class="Keyword"
+      >open</a
+      ><a name="156"
+      > </a
+      ><a name="157" class="Keyword"
+      >import</a
+      ><a name="163"
+      > </a
+      ><a name="164" href="CwF.Sets.Base.html#1" class="Module"
+      >CwF.Sets.Base</a
+      ><a name="177"
+      >
+</a
+      ><a name="178" class="Keyword"
+      >open</a
+      ><a name="182"
+      > </a
+      ><a name="183" class="Keyword"
+      >import</a
+      ><a name="189"
+      > </a
+      ><a name="190" href="CwF.Sets.TypesAndTerms.html#1" class="Module"
+      >CwF.Sets.TypesAndTerms</a
+      ><a name="212"
+      >
+</a
+      ><a name="213" class="Keyword"
+      >open</a
+      ><a name="217"
+      > </a
+      ><a name="218" class="Keyword"
+      >import</a
+      ><a name="224"
+      > </a
+      ><a name="225" href="CwF.Sets.ContextComprehension.html#1" class="Module"
+      >CwF.Sets.ContextComprehension</a
+      ><a name="254"
+      >
+
+\end{code}
+
+</a
+      ><a name="268" class="Comment"
+      >Identity type</a
+      ><a name="281"
+      >
+
+\begin{code}
+
+</a
+      ><a name="297" href="CwF.Sets.IdentityType.html#297" class="Function"
+      >Id</a
+      ><a name="299"
+      > </a
+      ><a name="300" class="Symbol"
+      >:</a
+      ><a name="301"
+      > </a
+      ><a name="302" class="Symbol"
+      >{</a
+      ><a name="303" href="CwF.Sets.IdentityType.html#303" class="Bound"
+      >&#915;</a
+      ><a name="304"
+      > </a
+      ><a name="305" class="Symbol"
+      >:</a
+      ><a name="306"
+      > </a
+      ><a name="307" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="310" class="Symbol"
+      >}</a
+      ><a name="311"
+      > </a
+      ><a name="312" class="Symbol"
+      >&#8594;</a
+      ><a name="313"
+      > </a
+      ><a name="314" class="Symbol"
+      >(</a
+      ><a name="315" href="CwF.Sets.IdentityType.html#315" class="Bound"
+      >A</a
+      ><a name="316"
+      > </a
+      ><a name="317" class="Symbol"
+      >:</a
+      ><a name="318"
+      > </a
+      ><a name="319" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="323"
+      > </a
+      ><a name="324" href="CwF.Sets.IdentityType.html#303" class="Bound"
+      >&#915;</a
+      ><a name="325" class="Symbol"
+      >)</a
+      ><a name="326"
+      > </a
+      ><a name="327" class="Symbol"
+      >&#8594;</a
+      ><a name="328"
+      > </a
+      ><a name="329" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="333"
+      > </a
+      ><a name="334" class="Symbol"
+      >(</a
+      ><a name="335" href="CwF.Sets.IdentityType.html#303" class="Bound"
+      >&#915;</a
+      ><a name="336"
+      > </a
+      ><a name="337" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="338"
+      > </a
+      ><a name="339" href="CwF.Sets.IdentityType.html#315" class="Bound"
+      >A</a
+      ><a name="340"
+      > </a
+      ><a name="341" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="342"
+      > </a
+      ><a name="343" href="CwF.Sets.IdentityType.html#315" class="Bound"
+      >A</a
+      ><a name="344"
+      > </a
+      ><a name="345" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="346"
+      > </a
+      ><a name="347" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="348"
+      > </a
+      ><a name="349" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="351" class="Symbol"
+      >)</a
+      ><a name="352"
+      >
+</a
+      ><a name="353" href="CwF.Sets.IdentityType.html#297" class="Function"
+      >Id</a
+      ><a name="355"
+      > </a
+      ><a name="356" href="CwF.Sets.IdentityType.html#356" class="Bound"
+      >A</a
+      ><a name="357"
+      > </a
+      ><a name="358" class="Symbol"
+      >((</a
+      ><a name="360" href="CwF.Sets.IdentityType.html#360" class="Bound"
+      >&#947;</a
+      ><a name="361"
+      > </a
+      ><a name="362" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="363"
+      > </a
+      ><a name="364" href="CwF.Sets.IdentityType.html#364" class="Bound"
+      >a</a
+      ><a name="365" class="Symbol"
+      >)</a
+      ><a name="366"
+      > </a
+      ><a name="367" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="368"
+      > </a
+      ><a name="369" href="CwF.Sets.IdentityType.html#369" class="Bound"
+      >b</a
+      ><a name="370" class="Symbol"
+      >)</a
+      ><a name="371"
+      > </a
+      ><a name="372" class="Symbol"
+      >=</a
+      ><a name="373"
+      > </a
+      ><a name="374" href="CwF.Sets.IdentityType.html#364" class="Bound"
+      >a</a
+      ><a name="375"
+      > </a
+      ><a name="376" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="377"
+      > </a
+      ><a name="378" href="CwF.Sets.IdentityType.html#369" class="Bound"
+      >b</a
+      ><a name="379"
+      >
+
+</a
+      ><a name="381" href="CwF.Sets.IdentityType.html#381" class="Function"
+      >&#9415;</a
+      ><a name="382"
+      > </a
+      ><a name="383" class="Symbol"
+      >:</a
+      ><a name="384"
+      > </a
+      ><a name="385" class="Symbol"
+      >{</a
+      ><a name="386" href="CwF.Sets.IdentityType.html#386" class="Bound"
+      >&#915;</a
+      ><a name="387"
+      > </a
+      ><a name="388" class="Symbol"
+      >:</a
+      ><a name="389"
+      > </a
+      ><a name="390" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="393" class="Symbol"
+      >}</a
+      ><a name="394"
+      > </a
+      ><a name="395" class="Symbol"
+      >{</a
+      ><a name="396" href="CwF.Sets.IdentityType.html#396" class="Bound"
+      >A</a
+      ><a name="397"
+      > </a
+      ><a name="398" class="Symbol"
+      >:</a
+      ><a name="399"
+      > </a
+      ><a name="400" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="404"
+      > </a
+      ><a name="405" href="CwF.Sets.IdentityType.html#386" class="Bound"
+      >&#915;</a
+      ><a name="406" class="Symbol"
+      >}</a
+      ><a name="407"
+      > </a
+      ><a name="408" class="Symbol"
+      >&#8594;</a
+      ><a name="409"
+      > </a
+      ><a name="410" href="CwF.Sets.Base.html#221" class="Function"
+      >Sub</a
+      ><a name="413"
+      > </a
+      ><a name="414" class="Symbol"
+      >(</a
+      ><a name="415" href="CwF.Sets.IdentityType.html#386" class="Bound"
+      >&#915;</a
+      ><a name="416"
+      > </a
+      ><a name="417" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="418"
+      > </a
+      ><a name="419" href="CwF.Sets.IdentityType.html#396" class="Bound"
+      >A</a
+      ><a name="420" class="Symbol"
+      >)</a
+      ><a name="421"
+      > </a
+      ><a name="422" class="Symbol"
+      >(</a
+      ><a name="423" href="CwF.Sets.IdentityType.html#386" class="Bound"
+      >&#915;</a
+      ><a name="424"
+      > </a
+      ><a name="425" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="426"
+      > </a
+      ><a name="427" href="CwF.Sets.IdentityType.html#396" class="Bound"
+      >A</a
+      ><a name="428"
+      > </a
+      ><a name="429" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="430"
+      > </a
+      ><a name="431" href="CwF.Sets.IdentityType.html#396" class="Bound"
+      >A</a
+      ><a name="432"
+      > </a
+      ><a name="433" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="434"
+      > </a
+      ><a name="435" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="436"
+      > </a
+      ><a name="437" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="439"
+      > </a
+      ><a name="440" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="441"
+      > </a
+      ><a name="442" href="CwF.Sets.IdentityType.html#297" class="Function"
+      >Id</a
+      ><a name="444"
+      > </a
+      ><a name="445" href="CwF.Sets.IdentityType.html#396" class="Bound"
+      >A</a
+      ><a name="446" class="Symbol"
+      >)</a
+      ><a name="447"
+      >
+</a
+      ><a name="448" href="CwF.Sets.IdentityType.html#381" class="Function"
+      >&#9415;</a
+      ><a name="449"
+      > </a
+      ><a name="450" class="Symbol"
+      >(</a
+      ><a name="451" href="CwF.Sets.IdentityType.html#451" class="Bound"
+      >&#947;</a
+      ><a name="452"
+      > </a
+      ><a name="453" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="454"
+      > </a
+      ><a name="455" href="CwF.Sets.IdentityType.html#455" class="Bound"
+      >a</a
+      ><a name="456" class="Symbol"
+      >)</a
+      ><a name="457"
+      > </a
+      ><a name="458" class="Symbol"
+      >=</a
+      ><a name="459"
+      > </a
+      ><a name="460" class="Symbol"
+      >((</a
+      ><a name="462" href="CwF.Sets.IdentityType.html#451" class="Bound"
+      >&#947;</a
+      ><a name="463"
+      > </a
+      ><a name="464" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="465"
+      > </a
+      ><a name="466" href="CwF.Sets.IdentityType.html#455" class="Bound"
+      >a</a
+      ><a name="467" class="Symbol"
+      >)</a
+      ><a name="468"
+      > </a
+      ><a name="469" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="470"
+      > </a
+      ><a name="471" href="CwF.Sets.IdentityType.html#455" class="Bound"
+      >a</a
+      ><a name="472" class="Symbol"
+      >)</a
+      ><a name="473"
+      > </a
+      ><a name="474" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="475"
+      > </a
+      ><a name="476" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="480"
+      >
+
+</a
+      ><a name="482" href="CwF.Sets.IdentityType.html#482" class="Function"
+      >&#9407;</a
+      ><a name="483"
+      > </a
+      ><a name="484" class="Symbol"
+      >:</a
+      ><a name="485"
+      > </a
+      ><a name="486" class="Symbol"
+      >{</a
+      ><a name="487" href="CwF.Sets.IdentityType.html#487" class="Bound"
+      >&#915;</a
+      ><a name="488"
+      > </a
+      ><a name="489" class="Symbol"
+      >:</a
+      ><a name="490"
+      > </a
+      ><a name="491" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="494" class="Symbol"
+      >}</a
+      ><a name="495"
+      > </a
+      ><a name="496" class="Symbol"
+      >{</a
+      ><a name="497" href="CwF.Sets.IdentityType.html#497" class="Bound"
+      >A</a
+      ><a name="498"
+      > </a
+      ><a name="499" class="Symbol"
+      >:</a
+      ><a name="500"
+      > </a
+      ><a name="501" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="505"
+      > </a
+      ><a name="506" href="CwF.Sets.IdentityType.html#487" class="Bound"
+      >&#915;</a
+      ><a name="507" class="Symbol"
+      >}</a
+      ><a name="508"
+      > </a
+      ><a name="509" class="Symbol"
+      >{</a
+      ><a name="510" href="CwF.Sets.IdentityType.html#510" class="Bound"
+      >B</a
+      ><a name="511"
+      > </a
+      ><a name="512" class="Symbol"
+      >:</a
+      ><a name="513"
+      > </a
+      ><a name="514" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="518"
+      > </a
+      ><a name="519" class="Symbol"
+      >(</a
+      ><a name="520" href="CwF.Sets.IdentityType.html#487" class="Bound"
+      >&#915;</a
+      ><a name="521"
+      > </a
+      ><a name="522" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="523"
+      > </a
+      ><a name="524" href="CwF.Sets.IdentityType.html#497" class="Bound"
+      >A</a
+      ><a name="525"
+      > </a
+      ><a name="526" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="527"
+      > </a
+      ><a name="528" href="CwF.Sets.IdentityType.html#497" class="Bound"
+      >A</a
+      ><a name="529"
+      > </a
+      ><a name="530" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="531"
+      > </a
+      ><a name="532" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="533"
+      > </a
+      ><a name="534" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="536"
+      > </a
+      ><a name="537" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="538"
+      > </a
+      ><a name="539" href="CwF.Sets.IdentityType.html#297" class="Function"
+      >Id</a
+      ><a name="541"
+      > </a
+      ><a name="542" href="CwF.Sets.IdentityType.html#497" class="Bound"
+      >A</a
+      ><a name="543" class="Symbol"
+      >)}</a
+      ><a name="545"
+      >
+   </a
+      ><a name="549" class="Symbol"
+      >&#8594;</a
+      ><a name="550"
+      > </a
+      ><a name="551" href="CwF.Sets.TypesAndTerms.html#259" class="Function"
+      >Term</a
+      ><a name="555"
+      > </a
+      ><a name="556" class="Symbol"
+      >(</a
+      ><a name="557" href="CwF.Sets.IdentityType.html#487" class="Bound"
+      >&#915;</a
+      ><a name="558"
+      > </a
+      ><a name="559" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="560"
+      > </a
+      ><a name="561" href="CwF.Sets.IdentityType.html#497" class="Bound"
+      >A</a
+      ><a name="562" class="Symbol"
+      >)</a
+      ><a name="563"
+      > </a
+      ><a name="564" class="Symbol"
+      >(</a
+      ><a name="565" href="CwF.Sets.IdentityType.html#510" class="Bound"
+      >B</a
+      ><a name="566"
+      > </a
+      ><a name="567" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="568"
+      > </a
+      ><a name="569" href="CwF.Sets.IdentityType.html#381" class="Function"
+      >&#9415;</a
+      ><a name="570"
+      > </a
+      ><a name="571" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="573" class="Symbol"
+      >)</a
+      ><a name="574"
+      > </a
+      ><a name="575" class="Symbol"
+      >&#8594;</a
+      ><a name="576"
+      > </a
+      ><a name="577" href="CwF.Sets.TypesAndTerms.html#259" class="Function"
+      >Term</a
+      ><a name="581"
+      > </a
+      ><a name="582" class="Symbol"
+      >(</a
+      ><a name="583" href="CwF.Sets.IdentityType.html#487" class="Bound"
+      >&#915;</a
+      ><a name="584"
+      > </a
+      ><a name="585" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="586"
+      > </a
+      ><a name="587" href="CwF.Sets.IdentityType.html#497" class="Bound"
+      >A</a
+      ><a name="588"
+      > </a
+      ><a name="589" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="590"
+      > </a
+      ><a name="591" href="CwF.Sets.IdentityType.html#497" class="Bound"
+      >A</a
+      ><a name="592"
+      > </a
+      ><a name="593" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="594"
+      > </a
+      ><a name="595" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="596"
+      > </a
+      ><a name="597" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="599"
+      > </a
+      ><a name="600" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="601"
+      > </a
+      ><a name="602" href="CwF.Sets.IdentityType.html#297" class="Function"
+      >Id</a
+      ><a name="604"
+      > </a
+      ><a name="605" href="CwF.Sets.IdentityType.html#497" class="Bound"
+      >A</a
+      ><a name="606" class="Symbol"
+      >)</a
+      ><a name="607"
+      > </a
+      ><a name="608" href="CwF.Sets.IdentityType.html#510" class="Bound"
+      >B</a
+      ><a name="609"
+      >
+</a
+      ><a name="610" href="CwF.Sets.IdentityType.html#482" class="Function"
+      >&#9407;</a
+      ><a name="611"
+      > </a
+      ><a name="612" class="Symbol"
+      >{</a
+      ><a name="613" class="Argument"
+      >B</a
+      ><a name="614"
+      > </a
+      ><a name="615" class="Symbol"
+      >=</a
+      ><a name="616"
+      > </a
+      ><a name="617" href="CwF.Sets.IdentityType.html#617" class="Bound"
+      >B</a
+      ><a name="618" class="Symbol"
+      >}</a
+      ><a name="619"
+      > </a
+      ><a name="620" href="CwF.Sets.IdentityType.html#620" class="Bound"
+      >u</a
+      ><a name="621"
+      > </a
+      ><a name="622" class="Symbol"
+      >(((</a
+      ><a name="625" href="CwF.Sets.IdentityType.html#625" class="Bound"
+      >&#947;</a
+      ><a name="626"
+      > </a
+      ><a name="627" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="628"
+      > </a
+      ><a name="629" href="CwF.Sets.IdentityType.html#629" class="Bound"
+      >a</a
+      ><a name="630" class="Symbol"
+      >)</a
+      ><a name="631"
+      > </a
+      ><a name="632" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="633"
+      > </a
+      ><a name="634" href="CwF.Sets.IdentityType.html#634" class="Bound"
+      >b</a
+      ><a name="635" class="Symbol"
+      >)</a
+      ><a name="636"
+      > </a
+      ><a name="637" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="638"
+      > </a
+      ><a name="639" href="CwF.Sets.IdentityType.html#639" class="Bound"
+      >p</a
+      ><a name="640" class="Symbol"
+      >)</a
+      ><a name="641"
+      > </a
+      ><a name="642" class="Symbol"
+      >=</a
+      ><a name="643"
+      > </a
+      ><a name="644" href="Preliminaries.SetsAndFunctions.html#1240" class="Function"
+      >J</a
+      ><a name="645"
+      > </a
+      ><a name="646" class="Symbol"
+      >(&#955;</a
+      ><a name="648"
+      > </a
+      ><a name="649" href="CwF.Sets.IdentityType.html#649" class="Bound"
+      >x</a
+      ><a name="650"
+      > </a
+      ><a name="651" href="CwF.Sets.IdentityType.html#651" class="Bound"
+      >y</a
+      ><a name="652"
+      > </a
+      ><a name="653" href="CwF.Sets.IdentityType.html#653" class="Bound"
+      >q</a
+      ><a name="654"
+      > </a
+      ><a name="655" class="Symbol"
+      >&#8594;</a
+      ><a name="656"
+      > </a
+      ><a name="657" href="CwF.Sets.IdentityType.html#617" class="Bound"
+      >B</a
+      ><a name="658"
+      > </a
+      ><a name="659" class="Symbol"
+      >(((</a
+      ><a name="662" href="CwF.Sets.IdentityType.html#625" class="Bound"
+      >&#947;</a
+      ><a name="663"
+      > </a
+      ><a name="664" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="665"
+      > </a
+      ><a name="666" href="CwF.Sets.IdentityType.html#649" class="Bound"
+      >x</a
+      ><a name="667" class="Symbol"
+      >)</a
+      ><a name="668"
+      > </a
+      ><a name="669" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="670"
+      > </a
+      ><a name="671" href="CwF.Sets.IdentityType.html#651" class="Bound"
+      >y</a
+      ><a name="672" class="Symbol"
+      >)</a
+      ><a name="673"
+      > </a
+      ><a name="674" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="675"
+      > </a
+      ><a name="676" href="CwF.Sets.IdentityType.html#653" class="Bound"
+      >q</a
+      ><a name="677" class="Symbol"
+      >))</a
+      ><a name="679"
+      > </a
+      ><a name="680" class="Symbol"
+      >(&#955;</a
+      ><a name="682"
+      > </a
+      ><a name="683" href="CwF.Sets.IdentityType.html#683" class="Bound"
+      >x</a
+      ><a name="684"
+      > </a
+      ><a name="685" class="Symbol"
+      >&#8594;</a
+      ><a name="686"
+      > </a
+      ><a name="687" href="CwF.Sets.IdentityType.html#620" class="Bound"
+      >u</a
+      ><a name="688" class="Symbol"
+      >(</a
+      ><a name="689" href="CwF.Sets.IdentityType.html#625" class="Bound"
+      >&#947;</a
+      ><a name="690"
+      > </a
+      ><a name="691" href="Preliminaries.SetsAndFunctions.html#823" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="692"
+      > </a
+      ><a name="693" href="CwF.Sets.IdentityType.html#683" class="Bound"
+      >x</a
+      ><a name="694" class="Symbol"
+      >))</a
+      ><a name="696"
+      > </a
+      ><a name="697" href="CwF.Sets.IdentityType.html#629" class="Bound"
+      >a</a
+      ><a name="698"
+      > </a
+      ><a name="699" href="CwF.Sets.IdentityType.html#634" class="Bound"
+      >b</a
+      ><a name="700"
+      > </a
+      ><a name="701" href="CwF.Sets.IdentityType.html#639" class="Bound"
+      >p</a
+      ><a name="702"
+      >
+
+\end{code}
+
+
+\begin{code}
+
+</a
+      ><a name="731" href="CwF.Sets.IdentityType.html#731" class="Function Operator"
+      >&#10218;_&#10219;&#9415;</a
+      ><a name="735"
+      > </a
+      ><a name="736" class="Symbol"
+      >:</a
+      ><a name="737"
+      > </a
+      ><a name="738" class="Symbol"
+      >{</a
+      ><a name="739" href="CwF.Sets.IdentityType.html#739" class="Bound"
+      >&#915;</a
+      ><a name="740"
+      > </a
+      ><a name="741" class="Symbol"
+      >:</a
+      ><a name="742"
+      > </a
+      ><a name="743" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="746" class="Symbol"
+      >}</a
+      ><a name="747"
+      > </a
+      ><a name="748" class="Symbol"
+      >(</a
+      ><a name="749" href="CwF.Sets.IdentityType.html#749" class="Bound"
+      >A</a
+      ><a name="750"
+      > </a
+      ><a name="751" class="Symbol"
+      >:</a
+      ><a name="752"
+      > </a
+      ><a name="753" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="757"
+      > </a
+      ><a name="758" href="CwF.Sets.IdentityType.html#739" class="Bound"
+      >&#915;</a
+      ><a name="759" class="Symbol"
+      >)</a
+      ><a name="760"
+      > </a
+      ><a name="761" class="Symbol"
+      >&#8594;</a
+      ><a name="762"
+      > </a
+      ><a name="763" href="CwF.Sets.Base.html#221" class="Function"
+      >Sub</a
+      ><a name="766"
+      > </a
+      ><a name="767" class="Symbol"
+      >(</a
+      ><a name="768" href="CwF.Sets.IdentityType.html#739" class="Bound"
+      >&#915;</a
+      ><a name="769"
+      > </a
+      ><a name="770" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="771"
+      > </a
+      ><a name="772" href="CwF.Sets.IdentityType.html#749" class="Bound"
+      >A</a
+      ><a name="773" class="Symbol"
+      >)</a
+      ><a name="774"
+      > </a
+      ><a name="775" class="Symbol"
+      >(</a
+      ><a name="776" href="CwF.Sets.IdentityType.html#739" class="Bound"
+      >&#915;</a
+      ><a name="777"
+      > </a
+      ><a name="778" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="779"
+      > </a
+      ><a name="780" href="CwF.Sets.IdentityType.html#749" class="Bound"
+      >A</a
+      ><a name="781"
+      > </a
+      ><a name="782" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="783"
+      > </a
+      ><a name="784" href="CwF.Sets.IdentityType.html#749" class="Bound"
+      >A</a
+      ><a name="785"
+      > </a
+      ><a name="786" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="787"
+      > </a
+      ><a name="788" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="789"
+      > </a
+      ><a name="790" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="792"
+      > </a
+      ><a name="793" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="794"
+      > </a
+      ><a name="795" href="CwF.Sets.IdentityType.html#297" class="Function"
+      >Id</a
+      ><a name="797"
+      > </a
+      ><a name="798" href="CwF.Sets.IdentityType.html#749" class="Bound"
+      >A</a
+      ><a name="799" class="Symbol"
+      >)</a
+      ><a name="800"
+      >
+</a
+      ><a name="801" href="CwF.Sets.IdentityType.html#731" class="Function Operator"
+      >&#10218;</a
+      ><a name="802"
+      > </a
+      ><a name="803" href="CwF.Sets.IdentityType.html#803" class="Bound"
+      >A</a
+      ><a name="804"
+      > </a
+      ><a name="805" href="CwF.Sets.IdentityType.html#731" class="Function Operator"
+      >&#10219;&#9415;</a
+      ><a name="807"
+      > </a
+      ><a name="808" class="Symbol"
+      >=</a
+      ><a name="809"
+      > </a
+      ><a name="810" href="CwF.Sets.IdentityType.html#381" class="Function"
+      >&#9415;</a
+      ><a name="811"
+      >
+
+</a
+      ><a name="813" href="CwF.Sets.IdentityType.html#813" class="Function Operator"
+      >&#10218;_&#10219;&#9407;</a
+      ><a name="817"
+      > </a
+      ><a name="818" class="Symbol"
+      >:</a
+      ><a name="819"
+      > </a
+      ><a name="820" class="Symbol"
+      >{</a
+      ><a name="821" href="CwF.Sets.IdentityType.html#821" class="Bound"
+      >&#915;</a
+      ><a name="822"
+      > </a
+      ><a name="823" class="Symbol"
+      >:</a
+      ><a name="824"
+      > </a
+      ><a name="825" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="828" class="Symbol"
+      >}</a
+      ><a name="829"
+      > </a
+      ><a name="830" class="Symbol"
+      >{</a
+      ><a name="831" href="CwF.Sets.IdentityType.html#831" class="Bound"
+      >A</a
+      ><a name="832"
+      > </a
+      ><a name="833" class="Symbol"
+      >:</a
+      ><a name="834"
+      > </a
+      ><a name="835" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="839"
+      > </a
+      ><a name="840" href="CwF.Sets.IdentityType.html#821" class="Bound"
+      >&#915;</a
+      ><a name="841" class="Symbol"
+      >}</a
+      ><a name="842"
+      >
+     </a
+      ><a name="848" class="Symbol"
+      >&#8594;</a
+      ><a name="849"
+      > </a
+      ><a name="850" class="Symbol"
+      >(</a
+      ><a name="851" href="CwF.Sets.IdentityType.html#851" class="Bound"
+      >B</a
+      ><a name="852"
+      > </a
+      ><a name="853" class="Symbol"
+      >:</a
+      ><a name="854"
+      > </a
+      ><a name="855" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="859"
+      > </a
+      ><a name="860" class="Symbol"
+      >(</a
+      ><a name="861" href="CwF.Sets.IdentityType.html#821" class="Bound"
+      >&#915;</a
+      ><a name="862"
+      > </a
+      ><a name="863" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="864"
+      > </a
+      ><a name="865" href="CwF.Sets.IdentityType.html#831" class="Bound"
+      >A</a
+      ><a name="866"
+      > </a
+      ><a name="867" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="868"
+      > </a
+      ><a name="869" href="CwF.Sets.IdentityType.html#831" class="Bound"
+      >A</a
+      ><a name="870"
+      > </a
+      ><a name="871" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="872"
+      > </a
+      ><a name="873" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="874"
+      > </a
+      ><a name="875" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="877"
+      > </a
+      ><a name="878" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="879"
+      > </a
+      ><a name="880" href="CwF.Sets.IdentityType.html#297" class="Function"
+      >Id</a
+      ><a name="882"
+      > </a
+      ><a name="883" href="CwF.Sets.IdentityType.html#831" class="Bound"
+      >A</a
+      ><a name="884" class="Symbol"
+      >))</a
+      ><a name="886"
+      >
+     </a
+      ><a name="892" class="Symbol"
+      >&#8594;</a
+      ><a name="893"
+      > </a
+      ><a name="894" href="CwF.Sets.TypesAndTerms.html#259" class="Function"
+      >Term</a
+      ><a name="898"
+      > </a
+      ><a name="899" class="Symbol"
+      >(</a
+      ><a name="900" href="CwF.Sets.IdentityType.html#821" class="Bound"
+      >&#915;</a
+      ><a name="901"
+      > </a
+      ><a name="902" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="903"
+      > </a
+      ><a name="904" href="CwF.Sets.IdentityType.html#831" class="Bound"
+      >A</a
+      ><a name="905" class="Symbol"
+      >)</a
+      ><a name="906"
+      > </a
+      ><a name="907" class="Symbol"
+      >(</a
+      ><a name="908" href="CwF.Sets.IdentityType.html#851" class="Bound"
+      >B</a
+      ><a name="909"
+      > </a
+      ><a name="910" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="911"
+      > </a
+      ><a name="912" href="CwF.Sets.IdentityType.html#381" class="Function"
+      >&#9415;</a
+      ><a name="913"
+      > </a
+      ><a name="914" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="916" class="Symbol"
+      >)</a
+      ><a name="917"
+      > </a
+      ><a name="918" class="Symbol"
+      >&#8594;</a
+      ><a name="919"
+      > </a
+      ><a name="920" href="CwF.Sets.TypesAndTerms.html#259" class="Function"
+      >Term</a
+      ><a name="924"
+      > </a
+      ><a name="925" class="Symbol"
+      >(</a
+      ><a name="926" href="CwF.Sets.IdentityType.html#821" class="Bound"
+      >&#915;</a
+      ><a name="927"
+      > </a
+      ><a name="928" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="929"
+      > </a
+      ><a name="930" href="CwF.Sets.IdentityType.html#831" class="Bound"
+      >A</a
+      ><a name="931"
+      > </a
+      ><a name="932" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="933"
+      > </a
+      ><a name="934" href="CwF.Sets.IdentityType.html#831" class="Bound"
+      >A</a
+      ><a name="935"
+      > </a
+      ><a name="936" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="937"
+      > </a
+      ><a name="938" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="939"
+      > </a
+      ><a name="940" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="942"
+      > </a
+      ><a name="943" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="944"
+      > </a
+      ><a name="945" href="CwF.Sets.IdentityType.html#297" class="Function"
+      >Id</a
+      ><a name="947"
+      > </a
+      ><a name="948" href="CwF.Sets.IdentityType.html#831" class="Bound"
+      >A</a
+      ><a name="949" class="Symbol"
+      >)</a
+      ><a name="950"
+      > </a
+      ><a name="951" href="CwF.Sets.IdentityType.html#851" class="Bound"
+      >B</a
+      ><a name="952"
+      >
+</a
+      ><a name="953" href="CwF.Sets.IdentityType.html#813" class="Function Operator"
+      >&#10218;</a
+      ><a name="954"
+      > </a
+      ><a name="955" href="CwF.Sets.IdentityType.html#955" class="Bound"
+      >B</a
+      ><a name="956"
+      > </a
+      ><a name="957" href="CwF.Sets.IdentityType.html#813" class="Function Operator"
+      >&#10219;&#9407;</a
+      ><a name="959"
+      > </a
+      ><a name="960" class="Symbol"
+      >=</a
+      ><a name="961"
+      > </a
+      ><a name="962" href="CwF.Sets.IdentityType.html#482" class="Function"
+      >&#9407;</a
+      ><a name="963"
+      >
+
+\end{code}
+
+</a
+      ><a name="977" class="Comment"
+      >Computational rules</a
+      ><a name="996"
+      >
+
+\begin{code}
+
+</a
+      ><a name="1012" class="Comment"
+      >-- p&#8728;R=(1,q)</a
+      ><a name="1024"
+      >
+</a
+      ><a name="1025" href="CwF.Sets.IdentityType.html#1025" class="Function"
+      >EqIT&#8321;</a
+      ><a name="1030"
+      > </a
+      ><a name="1031" class="Symbol"
+      >:</a
+      ><a name="1032"
+      > </a
+      ><a name="1033" class="Symbol"
+      >{</a
+      ><a name="1034" href="CwF.Sets.IdentityType.html#1034" class="Bound"
+      >&#915;</a
+      ><a name="1035"
+      > </a
+      ><a name="1036" class="Symbol"
+      >:</a
+      ><a name="1037"
+      > </a
+      ><a name="1038" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="1041" class="Symbol"
+      >}</a
+      ><a name="1042"
+      > </a
+      ><a name="1043" class="Symbol"
+      >{</a
+      ><a name="1044" href="CwF.Sets.IdentityType.html#1044" class="Bound"
+      >A</a
+      ><a name="1045"
+      > </a
+      ><a name="1046" class="Symbol"
+      >:</a
+      ><a name="1047"
+      > </a
+      ><a name="1048" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="1052"
+      > </a
+      ><a name="1053" href="CwF.Sets.IdentityType.html#1034" class="Bound"
+      >&#915;</a
+      ><a name="1054" class="Symbol"
+      >}</a
+      ><a name="1055"
+      >
+      </a
+      ><a name="1062" class="Symbol"
+      >&#8594;</a
+      ><a name="1063"
+      > </a
+      ><a name="1064" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="1065"
+      > </a
+      ><a name="1066" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1067"
+      > </a
+      ><a name="1068" href="CwF.Sets.IdentityType.html#731" class="Function Operator"
+      >&#10218;</a
+      ><a name="1069"
+      > </a
+      ><a name="1070" href="CwF.Sets.IdentityType.html#1044" class="Bound"
+      >A</a
+      ><a name="1071"
+      > </a
+      ><a name="1072" href="CwF.Sets.IdentityType.html#731" class="Function Operator"
+      >&#10219;&#9415;</a
+      ><a name="1074"
+      > </a
+      ><a name="1075" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1076"
+      > </a
+      ><a name="1077" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10216;</a
+      ><a name="1078"
+      > </a
+      ><a name="1079" href="CwF.Sets.Base.html#260" class="Function"
+      >&#921;</a
+      ><a name="1080"
+      > </a
+      ><a name="1081" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >,</a
+      ><a name="1082"
+      > </a
+      ><a name="1083" href="CwF.Sets.ContextComprehension.html#401" class="Function"
+      >&#9440;</a
+      ><a name="1084"
+      > </a
+      ><a name="1085" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10217;</a
+      ><a name="1086"
+      >
+</a
+      ><a name="1087" href="CwF.Sets.IdentityType.html#1025" class="Function"
+      >EqIT&#8321;</a
+      ><a name="1092"
+      > </a
+      ><a name="1093" class="Symbol"
+      >=</a
+      ><a name="1094"
+      > </a
+      ><a name="1095" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1099"
+      >
+
+</a
+      ><a name="1101" class="Comment"
+      >-- J(u)[R] = u</a
+      ><a name="1115"
+      >
+</a
+      ><a name="1116" href="CwF.Sets.IdentityType.html#1116" class="Function"
+      >EqIT&#8322;</a
+      ><a name="1121"
+      > </a
+      ><a name="1122" class="Symbol"
+      >:</a
+      ><a name="1123"
+      > </a
+      ><a name="1124" class="Symbol"
+      >{</a
+      ><a name="1125" href="CwF.Sets.IdentityType.html#1125" class="Bound"
+      >&#915;</a
+      ><a name="1126"
+      > </a
+      ><a name="1127" class="Symbol"
+      >:</a
+      ><a name="1128"
+      > </a
+      ><a name="1129" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="1132" class="Symbol"
+      >}</a
+      ><a name="1133"
+      > </a
+      ><a name="1134" class="Symbol"
+      >{</a
+      ><a name="1135" href="CwF.Sets.IdentityType.html#1135" class="Bound"
+      >A</a
+      ><a name="1136"
+      > </a
+      ><a name="1137" class="Symbol"
+      >:</a
+      ><a name="1138"
+      > </a
+      ><a name="1139" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="1143"
+      > </a
+      ><a name="1144" href="CwF.Sets.IdentityType.html#1125" class="Bound"
+      >&#915;</a
+      ><a name="1145" class="Symbol"
+      >}</a
+      ><a name="1146"
+      > </a
+      ><a name="1147" class="Symbol"
+      >{</a
+      ><a name="1148" href="CwF.Sets.IdentityType.html#1148" class="Bound"
+      >B</a
+      ><a name="1149"
+      > </a
+      ><a name="1150" class="Symbol"
+      >:</a
+      ><a name="1151"
+      > </a
+      ><a name="1152" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="1156"
+      > </a
+      ><a name="1157" class="Symbol"
+      >(</a
+      ><a name="1158" href="CwF.Sets.IdentityType.html#1125" class="Bound"
+      >&#915;</a
+      ><a name="1159"
+      > </a
+      ><a name="1160" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="1161"
+      > </a
+      ><a name="1162" href="CwF.Sets.IdentityType.html#1135" class="Bound"
+      >A</a
+      ><a name="1163"
+      > </a
+      ><a name="1164" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="1165"
+      > </a
+      ><a name="1166" href="CwF.Sets.IdentityType.html#1135" class="Bound"
+      >A</a
+      ><a name="1167"
+      > </a
+      ><a name="1168" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="1169"
+      > </a
+      ><a name="1170" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="1171"
+      > </a
+      ><a name="1172" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="1174"
+      > </a
+      ><a name="1175" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="1176"
+      > </a
+      ><a name="1177" href="CwF.Sets.IdentityType.html#297" class="Function"
+      >Id</a
+      ><a name="1179"
+      > </a
+      ><a name="1180" href="CwF.Sets.IdentityType.html#1135" class="Bound"
+      >A</a
+      ><a name="1181" class="Symbol"
+      >)}</a
+      ><a name="1183"
+      >
+        </a
+      ><a name="1192" class="Symbol"
+      >{</a
+      ><a name="1193" href="CwF.Sets.IdentityType.html#1193" class="Bound"
+      >u</a
+      ><a name="1194"
+      > </a
+      ><a name="1195" class="Symbol"
+      >:</a
+      ><a name="1196"
+      > </a
+      ><a name="1197" href="CwF.Sets.TypesAndTerms.html#259" class="Function"
+      >Term</a
+      ><a name="1201"
+      > </a
+      ><a name="1202" class="Symbol"
+      >(</a
+      ><a name="1203" href="CwF.Sets.IdentityType.html#1125" class="Bound"
+      >&#915;</a
+      ><a name="1204"
+      > </a
+      ><a name="1205" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="1206"
+      > </a
+      ><a name="1207" href="CwF.Sets.IdentityType.html#1135" class="Bound"
+      >A</a
+      ><a name="1208" class="Symbol"
+      >)</a
+      ><a name="1209"
+      > </a
+      ><a name="1210" class="Symbol"
+      >(</a
+      ><a name="1211" href="CwF.Sets.IdentityType.html#1148" class="Bound"
+      >B</a
+      ><a name="1212"
+      > </a
+      ><a name="1213" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="1214"
+      > </a
+      ><a name="1215" href="CwF.Sets.IdentityType.html#381" class="Function"
+      >&#9415;</a
+      ><a name="1216"
+      > </a
+      ><a name="1217" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="1219" class="Symbol"
+      >)}</a
+      ><a name="1221"
+      >
+      </a
+      ><a name="1228" class="Symbol"
+      >&#8594;</a
+      ><a name="1229"
+      > </a
+      ><a name="1230" class="Symbol"
+      >(</a
+      ><a name="1231" href="CwF.Sets.IdentityType.html#813" class="Function Operator"
+      >&#10218;</a
+      ><a name="1232"
+      > </a
+      ><a name="1233" href="CwF.Sets.IdentityType.html#1148" class="Bound"
+      >B</a
+      ><a name="1234"
+      > </a
+      ><a name="1235" href="CwF.Sets.IdentityType.html#813" class="Function Operator"
+      >&#10219;&#9407;</a
+      ><a name="1237"
+      > </a
+      ><a name="1238" href="CwF.Sets.IdentityType.html#1193" class="Bound"
+      >u</a
+      ><a name="1239" class="Symbol"
+      >)</a
+      ><a name="1240"
+      > </a
+      ><a name="1241" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >[</a
+      ><a name="1242"
+      > </a
+      ><a name="1243" href="CwF.Sets.IdentityType.html#381" class="Function"
+      >&#9415;</a
+      ><a name="1244"
+      > </a
+      ><a name="1245" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >]&#7504;</a
+      ><a name="1247"
+      > </a
+      ><a name="1248" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1249"
+      > </a
+      ><a name="1250" href="CwF.Sets.IdentityType.html#1193" class="Bound"
+      >u</a
+      ><a name="1251"
+      >
+</a
+      ><a name="1252" href="CwF.Sets.IdentityType.html#1116" class="Function"
+      >EqIT&#8322;</a
+      ><a name="1257"
+      > </a
+      ><a name="1258" class="Symbol"
+      >=</a
+      ><a name="1259"
+      > </a
+      ><a name="1260" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1264"
+      >
+
+</a
+      ><a name="1266" class="Comment"
+      >-- (Id A)[((&#963;&#8728;p,q)&#8728;p,q)] = Id (A[&#963;])</a
+      ><a name="1302"
+      >
+</a
+      ><a name="1303" href="CwF.Sets.IdentityType.html#1303" class="Function"
+      >EqIT&#8323;</a
+      ><a name="1308"
+      > </a
+      ><a name="1309" class="Symbol"
+      >:</a
+      ><a name="1310"
+      > </a
+      ><a name="1311" class="Symbol"
+      >{</a
+      ><a name="1312" href="CwF.Sets.IdentityType.html#1312" class="Bound"
+      >&#915;</a
+      ><a name="1313"
+      > </a
+      ><a name="1314" class="Symbol"
+      >:</a
+      ><a name="1315"
+      > </a
+      ><a name="1316" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="1319" class="Symbol"
+      >}</a
+      ><a name="1320"
+      > </a
+      ><a name="1321" class="Symbol"
+      >{</a
+      ><a name="1322" href="CwF.Sets.IdentityType.html#1322" class="Bound"
+      >A</a
+      ><a name="1323"
+      > </a
+      ><a name="1324" class="Symbol"
+      >:</a
+      ><a name="1325"
+      > </a
+      ><a name="1326" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="1330"
+      > </a
+      ><a name="1331" href="CwF.Sets.IdentityType.html#1312" class="Bound"
+      >&#915;</a
+      ><a name="1332" class="Symbol"
+      >}</a
+      ><a name="1333"
+      > </a
+      ><a name="1334" class="Symbol"
+      >{</a
+      ><a name="1335" href="CwF.Sets.IdentityType.html#1335" class="Bound"
+      >&#916;</a
+      ><a name="1336"
+      > </a
+      ><a name="1337" class="Symbol"
+      >:</a
+      ><a name="1338"
+      > </a
+      ><a name="1339" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="1342" class="Symbol"
+      >}</a
+      ><a name="1343"
+      > </a
+      ><a name="1344" class="Symbol"
+      >{</a
+      ><a name="1345" href="CwF.Sets.IdentityType.html#1345" class="Bound"
+      >&#963;</a
+      ><a name="1346"
+      > </a
+      ><a name="1347" class="Symbol"
+      >:</a
+      ><a name="1348"
+      > </a
+      ><a name="1349" href="CwF.Sets.Base.html#221" class="Function"
+      >Sub</a
+      ><a name="1352"
+      > </a
+      ><a name="1353" href="CwF.Sets.IdentityType.html#1335" class="Bound"
+      >&#916;</a
+      ><a name="1354"
+      > </a
+      ><a name="1355" href="CwF.Sets.IdentityType.html#1312" class="Bound"
+      >&#915;</a
+      ><a name="1356" class="Symbol"
+      >}</a
+      ><a name="1357"
+      >
+      </a
+      ><a name="1364" class="Symbol"
+      >&#8594;</a
+      ><a name="1365"
+      > </a
+      ><a name="1366" class="Symbol"
+      >(</a
+      ><a name="1367" href="CwF.Sets.IdentityType.html#297" class="Function"
+      >Id</a
+      ><a name="1369"
+      > </a
+      ><a name="1370" href="CwF.Sets.IdentityType.html#1322" class="Bound"
+      >A</a
+      ><a name="1371" class="Symbol"
+      >)</a
+      ><a name="1372"
+      > </a
+      ><a name="1373" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="1374"
+      > </a
+      ><a name="1375" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10216;</a
+      ><a name="1376"
+      > </a
+      ><a name="1377" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10216;</a
+      ><a name="1378"
+      > </a
+      ><a name="1379" href="CwF.Sets.IdentityType.html#1345" class="Bound"
+      >&#963;</a
+      ><a name="1380"
+      > </a
+      ><a name="1381" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1382"
+      > </a
+      ><a name="1383" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="1384"
+      > </a
+      ><a name="1385" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >,</a
+      ><a name="1386"
+      > </a
+      ><a name="1387" href="CwF.Sets.ContextComprehension.html#401" class="Function"
+      >&#9440;</a
+      ><a name="1388"
+      > </a
+      ><a name="1389" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10217;</a
+      ><a name="1390"
+      > </a
+      ><a name="1391" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1392"
+      > </a
+      ><a name="1393" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="1394"
+      > </a
+      ><a name="1395" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >,</a
+      ><a name="1396"
+      > </a
+      ><a name="1397" href="CwF.Sets.ContextComprehension.html#401" class="Function"
+      >&#9440;</a
+      ><a name="1398"
+      > </a
+      ><a name="1399" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10217;</a
+      ><a name="1400"
+      > </a
+      ><a name="1401" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="1403"
+      > </a
+      ><a name="1404" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1405"
+      > </a
+      ><a name="1406" href="CwF.Sets.IdentityType.html#297" class="Function"
+      >Id</a
+      ><a name="1408"
+      > </a
+      ><a name="1409" class="Symbol"
+      >(</a
+      ><a name="1410" href="CwF.Sets.IdentityType.html#1322" class="Bound"
+      >A</a
+      ><a name="1411"
+      > </a
+      ><a name="1412" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="1413"
+      > </a
+      ><a name="1414" href="CwF.Sets.IdentityType.html#1345" class="Bound"
+      >&#963;</a
+      ><a name="1415"
+      > </a
+      ><a name="1416" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="1418" class="Symbol"
+      >)</a
+      ><a name="1419"
+      >
+</a
+      ><a name="1420" href="CwF.Sets.IdentityType.html#1303" class="Function"
+      >EqIT&#8323;</a
+      ><a name="1425"
+      > </a
+      ><a name="1426" class="Symbol"
+      >=</a
+      ><a name="1427"
+      > </a
+      ><a name="1428" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1432"
+      >
+
+</a
+      ><a name="1434" href="CwF.Sets.IdentityType.html#1434" class="Function Operator"
+      >&#10216;_&#8728;p,q&#10217;</a
+      ><a name="1441"
+      > </a
+      ><a name="1442" class="Symbol"
+      >:</a
+      ><a name="1443"
+      > </a
+      ><a name="1444" class="Symbol"
+      >{</a
+      ><a name="1445" href="CwF.Sets.IdentityType.html#1445" class="Bound"
+      >&#915;</a
+      ><a name="1446"
+      > </a
+      ><a name="1447" class="Symbol"
+      >:</a
+      ><a name="1448"
+      > </a
+      ><a name="1449" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="1452" class="Symbol"
+      >}</a
+      ><a name="1453"
+      > </a
+      ><a name="1454" class="Symbol"
+      >{</a
+      ><a name="1455" href="CwF.Sets.IdentityType.html#1455" class="Bound"
+      >A</a
+      ><a name="1456"
+      > </a
+      ><a name="1457" class="Symbol"
+      >:</a
+      ><a name="1458"
+      > </a
+      ><a name="1459" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="1463"
+      > </a
+      ><a name="1464" href="CwF.Sets.IdentityType.html#1445" class="Bound"
+      >&#915;</a
+      ><a name="1465" class="Symbol"
+      >}</a
+      ><a name="1466"
+      > </a
+      ><a name="1467" class="Symbol"
+      >{</a
+      ><a name="1468" href="CwF.Sets.IdentityType.html#1468" class="Bound"
+      >&#916;</a
+      ><a name="1469"
+      > </a
+      ><a name="1470" class="Symbol"
+      >:</a
+      ><a name="1471"
+      > </a
+      ><a name="1472" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="1475" class="Symbol"
+      >}</a
+      ><a name="1476"
+      >
+        </a
+      ><a name="1485" class="Symbol"
+      >&#8594;</a
+      ><a name="1486"
+      > </a
+      ><a name="1487" class="Symbol"
+      >(</a
+      ><a name="1488" href="CwF.Sets.IdentityType.html#1488" class="Bound"
+      >&#963;</a
+      ><a name="1489"
+      > </a
+      ><a name="1490" class="Symbol"
+      >:</a
+      ><a name="1491"
+      > </a
+      ><a name="1492" href="CwF.Sets.Base.html#221" class="Function"
+      >Sub</a
+      ><a name="1495"
+      > </a
+      ><a name="1496" href="CwF.Sets.IdentityType.html#1468" class="Bound"
+      >&#916;</a
+      ><a name="1497"
+      > </a
+      ><a name="1498" href="CwF.Sets.IdentityType.html#1445" class="Bound"
+      >&#915;</a
+      ><a name="1499" class="Symbol"
+      >)</a
+      ><a name="1500"
+      > </a
+      ><a name="1501" class="Symbol"
+      >&#8594;</a
+      ><a name="1502"
+      > </a
+      ><a name="1503" href="CwF.Sets.Base.html#221" class="Function"
+      >Sub</a
+      ><a name="1506"
+      > </a
+      ><a name="1507" class="Symbol"
+      >(</a
+      ><a name="1508" href="CwF.Sets.IdentityType.html#1468" class="Bound"
+      >&#916;</a
+      ><a name="1509"
+      > </a
+      ><a name="1510" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="1511"
+      > </a
+      ><a name="1512" href="CwF.Sets.IdentityType.html#1455" class="Bound"
+      >A</a
+      ><a name="1513"
+      > </a
+      ><a name="1514" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="1515"
+      > </a
+      ><a name="1516" href="CwF.Sets.IdentityType.html#1488" class="Bound"
+      >&#963;</a
+      ><a name="1517"
+      > </a
+      ><a name="1518" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="1520" class="Symbol"
+      >)</a
+      ><a name="1521"
+      > </a
+      ><a name="1522" class="Symbol"
+      >(</a
+      ><a name="1523" href="CwF.Sets.IdentityType.html#1445" class="Bound"
+      >&#915;</a
+      ><a name="1524"
+      > </a
+      ><a name="1525" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="1526"
+      > </a
+      ><a name="1527" href="CwF.Sets.IdentityType.html#1455" class="Bound"
+      >A</a
+      ><a name="1528" class="Symbol"
+      >)</a
+      ><a name="1529"
+      >
+</a
+      ><a name="1530" href="CwF.Sets.IdentityType.html#1434" class="Function Operator"
+      >&#10216;</a
+      ><a name="1531"
+      > </a
+      ><a name="1532" href="CwF.Sets.IdentityType.html#1532" class="Bound"
+      >&#963;</a
+      ><a name="1533"
+      > </a
+      ><a name="1534" href="CwF.Sets.IdentityType.html#1434" class="Function Operator"
+      >&#8728;p,q&#10217;</a
+      ><a name="1539"
+      > </a
+      ><a name="1540" class="Symbol"
+      >=</a
+      ><a name="1541"
+      > </a
+      ><a name="1542" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10216;</a
+      ><a name="1543"
+      > </a
+      ><a name="1544" href="CwF.Sets.IdentityType.html#1532" class="Bound"
+      >&#963;</a
+      ><a name="1545"
+      > </a
+      ><a name="1546" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1547"
+      > </a
+      ><a name="1548" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="1549"
+      > </a
+      ><a name="1550" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >,</a
+      ><a name="1551"
+      > </a
+      ><a name="1552" href="CwF.Sets.ContextComprehension.html#401" class="Function"
+      >&#9440;</a
+      ><a name="1553"
+      > </a
+      ><a name="1554" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10217;</a
+      ><a name="1555"
+      >
+
+</a
+      ><a name="1557" class="Comment"
+      >-- (J u)[&#10216;&#10216;&#10216;&#963;&#8728;p,q&#10217;&#8728;p,q&#10217;&#8728;p,q&#10217;] = J(u[&#10216;&#963;&#8728;p,q&#10217;])</a
+      ><a name="1602"
+      >
+</a
+      ><a name="1603" href="CwF.Sets.IdentityType.html#1603" class="Function"
+      >EqIT&#8324;</a
+      ><a name="1608"
+      > </a
+      ><a name="1609" class="Symbol"
+      >:</a
+      ><a name="1610"
+      > </a
+      ><a name="1611" class="Symbol"
+      >{</a
+      ><a name="1612" href="CwF.Sets.IdentityType.html#1612" class="Bound"
+      >&#915;</a
+      ><a name="1613"
+      > </a
+      ><a name="1614" class="Symbol"
+      >:</a
+      ><a name="1615"
+      > </a
+      ><a name="1616" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="1619" class="Symbol"
+      >}</a
+      ><a name="1620"
+      > </a
+      ><a name="1621" class="Symbol"
+      >{</a
+      ><a name="1622" href="CwF.Sets.IdentityType.html#1622" class="Bound"
+      >A</a
+      ><a name="1623"
+      > </a
+      ><a name="1624" class="Symbol"
+      >:</a
+      ><a name="1625"
+      > </a
+      ><a name="1626" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="1630"
+      > </a
+      ><a name="1631" href="CwF.Sets.IdentityType.html#1612" class="Bound"
+      >&#915;</a
+      ><a name="1632" class="Symbol"
+      >}</a
+      ><a name="1633"
+      > </a
+      ><a name="1634" class="Symbol"
+      >{</a
+      ><a name="1635" href="CwF.Sets.IdentityType.html#1635" class="Bound"
+      >B</a
+      ><a name="1636"
+      > </a
+      ><a name="1637" class="Symbol"
+      >:</a
+      ><a name="1638"
+      > </a
+      ><a name="1639" href="CwF.Sets.TypesAndTerms.html#223" class="Function"
+      >Type</a
+      ><a name="1643"
+      > </a
+      ><a name="1644" class="Symbol"
+      >(</a
+      ><a name="1645" href="CwF.Sets.IdentityType.html#1612" class="Bound"
+      >&#915;</a
+      ><a name="1646"
+      > </a
+      ><a name="1647" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="1648"
+      > </a
+      ><a name="1649" href="CwF.Sets.IdentityType.html#1622" class="Bound"
+      >A</a
+      ><a name="1650"
+      > </a
+      ><a name="1651" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="1652"
+      > </a
+      ><a name="1653" href="CwF.Sets.IdentityType.html#1622" class="Bound"
+      >A</a
+      ><a name="1654"
+      > </a
+      ><a name="1655" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="1656"
+      > </a
+      ><a name="1657" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="1658"
+      > </a
+      ><a name="1659" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="1661"
+      > </a
+      ><a name="1662" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="1663"
+      > </a
+      ><a name="1664" href="CwF.Sets.IdentityType.html#297" class="Function"
+      >Id</a
+      ><a name="1666"
+      > </a
+      ><a name="1667" href="CwF.Sets.IdentityType.html#1622" class="Bound"
+      >A</a
+      ><a name="1668" class="Symbol"
+      >)}</a
+      ><a name="1670"
+      >
+        </a
+      ><a name="1679" class="Symbol"
+      >{</a
+      ><a name="1680" href="CwF.Sets.IdentityType.html#1680" class="Bound"
+      >u</a
+      ><a name="1681"
+      > </a
+      ><a name="1682" class="Symbol"
+      >:</a
+      ><a name="1683"
+      > </a
+      ><a name="1684" href="CwF.Sets.TypesAndTerms.html#259" class="Function"
+      >Term</a
+      ><a name="1688"
+      > </a
+      ><a name="1689" class="Symbol"
+      >(</a
+      ><a name="1690" href="CwF.Sets.IdentityType.html#1612" class="Bound"
+      >&#915;</a
+      ><a name="1691"
+      > </a
+      ><a name="1692" href="CwF.Sets.ContextComprehension.html#300" class="Function Operator"
+      >&#8330;</a
+      ><a name="1693"
+      > </a
+      ><a name="1694" href="CwF.Sets.IdentityType.html#1622" class="Bound"
+      >A</a
+      ><a name="1695" class="Symbol"
+      >)</a
+      ><a name="1696"
+      > </a
+      ><a name="1697" class="Symbol"
+      >(</a
+      ><a name="1698" href="CwF.Sets.IdentityType.html#1635" class="Bound"
+      >B</a
+      ><a name="1699"
+      > </a
+      ><a name="1700" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >[</a
+      ><a name="1701"
+      > </a
+      ><a name="1702" href="CwF.Sets.IdentityType.html#381" class="Function"
+      >&#9415;</a
+      ><a name="1703"
+      > </a
+      ><a name="1704" href="CwF.Sets.TypesAndTerms.html#413" class="Function Operator"
+      >]&#696;</a
+      ><a name="1706" class="Symbol"
+      >)}</a
+      ><a name="1708"
+      > </a
+      ><a name="1709" class="Symbol"
+      >{</a
+      ><a name="1710" href="CwF.Sets.IdentityType.html#1710" class="Bound"
+      >&#916;</a
+      ><a name="1711"
+      > </a
+      ><a name="1712" class="Symbol"
+      >:</a
+      ><a name="1713"
+      > </a
+      ><a name="1714" href="CwF.Sets.Base.html#199" class="Function"
+      >Cxt</a
+      ><a name="1717" class="Symbol"
+      >}</a
+      ><a name="1718"
+      > </a
+      ><a name="1719" class="Symbol"
+      >{</a
+      ><a name="1720" href="CwF.Sets.IdentityType.html#1720" class="Bound"
+      >&#963;</a
+      ><a name="1721"
+      > </a
+      ><a name="1722" class="Symbol"
+      >:</a
+      ><a name="1723"
+      > </a
+      ><a name="1724" href="CwF.Sets.Base.html#221" class="Function"
+      >Sub</a
+      ><a name="1727"
+      > </a
+      ><a name="1728" href="CwF.Sets.IdentityType.html#1710" class="Bound"
+      >&#916;</a
+      ><a name="1729"
+      > </a
+      ><a name="1730" href="CwF.Sets.IdentityType.html#1612" class="Bound"
+      >&#915;</a
+      ><a name="1731" class="Symbol"
+      >}</a
+      ><a name="1732"
+      >
+      </a
+      ><a name="1739" class="Symbol"
+      >&#8594;</a
+      ><a name="1740"
+      > </a
+      ><a name="1741" class="Symbol"
+      >(</a
+      ><a name="1742" href="CwF.Sets.IdentityType.html#813" class="Function Operator"
+      >&#10218;</a
+      ><a name="1743"
+      > </a
+      ><a name="1744" href="CwF.Sets.IdentityType.html#1635" class="Bound"
+      >B</a
+      ><a name="1745"
+      > </a
+      ><a name="1746" href="CwF.Sets.IdentityType.html#813" class="Function Operator"
+      >&#10219;&#9407;</a
+      ><a name="1748"
+      > </a
+      ><a name="1749" href="CwF.Sets.IdentityType.html#1680" class="Bound"
+      >u</a
+      ><a name="1750" class="Symbol"
+      >)</a
+      ><a name="1751"
+      > </a
+      ><a name="1752" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >[</a
+      ><a name="1753"
+      > </a
+      ><a name="1754" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10216;</a
+      ><a name="1755"
+      > </a
+      ><a name="1756" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10216;</a
+      ><a name="1757"
+      > </a
+      ><a name="1758" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10216;</a
+      ><a name="1759"
+      > </a
+      ><a name="1760" href="CwF.Sets.IdentityType.html#1720" class="Bound"
+      >&#963;</a
+      ><a name="1761"
+      > </a
+      ><a name="1762" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1763"
+      > </a
+      ><a name="1764" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="1765"
+      > </a
+      ><a name="1766" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >,</a
+      ><a name="1767"
+      > </a
+      ><a name="1768" href="CwF.Sets.ContextComprehension.html#401" class="Function"
+      >&#9440;</a
+      ><a name="1769"
+      > </a
+      ><a name="1770" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10217;</a
+      ><a name="1771"
+      > </a
+      ><a name="1772" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1773"
+      > </a
+      ><a name="1774" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="1775"
+      > </a
+      ><a name="1776" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >,</a
+      ><a name="1777"
+      > </a
+      ><a name="1778" href="CwF.Sets.ContextComprehension.html#401" class="Function"
+      >&#9440;</a
+      ><a name="1779"
+      > </a
+      ><a name="1780" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10217;</a
+      ><a name="1781"
+      > </a
+      ><a name="1782" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1783"
+      > </a
+      ><a name="1784" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="1785"
+      > </a
+      ><a name="1786" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >,</a
+      ><a name="1787"
+      > </a
+      ><a name="1788" href="CwF.Sets.ContextComprehension.html#401" class="Function"
+      >&#9440;</a
+      ><a name="1789"
+      > </a
+      ><a name="1790" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10217;</a
+      ><a name="1791"
+      > </a
+      ><a name="1792" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >]&#7504;</a
+      ><a name="1794"
+      >
+       </a
+      ><a name="1802" href="Preliminaries.SetsAndFunctions.html#1164" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1803"
+      > </a
+      ><a name="1804" href="CwF.Sets.IdentityType.html#482" class="Function"
+      >&#9407;</a
+      ><a name="1805"
+      > </a
+      ><a name="1806" class="Symbol"
+      >(</a
+      ><a name="1807" href="CwF.Sets.IdentityType.html#1680" class="Bound"
+      >u</a
+      ><a name="1808"
+      > </a
+      ><a name="1809" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >[</a
+      ><a name="1810"
+      > </a
+      ><a name="1811" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10216;</a
+      ><a name="1812"
+      > </a
+      ><a name="1813" href="CwF.Sets.IdentityType.html#1720" class="Bound"
+      >&#963;</a
+      ><a name="1814"
+      > </a
+      ><a name="1815" href="Preliminaries.SetsAndFunctions.html#303" class="Function Operator"
+      >&#8728;</a
+      ><a name="1816"
+      > </a
+      ><a name="1817" href="CwF.Sets.ContextComprehension.html#344" class="Function"
+      >&#9439;</a
+      ><a name="1818"
+      > </a
+      ><a name="1819" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >,</a
+      ><a name="1820"
+      > </a
+      ><a name="1821" href="CwF.Sets.ContextComprehension.html#401" class="Function"
+      >&#9440;</a
+      ><a name="1822"
+      > </a
+      ><a name="1823" href="CwF.Sets.ContextComprehension.html#468" class="Function Operator"
+      >&#10217;</a
+      ><a name="1824"
+      > </a
+      ><a name="1825" href="CwF.Sets.TypesAndTerms.html#479" class="Function Operator"
+      >]&#7504;</a
+      ><a name="1827" class="Symbol"
+      >)</a
+      ><a name="1828"
+      >
+</a
+      ><a name="1829" href="CwF.Sets.IdentityType.html#1603" class="Function"
+      >EqIT&#8324;</a
+      ><a name="1834"
+      > </a
+      ><a name="1835" class="Symbol"
+      >=</a
+      ><a name="1836"
+      > </a
+      ><a name="1837" href="Preliminaries.SetsAndFunctions.html#1216" class="InductiveConstructor"
+      >refl</a
+      ><a name="1841"
+      > 
+
+\end{code}
+</a
+      ></pre
+    ></body
+  ></html
+>
